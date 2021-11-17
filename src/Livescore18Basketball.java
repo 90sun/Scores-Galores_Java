@@ -161,12 +161,12 @@ class Livescore18Basketball {
 		Livescore18Basketball ls = new Livescore18Basketball();
 		String mode = "";
 		// links = ls.scheduleGrab(driver,i,h,links, 1147,2);
-		links = ls.fixtureGrab(driver, i, h, links, wait, 120, 500, "f1");
+		links = ls.fixtureGrab(driver, i, h, links, wait, 128, 200, "n0");
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 
 //		links.add("");
-//		links.add("https://www.goaloo.mobi/basketball/match/h2h-439929");
-//		links.add("https://www.goaloo.mobi/basketball/match/h2h-389065");
+//		links.add("http://www.goaloo.mobi/basketball/match/h2h-439929");
+//		links.add("http://www.goaloo.mobi/basketball/match/h2h-389065");
 //		links.add("http://www.goaloo.mobi/basketball/match/h2h-389030");
 //		links.add("http://www.goaloo.mobi/basketball/match/h2h-389016");
 
