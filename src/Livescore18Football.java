@@ -67,8 +67,9 @@ class Livescore18Football {
         // String mode = "H/A Same"
         String games = "10";
         boolean sameLeague = false;
-        int startIndex = 150;
-        int endIndex = 225;
+        int startIndex = 300;
+        int endIndex = 400;
+        String day = "n1";
         System.out.println("In League = " + sameLeague);
         System.out.println("startIndex = " + startIndex);
         System.out.println("endIndex = " + endIndex);
@@ -77,16 +78,18 @@ class Livescore18Football {
 
 
 ////		links = ls.scheduleGrab(driver,i,h,links, "816",16);
-links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
+//links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, day);
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 1, 710, "n1");
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 200, 300, "n1");
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 300, 400, "n1");
 
 //////     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 //
-//
-		links.add("https://www.goaloo.mobi/football/match/h2h-2057839");
-///		links.add("https://www.goaloo.mobi/football/match/h2h-2087329");
+      links.add("https://www.goaloo.mobi/football/match/h2h-2025941");
+//        links.add("https://www.goaloo.mobi/football/match/h2h-2123762");
+//        links.add("https://www.goaloo.mobi/football/match/h2h-2124074");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2037628");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-1993556");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2048687");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2121819");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2048687");
@@ -276,7 +279,10 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
             ArrayList<Integer> HTawayGoals = new ArrayList<Integer>();
             ArrayList<Integer> HTawayOppGoals = new ArrayList<Integer>();
             ArrayList<Integer> HTneutralHomeGoals = new ArrayList<Integer>();
+            ArrayList<Integer> HTneutralHomeOppGoals = new ArrayList<Integer>();
             ArrayList<Integer> HTneutralAwayGoals = new ArrayList<Integer>();
+            ArrayList<Integer> HTneutralAwayOppGoals = new ArrayList<Integer>();
+
 
             float FThomeExpectedRecProb = 0, FTawayExpectedRecProb = 0, FThomeScoredRecProb = 0,
                     FTawayScoredRecProb = 0, FThomeConcededRecProb = 0, FTawayConcededRecProb = 0,
@@ -1237,6 +1243,8 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
                         FTneutralAwayOppGoals.addAll(FTawayOppGoals);
                         HTneutralHomeGoals.addAll(HThomeGoals);
                         HTneutralAwayGoals.addAll(HTawayGoals);
+                        HTneutralHomeOppGoals.addAll(HThomeOppGoals);
+                        HTneutralAwayOppGoals.addAll(HTawayOppGoals);
                         neutralHomeForm.addAll(homeForm);
                         neutralAwayForm.addAll(awayForm);
 
@@ -1357,7 +1365,7 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
                 if (FTtotalMinExpectedRecProb > 2.249999 && FTtotalMinOne > 0.89999)
                     betThis = 0.5;
 
-                if (FTtotalMinExpectedRecProb > 2.249999 && FTtotalMinTwo > 0.849999)
+                if (FTtotalMinExpectedRecProb > 2.49999 && FTtotalMinTwo > 0.849999)
                     betThis = 1.5;
 
                 if (FTtotalMinExpectedRecProb > 3.09999 && FTtotalMinThree > 0.79999)
@@ -1370,12 +1378,16 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
                 String htBetThis = "";
 
 
-                if (betThis == 0.0)
-                    continue;
+
+                	
+                	
+
+                
+
 ////
 ////
-                if (league2.contains("Women") || league2.contains("women") || league2.contains("Feminines") || league2.contains("WE League")|| league2.contains("Frauen") || league2.contains("Woman") || league2.contains("Femenil") || league2.contains("Ladies") 	|| league2.contains("Damallsvenskan") || league2.contains("WPL"))
-                    continue;
+//                if (league2.contains("Women") || league2.contains("women") || league2.contains("Feminines") || league2.contains("WE League")|| league2.contains("Frauen") || league2.contains("Woman") || league2.contains("Femenil") || league2.contains("Ladies") 	|| league2.contains("Damallsvenskan") || league2.contains("WPL"))
+//                    continue;
 ////
 //				if (minOdds > 1.19999 && (
 //						league2.contains("Norway Division 4")
@@ -1414,6 +1426,47 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
 //					continue;
 //
 //				}
+				
+//				if (formOddsDiff < 0 && (
+//						league2.contains("Norway Division 4")
+//								|| league2.contains("Israel C League")
+//                                || league2.contains("Turkey 3. Ligi B")
+//                                || league2.contains("Turkey Lig3")
+//                                || league2.contains("Croatia 3.Division") || league2.contains("Argentine Division 2")
+//								|| league2.contains("Argentina Regional League")
+//								|| league2.contains("Belgian First Amateur Division")
+//								|| league2.contains("Czech Republic 5. Ligy") || league2.contains("Chile Primera D")
+//								|| league2.contains("Kolmonen")
+//								|| league2.contains("Northern German state premier league - bayern")
+//								|| league2.contains("Denmark - 4.Liga") || league2.contains("Poland Division 4")
+//								|| league2.contains("Spain Regional League")  || league2.contains("Teine Liiga")
+//								|| league2.contains("Spanish Bizkaia-Tercera Division")
+//								|| league2.contains("Schleswig Holstein Liga") || league2.contains("Oberliga")
+//								|| league2.contains("Landesliga")
+//								|| league2.contains("Czech Group D League") || league2.contains("Nicaragua Segunda")
+//								|| league2.contains("Slovakia 3.Liga")
+//								|| league2.contains("Egypt Division 2")
+//								|| league2.contains("Romania - Liga 2 Seria")
+//								|| league2.contains("Austrian 3.Liga")
+//								|| league2.contains("U17") || league2.contains("U18") || league2.contains("U19") || league2.contains("U-19")
+//								|| league2.contains("Thai Division 1 League")
+//								|| league2.contains("Romania - Liga 3 Seria")
+//								|| league2.contains("Sweden Division 2")
+//								|| league2.contains("Romania - Liga 3 Seria")
+//								|| league2.contains("Czech Republic Ceska Fotbalova Liga")
+//								|| league2.contains("Sweden Div 3 Mellersta")
+//                                || league2.contains("Hungary NB III") || league2.contains("U19") || league2.contains("U-19") || league2.contains("U21") || league2.contains("U-21") || league2.contains("U23") || league2.contains("U-23") 	|| league2.contains("Mexico Segunda Division")
+//                                || league2.contains("U20") || league2.contains("Reserve") || league2.contains("Russia Division 2") || league2.contains("Sweden Division 1") || league2.contains("youth") || league2.contains("Esi Liiga") || league2.contains("Youth")
+//                                || league2.contains("Slovakia 2. Liga") || league2.contains("Uzbekistan Second League")
+//                                || league2.contains("UEFA Europa Conference League") || league2.contains("Friendly")
+//								|| league2.contains("Cup") || league2.contains("Coppa") || league2.contains("cup")
+//                                || league2.contains("Landespokal") || league2.contains("Trophy")
+//                                || league2.contains("Johnstone") || league2.contains("Vase")))
+//
+//				{
+//					betThis = 0.5;
+//
+//				}
 ////
 //
 //
@@ -1431,8 +1484,10 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
 ////                    continue;
 ////                }
 ////
-////                if (HTtotalMinOne < 0.7) {
-////                    continue;
+                if (HTtotalMinOne < 0.7)
+                    continue;
+
+
 ////                }
 //                //                if (formOddsDiff < 0.7 && formOddsDiff > -2.0999) {
 ////                    htBetThis = "NEVER";
@@ -1447,7 +1502,14 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
 ////
 ////
 ////
-                if(minOdds > 1.9999) {
+
+//                if(formOddsDiff < 0 && HTtotalMinOne < 0.8)
+//                {
+//                	htBetThis = "NEVER";
+//
+//                }
+
+                if(minOdds > 1.8999) {
                     continue;
                 }
                 if (totalAwayFormRecProb > totalHomeFormRecProb && awayOdds > homeOdds) {
@@ -1460,46 +1522,148 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, "n1");
 
                 }
 
-                if (FTtotalMinExpectedRecProb > 2.4999 && HTtotalMinOne > 0.6999 && !htBetThis.contentEquals("NEVER")) {
-                    htBetThis = "YES";
-                }
+//                if (FTtotalMinExpectedRecProb > 2.4999 && HTtotalMinOne > 0.6999 && !htBetThis.contentEquals("NEVER")) {
+//                    htBetThis = "YES";
+//                }
 
                 if ((FTtotalMinHomeExpectedRecProb > 1.4999 || FTtotalMinAwayExpectedRecProb > 1.4999)
                         && HTtotalMinOne > 0.7999 && FTtotalMinExpectedRecProb > 2.4999 && !htBetThis.contentEquals("NEVER"))
-                    htBetThis = "YES";
+                    htBetThis = "YES 50%";
 //
 //
-//                if (htBetThis.contentEquals(""))
-//                    htBetThis = "NEVER";
-//
-//                if (htBetThis.equals("YES") && betThis > 1)
-//                    betThis = betThis - 1;
-//
-                if (FTneutralHomeGoals.get(0).equals(0) && FTneutralHomeOppGoals.get(0).equals(0) )
-                    htBetThis = "NEVER";
-                if (FTneutralHomeGoals.get(1).equals(0) && FTneutralHomeOppGoals.get(1).equals(0) )
-                    htBetThis = "NEVER";
-                if (FTneutralHomeGoals.get(2).equals(0) && FTneutralHomeOppGoals.get(2).equals(0) )
-                    htBetThis = "NEVER";
-                if (FTneutralHomeGoals.get(3).equals(0) && FTneutralHomeOppGoals.get(3).equals(0) )
-                    htBetThis = "NEVER";
-                if (FTneutralHomeGoals.get(4).equals(0) && FTneutralHomeOppGoals.get(4).equals(0) )
+                if (htBetThis.contentEquals(""))
                     htBetThis = "NEVER";
 
-                if (FTneutralAwayGoals.get(0).equals(0) && FTneutralAwayOppGoals.get(0).equals(0) )
+//                if (htBetThis.equals("YES") && betThis > 1)
+//                    betThis = betThis - 1;
+
+                if (HTneutralHomeGoals.get(0).equals(0) && HTneutralHomeOppGoals.get(0).equals(0) )
+                {
                     htBetThis = "NEVER";
-                if (FTneutralAwayGoals.get(1).equals(0) && FTneutralAwayOppGoals.get(1).equals(0) )
+                    betThis = betThis - 1;
+
+                }
+               else if (HTneutralHomeGoals.get(1).equals(0) && HTneutralHomeOppGoals.get(1).equals(0) )
+                {
                     htBetThis = "NEVER";
-                if (FTneutralAwayGoals.get(2).equals(0) && FTneutralAwayOppGoals.get(2).equals(0) )
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralHomeGoals.get(2).equals(0) && HTneutralHomeOppGoals.get(2).equals(0) )
+                {
                     htBetThis = "NEVER";
-                if (FTneutralAwayGoals.get(3).equals(0) && FTneutralAwayOppGoals.get(3).equals(0) )
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralHomeGoals.get(3).equals(0) && HTneutralHomeOppGoals.get(3).equals(0) )
+                {
                     htBetThis = "NEVER";
-                if (FTneutralAwayGoals.get(4).equals(0) && FTneutralAwayOppGoals.get(4).equals(0) )
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralHomeGoals.get(4).equals(0) && HTneutralHomeOppGoals.get(4).equals(0) )
+                {
                     htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralAwayGoals.get(0).equals(0) && HTneutralAwayOppGoals.get(0).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralAwayGoals.get(1).equals(0) && HTneutralAwayOppGoals.get(1).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralAwayGoals.get(2).equals(0) && HTneutralAwayOppGoals.get(2).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralAwayGoals.get(3).equals(0) && HTneutralAwayOppGoals.get(3).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTneutralAwayGoals.get(4).equals(0) && HTneutralAwayOppGoals.get(4).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HThomeGoals.get(0).equals(0) && HThomeOppGoals.get(0).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HThomeGoals.get(1).equals(0) && HThomeOppGoals.get(1).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HThomeGoals.get(2).equals(0) && HThomeOppGoals.get(2).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HThomeGoals.get(3).equals(0) && HThomeOppGoals.get(3).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HThomeGoals.get(4).equals(0) && HThomeOppGoals.get(4).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTawayGoals.get(0).equals(0) && HTawayOppGoals.get(0).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTawayGoals.get(1).equals(0) && HTawayOppGoals.get(1).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTawayGoals.get(2).equals(0) && HTawayOppGoals.get(2).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+                else if (HTawayGoals.get(3).equals(0) && HTawayOppGoals.get(3).equals(0) )
+                {
+                    htBetThis = "NEVER";
+
+                }
+                else if (HTawayGoals.get(4).equals(0) && HTawayOppGoals.get(4).equals(0) )
+                {
+                    htBetThis = "NEVER";
+                    betThis = betThis - 1;
+
+                }
+
+                if ((FTtotalMinHomeExpectedRecProb > 1.4999 || FTtotalMinAwayExpectedRecProb > 1.4999)
+                        && HTtotalMinOne > 0.7999 && FTtotalMinExpectedRecProb > 2.4999 )
+                    htBetThis = "YES 50%";
 
                 if( league2.contains("U19") || league2.contains("U-19") || league2.contains("U21") || league2.contains("U-21") || league2.contains("U23") || league2.contains("U-23") 	|| league2.contains("Mexico Segunda Division")
                         || league2.contains("U20") || league2.contains("Reserve") || league2.contains("Russia Division 2") || league2.contains("Sweden Division 1") || league2.contains("youth") || league2.contains("Esi Liiga") || league2.contains("Youth")
-                        || league2.contains("Slovakia 2. Liga") || league2.contains("Uzbekistan Second League")
+                        || league2.contains("Slovakia 2. Liga") || league2.contains("Uzbekistan Second League")|| league2.contains("Qatar")
                         || league2.contains("UEFA Europa Conference League") || league2.contains("Friendly"))
                     htBetThis = "NEVER";
 
@@ -1513,7 +1677,8 @@ if(totalHomeFormRecProb == 0.0)
                 if(FTtotalMinAwayExpectedRecProb == 0.0)
                     FTtotalMinAwayExpectedRecProb = 0.0001;
 
-
+                if (betThis == 0.0 || betThis < 0)
+                    continue;
 
                 if (
 
