@@ -161,11 +161,11 @@ class Livescore18Basketball {
 		Livescore18Basketball ls = new Livescore18Basketball();
 		String mode = "";
 		// links = ls.scheduleGrab(driver,i,h,links, 1147,2);
-		links = ls.fixtureGrab(driver, i, h, links, wait, 128, 200, "n0");
+		links = ls.fixtureGrab(driver, i, h, links, wait, 1, 300, "n0");
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 
 //		links.add("");
-//		links.add("http://www.goaloo.mobi/basketball/match/h2h-439929");
+//	links.add("https://www.goaloo.mobi/basketball/match/h2h-449483");
 //		links.add("http://www.goaloo.mobi/basketball/match/h2h-389065");
 //		links.add("http://www.goaloo.mobi/basketball/match/h2h-389030");
 //		links.add("http://www.goaloo.mobi/basketball/match/h2h-389016");
@@ -240,6 +240,7 @@ class Livescore18Basketball {
 
 			matchTotalScore = homeScore + awayScore;
 
+			try {
 			// get time of game
 			date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
 
@@ -262,7 +263,8 @@ class Livescore18Basketball {
 				driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
 
 			}
-			try {
+
+
 
 				// get matchTitle
 				league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a")).getText();
@@ -299,8 +301,13 @@ class Livescore18Basketball {
 					awayOppGoals.clear();
 
 					if (!neutral) {
-						driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
-					}
+
+						try {
+							driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
+						}
+						catch(Exception e){}
+
+						}
 
 					try {
 						driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
@@ -751,8 +758,7 @@ class Livescore18Basketball {
 
 				float totalMaxConsistency = (totalHomeMaxConsistency + totalAwayMaxConsistency) / 2;
 
-				if ((totalMinConsistency >= 0.90 || totalMinConsistency <= 0.15 || totalMaxConsistency >= 0.85
-						|| totalMaxConsistency <= 0.05) && (leagueGameHome > 0 && leagueGameAway > 0)
+				if (totalMinConsistency > 0.7999
 
 						
 				) {

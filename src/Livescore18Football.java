@@ -55,6 +55,7 @@ class Livescore18Football {
         }
         Writer myWriter = new FileWriter(file);
 
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -67,9 +68,9 @@ class Livescore18Football {
         // String mode = "H/A Same"
         String games = "10";
         boolean sameLeague = false;
-        int startIndex = 300;
-        int endIndex = 400;
-        String day = "n1";
+        int startIndex = 1;
+        int endIndex = 50;
+        String day = "n0";
         System.out.println("In League = " + sameLeague);
         System.out.println("startIndex = " + startIndex);
         System.out.println("endIndex = " + endIndex);
@@ -84,25 +85,25 @@ class Livescore18Football {
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 300, 400, "n1");
 
 //////     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
-//
-      links.add("https://www.goaloo.mobi/football/match/h2h-2025941");
-//        links.add("https://www.goaloo.mobi/football/match/h2h-2123762");
-//        links.add("https://www.goaloo.mobi/football/match/h2h-2124074");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2037628");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1993556");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2048687");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2121819");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2048687");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2121820");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2121820");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2121810");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2056438");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2118070");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2048268");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2021767");
+
+      links.add("https://www.goaloo.mobi/football/match/h2h-2081993");
+   //   links.add("https://www.goaloo.mobi/football/match/h2h-2043975");
+//      links.add("https://www.goaloo.mobi/football/match/h2h-2064006");
+//         links.add("https://www.goaloo.mobi/football/match/h2h-2126014");
+//         links.add("https://www.goaloo.mobi/football/match/h2h-2086418");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2030532");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2037131");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2056464");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2125782");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2053462");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2048235");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2027920");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2091251");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2051514");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2126128");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2113385");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2032778");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2046143");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2126371");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2121967");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2106477");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2037628");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2056409");
@@ -245,7 +246,7 @@ class Livescore18Football {
 
         while (litr.hasNext()) {
 
-            String tier = "A";
+
 
             String link = litr.next();
 
@@ -1255,11 +1256,36 @@ class Livescore18Football {
                 } // h/a for loop
 
                 double betThis = 0.0;
+                int tier = 1;
+                String htBetThis = "";
 
-//				tier = "A";
+                Integer h2hHome0 = null;
+                Integer h2hAway0 = null;
+                Integer h2hHome1 = null;
+                Integer h2hAway1 = null;
 
-//				if(((homeFormRecProb >= 1.5 && awayFormRecProb < 1) || awayFormRecProb >= 1.5 && homeFormRecProb < 1) && totalExpectedRecProb >= 2.5  )
-//					tier="A";
+// get last two matches played h2h
+                try {
+                    h2hHome0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[1]")).getText());
+                    h2hAway0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[2]")).getText());
+                    h2hHome1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[1]")).getText());
+                    h2hAway1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[2]")).getText());
+                }catch(Exception e){
+
+                }
+
+
+//                if(h2hHome0 != null && h2hHome0 == 0 && h2hAway0 == 0 )
+//                {
+//                    continue;
+//
+//                }
+//
+//                if(h2hHome1 != null && h2hHome1 == 0 && h2hAway1 == 0 )
+//                {
+//                    continue;
+//                }
+
 
                 // get odds
                 // click odds tab
@@ -1349,6 +1375,8 @@ class Livescore18Football {
                 double FTtotalOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
                 double HTtotalOne = Math.max(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
 
+                double HTtotalOneAvg = (HTtotalHomeOneRecProb + HTtotalAwayOneRecProb)/2;
+
                 double FTtotalTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
                 double FTtotalThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
                 double FTtotalFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
@@ -1362,310 +1390,138 @@ class Livescore18Football {
                 double maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
                 double formOddsDiff = (homeFormOdds - awayFormOdds);
 
-                if (FTtotalMinExpectedRecProb > 2.249999 && FTtotalMinOne > 0.89999)
+
+
+
+                if (FTtotalMinExpectedRecProb > 1 && FTtotalMinOne > 0.89999) {
+
                     betThis = 0.5;
+                }
 
-                if (FTtotalMinExpectedRecProb > 2.49999 && FTtotalMinTwo > 0.849999)
+                if (FTtotalMinExpectedRecProb > 2 && FTtotalMinTwo > 0.8499999) {
+
                     betThis = 1.5;
+                }
 
-                if (FTtotalMinExpectedRecProb > 3.09999 && FTtotalMinThree > 0.79999)
+                if (FTtotalMinExpectedRecProb > 3 && FTtotalMinThree > 0.79999)
+                {
+
                     betThis = 2.5;
+                }
 
-                if (FTtotalMinExpectedRecProb > 4.0999 && FTtotalMinFour > 0.749999)
+
+                if (FTtotalMinExpectedRecProb > 4 && FTtotalMinFour > 0.749999)
+                {
+
                     betThis = 3.5;
+                }
 
 
-                String htBetThis = "";
+
+
+                if(FTtotalMinOne < 0.9)
+                    continue;
 
 
 
-                	
-                	
-
-                
-
-////
-////
-//                if (league2.contains("Women") || league2.contains("women") || league2.contains("Feminines") || league2.contains("WE League")|| league2.contains("Frauen") || league2.contains("Woman") || league2.contains("Femenil") || league2.contains("Ladies") 	|| league2.contains("Damallsvenskan") || league2.contains("WPL"))
-//                    continue;
-////
-//				if (minOdds > 1.19999 && (
-//						league2.contains("Norway Division 4")
-//								|| league2.contains("Israel C League")
-//                                || league2.contains("Turkey 3. Ligi B")
-//                                || league2.contains("Turkey Lig3")
-//                                || league2.contains("Croatia 3.Division") || league2.contains("Argentine Division 2")
-//								|| league2.contains("Argentina Regional League")
-//								|| league2.contains("Belgian First Amateur Division")
-//								|| league2.contains("Czech Republic 5. Ligy") || league2.contains("Chile Primera D")
-//								|| league2.contains("Kolmonen")
-//								|| league2.contains("Northern German state premier league - bayern")
-//								|| league2.contains("Denmark - 4.Liga") || league2.contains("Poland Division 4")
-//								|| league2.contains("Spain Regional League")  || league2.contains("Teine Liiga")
-//								|| league2.contains("Spanish Bizkaia-Tercera Division")
-//								|| league2.contains("Schleswig Holstein Liga") || league2.contains("Oberliga")
-//								|| league2.contains("Landesliga")
-//								|| league2.contains("Czech Group D League") || league2.contains("Nicaragua Segunda")
-//								|| league2.contains("Slovakia 3.Liga")
-//								|| league2.contains("Egypt Division 2")
-//								|| league2.contains("Romania - Liga 2 Seria")
-//								|| league2.contains("Austrian 3.Liga")
-//								|| league2.contains("U17") || league2.contains("U18") || league2.contains("U19") || league2.contains("U-19")
-//								|| league2.contains("Thai Division 1 League")
-//								|| league2.contains("Romania - Liga 3 Seria")
-//								|| league2.contains("Sweden Division 2")
-//								|| league2.contains("Romania - Liga 3 Seria")
-//								|| league2.contains("Czech Republic Ceska Fotbalova Liga")
-//								|| league2.contains("Sweden Div 3 Mellersta")
-//                                || league2.contains("Hungary NB III")
-//								|| league2.contains("Cup") || league2.contains("Coppa") || league2.contains("cup")
-//                                || league2.contains("Landespokal") || league2.contains("Trophy")
-//                                || league2.contains("Johnstone") || league2.contains("Vase")))
-//
-//				{
-//					continue;
-//
-//				}
-				
-//				if (formOddsDiff < 0 && (
-//						league2.contains("Norway Division 4")
-//								|| league2.contains("Israel C League")
-//                                || league2.contains("Turkey 3. Ligi B")
-//                                || league2.contains("Turkey Lig3")
-//                                || league2.contains("Croatia 3.Division") || league2.contains("Argentine Division 2")
-//								|| league2.contains("Argentina Regional League")
-//								|| league2.contains("Belgian First Amateur Division")
-//								|| league2.contains("Czech Republic 5. Ligy") || league2.contains("Chile Primera D")
-//								|| league2.contains("Kolmonen")
-//								|| league2.contains("Northern German state premier league - bayern")
-//								|| league2.contains("Denmark - 4.Liga") || league2.contains("Poland Division 4")
-//								|| league2.contains("Spain Regional League")  || league2.contains("Teine Liiga")
-//								|| league2.contains("Spanish Bizkaia-Tercera Division")
-//								|| league2.contains("Schleswig Holstein Liga") || league2.contains("Oberliga")
-//								|| league2.contains("Landesliga")
-//								|| league2.contains("Czech Group D League") || league2.contains("Nicaragua Segunda")
-//								|| league2.contains("Slovakia 3.Liga")
-//								|| league2.contains("Egypt Division 2")
-//								|| league2.contains("Romania - Liga 2 Seria")
-//								|| league2.contains("Austrian 3.Liga")
-//								|| league2.contains("U17") || league2.contains("U18") || league2.contains("U19") || league2.contains("U-19")
-//								|| league2.contains("Thai Division 1 League")
-//								|| league2.contains("Romania - Liga 3 Seria")
-//								|| league2.contains("Sweden Division 2")
-//								|| league2.contains("Romania - Liga 3 Seria")
-//								|| league2.contains("Czech Republic Ceska Fotbalova Liga")
-//								|| league2.contains("Sweden Div 3 Mellersta")
-//                                || league2.contains("Hungary NB III") || league2.contains("U19") || league2.contains("U-19") || league2.contains("U21") || league2.contains("U-21") || league2.contains("U23") || league2.contains("U-23") 	|| league2.contains("Mexico Segunda Division")
-//                                || league2.contains("U20") || league2.contains("Reserve") || league2.contains("Russia Division 2") || league2.contains("Sweden Division 1") || league2.contains("youth") || league2.contains("Esi Liiga") || league2.contains("Youth")
-//                                || league2.contains("Slovakia 2. Liga") || league2.contains("Uzbekistan Second League")
-//                                || league2.contains("UEFA Europa Conference League") || league2.contains("Friendly")
-//								|| league2.contains("Cup") || league2.contains("Coppa") || league2.contains("cup")
-//                                || league2.contains("Landespokal") || league2.contains("Trophy")
-//                                || league2.contains("Johnstone") || league2.contains("Vase")))
-//
-//				{
-//					betThis = 0.5;
-//
-//				}
-////
-//
-//
                 if (totalMaxForm < 1.5)
                     continue;
-//
-////                if (neutralHomeForm.get(0).equals(0))
-////                    continue;
-
-////                if (formOddsDiff < 0.5 && formOddsDiff > -1 ) {
-////                    continue;
-////                }
-////
-////                if (formOddsDiff < 0.5 && formOddsDiff > -2.0999 && FTtotalMinExpectedRecProb < 2.5 ) {
-////                    continue;
-////                }
-////
                 if (HTtotalMinOne < 0.7)
                     continue;
 
 
-////                }
-//                //                if (formOddsDiff < 0.7 && formOddsDiff > -2.0999) {
-////                    htBetThis = "NEVER";
-////                    betThis = 0.5;
-////                }
-////
-////
-////                if (totalMinForm > 1.24999) {
-////                    continue;
-////                }
-////
-////
-////
-////
+                if ( HTtotalMinOne > 0.79999 && (FTtotalMinHomeExpectedRecProb > 1.49999  || FTtotalMinAwayExpectedRecProb > 1.49999)  )
+                    htBetThis = "YES";
 
-//                if(formOddsDiff < 0 && HTtotalMinOne < 0.8)
-//                {
-//                	htBetThis = "NEVER";
+//                if(minOdds > 1.7999 && totalMinForm >  1.49999)
+//                    continue;
 //
-//                }
+//                if(totalMinForm > 1.49999)
+//                    continue;
 
-                if(minOdds > 1.8999) {
-                    continue;
-                }
-                if (totalAwayFormRecProb > totalHomeFormRecProb && awayOdds > homeOdds) {
-                    continue;
+//                if(totalMinForm > 1.39999)
+//                    tier++;
 
-                }
 
-                if (totalHomeFormRecProb > totalAwayFormRecProb && homeOdds > awayOdds) {
-                    continue;
 
-                }
 
-//                if (FTtotalMinExpectedRecProb > 2.4999 && HTtotalMinOne > 0.6999 && !htBetThis.contentEquals("NEVER")) {
-//                    htBetThis = "YES";
-//                }
 
-                if ((FTtotalMinHomeExpectedRecProb > 1.4999 || FTtotalMinAwayExpectedRecProb > 1.4999)
-                        && HTtotalMinOne > 0.7999 && FTtotalMinExpectedRecProb > 2.4999 && !htBetThis.contentEquals("NEVER"))
-                    htBetThis = "YES 50%";
-//
-//
                 if (htBetThis.contentEquals(""))
                     htBetThis = "NEVER";
 
-//                if (htBetThis.equals("YES") && betThis > 1)
-//                    betThis = betThis - 1;
 
-                if (HTneutralHomeGoals.get(0).equals(0) && HTneutralHomeOppGoals.get(0).equals(0) )
-                {
+
+                if (neutralHomeForm.get(0).equals(0) && formOddsDiff > 0 )
+                    continue;
+
+                if (neutralAwayForm.get(0).equals(0) && formOddsDiff < 0 )
+                    continue;
+
+                if (neutralHomeForm.get(1).equals(0) && formOddsDiff > 0 )
                     htBetThis = "NEVER";
+
+                if (neutralAwayForm.get(1).equals(0) && formOddsDiff < 0 )
+                    htBetThis = "NEVER";
+
+                if (neutralHomeForm.get(2).equals(0) && formOddsDiff > 0 )
+                    htBetThis = "NEVER";
+
+                if (neutralAwayForm.get(2).equals(0) && formOddsDiff < 0 )
+                    htBetThis = "NEVER";
+
+
+                if((totalHomeFormRecProb < totalAwayFormRecProb) && (homeOdds < awayOdds) && formOddsDiff < 1 )
+                    continue;
+
+                if((totalAwayFormRecProb < totalHomeFormRecProb) && (awayOdds < homeOdds) && formOddsDiff < 1 )
+                    continue;
+
+
+
+
+                if(  league2.contains("Ireland Leinster Senior") || league2.contains("Norway Division 4")
+                        || league2.contains("Israel C League")
+                        || league2.contains("Turkey 3. Ligi B")
+                        || league2.contains("Belgian First Amateur Division")
+                        || league2.contains("Czech Republic 5. Ligy")
+                        || league2.contains("Kolmonen")
+                        || league2.contains("Northern German state premier league - bayern")
+                        || league2.contains("Denmark - 4.Liga") || league2.contains("Poland Division 4")
+                        || league2.contains("Spain Regional League")
+                        || league2.contains("Spanish Bizkaia-Tercera Division")
+                        || league2.contains("Schleswig Holstein Liga")
+                        || league2.contains("Landesliga")
+                        || league2.contains("Tanzania")
+                        || league2.contains("Czech Group D League")
+                        || league2.contains("Slovakia 3.Liga")
+                        || league2.contains("Thai Division 1 League")
+                        || league2.contains("Czech Republic Ceska Fotbalova Liga")
+                        || league2.contains("Hungary NB III")
+                        || league2.contains("Russia Division 2")  || league2.contains("Esi Liiga") || league2.contains("Mexico Segunda")
+                        || league2.contains("Conference")
+                        //|| league2.contains("Romania - Liga 3 Seria")
+                        || league2.contains("Thai Division 2 League")
+                        || league2.contains("Germany Regionalliga")
+                        || league2.contains("Germany Oberliga")
+                        || league2.contains("Austria 3.Liga")
+                        || league2.contains("Amateur")
+                       || league2.contains("Swiss")
+                        || league2.contains("Friendly")
+                        || league2.contains("Malta First Division")
+                || league2.contains("Women") || league2.contains("Argentina Torneo B") ||   league2.contains("Sweden Div 3 Mellersta")  || league2.contains("women") || league2.contains("Feminines") || league2.contains("WE League")|| league2.contains("Frauen") || league2.contains("Woman") || league2.contains("Femenil") || league2.contains("Ladies") 	|| league2.contains("Damallsvenskan") || league2.contains("WPL"))
+
+                {
+                   htBetThis = "NEVER";
+                }
+
+
+
+
+
+                if(htBetThis.contains("YES") && betThis > 1)
                     betThis = betThis - 1;
 
-                }
-               else if (HTneutralHomeGoals.get(1).equals(0) && HTneutralHomeOppGoals.get(1).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
 
-                }
-                else if (HTneutralHomeGoals.get(2).equals(0) && HTneutralHomeOppGoals.get(2).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralHomeGoals.get(3).equals(0) && HTneutralHomeOppGoals.get(3).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralHomeGoals.get(4).equals(0) && HTneutralHomeOppGoals.get(4).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralAwayGoals.get(0).equals(0) && HTneutralAwayOppGoals.get(0).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralAwayGoals.get(1).equals(0) && HTneutralAwayOppGoals.get(1).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralAwayGoals.get(2).equals(0) && HTneutralAwayOppGoals.get(2).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralAwayGoals.get(3).equals(0) && HTneutralAwayOppGoals.get(3).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTneutralAwayGoals.get(4).equals(0) && HTneutralAwayOppGoals.get(4).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HThomeGoals.get(0).equals(0) && HThomeOppGoals.get(0).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HThomeGoals.get(1).equals(0) && HThomeOppGoals.get(1).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HThomeGoals.get(2).equals(0) && HThomeOppGoals.get(2).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HThomeGoals.get(3).equals(0) && HThomeOppGoals.get(3).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HThomeGoals.get(4).equals(0) && HThomeOppGoals.get(4).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTawayGoals.get(0).equals(0) && HTawayOppGoals.get(0).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTawayGoals.get(1).equals(0) && HTawayOppGoals.get(1).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTawayGoals.get(2).equals(0) && HTawayOppGoals.get(2).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-                else if (HTawayGoals.get(3).equals(0) && HTawayOppGoals.get(3).equals(0) )
-                {
-                    htBetThis = "NEVER";
-
-                }
-                else if (HTawayGoals.get(4).equals(0) && HTawayOppGoals.get(4).equals(0) )
-                {
-                    htBetThis = "NEVER";
-                    betThis = betThis - 1;
-
-                }
-
-                if ((FTtotalMinHomeExpectedRecProb > 1.4999 || FTtotalMinAwayExpectedRecProb > 1.4999)
-                        && HTtotalMinOne > 0.7999 && FTtotalMinExpectedRecProb > 2.4999 )
-                    htBetThis = "YES 50%";
-
-                if( league2.contains("U19") || league2.contains("U-19") || league2.contains("U21") || league2.contains("U-21") || league2.contains("U23") || league2.contains("U-23") 	|| league2.contains("Mexico Segunda Division")
-                        || league2.contains("U20") || league2.contains("Reserve") || league2.contains("Russia Division 2") || league2.contains("Sweden Division 1") || league2.contains("youth") || league2.contains("Esi Liiga") || league2.contains("Youth")
-                        || league2.contains("Slovakia 2. Liga") || league2.contains("Uzbekistan Second League")|| league2.contains("Qatar")
-                        || league2.contains("UEFA Europa Conference League") || league2.contains("Friendly"))
-                    htBetThis = "NEVER";
 
 if(totalHomeFormRecProb == 0.0)
     totalHomeFormRecProb = 0.0001;
@@ -1679,6 +1535,17 @@ if(totalHomeFormRecProb == 0.0)
 
                 if (betThis == 0.0 || betThis < 0)
                     continue;
+
+                if ( formOddsDiff < 0) {
+                    continue;
+                }
+
+                if(minOdds > 1.89999 && betThis == 0.5 && htBetThis.equals("YES" +
+                        ""))
+                    htBetThis = "NEVER";
+                if(betThis == 0.5 && htBetThis.equals("NEVER"))
+                    continue;
+
 
                 if (
 
@@ -1699,6 +1566,15 @@ if(totalHomeFormRecProb == 0.0)
                     myWriter.write(Double.toString(betThis));
                     myWriter.write(",");
                     myWriter.write(htBetThis);
+                    myWriter.write(",");
+                    if(tier == 1)
+                    myWriter.write("Tier -> 1 (100% Max Bet)");
+                    if(tier == 2)
+                        myWriter.write("Tier -> 2 (20% Max Bet)");
+                    if(tier == 3)
+                        myWriter.write("Tier -> 3 (10% Max Bet)");
+                    if(tier == 4)
+                        myWriter.write("Tier -> 4 (5% Max Bet)");
                     myWriter.write(",");
                     myWriter.write(link);
 
@@ -1805,11 +1681,19 @@ if(totalHomeFormRecProb == 0.0)
                     System.out.format("|%-25s|", "HT One Prob");
                     System.out.format("|%-25s|", Double.toString(HTtotalHomeOneRecProb).substring(0, 3));
                     System.out.format("|%-25s|", Double.toString(HTtotalAwayOneRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(HTtotalMinOne).substring(0, 3));
+                    System.out.format("|%-25s|", Double.toString(HTtotalOneAvg).substring(0, 3));
                     System.out.println();
 
                     System.out.format("|%-25s|", "BetThis -> " + betThis);
                     System.out.format("|%-25s|", "HT BetThis -> " + htBetThis);
+                    if(tier == 1)
+                        System.out.format("|%-25s|", "Tier -> 1 (100% Max Bet)");
+                    if(tier == 2)
+                        System.out.format("|%-25s|", "Tier -> 2 (20% Max Bet)");
+                    if(tier == 3)
+                        System.out.format("|%-25s|", "Tier -> 3 (10% Max Bet)");
+                    if(tier == 4)
+                        System.out.format("|%-25s|", "Tier -> 4 (5% Max Bet)");
 
                     System.out.println();
 
@@ -1842,8 +1726,8 @@ if(totalHomeFormRecProb == 0.0)
     public ArrayList<String> fixtureGrab(WebDriver driver, int i, int h, ArrayList<String> links, WebDriverWait wait,
                                          int startIndex, int endIndex, String day) {
         driver.get("https://www.goaloo.mobi/football/schedule-" + day + "");
-//		driver.get("https://www.goaloo.mobi/football/");
-
+	//	driver.get("https://www.goaloo.mobi/football/");
+//
         driver.findElement(By.xpath("//*[@id='fHead']/div[1]/span[2]")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='displayZone']")));
         driver.findElement(By.xpath("//*[@id='displayZone']")).click();
