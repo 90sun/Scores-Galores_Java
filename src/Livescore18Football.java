@@ -68,8 +68,8 @@ class Livescore18Football {
         // String mode = "H/A Same"
         String games = "10";
         boolean sameLeague = false;
-        int startIndex = 1;
-        int endIndex = 50;
+        int startIndex = 165;
+        int endIndex = 250;
         String day = "n0";
         System.out.println("In League = " + sameLeague);
         System.out.println("startIndex = " + startIndex);
@@ -79,18 +79,18 @@ class Livescore18Football {
 
 
 ////		links = ls.scheduleGrab(driver,i,h,links, "816",16);
-//links = ls.fixtureGrab(driver, i, h, links, wait, startIndex,  endIndex, day);
+        links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day);
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 1, 710, "n1");
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 200, 300, "n1");
 //	links = ls.fixtureGrab(driver, i, h, links, wait, 300, 400, "n1");
 
 //////     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 
-      links.add("https://www.goaloo.mobi/football/match/h2h-2081993");
-   //   links.add("https://www.goaloo.mobi/football/match/h2h-2043975");
-//      links.add("https://www.goaloo.mobi/football/match/h2h-2064006");
-//         links.add("https://www.goaloo.mobi/football/match/h2h-2126014");
-//         links.add("https://www.goaloo.mobi/football/match/h2h-2086418");
+//      links.add("https://www.goaloo.mobi/football/match/h2h-2028666");
+//      links.add("https://www.goaloo.mobi/football/match/h2h-2061407");
+//      links.add("https://www.goaloo.mobi/football/match/h2h-2082900");
+//      links.add("https://www.goaloo.mobi/football/match/h2h-2081990");
+//     links.add("https://www.goaloo.mobi/football/match/h2h-2067926");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2030532");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2037131");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2056464");
@@ -247,7 +247,6 @@ class Livescore18Football {
         while (litr.hasNext()) {
 
 
-
             String link = litr.next();
 
             System.out.println(link);
@@ -355,8 +354,37 @@ class Livescore18Football {
 
 //================== LEAGUE BLACKLIST ======================================================
 
-//				if(league2.contains("Kolmonen") || league2.contains("Turkey 3."))
-//					continue;
+                if (
+                        league2.contains("Norway Division 4")
+                                || league2.contains("Turkey 3. Ligi B")
+                                || league2.contains("Belgian First Amateur Division")
+                                || league2.contains("Czech Republic 5. Ligy")
+                                || league2.contains("Kolmonen")
+                                || league2.contains("Northern German state premier league - bayern")
+                                || league2.contains("Denmark - 4.Liga")
+                                || league2.contains("Poland Division 4")
+                                || league2.contains("Spain Regional League")
+                                || league2.contains("Spanish Bizkaia-Tercera Division")
+                                || league2.contains("Schleswig Holstein Liga")
+                                || league2.contains("Landesliga")
+                                || league2.contains("Tanzania")
+                                || league2.contains("Czech Group D League")
+                                || league2.contains("Slovakia 3.Liga")
+                                || league2.contains("Czech Republic Ceska Fotbalova Liga")
+                                || league2.contains("Hungary NB III")
+                                || league2.contains("Esi Liiga")
+                                || league2.contains("Thai Division 2 League")
+                                || league2.contains("Germany Oberliga")
+                                || league2.contains("Austria 3.Liga")
+                                || league2.contains("Amateur")
+                                || league2.contains("Friendly")
+                                || league2.contains("Malta First Division")
+                                || league2.contains("Fiji")
+                                || league2.contains("Argentina Torneo B")
+                                || league2.contains("Sweden Div 3 Mellersta")
+                ) {
+                    continue;
+                }
 
                 try {
                     // get time of game
@@ -384,21 +412,8 @@ class Livescore18Football {
                 awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span/span")).getText();
                 // System.out.println("awayName = " + awayName );
 
-//			if(homeName.contains("(w)")
-//					|| awayName.contains("(w)")
-//					|| homeName.contains("Reserve")
-//					|| awayName.contains("Reserve")
-//					|| homeName.contains("(Youth)")
-//					|| awayName.contains("(Youth)")
-//					|| homeName.contains("U20")
-//					|| awayName.contains("U20")
-//					|| homeName.contains("U23")
-//					|| awayName.contains("U23")
-//					|| homeName.contains("U21")
-//					|| awayName.contains("U21")
-//					|| homeName.contains("U19")
-//					|| awayName.contains("U19"))
-//				continue;
+
+
 
                 if (games.equals("20")) {
                     driver.findElement(By.xpath("//*[@id='f6']/span/select")).click();
@@ -1264,27 +1279,54 @@ class Livescore18Football {
                 Integer h2hHome1 = null;
                 Integer h2hAway1 = null;
 
+                Integer HTh2hHome0 = null;
+                Integer HTh2hAway0 = null;
+                Integer HTh2hHome1 = null;
+                Integer HTh2hAway1 = null;
+
 // get last two matches played h2h
                 try {
                     h2hHome0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[1]")).getText());
                     h2hAway0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[2]")).getText());
                     h2hHome1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[1]")).getText());
                     h2hAway1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[2]")).getText());
-                }catch(Exception e){
+                } catch (Exception e) {
+
+                }
+
+                try {
+                    HTh2hHome0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[3]/span[1]")).getText());
+                    HTh2hAway0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[3]/span[2]")).getText());
+                    HTh2hHome1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[3]/span[1]")).getText());
+                    HTh2hAway1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[3]/span[2]")).getText());
+                } catch (Exception e) {
 
                 }
 
 
-//                if(h2hHome0 != null && h2hHome0 == 0 && h2hAway0 == 0 )
-//                {
-//                    continue;
-//
-//                }
-//
-//                if(h2hHome1 != null && h2hHome1 == 0 && h2hAway1 == 0 )
-//                {
-//                    continue;
-//                }
+                if(h2hHome0 != null && h2hHome0 == 0 && h2hAway0 == 0 )
+                {
+                    continue;
+
+                }
+
+                if(h2hHome1 != null && h2hHome1 == 0 && h2hAway1 == 0 )
+                {
+                    continue;
+                }
+
+                if(HTh2hHome0 != null && HTh2hHome0 == 0 && HTh2hAway0 == 0 )
+                {
+                    htBetThis = "NEVER";
+
+                }
+
+                if(HTh2hHome1 != null && HTh2hHome1 == 0 && HTh2hAway1 == 0 )
+                {
+                    htBetThis = "NEVER";
+                }
+
+
 
 
                 // get odds
@@ -1375,7 +1417,7 @@ class Livescore18Football {
                 double FTtotalOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
                 double HTtotalOne = Math.max(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
 
-                double HTtotalOneAvg = (HTtotalHomeOneRecProb + HTtotalAwayOneRecProb)/2;
+                double HTtotalOneAvg = (HTtotalHomeOneRecProb + HTtotalAwayOneRecProb) / 2;
 
                 double FTtotalTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
                 double FTtotalThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
@@ -1391,57 +1433,35 @@ class Livescore18Football {
                 double formOddsDiff = (homeFormOdds - awayFormOdds);
 
 
-
-
-                if (FTtotalMinExpectedRecProb > 1 && FTtotalMinOne > 0.89999) {
+                if (FTtotalMinExpectedRecProb > 1.4999 && FTtotalMinOne > 0.89999) {
 
                     betThis = 0.5;
                 }
 
-                if (FTtotalMinExpectedRecProb > 2 && FTtotalMinTwo > 0.8499999) {
+                if (FTtotalMinExpectedRecProb > 2.4999 && FTtotalMinTwo > 0.8499999) {
 
                     betThis = 1.5;
                 }
 
-                if (FTtotalMinExpectedRecProb > 3 && FTtotalMinThree > 0.79999)
-                {
+                if (FTtotalMinExpectedRecProb > 3.4999 && FTtotalMinThree > 0.79999) {
 
                     betThis = 2.5;
                 }
 
 
-                if (FTtotalMinExpectedRecProb > 4 && FTtotalMinFour > 0.749999)
-                {
+                if (FTtotalMinExpectedRecProb > 4.49999 && FTtotalMinFour > 0.749999) {
 
                     betThis = 3.5;
                 }
 
 
 
-
-                if(FTtotalMinOne < 0.9)
-                    continue;
-
-
-
-                if (totalMaxForm < 1.5)
-                    continue;
                 if (HTtotalMinOne < 0.7)
                     continue;
 
 
-                if ( HTtotalMinOne > 0.79999 && (FTtotalMinHomeExpectedRecProb > 1.49999  || FTtotalMinAwayExpectedRecProb > 1.49999)  )
+                if (HTtotalMinOne > 0.79999 && (FTtotalMinHomeExpectedRecProb > 1.49999 || FTtotalMinAwayExpectedRecProb > 1.49999) && !htBetThis.equals("NEVER"))
                     htBetThis = "YES";
-
-//                if(minOdds > 1.7999 && totalMinForm >  1.49999)
-//                    continue;
-//
-//                if(totalMinForm > 1.49999)
-//                    continue;
-
-//                if(totalMinForm > 1.39999)
-//                    tier++;
-
 
 
 
@@ -1450,102 +1470,98 @@ class Livescore18Football {
                     htBetThis = "NEVER";
 
 
-
-                if (neutralHomeForm.get(0).equals(0) && formOddsDiff > 0 )
+                if (neutralHomeForm.get(0).equals(0) && formOddsDiff > 0)
                     continue;
 
-                if (neutralAwayForm.get(0).equals(0) && formOddsDiff < 0 )
+                if (neutralAwayForm.get(0).equals(0) && formOddsDiff < 0)
                     continue;
 
-                if (neutralHomeForm.get(1).equals(0) && formOddsDiff > 0 )
+                if (neutralHomeForm.get(1).equals(0) && formOddsDiff > 0)
                     htBetThis = "NEVER";
 
-                if (neutralAwayForm.get(1).equals(0) && formOddsDiff < 0 )
+                if (neutralAwayForm.get(1).equals(0) && formOddsDiff < 0)
                     htBetThis = "NEVER";
 
-                if (neutralHomeForm.get(2).equals(0) && formOddsDiff > 0 )
+                if (neutralHomeForm.get(2).equals(0) && formOddsDiff > 0)
                     htBetThis = "NEVER";
 
-                if (neutralAwayForm.get(2).equals(0) && formOddsDiff < 0 )
+                if (neutralAwayForm.get(2).equals(0) && formOddsDiff < 0)
                     htBetThis = "NEVER";
 
 
-                if((totalHomeFormRecProb < totalAwayFormRecProb) && (homeOdds < awayOdds) && formOddsDiff < 1 )
+                if ((totalHomeFormRecProb < totalAwayFormRecProb) && (homeOdds < awayOdds) && formOddsDiff < 1)
                     continue;
 
-                if((totalAwayFormRecProb < totalHomeFormRecProb) && (awayOdds < homeOdds) && formOddsDiff < 1 )
+                if ((totalAwayFormRecProb < totalHomeFormRecProb) && (awayOdds < homeOdds) && formOddsDiff < 1)
                     continue;
 
 
-
-
-                if(  league2.contains("Ireland Leinster Senior") || league2.contains("Norway Division 4")
+                if (league2.contains("Ireland Leinster Senior")
                         || league2.contains("Israel C League")
-                        || league2.contains("Turkey 3. Ligi B")
-                        || league2.contains("Belgian First Amateur Division")
-                        || league2.contains("Czech Republic 5. Ligy")
-                        || league2.contains("Kolmonen")
-                        || league2.contains("Northern German state premier league - bayern")
-                        || league2.contains("Denmark - 4.Liga") || league2.contains("Poland Division 4")
-                        || league2.contains("Spain Regional League")
-                        || league2.contains("Spanish Bizkaia-Tercera Division")
-                        || league2.contains("Schleswig Holstein Liga")
-                        || league2.contains("Landesliga")
-                        || league2.contains("Tanzania")
-                        || league2.contains("Czech Group D League")
-                        || league2.contains("Slovakia 3.Liga")
                         || league2.contains("Thai Division 1 League")
-                        || league2.contains("Czech Republic Ceska Fotbalova Liga")
-                        || league2.contains("Hungary NB III")
-                        || league2.contains("Russia Division 2")  || league2.contains("Esi Liiga") || league2.contains("Mexico Segunda")
+                        || league2.contains("Russia Division 2")
+                        || league2.contains("Mexico Segunda")
                         || league2.contains("Conference")
-                        //|| league2.contains("Romania - Liga 3 Seria")
-                        || league2.contains("Thai Division 2 League")
                         || league2.contains("Germany Regionalliga")
-                        || league2.contains("Germany Oberliga")
-                        || league2.contains("Austria 3.Liga")
-                        || league2.contains("Amateur")
-                       || league2.contains("Swiss")
+                        || league2.contains("Argentina Prim C")
+                        || league2.contains("Swiss")
                         || league2.contains("Friendly")
-                        || league2.contains("Malta First Division")
-                || league2.contains("Women") || league2.contains("Argentina Torneo B") ||   league2.contains("Sweden Div 3 Mellersta")  || league2.contains("women") || league2.contains("Feminines") || league2.contains("WE League")|| league2.contains("Frauen") || league2.contains("Woman") || league2.contains("Femenil") || league2.contains("Ladies") 	|| league2.contains("Damallsvenskan") || league2.contains("WPL"))
-
-                {
-                   htBetThis = "NEVER";
+                        || league2.contains("Women")
+                        || league2.contains("women")
+                        || league2.contains("Feminines")
+                        || league2.contains("WE League")
+                        || league2.contains("Frauen")
+                        || league2.contains("Woman")
+                        || league2.contains("Femenil")
+                        || league2.contains("Ladies")
+                        || league2.contains("Rwanda")
+                        || league2.contains("Damallsvenskan")
+                        || league2.contains("WPL")) {
+                    htBetThis = "NEVER";
                 }
 
 
 
-
-
-                if(htBetThis.contains("YES") && betThis > 1)
+                if (htBetThis.contains("YES") && betThis > 1)
                     betThis = betThis - 1;
 
 
+                if (totalHomeFormRecProb == 0.0)
+                    totalHomeFormRecProb = 0.0001;
 
-if(totalHomeFormRecProb == 0.0)
-    totalHomeFormRecProb = 0.0001;
-
-                if(totalAwayFormRecProb == 0.0)
+                if (totalAwayFormRecProb == 0.0)
                     totalAwayFormRecProb = 0.0001;
-                if(FTtotalMinHomeExpectedRecProb == 0.0)
+                if (FTtotalMinHomeExpectedRecProb == 0.0)
                     FTtotalMinHomeExpectedRecProb = 0.0001;
-                if(FTtotalMinAwayExpectedRecProb == 0.0)
+                if (FTtotalMinAwayExpectedRecProb == 0.0)
                     FTtotalMinAwayExpectedRecProb = 0.0001;
 
                 if (betThis == 0.0 || betThis < 0)
                     continue;
 
-                if ( formOddsDiff < 0) {
-                    continue;
-                }
+//                if (formOddsDiff < 0) {
+//                    continue;
+//                }
 
-                if(minOdds > 1.89999 && betThis == 0.5 && htBetThis.equals("YES" +
-                        ""))
-                    htBetThis = "NEVER";
-                if(betThis == 0.5 && htBetThis.equals("NEVER"))
+//                if (minOdds > 1.89999 && betThis == 0.5 && htBetThis.equals("YES" +
+//                        ""))
+//                    htBetThis = "NEVER";
+
+                if (betThis == 0.5 && htBetThis.equals("NEVER") && (formOddsDiff < 1 && formOddsDiff > 1))
                     continue;
 
+                if(minOdds > 1.7999 && formOddsDiff < 1)
+                    continue;
+
+                if(totalMinForm > 1.49999  && formOddsDiff < 1)
+                    continue;
+
+                if (FTtotalMinOne < 0.9 && formOddsDiff < 1)
+                    continue;
+
+
+                if (totalMaxForm < 1.5 && formOddsDiff < 1)
+                    continue;
 
                 if (
 
@@ -1566,15 +1582,15 @@ if(totalHomeFormRecProb == 0.0)
                     myWriter.write(Double.toString(betThis));
                     myWriter.write(",");
                     myWriter.write(htBetThis);
-                    myWriter.write(",");
-                    if(tier == 1)
-                    myWriter.write("Tier -> 1 (100% Max Bet)");
-                    if(tier == 2)
-                        myWriter.write("Tier -> 2 (20% Max Bet)");
-                    if(tier == 3)
-                        myWriter.write("Tier -> 3 (10% Max Bet)");
-                    if(tier == 4)
-                        myWriter.write("Tier -> 4 (5% Max Bet)");
+//                    myWriter.write(",");
+//                    if (tier == 1)
+//                        myWriter.write("Tier -> 1 (100% Max Bet)");
+//                    if (tier == 2)
+//                        myWriter.write("Tier -> 2 (20% Max Bet)");
+//                    if (tier == 3)
+//                        myWriter.write("Tier -> 3 (10% Max Bet)");
+//                    if (tier == 4)
+//                        myWriter.write("Tier -> 4 (5% Max Bet)");
                     myWriter.write(",");
                     myWriter.write(link);
 
@@ -1686,14 +1702,14 @@ if(totalHomeFormRecProb == 0.0)
 
                     System.out.format("|%-25s|", "BetThis -> " + betThis);
                     System.out.format("|%-25s|", "HT BetThis -> " + htBetThis);
-                    if(tier == 1)
-                        System.out.format("|%-25s|", "Tier -> 1 (100% Max Bet)");
-                    if(tier == 2)
-                        System.out.format("|%-25s|", "Tier -> 2 (20% Max Bet)");
-                    if(tier == 3)
-                        System.out.format("|%-25s|", "Tier -> 3 (10% Max Bet)");
-                    if(tier == 4)
-                        System.out.format("|%-25s|", "Tier -> 4 (5% Max Bet)");
+//                    if (tier == 1)
+//                        System.out.format("|%-25s|", "Tier -> 1 (100% Max Bet)");
+//                    if (tier == 2)
+//                        System.out.format("|%-25s|", "Tier -> 2 (20% Max Bet)");
+//                    if (tier == 3)
+//                        System.out.format("|%-25s|", "Tier -> 3 (10% Max Bet)");
+//                    if (tier == 4)
+//                        System.out.format("|%-25s|", "Tier -> 4 (5% Max Bet)");
 
                     System.out.println();
 
@@ -1726,7 +1742,7 @@ if(totalHomeFormRecProb == 0.0)
     public ArrayList<String> fixtureGrab(WebDriver driver, int i, int h, ArrayList<String> links, WebDriverWait wait,
                                          int startIndex, int endIndex, String day) {
         driver.get("https://www.goaloo.mobi/football/schedule-" + day + "");
-	//	driver.get("https://www.goaloo.mobi/football/");
+        	//driver.get("https://www.goaloo.mobi/football/");
 //
         driver.findElement(By.xpath("//*[@id='fHead']/div[1]/span[2]")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='displayZone']")));

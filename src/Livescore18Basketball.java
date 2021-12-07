@@ -70,7 +70,7 @@ class Livescore18Basketball {
 					continue;
 				}
 				String fixture = driver.findElement(By.xpath("//*[@id='gameList']/div[" + h + "]")).getAttribute("id");
-				String fixtureSplit[] = fixture.split("_");
+				String[] fixtureSplit = fixture.split("_");
 				links.add("https://www.goaloo.mobi/basketball/match/h2h-" + fixtureSplit[1]);
 
 				i++;
@@ -100,7 +100,7 @@ class Livescore18Basketball {
 
 				String scheduleTb = driver.findElement(By.xpath("//*[@id='scheduleTb']/tbody/tr[" + h + "]"))
 						.getAttribute("href");
-				String scheduleSplit[] = scheduleTb.split("-");
+				String[] scheduleSplit = scheduleTb.split("-");
 
 //
 //			    System.out.println("scheduleSplit[0] = " + scheduleSplit[0]);
@@ -161,7 +161,7 @@ class Livescore18Basketball {
 		Livescore18Basketball ls = new Livescore18Basketball();
 		String mode = "";
 		// links = ls.scheduleGrab(driver,i,h,links, 1147,2);
-		links = ls.fixtureGrab(driver, i, h, links, wait, 1, 300, "n0");
+		links = ls.fixtureGrab(driver, i, h, links, wait, 1, 300, "n1");
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 
 //		links.add("");
@@ -244,7 +244,7 @@ class Livescore18Basketball {
 			// get time of game
 			date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
 
-			String dateSplit[] = date.split(" ");
+			String[] dateSplit = date.split(" ");
 			date = dateSplit[0];
 			time = dateSplit[1];
 			// System.out.println(date.substring(0, 10));
@@ -751,14 +751,14 @@ class Livescore18Basketball {
 				float totalAwayMinConsistency = (awayMinConsistencyRecProb + neutralAwayMinConsistencyRecProb) / 2;
 				float totalHomeMinConsistency = (homeMinConsistencyRecProb + neutralHomeMinConsistencyRecProb) / 2;
 
-				float totalMinConsistency = (totalHomeMinConsistency + totalAwayMinConsistency) / 2;
+				float totalMinConsistency = Math.min(totalHomeMinConsistency,totalAwayMinConsistency);
 
 				float totalAwayMaxConsistency = (awayMaxConsistencyRecProb + neutralAwayMaxConsistencyRecProb) / 2;
 				float totalHomeMaxConsistency = (homeMaxConsistencyRecProb + neutralHomeMaxConsistencyRecProb) / 2;
 
 				float totalMaxConsistency = (totalHomeMaxConsistency + totalAwayMaxConsistency) / 2;
 
-				if (totalMinConsistency > 0.7999
+				if (totalMinConsistency > 0.6999
 
 						
 				) {
@@ -784,7 +784,7 @@ class Livescore18Basketball {
 
 					myWriter.write(System.lineSeparator()); // new line
 
-					System.out.println("");
+					System.out.println();
 
 					System.out.println(link);
 					System.out.println(date + " " + time);
