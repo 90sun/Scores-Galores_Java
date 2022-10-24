@@ -25,1839 +25,2216 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 class Livescore18Football {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        // TODO Auto-generated method stub
+	public static void main(String[] args) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
 
-        // setting the driver executable
-//		System.setProperty("webdriver.edge.driver", "./msedgedriver.exe");
-//		EdgeOptions options = new EdgeOptions();
+		// setting the driver executable
+//        System.setProperty("webdriver.edge.driver", "./msedgedriver.exe");
+//        EdgeOptions options = new EdgeOptions();
 //
-//		WebDriver driver = new EdgeDriver();
+//        WebDriver driver = new EdgeDriver();
 
-        System.setProperty("webdriver.chrome.driver", "./chromedriver");
-        ChromeOptions options = new ChromeOptions();
-
-        WebDriver driver = new ChromeDriver();
-
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        Date date1 = new Date(System.currentTimeMillis());
-        System.out.println(formatter1.format(date1));
-        File file = new File("./footyBets/footyBets_" + formatter1.format(date1) + ".csv");
-
-        // Create the file
-        if (file.createNewFile()) {
-            System.out.println("File is created!");
-        } else {
-            System.out.println("File already exists.");
-        }
-        Writer myWriter = new FileWriter(file);
-
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        ArrayList<String> links = new ArrayList<String>();
-
-        int i = 1;
-        int h = 0;
-        int linknum = 1;
-
-        // String mode = "H/A Same"
-        String games = "10";
-        boolean sameLeague = false;
-        int startIndex = 165;
-        int endIndex = 250;
-        String day = "n0";
-        System.out.println("In League = " + sameLeague);
-        System.out.println("startIndex = " + startIndex);
-        System.out.println("endIndex = " + endIndex);
-
-        Livescore18Football ls = new Livescore18Football();
-
-
-////		links = ls.scheduleGrab(driver,i,h,links, "816",16);
-        links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day);
-//	links = ls.fixtureGrab(driver, i, h, links, wait, 1, 710, "n1");
-//	links = ls.fixtureGrab(driver, i, h, links, wait, 200, 300, "n1");
-//	links = ls.fixtureGrab(driver, i, h, links, wait, 300, 400, "n1");
-
-//////     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
-
-//      links.add("https://www.goaloo.mobi/football/match/h2h-2028666");
-//      links.add("https://www.goaloo.mobi/football/match/h2h-2061407");
-//      links.add("https://www.goaloo.mobi/football/match/h2h-2082900");
-//      links.add("https://www.goaloo.mobi/football/match/h2h-2081990");
-//     links.add("https://www.goaloo.mobi/football/match/h2h-2067926");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2030532");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2037131");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2056464");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2125782");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2053462");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2048235");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2027920");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2091251");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2051514");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2126128");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2113385");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2126371");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2121967");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2106477");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2037628");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2056409");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2115345");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2029447");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2042808");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2115112");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2039941");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2050759");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2113307");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2113298");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2021769");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2115242");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2003788");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2065516");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2025255");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008246");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2026311");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2031032");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2067882");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2055750");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2109875");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008241");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2053219");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2057810");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1998934");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008229");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2090076");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2090077");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2108256");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2086179");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2108541");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2078631");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1988003");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2078634");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2086171");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2109386");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2056399");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2077929");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2025937");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2007980");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2086239");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008212");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008213");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2025255");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2021728");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2107618");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2021927");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2024682");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2041195");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2036481");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2075622");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2081155");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1970682");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2003477");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2028637");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2005189");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2031511");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2052278");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2068216");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2036165");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2100344");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2090071");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1985288");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1995070");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2016645");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2053385");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2029960");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2059730");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2055741");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2106095");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2027538");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2046567");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2033205");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2028635");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1998903");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1998909");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092056");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2046108");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2100338");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2093692");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1969554");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1970010");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2008187");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1983897");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2073168");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2048007");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1908158");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1915438");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2027776");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2035990");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2059726");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2068757");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1983894");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1970675");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2046127");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2104240");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2059728");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2036481");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1988727");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092119");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2105080");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2056994");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2003469");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1995073");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2043036");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1983891");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2104896");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2102709");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2043042");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2074187");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092055");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092092");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092156");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2092191");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1968928");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2093162");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2029958");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2059725");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2097182");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2054943");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2068078");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2069269");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2055153");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2042779");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2045580");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2104945");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-1952307");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2050722");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2041188");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2032760");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2046122");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2105433");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2053201");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2043814");
-
-//		// Using list iterator
-        ListIterator<String> litr = null;
-        litr = links.listIterator();
-
-        while (litr.hasNext()) {
-
-
-            String link = litr.next();
-
-            System.out.println(link);
-
-            try {
-                driver.get(link);
-            } catch (Exception e) {
-                link = litr.next();
-                driver.get(link);
-            }
-            System.out.println("link # (" + linknum + " / " + links.size() + ")");
-            linknum++;
-
-            boolean neutral = true;
-
-            ArrayList<Integer> homeForm = new ArrayList<Integer>();
-            ArrayList<Integer> awayForm = new ArrayList<Integer>();
-            ArrayList<Integer> neutralHomeForm = new ArrayList<Integer>();
-            ArrayList<Integer> neutralAwayForm = new ArrayList<Integer>();
-            ArrayList<Integer> FThomeGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FThomeOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTawayGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTawayOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTneutralHomeGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTneutralAwayGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTneutralHomeOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> FTneutralAwayOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HThomeGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HThomeOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTawayGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTawayOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTneutralHomeGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTneutralHomeOppGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTneutralAwayGoals = new ArrayList<Integer>();
-            ArrayList<Integer> HTneutralAwayOppGoals = new ArrayList<Integer>();
-
-
-            float FThomeExpectedRecProb = 0, FTawayExpectedRecProb = 0, FThomeScoredRecProb = 0,
-                    FTawayScoredRecProb = 0, FThomeConcededRecProb = 0, FTawayConcededRecProb = 0,
-                    FTtotalExpectedProb = 0, FTtotalExpectedRecProb = 0, HThomeExpectedRecProb = 0,
-                    HTawayExpectedRecProb = 0, HThomeScoredRecProb = 0, HTawayScoredRecProb = 0,
-                    HThomeConcededRecProb = 0, HTawayConcededRecProb = 0, HTtotalExpectedProb = 0,
-                    HTtotalExpectedRecProb = 0, homeScoredAGoalExpectedRecProb = 0, awayScoredAGoalExpectedRecProb = 0,
-
-                    homeFormRecProb = 0, awayFormRecProb = 0, formDiffRec = 0, maxForm = 0, FTmaxOne = 0, HTmaxOne = 0,
-                    maxTwo = 0, maxThree = 0, maxFour = 0, FThomeOneRecProb = 0, homeTwoRecProb = 0,
-                    homeThreeRecProb = 0, homeFourRecProb = 0, FTawayOneRecProb = 0, HThomeOneRecProb = 0,
-                    HTawayOneRecProb = 0, awayTwoRecProb = 0, awayThreeRecProb = 0, awayFourRecProb = 0,
-                    FTneutralHomeOneRecProb = 0, HTneutralHomeOneRecProb = 0, neutralHomeTwoRecProb = 0,
-                    neutralHomeThreeRecProb = 0, neutralHomeFourRecProb = 0, FTneutralAwayOneRecProb = 0,
-                    HTneutralAwayOneRecProb = 0, neutralAwayTwoRecProb = 0, neutralAwayThreeRecProb = 0,
-                    neutralAwayFourRecProb = 0, neutralHomeFormRecProb = 0, neutralAwayFormRecProb = 0,
-                    FTneutralHomeExpectedRecProb = 0, FTneutralAwayExpectedRecProb = 0, FTneutralHomeScoredRecProb = 0,
-                    FTneutralAwayScoredRecProb = 0, FTneutralHomeConcededRecProb = 0, FTneutralAwayConcededRecProb = 0,
-                    neutralHomeScoredAGoalExpectedRecProb = 0, neutralAwayScoredAGoalExpectedRecProb = 0,
-                    FTneutralTotalExpectedProb = 0, FTneutralTotalExpectedRecProb = 0, HTneutralHomeExpectedRecProb = 0,
-                    HTneutralAwayExpectedRecProb = 0, HTneutralHomeScoredRecProb = 0, HTneutralAwayScoredRecProb = 0,
-                    HTneutralHomeConcededRecProb = 0, HTneutralAwayConcededRecProb = 0, HTneutralTotalExpectedProb = 0,
-                    HTneutralTotalExpectedRecProb = 0, neturalFormDiffRec = 0, neutralMaxForm = 0, FTneutralMaxOne = 0,
-                    HTneutralMaxOne = 0, neutralMaxTwo = 0, neutralMaxThree = 0, neutralMaxFour = 0;
-
-            String homeName, awayName, homeTeamName, date, time = null, matchResult, matchType, matchTitle, matchDay,
-                    matchScore = "";
-            int FThomeGoalTemp, FThomeOppGoalTemp, FTawayGoalTemp, FTawayOppGoalTemp, FThomeTotal, FTawayTotal,
-                    HThomeGoalTemp, HThomeOppGoalTemp, HTawayGoalTemp, HTawayOppGoalTemp, HThomeTotal, HTawayTotal,
-                    FThomeScore = 0, FTawayScore = 0, FTScore, HTScore, HThomeScore = 0, HTawayScore = 0;
-            LocalDate todayDate = null;
-            int days = 0;
-
-            String league2;
-            int leagueGameHome = 0, leagueGameAway = 0;
-            boolean leagueGame = false;
-
-            try {
-
-                FThomeScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveHS\"]")).getText());
-                // System.out.println("homeScore = " + scores[0]);
-
-                FTawayScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveGS\"]")).getText());
-                // System.out.println("awayScore = " + scores[1]);
-
-                // *[@id="liveHt"]
-                String StringHTScore = driver.findElement(By.xpath("//*[@id=\"liveHt\"]")).getText();
-                // System.out.println("homeScore = " + scores[0]);
-
-//			System.out.println("HTScore[0] = " + StringHTScore.split(" - ")[0].replace("(", ""));
-//			System.out.println("HTScore[1] = " + StringHTScore.split(" - ")[1].replace(")", ""));
-
-                HThomeScore = Integer.parseInt(StringHTScore.split(" - ")[0].replace("(", ""));
-
-                HTawayScore = Integer.parseInt(StringHTScore.split(" - ")[1].replace(")", ""));
-
-            } catch (Exception e) {
-            }
-
-            FTScore = FThomeScore + FTawayScore;
-            HTScore = HThomeScore + HTawayScore;
-
-            try {
-
-                // get matchTitle
-                league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a")).getText();
-
-                System.out.println("matchTitle = " + league2);
-
-//================== LEAGUE BLACKLIST ======================================================
-
-                if (
-                        league2.contains("Norway Division 4")
-                                || league2.contains("Turkey 3. Ligi B")
-                                || league2.contains("Belgian First Amateur Division")
-                                || league2.contains("Czech Republic 5. Ligy")
-                                || league2.contains("Kolmonen")
-                                || league2.contains("Northern German state premier league - bayern")
-                                || league2.contains("Denmark - 4.Liga")
-                                || league2.contains("Poland Division 4")
-                                || league2.contains("Spain Regional League")
-                                || league2.contains("Spanish Bizkaia-Tercera Division")
-                                || league2.contains("Schleswig Holstein Liga")
-                                || league2.contains("Landesliga")
-                                || league2.contains("Tanzania")
-                                || league2.contains("Czech Group D League")
-                                || league2.contains("Slovakia 3.Liga")
-                                || league2.contains("Czech Republic Ceska Fotbalova Liga")
-                                || league2.contains("Hungary NB III")
-                                || league2.contains("Esi Liiga")
-                                || league2.contains("Thai Division 2 League")
-                                || league2.contains("Germany Oberliga")
-                                || league2.contains("Austria 3.Liga")
-                                || league2.contains("Amateur")
-                                || league2.contains("Friendly")
-                                || league2.contains("Malta First Division")
-                                || league2.contains("Fiji")
-                                || league2.contains("Argentina Torneo B")
-                                || league2.contains("Sweden Div 3 Mellersta")
-                ) {
-                    continue;
-                }
-
-                try {
-                    // get time of game
-                    date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
-
-                    String[] dateSplit = date.split(" ");
-                    date = dateSplit[0];
-                    time = dateSplit[1];
-                    todayDate = LocalDate.parse(date.substring(0, 10), formatter2);
-                } catch (Exception e) {
-                    date = driver.findElement(By.xpath("//*[@id='liveSt']")).getText();
-                    System.out.println(date);
-
-                    todayDate = LocalDate.now();
-                    System.out.println(todayDate);
-
-                    // System.out.println(e);
-                }
-
-                // get home name
-                homeName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[1]/span/span")).getText();
-                // System.out.println("homeName = " + homeName );
-
-                // get away name
-                awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span/span")).getText();
-                // System.out.println("awayName = " + awayName );
-
-
-
-
-                if (games.equals("20")) {
-                    driver.findElement(By.xpath("//*[@id='f6']/span/select")).click();
-                    driver.findElement(By.xpath("//*[@id='f6']/span/select/option[2]")).click();
-                }
-
-                if (sameLeague == true) {
-
-                    driver.findElement(By.xpath("//*[@id='f6']/span/label[1]")).click();
-
-                }
-//			 if(mode.equals("H/A Same"))
-//			 {
+//		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+//		System.setProperty("webdriver.chrome.whitelistedIps", "");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox"); // Bypass OS security model
+		options.addArguments("headless"); // Bypass OS security model
+		options.addArguments("--disable-extensions"); // Bypass OS security model
+//        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 //
-//				driver.findElement(By.xpath("//*[@id='f6']/span/label[2]")).click();
+		WebDriver driver = new ChromeDriver(options);
+
+		WebDriverWait wait = new WebDriverWait(driver, 1);
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+		SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+		Date date1 = new Date(System.currentTimeMillis());
+		System.out.println(formatter1.format(date1));
+		File file = new File("./footyBets/footyBets_" + formatter1.format(date1) + ".csv");
+
+		// Create the file
+		if (file.createNewFile()) {
+			System.out.println("File is created!");
+		} else {
+			System.out.println("File already exists.");
+		}
+		Writer myWriter = new FileWriter(file);
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+		ArrayList<String> links = new ArrayList<String>();
+
+		int i = 1;
+		int h = 0;
+		int linknum = 1;
+
+		// String mode = "H/A Same";
+		String games = "20";
+		String bt = "Live";
+		String oddsOption = "Pre";
+		boolean sameLeague = false;
+		int startIndex = 1;
+		int endIndex = 50;
+		String day = "n0";
+		System.out.println("In League = " + sameLeague);
+		System.out.println("Day = " + day);
+		System.out.println("startIndex = " + startIndex);
+		System.out.println("endIndex = " + endIndex);
+
+		Livescore18Football ls = new Livescore18Football();
+
+//		 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
+//				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+				
+		links.add("https://www.goaloo.mobi/football/match/h2h-2224251");
+
+
+
+		ListIterator<String> litr = null;
+		litr = links.listIterator();
+
+		while (litr.hasNext()) {
+			String link = litr.next();
+
+			System.out.println(link);
+
+			try {
+				driver.get(link);
+			} catch (Exception e) {
+				link = litr.next();
+				driver.get(link);
+			}
+			System.out.println("link # (" + linknum + " / " + links.size() + ")");
+			linknum++;
+
+			boolean neutral = true;
+
+			ArrayList<Integer> homeForm = new ArrayList<Integer>();
+			ArrayList<Integer> awayForm = new ArrayList<Integer>();
+			ArrayList<Integer> neutralHomeForm = new ArrayList<Integer>();
+			ArrayList<Integer> neutralAwayForm = new ArrayList<Integer>();
+			ArrayList<Integer> FThomeGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FThomeOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTawayGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTawayOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTneutralHomeGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTneutralAwayGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTneutralHomeOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> FTneutralAwayOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HThomeGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HThomeOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HTawayGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HTawayOppGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HTneutralHomeGoals = new ArrayList<Integer>();
+			ArrayList<Integer> HTneutralAwayGoals = new ArrayList<Integer>();
+
+			float FThomeExpectedRecProb = 0, FTawayExpectedRecProb = 0, FThomeScoredRecProb = 0,
+					FTawayScoredRecProb = 0, FThomeConcededRecProb = 0, FTawayConcededRecProb = 0,
+					FTtotalExpectedRecProb = 0, homeScoredAGoalExpectedRecProb = 0, awayScoredAGoalExpectedRecProb = 0,
+					homeConcededAGoalExpectedRecProb = 0, awayConcededAGoalExpectedRecProb = 0, homeFormRecProb = 0,
+					awayFormRecProb = 0, FThomeOneRecProb = 0, FThomeTwoRecProb = 0, FThomeThreeRecProb = 0,
+					FThomeFourRecProb = 0, FTawayOneRecProb = 0, FTawayTwoRecProb = 0, FTawayThreeRecProb = 0,
+					FTawayFourRecProb = 0, FTneutralHomeOneRecProb = 0, FTneutralHomeTwoRecProb = 0,
+					FTneutralHomeThreeRecProb = 0, FTneutralHomeFourRecProb = 0, FTneutralAwayOneRecProb = 0,
+					FTneutralAwayTwoRecProb = 0, FTneutralAwayThreeRecProb = 0, FTneutralAwayFourRecProb = 0,
+					neutralHomeFormRecProb = 0, neutralAwayFormRecProb = 0, FTneutralHomeExpectedRecProb = 0,
+					FTneutralAwayExpectedRecProb = 0, FTneutralHomeScoredRecProb = 0, FTneutralAwayScoredRecProb = 0,
+					FTneutralHomeConcededRecProb = 0, FTneutralAwayConcededRecProb = 0,
+					neutralHomeScoredAGoalExpectedRecProb = 0, neutralAwayScoredAGoalExpectedRecProb = 0,
+					neutralHomeConcededAGoalExpectedRecProb = 0, neutralAwayConcededAGoalExpectedRecProb = 0,
+
+					FThomeExpectedRegProb = 0, FTawayExpectedRegProb = 0, FThomeScoredRegProb = 0,
+					FTawayScoredRegProb = 0, FThomeConcededRegProb = 0, FTawayConcededRegProb = 0,
+					FTtotalExpectedRegProb = 0,
+
+					homeFormRegProb = 0, awayFormRegProb = 0, formDiffReg = 0, FThomeOneRegProb = 0,
+					FThomeTwoRegProb = 0, FThomeThreeRegProb = 0, FThomeFourRegProb = 0, FTawayOneRegProb = 0,
+					FTawayTwoRegProb = 0, FTawayThreeRegProb = 0, FTawayFourRegProb = 0, FTneutralHomeOneRegProb = 0,
+					FTneutralHomeTwoRegProb = 0, FTneutralHomeThreeRegProb = 0, FTneutralHomeFourRegProb = 0,
+					FTneutralAwayOneRegProb = 0, FTneutralAwayTwoRegProb = 0, FTneutralAwayThreeRegProb = 0,
+					FTneutralAwayFourRegProb = 0, neutralHomeFormRegProb = 0, neutralAwayFormRegProb = 0,
+					FTneutralHomeExpectedRegProb = 0, FTneutralAwayExpectedRegProb = 0, FTneutralHomeScoredRegProb = 0,
+					FTneutralAwayScoredRegProb = 0, FTneutralHomeConcededRegProb = 0, FTneutralAwayConcededRegProb = 0,
+					neutralHomeScoredAGoalExpectedRegProb = 0, neutralAwayScoredAGoalExpectedRegProb = 0,
+					neutralHomeConcededAGoalExpectedRegProb = 0, neutralAwayConcededAGoalExpectedRegProb = 0,
+					homeScoredAGoalRegProb = 0, homeConcededAGoalRegProb = 0, awayScoredAGoalRegProb = 0,
+					awayConcededAGoalRegProb = 0,
+
+					HThomeExpectedRecProb = 0, HTawayExpectedRecProb = 0, HThomeScoredRecProb = 0,
+					HTawayScoredRecProb = 0, HThomeConcededRecProb = 0, HTawayConcededRecProb = 0,
+					HTtotalExpectedProb = 0, HTtotalExpectedRecProb = 0, HThomeOneRecProb = 0, HTawayOneRecProb = 0,
+					HTneutralHomeOneRecProb = 0, HTneutralAwayOneRecProb = 0, HTneutralHomeExpectedRecProb = 0,
+					HTneutralAwayExpectedRecProb = 0, HTneutralHomeScoredRecProb = 0, HTneutralAwayScoredRecProb = 0,
+					HTneutralHomeConcededRecProb = 0, HTneutralAwayConcededRecProb = 0,
+					HTneutralTotalExpectedRecProb = 0, HThomeExpectedRegProb = 0, HTawayExpectedRegProb = 0,
+					HThomeScoredRegProb = 0, HTawayScoredRegProb = 0, HThomeConcededRegProb = 0,
+					HTawayConcededRegProb = 0, HTtotalExpectedRegProb = 0, HThomeOneRegProb = 0, HTawayOneRegProb = 0,
+					HTneutralHomeOneRegProb = 0, HTneutralAwayOneRegProb = 0, HTneutralHomeExpectedRegProb = 0,
+					HTneutralAwayExpectedRegProb = 0, HTneutralHomeScoredRegProb = 0, HTneutralAwayScoredRegProb = 0,
+					HTneutralHomeConcededRegProb = 0, HTneutralAwayConcededRegProb = 0,
+					HTneutralTotalExpectedRegProb = 0;
+
+			String homeName, awayName, homeTeamName, date, time = null, matchResult, matchType = "", matchTitle,
+					matchDay, status, matchScore = "";
+			int FThomeGoalTemp, FThomeOppGoalTemp, FTawayGoalTemp, FTawayOppGoalTemp, FThomeTotal, FTawayTotal,
+					HThomeGoalTemp, HThomeOppGoalTemp, HTawayGoalTemp, HTawayOppGoalTemp, HThomeTotal, HTawayTotal,
+					FThomeScore = 0, FTawayScore = 0, FTScore, HTScore, HThomeScore = 0, HTawayScore = 0;
+			LocalDate todayDate = null;
+			double days = 0;
+
+			String league2;
+			int leagueGameHome = 0, leagueGameAway = 0;
+			boolean leagueGame = false;
+			String tier = "";
+
+			try {
+
+				FThomeScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveHS\"]")).getText());
+				// System.out.println("homeScore = " + scores[0]);
+
+				FTawayScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveGS\"]")).getText());
+				// System.out.println("awayScore = " + scores[1]);
+
+				// *[@id="liveHt"]
+				String StringHTScore = driver.findElement(By.xpath("//*[@id=\"liveHt\"]")).getText();
+				// System.out.println("homeScore = " + scores[0]);
+
+				// System.out.println("HTScore[0] = " + StringHTScore.split(" -
+				// ")[0].replace("(", ""));
+				// System.out.println("HTScore[1] = " + StringHTScore.split(" -
+				// ")[1].replace(")", ""));
+
+				HThomeScore = Integer.parseInt(StringHTScore.split(" - ")[0].replace("(", ""));
+
+				HTawayScore = Integer.parseInt(StringHTScore.split(" - ")[1].replace(")", ""));
+
+			} catch (Exception e) {
+				// System.out.println(e);
+
+			}
+
+			FTScore = FThomeScore + FTawayScore;
+			HTScore = HThomeScore + HTawayScore;
+
+			try {
+
+				// get matchTitle
+				league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a")).getText();
+
+				System.out.println("matchTitle = " + league2);
+
+				try {
+					// get time of game
+					date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
+
+					String[] dateSplit = date.split(" ");
+					date = dateSplit[0];
+					time = dateSplit[1];
+					todayDate = LocalDate.parse(date.substring(0, 10), formatter2);
+					status = driver.findElement(By.xpath("//*[@id='liveSt']")).getText();
+
+					if (status.equals("Postp."))
+						continue;
+
+				} catch (Exception e) {
+					date = driver.findElement(By.xpath("//*[@id='liveSt']")).getText();
+					System.out.println(date);
+
+					todayDate = LocalDate.now();
+					System.out.println(todayDate);
+
+					// System.out.println(e);
+				}
+
+				// get home name
+				homeName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[1]/span/span")).getText();
+				// System.out.println("homeName = " + homeName );
+
+				// get away name
+				awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span/span")).getText();
+				// System.out.println("awayName = " + awayName );
+
+				// ================== LEAGUE & TEAM BLACKLIST
+				// ======================================================
+
+				if (league2.contains("Brasileiro, Serie C"))
+					league2 = "Brasileiro Serie C";
+
+				if (league2.contains("Albania Super league") || league2.contains("Algeria Ligue Professionnelle 1")
+						|| league2.contains("Algerian Ligue Professionnelle 1")
+
+						|| league2.contains("Argentine Division") || league2.contains("Australia A-League")
+						|| league2.contains("Austrian Bundesliga") || league2.contains("Azerbaijan Premier League")
+						|| league2.contains("Belarusian Premier League") || league2.contains("Belgian Pro League")
+						|| league2.contains("Bolivia Primera Division") || league2.contains("Qatar League")
+
+						|| league2.contains("Bosnia and Herzgovina Premier League")
+						|| league2.contains("Brazil Serie A") || league2.contains("Serie C")
+						|| league2.contains("Ukrainian Premier League")
+						|| league2.contains("Brazil Campeonato Paulista")
+						|| league2.contains("Brazil Campeonato Mineiro Division 1")
+						|| league2.contains("Brazil Campeonato Carioca")
+						|| league2.contains("Brazil Pernambucano League") || league2.contains("Brazil Paraibano")
+						|| league2.contains("Bra CaP") || league2.contains("Bulgaria Premier League")
+						|| league2.contains("Canadian Premier League") || league2.contains("Chile Primera Division")
+						|| league2.contains("Chinese Super League")
+						|| league2.contains("Primera Division de Colombiano")
+						|| league2.contains("Costa Rica Primera Division") || league2.contains("Croatia 1.Division")
+						|| league2.contains("Cyprus 1 Division") || league2.contains("Czech Republic Gambrinus Liga")
+						|| league2.contains("Danish 1st Division") || league2.contains("Primera Division de Ecuador")
+						|| league2.contains("Egyptian Premier League") || league2.contains("English Premier League")
+						|| league2.contains("Finland Veikkausliga") || league2.contains("Egyptian Premier League")
+						|| league2.contains("France Ligue 1") || league2.contains("German Bundesliga")
+						|| league2.contains("Greece Super League A") || league2.contains("Greece National B")
+						|| league2.contains("Primera Division de Honduras")
+						|| league2.contains("Hong Kong Premier League") || league2.contains("Hungary Borsodi Liga")
+						|| league2.contains("Indian Super League") || league2.contains("Indonesia Liga 1")
+						|| league2.contains("Persian Gulf Pro League") || league2.contains("Israel Premier League")
+						|| league2.contains("Israel Leumit League") || league2.contains("Italian Serie A")
+						|| league2.contains("J-League Division 1") || league2.contains("Jordan Premier League")
+						|| league2.contains("Kazakhstan Premier League") || league2.contains("Liga Super Malaysia")
+						|| league2.contains("Primera Division Liga MX") || league2.contains("Moldova Divizia Nationala")
+						|| league2.contains("Botola Pro 1") || league2.contains("Myanmar Professional League")
+						|| league2.contains("Holland Eredivisie") || league2.contains("Nigerian Premier League")
+						|| league2.contains("Norwegian Tippeligaen") || league2.contains("Primera Division de Paraguay")
+						|| league2.contains("Peru Primera Division") || league2.contains("Poland Ekstraklasa")
+						|| league2.contains("Portugal Primeira Liga") || league2.contains("Romania Liga I")
+						|| league2.contains("Russia Premier League") || league2.contains("Scottish Premier League")
+						|| league2.contains("Serbian Superliga") || league2.contains("Singapore League")
+						|| league2.contains("Slovak Super Liga") || league2.contains("Slovenia 1.Liga")
+						|| league2.contains("South Africa Premier Soccer League") || league2.contains("Korea League 1")
+						|| league2.contains("Spanish La Liga") || league2.contains("Swiss Super League")
+						|| league2.contains("Thai Premier League") || league2.contains("Professional Tunisian League 1")
+						|| league2.contains("Turkey Super Lig") || league2.contains("Ukraine Premier League")
+						|| league2.contains("USA Major League Soccer") || league2.contains("Uruguay Primera Division")
+						|| league2.contains("Primera Division de Venezuela") || league2.contains("Liga Portugal 1")
+						|| league2.contains("Switzerland Super League") 
+						 
+
+						|| league2.contains("Poland Liga 1") || league2.contains("Saudi Professional League")
+						|| league2.contains("UAE Pro-League") || league2.contains("Denmark Superligaen")
+						|| league2.contains("Korea League") || league2.contains("Swedish Allsvenskan")
+						|| league2.contains("Bosnia and Herzegovina Premier League")
+						|| league2.contains("CONCACAF Champions League")
+						|| league2.contains("CONMEBOL Champions League") || league2.contains("Copa Libertadores")
+						
+
+						|| league2.contains("UEFA Champions League") || league2.contains("AFC Champions League")
+						|| league2.contains("CAF Champions League") 
+						|| league2.contains("K League 1")
+						|| league2.contains("J1 League")
+						|| league2.contains("Primera Division Liga MX")
+						|| league2.contains("Kuwaiti Premier League")
+						|| league2.contains("V.League 1")
+
+						|| league2.contains("Colombia Copa Premier")
+						|| league2.contains("Palestine Football League")
+						|| league2.contains("UEFA Europa League")
+						|| league2.contains("UEFA Europa Conference League")
+						|| league2.contains("Conmebol - Copa Sudamericana")
+						|| league2.contains("Copa Sudamericana")
+						
+						|| league2.contains("German Bundesliga 2")
+						||league2.contains("Portugal Segunda Liga")
+						|| league2.contains("Mexico Primera Divison A")
+						|| league2.contains("Mexico Primera Division A")
+						|| league2.contains("Scottish Championship") || league2.contains("Ukraine Divison 2")
+						|| league2.contains("USL Championship") 
+						 || league2.contains("Italian Serie B")
+						 || league2.contains("England Championship")
+							|| league2.contains("Brazil Serie B")
+						|| league2.contains("Serbia Prva Liga")
+						|| league2.contains("CONCACAF League")
+						|| league2.contains("Belgian Second") || league2.contains("Algeria Ligue Professionnelle 1")
+						|| league2.contains("K League Challenge League") || league2.contains("J-League Division 2")
+						|| league2.contains("Algerian Ligue Professionnelle 2") || league2.contains("Serbian Prva Liga")
+						|| league2.contains("Spanish Segunda Division") || league2.contains("Argentine Division 2")
+						|| league2.contains("Poland Division 2")
+						|| league2.contains("J2 League")
+											|| league2.contains("Chinese Football Association Jia League")
+						 || league2.contains("Austria Erste Division")
+						 || league2.contains("Holland Eerste Divisie")
+						 || league2.contains("Liga Portugal 2")
+						 || league2.contains("Ukraine Division 2")
+							 || league2.contains("France Ligue 3")
+							|| league2.contains("Scottish Division One") || league2.contains("German 3.Liga")
+							|| league2.contains("England League 1") || league2.contains("Brazil Serie C")
+							|| league2.contains("J-League Division 3") || league2.contains("Italy C1")
+							|| league2.contains("Scottish Division Two") || league2.contains("England League 2")
+							 || league2.contains("Peru B League")
+							 || league2.contains("USA MLS Next Pro League")
+
+				) {
+					tier = "A";
+				}
+				if (
+
+				  league2.contains("Paraguayan Division 2")
+						|| league2.contains("Czech Republic 2.Liga")
+						|| league2.contains("Indonesia Division 1")
+
+						|| league2.contains("Macedonian First Football League")
+						|| league2.contains("Mongolia Premier League") || league2.contains("Welsh Premier League")
+						|| league2.contains("Israel Leumit League") || league2.contains("Cameroon Elite One")
+						|| league2.contains("Primera Division de El Salvador") || league2.contains("Slovakia 2. Liga")
+						|| league2.contains("Norway Adeccoligaen") || league2.contains("Maldives Premier League")
+						|| league2.contains("Sweden Superettan") || league2.contains("Malaysia Premier League")
+						|| league2.contains("Iraqi Premier League") || league2.contains("Belarus Pershaya Liga")
+						
+						|| league2.contains("France Ligue 2")
+					
+						|| league2.contains("Vietnamese First Division")
+
+						|| league2.contains("Cyprus 2 Division")
+
+						|| league2.contains("Turkmenistan Premier League")
+						|| league2.contains("Switzerland Challenge League")
+						|| league2.contains("South Africa First League")
+						|| league2.contains("Malawi Premier League") 
+						|| league2.contains("Kosovo Division 1") 
+						|| league2.contains("Cambodian Premier League") 
+						|| league2.contains("New Zealand Football Championship") 
+						|| league2.contains("Solomon Islands S League") 
+						|| league2.contains("Hong Kong First Division League") 
+
+						|| league2.contains("Kazakhstan Division 1")
+						|| league2.contains("Jordan League Division 1") 
+						|| league2.contains("Hungary NB II") || league2.contains("Brazil Campeonato Maranhense")
+						|| league2.contains("Faroe Islands Formuladeildin")
+						|| league2.contains("Estonia Champions League")
+						|| league2.contains("Northern Ireland Premier League")
+						|| league2.contains("Brazil Campeonato Piauiense")
+						|| league2.contains("Faroe Islands Formuladeildin") || league2.contains("Kenya Premier League")
+						|| league2.contains("Uganda Premier League") || league2.contains("Saudi Arabia Division 1")
+						|| league2.contains("Australia Capital Gatorade Premier League")
+						|| league2.contains("Puerto Rico League") || league2.contains("Chile Primera B")
+						|| league2.contains("Panama Liga Nacional de Ascenso") || league2.contains("Costa Rica 2.Liga")
+						|| league2.contains("Tanzania Ligue 1") || league2.contains("Kyrgyzstan Top Liga")
+						|| league2.contains("Bhutan Premier League") || league2.contains("Uzbek League")
+						|| league2.contains("Egypt Division 2") || league2.contains("Mauritania Division 1")
+						|| league2.contains("Croatia 2.HNL")
+						|| league2.contains("Campeonato Piauiense")
+						|| league2.contains("Southeast Asian Games")
+
+						|| league2.contains("Thai Division 1 League") || league2.contains("Kampuchea Super League")
+						|| league2.contains("Kenya Super League") || league2.contains("Slovenia 2.Liga")
+						|| league2.contains("Ethiopia Premier League")
+
+						|| league2.contains("Oman Professional League")
+						|| league2.contains("Uruguay Segunda")
+						|| league2.contains("BRA SPC")
+
+
+						|| league2.contains("India League Division 1") || league2.contains("Burkina Faso League")
+						|| league2.contains("Syrian League") || league2.contains("BRA SPB")
+						 || league2.contains("Azerbaijan Division 2")
+						|| league2.contains("Liga de Elite") || league2.contains("TAS Premier League")
+						|| league2.contains("NSW-N Premier League") || league2.contains("VIC Premier League")
+						|| league2.contains("QLD Premier League") || league2.contains("Swiss Challenge League")
+						|| league2.contains("Lithuania - 1.Division")
+
+						|| league2.contains("Russian National Football League") || league2.contains("Slovakia 2.Liga")
+
+						|| league2.contains("Latvian Higher League") || league2.contains("Aruba Division Di Honor")
+
+						|| league2.contains("BRA CP") || league2.contains("San Marino League")
+						|| league2.contains("Nicaragua Apertura league") || league2.contains("Greece Division C")
+						 || league2.contains("Danish 1st Division")
+						|| league2.contains("Lebanese Premier League") || league2.contains("Liga Nacional de Guatemala")
+
+						|| league2.contains("UAE Division 1")
+
+						|| league2.contains("National Premier Leagues Western Australia") || league2.contains("POL WD1")
+
+						|| league2.contains("Romania - Liga 2 Seria") || league2.contains("Kosovo Superliga")
+						|| league2.contains("Angola Girabola League") || league2.contains("NSW Premier League")
+						|| league2.contains("Central Premier League") || league2.contains("Bulgaria B PFG")
+						|| league2.contains("Azadegan League") || league2.contains("Liberia First Division")
+						|| league2.contains("Mali Premiere Division") || league2.contains("Bahraini Premier League")
+						|| league2.contains("Georgia Primera Division") || league2.contains("Bangladesh Premier League")
+						|| league2.contains("Ivory Coast Premier Division") || league2.contains("Finland Ykkonen")
+						|| league2.contains("Zimbabwe Premier") || league2.contains("Australia Darwin Premier League")
+						|| league2.contains("Iceland Premier Division") || league2.contains("Ghana Premier League")
+						|| league2.contains("Ireland Premier Division") || league2.contains("Jamaica Premier League")
+						|| league2.contains("Turkey 1. Lig") || league2.contains("Armenia Premier League")
+						|| league2.contains("Montenegro Prva Crnogorska Liga")
+						|| league2.contains("Trinidad and Tobago Pro League")
+						|| league2.contains("Brazil Paulista Serie B")
+						|| league2.contains("Luxembourg National Division")
+						|| league2.contains("Venezuela Segunda Division")
+						|| league2.contains("Ecuador Campeonato Serie B")
+						|| league2.contains("Tajikistan Vysshaya Liga") || league2.contains("Philippines UFL")
+						|| league2.contains("Malta Premier League") || league2.contains("Rwanda National League")
+						|| league2.contains("Brazil Campeonato Roraimense")
+
+ || league2.contains("Dominican Republic Liga")
+
+					    || league2.contains("Andorra Primera")
+						|| league2.contains("Australia New South Wales Super League")
+						|| league2.contains("Gambia GFA League") || league2.contains("Northern New Zealand League")
+						|| league2.contains("UAE Division 2")
+						
+						|| league2.contains("Andorra Super league")
+						
+						|| league2.contains("Qatar B")
+
+						 || league2.contains("Botola 2")
+						 || league2.contains("Albania Division 2")
+							|| league2.contains("Honduras Liga de Ascenso")
+
+							|| league2.contains("Hong Kong 2nd Division")
+							|| league2.contains("Chinese Taipei Intercity League")
+
+							
+							
+
+
+				) {
+					tier = "B";
+				}
+				if (
+
+				league2.contains("Slovakia 3.Liga") 
+				|| league2.contains("Reserve")
+				|| league2.contains("El Salvador Segunda Division")
+				|| league2.contains("Gibraltar Premier Division")
+
+						|| league2.contains("Estonia Esi Liiga") || league2.contains("Finland - Kakkonen Lohko")
+						|| league2.contains("Croatia 3.Division") || league2.contains("FFSA PL")
+						|| league2.contains("Thai Division 2 League")
+
+
+						|| league2.contains("Iceland Division 1") || league2.contains("Ireland First Division")
+
+						|| league2.contains("Malta First Division League")
+						 || league2.contains("Northern Ireland League")
+						 || league2.contains("FYR Macedonia Vtora Fudbalska Liga")
+
+						|| league2.contains("Andorra Segona")
+						|| league2.contains("Switzerland Promotion League")
+
+						|| league2.contains("Bosnia erzegovina 1st League")
+
+						
+						|| league2.contains("Armenia Division 2") || league2.contains("Spain Primera Division RFEF")
+						|| league2.contains("U23") || league2.contains("U-23")
+
+						|| league2.contains("Brazil Campeonato Sergipano A2")
+
+						|| league2.contains("Vietnam Second Division")
+
+						|| league2.contains("Faroe Islands Division 1") || league2.contains("Iceland Division 2")
+
+						|| league2.contains("Portugal Campeonato Nacional")
+
+						|| league2.contains("Brazil Campeonato Gaucho 2") || league2.contains("Wales FAW Championship")
+						|| league2.contains("Bhutan Thimphu League") || league2.contains("Austrian 3.Liga")
+
+
+
+						|| league2.contains("Hungary NB III") || league2.contains("Nepal B Division")
+						|| league2.contains("Nicaragua Segunda Division") || league2.contains("Mexico Segunda Division")
+						 || league2.contains("Georgia Division")
+						|| league2.contains("Lithuania - 2.Division")
+
+						|| league2.contains("Kazakhstan Division 2")
+
+						|| league2.contains("Luxembourg Promotion DHonneur")
+
+						|| league2.contains("Gambia Division 2") || league2.contains("Guatemala D2")
+
+						|| league2.contains("Spanish Segunda Division B") || league2.contains("FFSA Premier League")
+
+						|| league2.contains("Bangladesh Championship League")
+
+						|| league2.contains("Bahrain Division 2") || league2.contains("Montenegro Division 2")
+
+						|| league2.contains("Malaysia Liga M3")
+
+						|| league2.contains("Denmark - 2.Liga")
+
+						|| league2.contains("Greece Super League Women")
+						|| league2.contains("National Primera Division Western Australia")
+
+						|| league2.contains("Senegal Ligue 2")
+
+						|| league2.contains("Romania - Liga 3 Seria")
+
+	
+
+						|| league2.contains("UAE RL") || league2.contains("Northern Ireland IFA Championship")
+						|| league2.contains("Argentine Torneo A") || league2.contains("Slovenia 3.Liga")
+						|| league2.contains("Canadian Championship")
+
+						|| league2.contains("Greece Divison C") || league2.contains("Mongolia First League")
+
+						|| league2.contains("Sweden Division 1") || league2.contains("Norway 2.Liga")
+						|| league2.contains("Iceland 3 Deild") || league2.contains("Macau 2nd Division")
+						|| league2.contains("Lithuania II Lyga")
+
+						|| league2.contains("Australia Northern NSW Division 1")
+						|| league2.contains("Sri Lanka Champions League")
+
+						 || league2.contains("Russia Division 2")
+						|| league2.contains("Holland Ligue 3") 
+
+
+	
+	|| league2.contains("New Zealand South Premier League")
+
+	|| league2.contains("Korea Challengers League")
+
+
+	|| league2.contains("USA Independent League") || league2.contains("USA USL League Two")
+	 || league2.contains("Austrian 3.Liga")
+	 || league2.contains("Nicaragua Liga de Ascenso")
+	 || league2.contains("Ukraine Division 3")
+	 || league2.contains("Portugal Liga 3")
+	 || league2.contains("Bahrain Division")
+	 || league2.contains("Northern Ireland Reserve League") 
+
+				)
+					tier = "C";
+
+				if (
+
+				 league2.contains("FFSA SLR")
+
+						|| league2.contains("Turkiye Lig3")
+						|| league2.contains("Brazil Campeonato Carioca C")
+						|| league2.contains("Brazil Campeonato Potiguar 2")
+						|| league2.contains("Brazil Campeonato Pernambucano A2")
+
+						|| league2.contains("Latvia Division 2") || league2.contains("Turkey Bayanlar 1. Ligi")
+							|| league2.contains("Japan Football League")
+
+						|| league2.contains("Australia Victoria State League")
+						|| league2.contains("Regionalliga")
+						|| league2.contains("Israel B League")
+
+
+						|| league2.contains("Spain Segunda Division RFEF")
+						|| league2.contains("Australia Queensland State Leagues")
+						|| league2.contains("Australia Victoria State League 1") || league2.contains("Denmark - 4.Liga")
+						|| league2.contains("Victorian State League Division 1")
+
+ || league2.contains("Mongolia Second League")
+						|| league2.contains("Panama Liga Prom") || league2.contains("TAS Premier Championship")
+						|| league2.contains("Korea League 4")
+						|| league2.contains("Australia Queensland Premier League 2") || league2.contains("BRA D4")
+						 || league2.contains("Serie D")
+
+
+						|| league2.contains("Holland Derde Divisie") || league2.contains("SAFF")
+
+						|| league2.contains("Uzbekistan Second League")
+		|| league2.contains("Serie D")
+
+						
+						|| league2.contains("USA National Premier Soccer League")
+						
+						|| league2.contains("U22") || league2.contains("U-22")
+
+						|| league2.contains("Denmark Division 3") 
+						|| league2.contains("Estonia Teine Liiga")
+						|| league2.contains("English Women's Conference South")
+						|| league2.contains("Australia Brisbane Capital League 2")
+						|| league2.contains("Portugal Champions NACIONAL")
+						|| league2.contains("Ireland Leinster Senior League")
+
+						|| league2.contains("India Shillong Premier League")
+						|| league2.contains("India Bangalore Super Division")
+
+						|| league2.contains("Calcutta Football League")
+
+						|| league2.contains("India Mumbai Elite League")
+
+						|| league2.contains("Denmark 2 Division Women")
+						|| league2.contains("Finland Kolmonen")
+						|| league2.contains("Australia New South Wales League 2")
+						|| league2.contains("Nepal C Division")
+						 || league2.contains("India Delhi Senior Division")
+						|| league2.contains("Mexico Liga TDP") || league2.contains("Turkey 3")
+						|| league2.contains("Argentina Prim C")
+						 || league2.contains("Landesliga")
+
+
+						|| league2.contains("India Mizoram Premier League")
+						|| league2.contains("Chile Primera D")
+
+				)
+					tier = "D";
+				
+				if(	 league2.contains("Norway Division 4")
+
+						|| league2.contains("Oberliga")
+						|| league2.contains("Brazil Copa Gaucho")
+
+						|| league2.contains("England Northern League")
+						|| league2.contains("England Ryman(Isthmian) League Premier Division")
+						|| league2.contains("Czech Republic 5. Ligy")
+						|| league2.contains("Argentina Regional League")
+						 || league2.contains("Israel C League")
+							|| league2.contains("Colombia Regional League")
+
+							|| league2.contains("Australia Queensland Premier League 3")
+							|| league2.contains("Australia Victorian Premier League U21")
+							  || league2.contains("Brazil Debbie Shapiro")
+							  || league2.contains("GER D5")
+							  || league2.contains("Sweden Div 3")
+
+								|| league2.contains("The lowlands of Scotland League")
+								|| league2.contains("Iceland 4 Deild")
+								|| league2.contains("Northern German state premier league - bayern")
+								 || league2.contains("Czech Group D League")
+									|| league2.contains("Czech Republic Ceska Fotbalova Liga")
+									|| league2.contains("Czech Republic 5. Ligy")
+									|| league2.contains("Italian Campionato Nazionale Primavera") 
+									|| league2.contains("Poland Division 4")
+									 || league2.contains("Tercera")
+										|| league2.contains("Schleswig Holstein Liga") 
+
+									|| league2.contains("Australian cloth")
+									 || league2.contains("England Conference")
+
+									 || league2.contains("Argentina group C")
+										|| league2.contains("Argentina Ding Group Tebolidun League Manchester")
+
+					|| league2.contains("Friendly")
+					|| league2.contains("Germany Landespokal")
+					|| league2.contains("International")
+					|| league2.contains("Cup")
+					|| league2.contains("CUP")
+					|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
+					|| league2.contains("Coppa") || league2.contains("Pokal") || league2.contains("Vase")
+					|| league2.contains("Johnstone") || league2.contains("Cupen") || league2.contains("cup")
+					|| league2.contains("Cuban Championship")
+					|| league2.contains("Germany Verbandsliga")
+
+					|| league2.contains("U21") || league2.contains("U-21")
+
+)
+					tier = "E";
+				
+				
+				if(league2.contains("U20") || league2.contains("U-20")
+|| league2.contains("Youth")
+|| league2.contains("youth")
+|| league2.contains("U18") || league2.contains("U-17") || league2.contains("U17")
+|| league2.contains("U-18") || league2.contains("U19") || league2.contains("U-19")
+|| league2.contains("BSWCP") || league2.contains("Bolivia")
+|| league2.contains("Brazil Campeonato Carioca Women")
+|| league2.contains("Republic of Ireland National League Women")
+|| league2.contains("Bulgaria Premier League Women")
+|| league2.contains("CONCACAF Women") || league2.contains("UEFA Women")
+|| league2.contains("Sweden Woman") 
+|| league2.contains("Mexico Liga MX Femenil")
+|| league2.contains("German Frauen Bundesliga")
+|| league2.contains("Sweden Damallsvenskan") || league2.contains("Australia W-League")
+|| league2.contains("European Women")
+|| league2.contains("Germany Bundesliga II Women")
+|| league2.contains("Brazil Paulista Women's League")
+|| league2.contains("The women's league of Argentina")
+|| league2.contains("ICE WC")
+|| league2.contains("Holland Eredivisie Women's")
+|| league2.contains("French Feminines D1")
+|| league2.contains("Russia Womens Premier League")
+|| league2.contains("Slovakia I Liga Women")
+|| league2.contains("Spain Segunda Women")
+|| league2.contains("Romania Liga 2 Women")
+|| league2.contains("Spain Segunda Women")
+|| league2.contains("Jordan League Women")
+|| league2.contains("Serbia League Women")
+|| league2.contains("Lithuania A Lyga Women")
+	|| league2.contains("Swden Women Division 2")
+	|| league2.contains("Poland Mloda Ekstraklasa")
+	|| league2.contains("Columbia women's League")
+	|| league2.contains("Vietnam Women Championship")
+	|| league2.contains("Portugal Campeonato Nacional Women")
+	|| league2.contains("Ecuador Primera Women")
+	|| league2.contains("Guatemala Liga Nacional Women")
+	|| league2.contains("Iceland Women's Premier League")
+	|| league2.contains("Northern Ireland Women's Super")
+	|| league2.contains("Southeast Asian Games Women") || league2.contains("NSW Premier W-League")
+	|| league2.contains("Spanish Ladies Premier League B")
+	|| league2.contains("Uzbekistan League Women")
+	|| league2.contains("Israel Women First National")
+	|| league2.contains("Brazil Paulista Women's")
+|| league2.contains("Hungary Womens Division 1 League")
+|| league2.contains("Estonia Womens Meistri Liiga")
+|| league2.contains("Poland League Women") 
+|| league2.contains("Iceland Women's Division 1")
+|| league2.contains("Scotland WPL")
+|| league2.contains("Switzerland Division 1 Women")
+|| league2.contains("Women Norwegian Toppserien")
+|| league2.contains("Australia New South Wales NPL Women")
+|| league2.contains("Czech Republic Cambrinus Liga Women's")
+|| league2.contains("El Salvador Liga Feminina")
+|| league2.contains("Belgium Women's Premier League")
+|| league2.contains("Denmark Womans League") || league2.contains("Slovenia women's League")
+|| league2.contains("Japan Women's Football League 1")
+|| league2.contains("Austrian Frauen Bundesliga")
+|| league2.contains("Chinese Women's Super League")
+|| league2.contains("Norway Division 1 Women")
+|| league2.contains("Belgium Women 1st National")
+|| league2.contains("Costa Rica Primera Division Women")
+|| league2.contains("Japan Women's Football League 2")
+|| league2.contains("Australia Northern NSW Women�s Premier League")
+|| league2.contains("Nigeria League Women") || league2.contains("WAUS WD1")
+|| league2.contains("VIC Women's Premier League")
+|| league2.contains("Algeria Womens League") || league2.contains("WK League")
+|| league2.contains("Finland Women Premier League")
+|| league2.contains("Uganda Super League Women")
+|| league2.contains("Australia Queensland Premier League 2")
+|| league2.contains("France Division 2 Women")
+|| league2.contains("Australia Victoria Premier League Women")
+|| league2.contains("South Africa League Women")
+|| league2.contains("Wales Premier League Women")
+|| league2.contains("Australia Capital Territory Premier League Women")
+|| league2.contains("Australia Tasmania Super League Women")
+|| league2.contains("Romania Liga 1 Women")
+|| league2.contains("Australia Queensland State Women's Premier League")
+|| league2.contains("Malta Women Division 1")
+|| league2.contains("USA Women")
+|| league2.contains("England FA Women Super League") || league2.contains("Japanese WE League")
+|| league2.contains("Spanish Ladies Premier League")
+|| league2.contains("Italian Women Division 1") || league2.contains("Brazil women's League")
+|| league2.contains("Swden Women Divi.1")
+|| league2.contains("Argentina Championship Women")
+|| league2.contains("English Women's Conference North")
+|| league2.contains("Italy Campionato Primavera 4")
+|| league2.contains("Australia Northern NSW Women’s Premier League")
+|| league2.contains("Olympic (Preliminaries)")
+|| league2.contains("World Beach Games")
+|| league2.contains("Portugal Champions NACIONAL")
+|| league2.contains("England Ryman(Isthmian)")
+|| league2.contains("Switzerland - 2.Liga")
+|| league2.contains("Amateur")
+|| league2.contains("England Southern Premier League")
+|| league2.contains("England Northern Premier League")
+|| league2.contains("England Southern League")
+|| league2.contains("ENG SD1")
+|| league2.contains("Uruguay League Women")
+|| league2.contains("POL WD1")
+|| league2.contains("England Conference South Division")
+|| league2.contains("England Conference North Division")
+|| league2.contains("English FA Women's Premier League")
+|| league2.contains("Croatia First League Women")
+|| league2.contains("Spanish Segunda Division B")
+|| league2.contains("Spain Primera Division RFEF")
+|| league2.contains("Tercera")
+|| league2.contains("Russia")
+|| league2.contains("Belarus")
+|| league2.contains("Croatia 3.Division")
+
+
+
+
+)
+					continue;
+
+				if (games.equals("20")) {
+					// driver.findElement(By.xpath("//*[@i='f6']/div/span/select")).click();
+					// driver.findElement(By.xpath("//*[@id='f6']/div/span/select/option[2]")).click();
+					// driver.findElement(By.xpath("//*[@id='f6']/div/span/select")).click();
+					driver.findElement(By.xpath("//*[@id='f6']/div/span/select/option[2]")).click();
+				}
+
+				if (sameLeague) {
+
+					driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
+
+				}
+//				 if(mode.equals("H/A Same"))
+//				 {
+//				
+//				 driver.findElement(By.xpath("//*[@id='f6']/span/label[2]")).click();
+//				
+//				 }
+
+				for (int j = 0; j < 2; j++) {
+
+					homeForm.clear();
+					awayForm.clear();
+					FThomeGoals.clear();
+					FThomeOppGoals.clear();
+					FTawayGoals.clear();
+					FTawayOppGoals.clear();
+					HThomeGoals.clear();
+					HThomeOppGoals.clear();
+					HTawayGoals.clear();
+					HTawayOppGoals.clear();
+
+					if (!neutral) {
+						driver.findElement(By.xpath("//*[@id=\"f6\"]/div/span/label[2]")).click();
+					}
+					try {
+						driver.findElement(By.xpath("//*[@id=\"f6\"]/div/span/label[2]")).click();
+						driver.findElement(By.xpath("//*[@id=\"f6\"]/div/span/label[2]")).click();
+						driver.findElement(By.xpath("//*[@id=\"f6\"]/div/span/label[2]")).click();
+						driver.findElement(By.xpath("//*[@id=\"f6\"]/div/span/label[2]")).click();
+
+					} catch (Exception e) {
+						// System.out.println("No boxes to click");
+						// System.out.println(e);
+
+						// continue;
+					}
+
+					// get home avg
+					i = 1;
+
+					while (true) {
+						try {
+
+							matchType = driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
+											+ i + "]"))
+									.getText();
+
+							matchDay = driver.findElement(By.xpath(
+									"(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/span)[" + i
+											+ "]"))
+									.getText();
+
+							LocalDate matchDate = LocalDate.parse(matchDay, formatter);
+							Period period = Period.between(matchDate, todayDate);
+							days = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+							// System.out.println("Days since last match = " + days );
+
+							if (days < 30)
+								leagueGameHome++;
+
+							// if( leagueGameHome < 1)
+							// break;
+
+//                            if (days > 91.311) {
+//                                i++;
+//                                continue;
+//                            }
+
+							matchResult = driver.findElement(By.xpath(
+									"(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4])[" + i + "]"))
+									.getAttribute("data-cls");
+
+							FThomeGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4]/span[1])["
+											+ i + "]"))
+									.getText());
+
+							FThomeOppGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4]/span[2])["
+											+ i + "]"))
+									.getText());
+
+							HThomeGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[3]/span[1])["
+											+ i + "]"))
+									.getText());
+
+							HThomeOppGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[3]/span[2])["
+											+ i + "]"))
+									.getText());
+
+							if (matchResult.equals("o-winBGp")) {
+								homeForm.add(3);
+								if (FThomeGoalTemp > FThomeOppGoalTemp) {
+									FThomeGoals.add(FThomeGoalTemp);
+									FThomeOppGoals.add(FThomeOppGoalTemp);
+									HThomeGoals.add(HThomeGoalTemp);
+									HThomeOppGoals.add(HThomeOppGoalTemp);
+
+								} else {
+									FThomeGoals.add(FThomeOppGoalTemp);
+									FThomeOppGoals.add(FThomeGoalTemp);
+									HThomeGoals.add(HThomeOppGoalTemp);
+									HThomeOppGoals.add(HThomeGoalTemp);
+								}
+
+							} else if (matchResult.equals("o-voidBGp")) {
+								homeForm.add(1);
+								FThomeGoals.add(FThomeGoalTemp);
+								FThomeOppGoals.add(FThomeOppGoalTemp);
+								HThomeGoals.add(HThomeGoalTemp);
+								HThomeOppGoals.add(HThomeOppGoalTemp);
+
+							} else if (matchResult.equals("o-lossBGp")) {
+								homeForm.add(0);
+								if (FThomeGoalTemp > FThomeOppGoalTemp) {
+									FThomeGoals.add(FThomeOppGoalTemp);
+									FThomeOppGoals.add(FThomeGoalTemp);
+									HThomeGoals.add(HThomeOppGoalTemp);
+									HThomeOppGoals.add(HThomeGoalTemp);
+
+								} else {
+									FThomeGoals.add(FThomeGoalTemp);
+									FThomeOppGoals.add(FThomeOppGoalTemp);
+									HThomeGoals.add(HThomeGoalTemp);
+									HThomeOppGoals.add(HThomeOppGoalTemp);
+
+								}
+
+							}
+
+							i++;
+
+						} catch (Exception e) {
+							// System.out.println("no more home goals");
+							// System.out.println(e);
+							break;
+						}
+					}
+
+					leagueGame = false;
+					i = 1;
+					while (true) {
+						try {
+
+							matchType = driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/div)["
+											+ i + "]"))
+									.getText();
+
+							matchDay = driver.findElement(By.xpath(
+									"(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/span)[" + i
+											+ "]"))
+									.getText();
+
+							LocalDate matchDate = LocalDate.parse(matchDay, formatter);
+
+							Period period = Period.between(matchDate, todayDate);
+
+							days = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+							// System.out.println("Days since last match = " + days );
+
+							if (days < 30)
+								leagueGameAway++;
+
+							// if( leagueGameAway < 1)
+							// break;
+
+//                            if (days > 91.311) {
+//                                i++;
+//                                continue;
 //
-//			 }
-
-                for (int j = 0; j < 2; j++) {
-
-                    homeForm.clear();
-                    awayForm.clear();
-                    FThomeGoals.clear();
-                    FThomeOppGoals.clear();
-                    FTawayGoals.clear();
-                    FTawayOppGoals.clear();
-                    HThomeGoals.clear();
-                    HThomeOppGoals.clear();
-                    HTawayGoals.clear();
-                    HTawayOppGoals.clear();
-
-                    if (!neutral) {
-                        driver.findElement(By.xpath("//*[@id=\"f6\"]/span/label[2]")).click();
-                    }
-
-                    try {
-                        driver.findElement(By.xpath("//*[@id=\"f6\"]/span/label[2]")).click();
-                        driver.findElement(By.xpath("//*[@id=\"f6\"]/span/label[2]")).click();
-                        driver.findElement(By.xpath("//*[@id=\"f6\"]/span/label[2]")).click();
-                        driver.findElement(By.xpath("//*[@id=\"f6\"]/span/label[2]")).click();
-
-                    } catch (Exception e) {
-                        // System.out.println("No boxes to click");
-
-                        // continue;
-                    }
-
-                    // get home avg
-                    i = 1;
-
-                    while (true) {
-                        try {
-
-
-                            matchType = driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
-                                                    + i + "]"))
-                                    .getText();
-
-                            matchDay = driver.findElement(By.xpath(
-                                            "(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/span)[" + i
-                                                    + "]"))
-                                    .getText();
-
-                            LocalDate matchDate = LocalDate.parse(matchDay, formatter);
-                            Period period = Period.between(matchDate, todayDate);
-                            days = period.getDays() + (period.getMonths() * 30) + (period.getYears() * 365);
-                            // System.out.println("Days since last match = " + days );
-
-                            if (days < 40)
-                                leagueGameHome++;
-
-//						    if(  leagueGameHome < 1)
-//						    	break;
-
-//						    if(days  > 180) {
-//						    	i++;
-//						    	continue;
-//						     }
-
-                            matchResult = driver.findElement(By.xpath(
-                                            "(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4])[" + i + "]"))
-                                    .getAttribute("data-cls");
-
-                            FThomeGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4]/span[1])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            FThomeOppGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[4]/span[2])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            HThomeGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[3]/span[1])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            HThomeOppGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[3]/span[2])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            if (matchResult.equals("o-winBGp")) {
-                                homeForm.add(3);
-                                if (FThomeGoalTemp > FThomeOppGoalTemp) {
-                                    FThomeGoals.add(FThomeGoalTemp);
-                                    FThomeOppGoals.add(FThomeOppGoalTemp);
-                                    HThomeGoals.add(HThomeGoalTemp);
-                                    HThomeOppGoals.add(HThomeOppGoalTemp);
-
-                                } else {
-                                    FThomeGoals.add(FThomeOppGoalTemp);
-                                    FThomeOppGoals.add(FThomeGoalTemp);
-                                    HThomeGoals.add(HThomeOppGoalTemp);
-                                    HThomeOppGoals.add(HThomeGoalTemp);
-                                }
-
-                            } else if (matchResult.equals("o-voidBGp")) {
-                                homeForm.add(1);
-                                FThomeGoals.add(FThomeGoalTemp);
-                                FThomeOppGoals.add(FThomeOppGoalTemp);
-                                HThomeGoals.add(HThomeGoalTemp);
-                                HThomeOppGoals.add(HThomeOppGoalTemp);
-
-                            } else if (matchResult.equals("o-lossBGp")) {
-                                homeForm.add(0);
-                                if (FThomeGoalTemp > FThomeOppGoalTemp) {
-                                    FThomeGoals.add(FThomeOppGoalTemp);
-                                    FThomeOppGoals.add(FThomeGoalTemp);
-                                    HThomeGoals.add(HThomeOppGoalTemp);
-                                    HThomeOppGoals.add(HThomeGoalTemp);
-                                } else {
-                                    FThomeGoals.add(FThomeGoalTemp);
-                                    FThomeOppGoals.add(FThomeOppGoalTemp);
-                                    HThomeGoals.add(HThomeGoalTemp);
-                                    HThomeOppGoals.add(HThomeOppGoalTemp);
-                                }
-
-                            }
-
-                            i++;
-
-                        } catch (Exception e) {
-//						System.out.println("no more home goals");
-                            // System.out.println(e);
-                            break;
-                        }
-                    }
-
-                    leagueGame = false;
-                    i = 1;
-                    while (true) {
-                        try {
-
-                            matchType = driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/div)["
-                                                    + i + "]"))
-                                    .getText();
-
-                            matchDay = driver.findElement(By.xpath(
-                                            "(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/span)[" + i
-                                                    + "]"))
-                                    .getText();
-
-                            LocalDate matchDate = LocalDate.parse(matchDay, formatter);
-
-                            Period period = Period.between(matchDate, todayDate);
-
-                            days = period.getDays() + (period.getMonths() * 30) + (period.getYears() * 365);
-                            // System.out.println("Days since last match = " + days );
-
-                            if (days < 40)
-                                leagueGameAway++;
-
-//							    if( leagueGameAway < 1)
-//							    	break;
-
-//							    if(days  > 180) {
-//							    	i++;
-//							    	continue;
-//
-//							     }
-
-                            matchResult = driver.findElement(By.xpath(
-                                            "(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4])[" + i + "]"))
-                                    .getAttribute("data-cls");
-
-                            // System.out.println("away match result = " + matchResult);
-
-                            FTawayGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4]/span[1])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            // System.out.println("away goal = " + awayGoalTemp);
-
-                            FTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4]/span[2])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            // System.out.println("away opp goal = " + awayOppGoalTemp);
-
-                            HTawayGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[3]/span[1])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            // System.out.println("away goal = " + awayGoalTemp);
-
-                            HTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
-                                            .xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[3]/span[2])["
-                                                    + i + "]"))
-                                    .getText());
-
-                            // System.out.println("away opp goal = " + awayOppGoalTemp);
-
-                            if (matchResult.equals("o-winBGp")) {
-                                awayForm.add(3);
-                                if (FTawayGoalTemp > FTawayOppGoalTemp) {
-                                    FTawayGoals.add(FTawayGoalTemp);
-                                    FTawayOppGoals.add(FTawayOppGoalTemp);
-                                    HTawayGoals.add(HTawayGoalTemp);
-                                    HTawayOppGoals.add(HTawayOppGoalTemp);
-                                } else {
-                                    FTawayGoals.add(FTawayOppGoalTemp);
-                                    FTawayOppGoals.add(FTawayGoalTemp);
-                                    HTawayGoals.add(HTawayOppGoalTemp);
-                                    HTawayOppGoals.add(HTawayGoalTemp);
-                                }
-
-                            } else if (matchResult.equals("o-voidBGp")) {
-                                awayForm.add(1);
-                                FTawayGoals.add(FTawayGoalTemp);
-                                FTawayOppGoals.add(FTawayOppGoalTemp);
-                                HTawayGoals.add(HTawayGoalTemp);
-                                HTawayOppGoals.add(HTawayOppGoalTemp);
-
-                            } else if (matchResult.equals("o-lossBGp")) {
-                                awayForm.add(0);
-                                if (FTawayGoalTemp > FTawayOppGoalTemp) {
-                                    FTawayGoals.add(FTawayOppGoalTemp);
-                                    FTawayOppGoals.add(FTawayGoalTemp);
-                                } else {
-                                    FTawayGoals.add(FTawayGoalTemp);
-                                    FTawayOppGoals.add(FTawayOppGoalTemp);
-                                }
-                                HTawayGoals.add(HTawayGoalTemp);
-                                HTawayOppGoals.add(HTawayOppGoalTemp);
-                            }
-
-                            i++;
-
-                        } catch (Exception e) {
-//						System.out.println("no more away goals");
-                            // System.out.println(e);
-                            break;
-                        }
-                    }
-
-                    ArrayList<Integer> FToneCount = new ArrayList<Integer>();
-                    ArrayList<Integer> HToneCount = new ArrayList<Integer>();
-
-                    ArrayList<Integer> twoCount = new ArrayList<Integer>();
-                    ArrayList<Integer> threeCount = new ArrayList<Integer>();
-                    ArrayList<Integer> fourCount = new ArrayList<Integer>();
-                    ArrayList<Integer> ggCount = new ArrayList<Integer>();
-
-                    ArrayList<Integer> homeScoredAGoal = new ArrayList<Integer>();
-                    ArrayList<Integer> awayScoredAGoal = new ArrayList<Integer>();
-                    ArrayList<Integer> FThomeScored = new ArrayList<Integer>();
-                    ArrayList<Integer> FTawayScored = new ArrayList<Integer>();
-                    ArrayList<Integer> FThomeConceded = new ArrayList<Integer>();
-                    ArrayList<Integer> FTawayConceded = new ArrayList<Integer>();
-                    ArrayList<Integer> HThomeScored = new ArrayList<Integer>();
-                    ArrayList<Integer> HTawayScored = new ArrayList<Integer>();
-                    ArrayList<Integer> HThomeConceded = new ArrayList<Integer>();
-                    ArrayList<Integer> HTawayConceded = new ArrayList<Integer>();
-                    ArrayList<Integer> homeConcededAGoal = new ArrayList<Integer>();
-                    ArrayList<Integer> awayConcededAGoal = new ArrayList<Integer>();
-
-                    float FToneCountRecAvg = 0, HToneCountRecAvg = 0, oneCountRegAvg = 0, twoCountRecAvg = 0,
-                            twoCountRegAvg = 0, threeCountRecAvg = 0, threeCountRegAvg = 0, fourCountRecAvg = 0,
-                            fourCountRegAvg = 0, ggCountRecAvg = 0, ggCountRegAvg = 0, FThomeScoredRecAvg = 0,
-                            FThomeScoredRegAvg = 0, FTawayScoredRecAvg = 0, FTawayScoredRegAvg = 0,
-                            FThomeConcededRecAvg = 0, FThomeConcededRegAvg = 0, FTawayConcededRecAvg = 0,
-                            FTawayConcededRegAvg = 0, HThomeScoredRecAvg = 0, HThomeScoredRegAvg = 0,
-                            HTawayScoredRecAvg = 0, HTawayScoredRegAvg = 0, HThomeConcededRecAvg = 0,
-                            HThomeConcededRegAvg = 0, HTawayConcededRecAvg = 0, HTawayConcededRegAvg = 0,
-                            homeFormRecAvg = 0, awayFormRecAvg = 0,
-
-                            homeFormRegAvg = 0, awayFormRegAvg = 0, homeScoredAGoalRecAvg = 0,
-                            awayScoredAGoalRecAvg = 0, homeConcededAGoalRecAvg = 0, awayConcededAGoalRecAvg = 0,
-                            homeScoredAGoalRegAvg = 0, awayScoredAGoalRegAvg = 0, homeConcededAGoalRegAvg = 0,
-                            awayConcededAGoalRegAvg = 0;
-
-                    for (i = 0; i < homeForm.size(); i++) {
-
-                        FThomeGoalTemp = FThomeGoals.get(i);
-                        FThomeOppGoalTemp = FThomeOppGoals.get(i);
-
-                        FThomeTotal = FThomeGoalTemp + FThomeOppGoalTemp;
-
-                        HThomeGoalTemp = HThomeGoals.get(i);
-                        HThomeOppGoalTemp = HThomeOppGoals.get(i);
-
-                        HThomeTotal = HThomeGoalTemp + HThomeOppGoalTemp;
-
-                        if (FThomeGoalTemp > 0 && FThomeOppGoalTemp > 0)
-                            ggCount.add(1);
-                        else
-                            ggCount.add(0);
-
-                        if (FThomeGoalTemp > 0)
-                            homeScoredAGoal.add(1);
-                        else
-                            homeScoredAGoal.add(0);
-
-                        if (FThomeOppGoalTemp > 0)
-                            homeConcededAGoal.add(1);
-                        else
-                            homeConcededAGoal.add(0);
-
-                        if (HThomeTotal == 0) {
-                            HToneCount.add(0);
-
-                        }
-                        if (HThomeTotal > 0) {
-                            HToneCount.add(1);
-
-                        }
-
-                        if (FThomeTotal == 0) {
-                            FToneCount.add(0);
-                            twoCount.add(0);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FThomeTotal == 1) {
-                            FToneCount.add(1);
-                            twoCount.add(0);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FThomeTotal == 2) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FThomeTotal == 3) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(1);
-                            fourCount.add(0);
-                        }
-
-                        if (FThomeTotal >= 4) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(1);
-                            fourCount.add(1);
-                        }
-
-                    }
-
-                    float sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, sum6 = 0, sum7 = 0, sum8 = 0, sum9 = 0,
-                            sum10 = 0, sum11 = 0, sum12 = 0, sum13 = 0;
-
-                    ArrayList<Float> homeFormRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> awayFormRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> FToneCountRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> HToneCountRecAvgArr = new ArrayList<Float>();
-
-                    ArrayList<Float> twoCountRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> threeCountRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> fourCountRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> ggCountRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> FThomeScoredRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> FTawayScoredRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> FThomeConcededRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> FTawayConcededRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> HThomeScoredRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> HTawayScoredRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> HThomeConcededRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> HTawayConcededRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> homeScoredAGoalRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> awayScoredAGoalRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> homeConcededAGoalRecAvgArr = new ArrayList<Float>();
-                    ArrayList<Float> awayConcededAGoalRecAvgArr = new ArrayList<Float>();
-
-                    for (i = 0; i < homeForm.size(); i++) {
-
-                        sum1 += FToneCount.get(i);
-                        FToneCountRecAvgArr.add(sum1 / (i + 1));
-
-                        sum13 += HToneCount.get(i);
-                        HToneCountRecAvgArr.add(sum13 / (i + 1));
-
-                        sum2 += twoCount.get(i);
-                        twoCountRecAvgArr.add(sum2 / (i + 1));
-
-                        sum3 += threeCount.get(i);
-                        threeCountRecAvgArr.add(sum3 / (i + 1));
-
-                        sum4 += fourCount.get(i);
-                        fourCountRecAvgArr.add(sum4 / (i + 1));
-
-                        sum5 += ggCount.get(i);
-                        ggCountRecAvgArr.add(sum5 / (i + 1));
-
-                        sum6 += FThomeGoals.get(i);
-                        FThomeScoredRecAvgArr.add(sum6 / (i + 1));
-
-                        sum7 += FThomeOppGoals.get(i);
-                        FThomeConcededRecAvgArr.add(sum7 / (i + 1));
-
-                        sum11 += HThomeGoals.get(i);
-                        HThomeScoredRecAvgArr.add(sum11 / (i + 1));
-
-                        sum12 += HThomeOppGoals.get(i);
-                        HThomeConcededRecAvgArr.add(sum12 / (i + 1));
-
-                        sum8 += homeScoredAGoal.get(i);
-                        homeScoredAGoalRecAvgArr.add(sum8 / (i + 1));
-
-                        sum9 += homeConcededAGoal.get(i);
-                        homeConcededAGoalRecAvgArr.add(sum9 / (i + 1));
-
-                        sum10 += homeForm.get(i);
-                        homeFormRecAvgArr.add(sum10 / (i + 1));
-
-                    }
-
-                    oneCountRegAvg = sum1 / homeForm.size();
-
-                    twoCountRegAvg = sum2 / homeForm.size();
-                    threeCountRegAvg = sum3 / homeForm.size();
-                    fourCountRegAvg = sum4 / homeForm.size();
-                    ggCountRegAvg = sum5 / homeForm.size();
-                    FThomeScoredRegAvg = sum6 / homeForm.size();
-                    FThomeConcededRegAvg = sum7 / homeForm.size();
-                    HThomeScoredRegAvg = sum11 / homeForm.size();
-                    HThomeConcededRegAvg = sum12 / homeForm.size();
-                    homeScoredAGoalRegAvg = sum8 / homeForm.size();
-                    homeConcededAGoalRegAvg = sum9 / homeForm.size();
-                    homeFormRegAvg = sum10 / homeForm.size();
-
-                    sum1 = 0;
-                    sum2 = 0;
-                    sum3 = 0;
-                    sum4 = 0;
-                    sum5 = 0;
-                    sum6 = 0;
-                    sum7 = 0;
-                    sum8 = 0;
-                    sum9 = 0;
-                    sum10 = 0;
-                    sum11 = 0;
-                    sum12 = 0;
-                    sum13 = 0;
-
-                    for (i = 0; i < homeForm.size(); i++) {
-
-                        sum1 += FToneCountRecAvgArr.get(i);
-                        sum13 += HToneCountRecAvgArr.get(i);
-
-                        sum2 += twoCountRecAvgArr.get(i);
-                        sum3 += threeCountRecAvgArr.get(i);
-                        sum4 += fourCountRecAvgArr.get(i);
-                        sum5 += ggCountRecAvgArr.get(i);
-                        sum6 += FThomeScoredRecAvgArr.get(i);
-                        sum7 += FThomeConcededRecAvgArr.get(i);
-                        sum11 += HThomeScoredRecAvgArr.get(i);
-                        sum12 += HThomeConcededRecAvgArr.get(i);
-                        sum8 += homeScoredAGoalRecAvgArr.get(i);
-                        sum9 += homeConcededAGoalRecAvgArr.get(i);
-                        sum10 += homeFormRecAvgArr.get(i);
-
-                    }
-
-                    FToneCountRecAvg = sum1 / homeForm.size();
-                    HToneCountRecAvg = sum13 / homeForm.size();
-
-                    twoCountRecAvg = sum2 / homeForm.size();
-                    threeCountRecAvg = sum3 / homeForm.size();
-                    fourCountRecAvg = sum4 / homeForm.size();
-                    ggCountRecAvg = sum5 / homeForm.size();
-                    FThomeScoredRecAvg = sum6 / homeForm.size();
-                    FThomeConcededRecAvg = sum7 / homeForm.size();
-                    HThomeScoredRecAvg = sum11 / homeForm.size();
-                    HThomeConcededRecAvg = sum12 / homeForm.size();
-                    homeScoredAGoalRecAvg = sum8 / homeForm.size();
-                    homeConcededAGoalRecAvg = sum9 / homeForm.size();
-                    homeFormRecAvg = sum10 / homeForm.size();
-
-                    FThomeOneRecProb = FToneCountRecAvg;
-                    HThomeOneRecProb = HToneCountRecAvg;
-
-                    homeTwoRecProb = twoCountRecAvg;
-                    homeThreeRecProb = threeCountRecAvg;
-                    homeFourRecProb = fourCountRecAvg;
-                    float homeGGRecProb = ggCountRecAvg;
-                    float homeOneRegProb = oneCountRegAvg;
-                    float homeTwoRegProb = twoCountRegAvg;
-                    float homeThreeRegProb = threeCountRegAvg;
-                    float homeFourRegProb = fourCountRegAvg;
-                    float homeGGRegProb = ggCountRegAvg;
-                    float homeFormRegProb = homeFormRegAvg;
-                    homeFormRecProb = homeFormRecAvg;
-                    float homeScoredRegProb = FThomeScoredRegAvg;
-                    FThomeScoredRecProb = FThomeScoredRecAvg;
-                    float homeConcededRegProb = FThomeConcededRegAvg;
-                    FThomeConcededRecProb = FThomeConcededRecAvg;
-                    HThomeScoredRecProb = HThomeScoredRecAvg;
-                    HThomeConcededRecProb = HThomeConcededRecAvg;
-                    float homeScoredAGoalRegProb = homeScoredAGoalRegAvg;
-                    float homeScoredAGoalRecProb = homeScoredAGoalRecAvg;
-                    float homeConcededAGoalRegProb = homeConcededAGoalRegAvg;
-                    float homeConcededAGoalRecProb = homeConcededAGoalRecAvg;
-
-                    FToneCount.clear();
-                    HToneCount.clear();
-                    twoCount.clear();
-                    threeCount.clear();
-                    fourCount.clear();
-                    ggCount.clear();
-
-                    for (i = 0; i < awayForm.size(); i++) {
-
-                        FTawayGoalTemp = FTawayGoals.get(i);
-                        FTawayOppGoalTemp = FTawayOppGoals.get(i);
-
-                        FTawayTotal = FTawayGoalTemp + FTawayOppGoalTemp;
-
-                        HTawayGoalTemp = HTawayGoals.get(i);
-                        HTawayOppGoalTemp = HTawayOppGoals.get(i);
-
-                        HTawayTotal = HTawayGoalTemp + HTawayOppGoalTemp;
-
-                        if (FTawayGoalTemp > 0 && FTawayOppGoalTemp > 0)
-                            ggCount.add(1);
-                        else
-                            ggCount.add(0);
-
-                        if (FTawayGoalTemp > 0)
-                            awayScoredAGoal.add(1);
-                        else
-                            awayScoredAGoal.add(0);
-
-                        if (FTawayOppGoalTemp > 0)
-                            awayConcededAGoal.add(1);
-                        else
-                            awayConcededAGoal.add(0);
-
-                        if (HTawayTotal == 0) {
-                            HToneCount.add(0);
-
-                        }
-
-                        if (HTawayTotal > 0) {
-                            HToneCount.add(1);
-
-                        }
-
-                        if (FTawayTotal == 0) {
-                            FToneCount.add(0);
-                            twoCount.add(0);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FTawayTotal == 1) {
-                            FToneCount.add(1);
-                            twoCount.add(0);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FTawayTotal == 2) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(0);
-                            fourCount.add(0);
-                        }
-
-                        if (FTawayTotal == 3) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(1);
-                            fourCount.add(0);
-                        }
-
-                        if (FTawayTotal >= 4) {
-                            FToneCount.add(1);
-                            twoCount.add(1);
-                            threeCount.add(1);
-                            fourCount.add(1);
-                        }
-
-                    }
-
-                    sum1 = 0;
-                    sum2 = 0;
-                    sum3 = 0;
-                    sum4 = 0;
-                    sum5 = 0;
-                    sum6 = 0;
-                    sum7 = 0;
-                    sum8 = 0;
-                    sum9 = 0;
-                    sum10 = 0;
-                    sum11 = 0;
-                    sum12 = 0;
-                    sum13 = 0;
-
-                    FToneCountRecAvgArr.clear();
-                    HToneCountRecAvgArr.clear();
-
-                    twoCountRecAvgArr.clear();
-                    threeCountRecAvgArr.clear();
-                    fourCountRecAvgArr.clear();
-                    ggCountRecAvgArr.clear();
-
-                    for (i = 0; i < awayForm.size(); i++) {
-
-                        sum1 += FToneCount.get(i);
-                        FToneCountRecAvgArr.add(sum1 / (i + 1));
-                        sum13 += HToneCount.get(i);
-                        HToneCountRecAvgArr.add(sum13 / (i + 1));
-
-                        sum2 += twoCount.get(i);
-                        twoCountRecAvgArr.add(sum2 / (i + 1));
-
-                        sum3 += threeCount.get(i);
-                        threeCountRecAvgArr.add(sum3 / (i + 1));
-
-                        sum4 += fourCount.get(i);
-                        fourCountRecAvgArr.add(sum4 / (i + 1));
-
-                        sum5 += ggCount.get(i);
-                        ggCountRecAvgArr.add(sum5 / (i + 1));
-
-                        sum6 += FTawayGoals.get(i);
-                        FTawayScoredRecAvgArr.add(sum6 / (i + 1));
-
-                        sum7 += FTawayOppGoals.get(i);
-                        FTawayConcededRecAvgArr.add(sum7 / (i + 1));
-
-                        sum11 += HTawayGoals.get(i);
-                        HTawayScoredRecAvgArr.add(sum11 / (i + 1));
-
-                        sum12 += HTawayOppGoals.get(i);
-                        HTawayConcededRecAvgArr.add(sum12 / (i + 1));
-
-                        sum8 += awayScoredAGoal.get(i);
-                        awayScoredAGoalRecAvgArr.add(sum8 / (i + 1));
-
-                        sum9 += awayConcededAGoal.get(i);
-                        awayConcededAGoalRecAvgArr.add(sum9 / (i + 1));
-
-                        sum10 += awayForm.get(i);
-                        awayFormRecAvgArr.add(sum10 / (i + 1));
-
-                    }
-
-                    FToneCountRecAvg = 0;
-                    HToneCountRecAvg = 0;
-
-                    twoCountRecAvg = 0;
-                    threeCountRecAvg = 0;
-                    fourCountRecAvg = 0;
-                    ggCountRecAvg = 0;
-
-                    oneCountRegAvg = sum1 / awayForm.size();
-                    twoCountRegAvg = sum2 / awayForm.size();
-                    threeCountRegAvg = sum3 / awayForm.size();
-                    fourCountRegAvg = sum4 / awayForm.size();
-                    ggCountRegAvg = sum5 / awayForm.size();
-                    FTawayScoredRegAvg = sum6 / awayForm.size();
-                    FTawayConcededRegAvg = sum7 / awayForm.size();
-                    HTawayScoredRegAvg = sum11 / awayForm.size();
-                    HTawayConcededRegAvg = sum12 / awayForm.size();
-                    awayScoredAGoalRegAvg = sum8 / awayForm.size();
-                    awayConcededAGoalRegAvg = sum9 / awayForm.size();
-                    awayFormRegAvg = sum10 / awayForm.size();
-
-                    sum1 = 0;
-                    sum2 = 0;
-                    sum3 = 0;
-                    sum4 = 0;
-                    sum5 = 0;
-                    sum6 = 0;
-                    sum7 = 0;
-                    sum8 = 0;
-                    sum9 = 0;
-                    sum10 = 0;
-                    sum11 = 0;
-                    sum12 = 0;
-                    sum13 = 0;
-
-                    for (i = 0; i < awayForm.size(); i++) {
-
-                        sum1 += FToneCountRecAvgArr.get(i);
-                        sum13 += HToneCountRecAvgArr.get(i);
-
-                        sum2 += twoCountRecAvgArr.get(i);
-                        sum3 += threeCountRecAvgArr.get(i);
-                        sum4 += fourCountRecAvgArr.get(i);
-                        sum5 += ggCountRecAvgArr.get(i);
-                        sum6 += FTawayScoredRecAvgArr.get(i);
-                        sum7 += FTawayConcededRecAvgArr.get(i);
-                        sum11 += HTawayScoredRecAvgArr.get(i);
-                        sum12 += HTawayConcededRecAvgArr.get(i);
-                        sum8 += awayScoredAGoalRecAvgArr.get(i);
-                        sum9 += awayConcededAGoalRecAvgArr.get(i);
-                        sum10 += awayFormRecAvgArr.get(i);
-
-                    }
-
-                    FToneCountRecAvg = sum1 / awayForm.size();
-                    HToneCountRecAvg = sum13 / awayForm.size();
-
-                    twoCountRecAvg = sum2 / awayForm.size();
-                    threeCountRecAvg = sum3 / awayForm.size();
-                    fourCountRecAvg = sum4 / awayForm.size();
-                    ggCountRecAvg = sum5 / awayForm.size();
-                    FTawayScoredRecAvg = sum6 / awayForm.size();
-                    FTawayConcededRecAvg = sum7 / awayForm.size();
-                    HTawayScoredRecAvg = sum11 / awayForm.size();
-                    HTawayConcededRecAvg = sum12 / awayForm.size();
-                    awayScoredAGoalRecAvg = sum8 / awayForm.size();
-                    awayConcededAGoalRecAvg = sum9 / awayForm.size();
-                    awayFormRecAvg = sum10 / awayForm.size();
-
-                    FTawayOneRecProb = FToneCountRecAvg;
-                    HTawayOneRecProb = HToneCountRecAvg;
-
-                    awayTwoRecProb = twoCountRecAvg;
-                    awayThreeRecProb = threeCountRecAvg;
-                    awayFourRecProb = fourCountRecAvg;
-                    float awayGGRecProb = ggCountRecAvg;
-                    float awayOneRegProb = oneCountRegAvg;
-                    float awayTwoRegProb = twoCountRegAvg;
-                    float awayThreeRegProb = threeCountRegAvg;
-                    float awayFourRegProb = fourCountRegAvg;
-                    float awayGGRegProb = ggCountRegAvg;
-                    float awayFormRegProb = awayFormRegAvg;
-                    awayFormRecProb = awayFormRecAvg;
-                    float awayScoredRegProb = FTawayScoredRegAvg;
-                    FTawayScoredRecProb = FTawayScoredRecAvg;
-                    float awayConcededRegProb = FTawayConcededRegAvg;
-                    FTawayConcededRecProb = FTawayConcededRecAvg;
-                    HTawayScoredRecProb = HTawayScoredRecAvg;
-                    HTawayConcededRecProb = HTawayConcededRecAvg;
-                    float awayScoredAGoalRegProb = awayScoredAGoalRegAvg;
-                    float awayScoredAGoalRecProb = awayScoredAGoalRecAvg;
-                    float awayConcededAGoalRegProb = awayConcededAGoalRegAvg;
-                    float awayConcededAGoalRecProb = awayConcededAGoalRecAvg;
-
-                    FThomeExpectedRecProb = (FThomeScoredRecProb + FTawayConcededRecProb) / 2;
-                    FTawayExpectedRecProb = (FTawayScoredRecProb + FThomeConcededRecProb) / 2;
-                    HThomeExpectedRecProb = (HThomeScoredRecProb + HTawayConcededRecProb) / 2;
-                    HTawayExpectedRecProb = (HTawayScoredRecProb + HThomeConcededRecProb) / 2;
-                    homeScoredAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
-                    awayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
-
-                    FTtotalExpectedProb = Math.max(homeScoredAGoalExpectedRecProb, awayScoredAGoalExpectedRecProb);
-                    FTtotalExpectedRecProb = FThomeExpectedRecProb + FTawayExpectedRecProb;
-
-                    HTtotalExpectedRecProb = HThomeExpectedRecProb + HTawayExpectedRecProb;
-
-                    formDiffRec = Math.abs(homeFormRecProb - awayFormRecProb);
-                    maxForm = Math.max(homeFormRecProb, awayFormRecProb);
-                    FTmaxOne = Math.min(FThomeOneRecProb, FTawayOneRecProb);
-                    HTmaxOne = Math.min(HThomeOneRecProb, HTawayOneRecProb);
-
-                    maxTwo = Math.min(homeTwoRecProb, awayTwoRecProb);
-                    maxThree = Math.min(homeThreeRecProb, awayThreeRecProb);
-                    maxFour = Math.min(homeFourRecProb, awayFourRecProb);
-
-                    if (neutral) {
-
-                        FTneutralHomeScoredRecProb = FThomeScoredRecProb;
-                        FTneutralAwayScoredRecProb = FTawayScoredRecProb;
-                        FTneutralHomeConcededRecProb = FThomeConcededRecProb;
-                        FTneutralAwayConcededRecProb = FTawayScoredRecProb;
-
-                        FTneutralHomeExpectedRecProb = FThomeExpectedRecProb;
-                        FTneutralAwayExpectedRecProb = FTawayExpectedRecProb;
-                        neutralHomeScoredAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
-                        neutralAwayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
-
-                        FTneutralTotalExpectedProb = Math.max(homeScoredAGoalExpectedRecProb,
-                                awayScoredAGoalExpectedRecProb);
-                        FTneutralTotalExpectedRecProb = FThomeExpectedRecProb + FTawayExpectedRecProb;
-
-                        HTneutralHomeScoredRecProb = HThomeScoredRecProb;
-                        HTneutralAwayScoredRecProb = HTawayScoredRecProb;
-                        HTneutralHomeConcededRecProb = HThomeConcededRecProb;
-                        HTneutralAwayConcededRecProb = HTawayConcededRecProb;
-
-                        HTneutralHomeExpectedRecProb = HThomeExpectedRecProb;
-                        HTneutralAwayExpectedRecProb = HTawayExpectedRecProb;
-
-                        HTneutralTotalExpectedProb = Math.max(homeScoredAGoalExpectedRecProb,
-                                awayScoredAGoalExpectedRecProb);
-                        HTneutralTotalExpectedRecProb = HThomeExpectedRecProb + HTawayExpectedRecProb;
-
-                        neutralHomeFormRecProb = homeFormRecProb;
-                        neutralAwayFormRecProb = awayFormRecProb;
-
-                        FTneutralHomeOneRecProb = FThomeOneRecProb;
-                        HTneutralHomeOneRecProb = HThomeOneRecProb;
-
-                        neutralHomeTwoRecProb = homeTwoRecProb;
-                        neutralHomeThreeRecProb = homeThreeRecProb;
-                        neutralHomeFourRecProb = homeFourRecProb;
-                        FTneutralAwayOneRecProb = FTawayOneRecProb;
-                        HTneutralAwayOneRecProb = HTawayOneRecProb;
-
-                        neutralAwayTwoRecProb = awayTwoRecProb;
-                        neutralAwayThreeRecProb = awayThreeRecProb;
-                        neutralAwayFourRecProb = awayFourRecProb;
-
-                        neturalFormDiffRec = Math.abs(neutralHomeFormRecProb - neutralAwayFormRecProb);
-                        neutralMaxForm = Math.max(homeFormRecProb, awayFormRecProb);
-                        FTneutralMaxOne = Math.min(FThomeOneRecProb, FTawayOneRecProb);
-                        HTneutralMaxOne = Math.min(HThomeOneRecProb, HTawayOneRecProb);
-
-                        neutralMaxTwo = Math.min(homeTwoRecProb, awayTwoRecProb);
-                        neutralMaxThree = Math.min(homeThreeRecProb, awayThreeRecProb);
-                        neutralMaxFour = Math.min(homeFourRecProb, awayFourRecProb);
-
-                        FTneutralHomeGoals.addAll(FThomeGoals);
-                        FTneutralAwayGoals.addAll(FTawayGoals);
-                        FTneutralHomeOppGoals.addAll(FThomeOppGoals);
-                        FTneutralAwayOppGoals.addAll(FTawayOppGoals);
-                        HTneutralHomeGoals.addAll(HThomeGoals);
-                        HTneutralAwayGoals.addAll(HTawayGoals);
-                        HTneutralHomeOppGoals.addAll(HThomeOppGoals);
-                        HTneutralAwayOppGoals.addAll(HTawayOppGoals);
-                        neutralHomeForm.addAll(homeForm);
-                        neutralAwayForm.addAll(awayForm);
-
-                    }
-
-                    neutral = false;
-
-                } // h/a for loop
-
-                double betThis = 0.0;
-                int tier = 1;
-                String htBetThis = "";
-
-                Integer h2hHome0 = null;
-                Integer h2hAway0 = null;
-                Integer h2hHome1 = null;
-                Integer h2hAway1 = null;
-
-                Integer HTh2hHome0 = null;
-                Integer HTh2hAway0 = null;
-                Integer HTh2hHome1 = null;
-                Integer HTh2hAway1 = null;
-
-// get last two matches played h2h
-                try {
-                    h2hHome0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[1]")).getText());
-                    h2hAway0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[5]/span[2]")).getText());
-                    h2hHome1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[1]")).getText());
-                    h2hAway1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[5]/span[2]")).getText());
-                } catch (Exception e) {
-
-                }
-
-                try {
-                    HTh2hHome0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[3]/span[1]")).getText());
-                    HTh2hAway0 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[2]/td[3]/span[2]")).getText());
-                    HTh2hHome1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[3]/span[1]")).getText());
-                    HTh2hAway1 = Integer.valueOf(driver.findElement(By.xpath("//*[@id='e5_1']/table/tbody/tr[3]/td[3]/span[2]")).getText());
-                } catch (Exception e) {
-
-                }
-
-
-                if(h2hHome0 != null && h2hHome0 == 0 && h2hAway0 == 0 )
-                {
-                    continue;
-
-                }
-
-                if(h2hHome1 != null && h2hHome1 == 0 && h2hAway1 == 0 )
-                {
-                    continue;
-                }
-
-                if(HTh2hHome0 != null && HTh2hHome0 == 0 && HTh2hAway0 == 0 )
-                {
-                    htBetThis = "NEVER";
-
-                }
-
-                if(HTh2hHome1 != null && HTh2hHome1 == 0 && HTh2hAway1 == 0 )
-                {
-                    htBetThis = "NEVER";
-                }
-
-
-
-
-                // get odds
-                // click odds tab
-                driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
-                // click 1x2 tab
-                driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[2]/a[1]")).click();
-
-                // grab home odds (min)
-                String homeOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
-                        .getText();
-
-                // grab away odds (min)
-                String awayOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
-                        .getText();
-
-                double homeOdds = Double.parseDouble(homeOddsS);
-                double awayOdds = Double.parseDouble(awayOddsS);
-                double oddsDiff = Math.abs(homeOdds - awayOdds);
-                double minOdds = Math.min(homeOdds, awayOdds);
-
-                double FTtotalHomeScoredRecProb = Math.max(FTneutralHomeScoredRecProb, FThomeScoredRecProb);
-                double FTtotalAwayScoredRecProb = Math.max(FTneutralAwayScoredRecProb, FTawayScoredRecProb);
-                double FTtotalScoredRecProb = FTtotalHomeScoredRecProb + FTtotalAwayScoredRecProb;
-                double maxFTtotalScoredRecProb = Math.max(FTtotalHomeScoredRecProb, FTtotalAwayScoredRecProb);
-
-                double FTtotalHomeConcededRecProb = Math.max(FTneutralHomeConcededRecProb, FThomeConcededRecProb);
-                double FTtotalAwayConcededRecProb = Math.max(FTneutralAwayConcededRecProb, FTawayConcededRecProb);
-                double FTtotalConcededRecProb = FTtotalHomeConcededRecProb + FTtotalAwayConcededRecProb;
-                double maxFTtotalConcededRecProb = Math.max(FTtotalHomeConcededRecProb, FTtotalAwayConcededRecProb);
-
-                double FTtotalHomeExpectedRecProb = Math.min(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
-                double FTtotalAwayExpectedRecProb = Math.min(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
-                double FTtotalMinHomeExpectedRecProb = Math.min(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
-                double FTtotalMinAwayExpectedRecProb = Math.min(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
-                double FTtotalMinExpectedRecProb = FTtotalMinHomeExpectedRecProb + FTtotalMinAwayExpectedRecProb;
-
-                double HTtotalHomeScoredRecProb = Math.max(HTneutralHomeScoredRecProb, HThomeScoredRecProb);
-                double HTtotalAwayScoredRecProb = Math.max(HTneutralAwayScoredRecProb, HTawayScoredRecProb);
-                double HTtotalScoredRecProb = HTtotalHomeScoredRecProb + HTtotalAwayScoredRecProb;
-
-                double HTtotalHomeConcededRecProb = Math.max(HTneutralHomeConcededRecProb, HThomeConcededRecProb);
-                double HTtotalAwayConcededRecProb = Math.max(HTneutralAwayConcededRecProb, HTawayConcededRecProb);
-                double HTtotalConcededRecProb = HTtotalHomeConcededRecProb + HTtotalAwayConcededRecProb;
-
-                double HTtotalHomeExpectedRecProb = Math.min(HTtotalHomeScoredRecProb, HTtotalAwayConcededRecProb);
-                double HTtotalAwayExpectedRecProb = Math.min(HTtotalAwayScoredRecProb, HTtotalHomeConcededRecProb);
-
-                double totalHomeScoredAGoalExpectedRecProb = Math.max(neutralHomeScoredAGoalExpectedRecProb
-                        , homeScoredAGoalExpectedRecProb);
-                double totalAwayScoredAGoalExpectedRecProb = Math.max(neutralAwayScoredAGoalExpectedRecProb
-                        , awayScoredAGoalExpectedRecProb);
-
-                double totalTotalExpectedRecProb = Math.min(totalHomeScoredAGoalExpectedRecProb,
-                        totalAwayScoredAGoalExpectedRecProb);
-
-                double totalHomeFormRecProb = Math.max(neutralHomeFormRecProb, homeFormRecProb);
-                double totalAwayFormRecProb = Math.max(neutralAwayFormRecProb, awayFormRecProb);
-
-                double FTtotalHomeOneRecProb = Math.max(FTneutralHomeOneRecProb, FThomeOneRecProb);
-                double HTtotalHomeOneRecProb = Math.max(HTneutralHomeOneRecProb, HThomeOneRecProb);
-
-                double FTtotalHomeTwoRecProb = Math.max(neutralHomeTwoRecProb, homeTwoRecProb);
-                double FTtotalHomeThreeRecProb = Math.max(neutralHomeThreeRecProb, homeThreeRecProb);
-                double FTtotalHomeFourRecProb = Math.max(neutralHomeFourRecProb, homeFourRecProb);
-                double FTtotalAwayOneRecProb = Math.max(FTneutralAwayOneRecProb, FTawayOneRecProb);
-                double HTtotalAwayOneRecProb = Math.max(HTneutralAwayOneRecProb, HTawayOneRecProb);
-
-                double FTtotalAwayTwoRecProb = Math.max(neutralAwayTwoRecProb, awayTwoRecProb);
-                double FTtotalAwayThreeRecProb = Math.max(neutralAwayThreeRecProb, awayThreeRecProb);
-                double FTtotalAwayFourRecProb = Math.max(neutralAwayFourRecProb, awayFourRecProb);
-                double totalFormDiffRec = Math.abs(totalHomeFormRecProb - totalAwayFormRecProb);
-                double totalMaxForm = Math.max(totalHomeFormRecProb, totalAwayFormRecProb);
-                double totalMinForm = Math.min(totalHomeFormRecProb, totalAwayFormRecProb);
-
-                double FTtotalMinOne = Math.min(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
-                double HTtotalMinOne = Math.min(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
-
-                double FTtotalMinTwo = Math.min(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
-                double FTtotalMinThree = Math.min(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
-                double FTtotalMinFour = Math.min(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
-                double FTtotalMaxOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
-                double HTtotalMaxOne = Math.max(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
-
-                double totalMaxTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
-                double totalMaxThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
-                double totalMaxFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
-                double FTtotalOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
-                double HTtotalOne = Math.max(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
-
-                double HTtotalOneAvg = (HTtotalHomeOneRecProb + HTtotalAwayOneRecProb) / 2;
-
-                double FTtotalTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
-                double FTtotalThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
-                double FTtotalFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
-
-                double FTtotalTotalExpectedProb = (FTtotalHomeExpectedRecProb + FTtotalAwayExpectedRecProb);
-
-                double HTtotalTotalExpectedProb = (HTtotalHomeExpectedRecProb + HTtotalAwayExpectedRecProb);
-
-                double homeFormOdds = totalHomeFormRecProb / homeOdds;
-                double awayFormOdds = totalAwayFormRecProb / awayOdds;
-                double maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
-                double formOddsDiff = (homeFormOdds - awayFormOdds);
-
-
-                if (FTtotalMinExpectedRecProb > 1.4999 && FTtotalMinOne > 0.89999) {
-
-                    betThis = 0.5;
-                }
-
-                if (FTtotalMinExpectedRecProb > 2.4999 && FTtotalMinTwo > 0.8499999) {
-
-                    betThis = 1.5;
-                }
-
-                if (FTtotalMinExpectedRecProb > 3.4999 && FTtotalMinThree > 0.79999) {
-
-                    betThis = 2.5;
-                }
-
-
-                if (FTtotalMinExpectedRecProb > 4.49999 && FTtotalMinFour > 0.749999) {
-
-                    betThis = 3.5;
-                }
-
-
-
-                if (HTtotalMinOne < 0.7)
-                    continue;
-
-
-                if (HTtotalMinOne > 0.79999 && (FTtotalMinHomeExpectedRecProb > 1.49999 || FTtotalMinAwayExpectedRecProb > 1.49999) && !htBetThis.equals("NEVER"))
-                    htBetThis = "YES";
-
-
-
-
-                if (htBetThis.contentEquals(""))
-                    htBetThis = "NEVER";
-
-
-                if (neutralHomeForm.get(0).equals(0) && formOddsDiff > 0)
-                    continue;
-
-                if (neutralAwayForm.get(0).equals(0) && formOddsDiff < 0)
-                    continue;
-
-                if (neutralHomeForm.get(1).equals(0) && formOddsDiff > 0)
-                    htBetThis = "NEVER";
-
-                if (neutralAwayForm.get(1).equals(0) && formOddsDiff < 0)
-                    htBetThis = "NEVER";
-
-                if (neutralHomeForm.get(2).equals(0) && formOddsDiff > 0)
-                    htBetThis = "NEVER";
-
-                if (neutralAwayForm.get(2).equals(0) && formOddsDiff < 0)
-                    htBetThis = "NEVER";
-
-
-                if ((totalHomeFormRecProb < totalAwayFormRecProb) && (homeOdds < awayOdds) && formOddsDiff < 1)
-                    continue;
-
-                if ((totalAwayFormRecProb < totalHomeFormRecProb) && (awayOdds < homeOdds) && formOddsDiff < 1)
-                    continue;
-
-
-                if (league2.contains("Ireland Leinster Senior")
-                        || league2.contains("Israel C League")
-                        || league2.contains("Thai Division 1 League")
-                        || league2.contains("Russia Division 2")
-                        || league2.contains("Mexico Segunda")
-                        || league2.contains("Conference")
-                        || league2.contains("Germany Regionalliga")
-                        || league2.contains("Argentina Prim C")
-                        || league2.contains("Swiss")
-                        || league2.contains("Friendly")
-                        || league2.contains("Women")
-                        || league2.contains("women")
-                        || league2.contains("Feminines")
-                        || league2.contains("WE League")
-                        || league2.contains("Frauen")
-                        || league2.contains("Woman")
-                        || league2.contains("Femenil")
-                        || league2.contains("Ladies")
-                        || league2.contains("Rwanda")
-                        || league2.contains("Damallsvenskan")
-                        || league2.contains("WPL")) {
-                    htBetThis = "NEVER";
-                }
-
-
-
-                if (htBetThis.contains("YES") && betThis > 1)
-                    betThis = betThis - 1;
-
-
-                if (totalHomeFormRecProb == 0.0)
-                    totalHomeFormRecProb = 0.0001;
-
-                if (totalAwayFormRecProb == 0.0)
-                    totalAwayFormRecProb = 0.0001;
-                if (FTtotalMinHomeExpectedRecProb == 0.0)
-                    FTtotalMinHomeExpectedRecProb = 0.0001;
-                if (FTtotalMinAwayExpectedRecProb == 0.0)
-                    FTtotalMinAwayExpectedRecProb = 0.0001;
-
-                if (betThis == 0.0 || betThis < 0)
-                    continue;
-
-//                if (formOddsDiff < 0) {
-//                    continue;
-//                }
-
-//                if (minOdds > 1.89999 && betThis == 0.5 && htBetThis.equals("YES" +
-//                        ""))
-//                    htBetThis = "NEVER";
-
-                if (betThis == 0.5 && htBetThis.equals("NEVER") && (formOddsDiff < 1 && formOddsDiff > 1))
-                    continue;
-
-                if(minOdds > 1.7999 && formOddsDiff < 1)
-                    continue;
-
-                if(totalMinForm > 1.49999  && formOddsDiff < 1)
-                    continue;
-
-                if (FTtotalMinOne < 0.9 && formOddsDiff < 1)
-                    continue;
-
-
-                if (totalMaxForm < 1.5 && formOddsDiff < 1)
-                    continue;
-
-                if (
-
-                    // leagueGameHome > 0 && leagueGameAway > 0
-                        true
-
-                ) {
-                    myWriter.write(date + " " + time);
-                    myWriter.write(",");
-                    myWriter.write(homeName);
-                    myWriter.write(",");
-                    myWriter.write(Double.toString(totalHomeFormRecProb).substring(0, 4));
-                    myWriter.write(",");
-                    myWriter.write(awayName);
-                    myWriter.write(",");
-                    myWriter.write(Double.toString(totalAwayFormRecProb).substring(0, 4));
-                    myWriter.write(",");
-                    myWriter.write(Double.toString(betThis));
-                    myWriter.write(",");
-                    myWriter.write(htBetThis);
-//                    myWriter.write(",");
-//                    if (tier == 1)
-//                        myWriter.write("Tier -> 1 (100% Max Bet)");
-//                    if (tier == 2)
-//                        myWriter.write("Tier -> 2 (20% Max Bet)");
-//                    if (tier == 3)
-//                        myWriter.write("Tier -> 3 (10% Max Bet)");
-//                    if (tier == 4)
-//                        myWriter.write("Tier -> 4 (5% Max Bet)");
-                    myWriter.write(",");
-                    myWriter.write(link);
-
-                    myWriter.write(System.lineSeparator()); // new line
-
-                    System.out.println();
-
-                    // System.out.println(link);
-                    System.out.println(date + " " + time);
-                    try {
-                        System.out.format("|%-25s|", league2.substring(0, 24));
-                    } catch (Exception e) {
-                        System.out.format("|%-25s|", league2);
-                    }
-                    System.out.format("|%-25s|", homeName);
-                    System.out.format("|%-25s|", awayName);
-                    System.out.format("|%-25s|", "");
-                    System.out.println();
-                    System.out.format("|%-25s|", "Form");
-                    System.out.format("|%-25s|", Double.toString(totalHomeFormRecProb).substring(0, 4));
-                    System.out.format("|%-25s|", Double.toString(totalAwayFormRecProb).substring(0, 4));
-                    System.out.format("|%-25s|", Double.toString(totalFormDiffRec).substring(0, 4));
-                    System.out.println();
-                    System.out.format("|%-25s|", "Odds");
-                    System.out.format("|%-25s|", homeOdds);
-                    System.out.format("|%-25s|", awayOdds);
-                    System.out.format("|%-25s|", Double.toString(formOddsDiff).substring(0, 4));
-                    System.out.println();
-//					System.out.format("|%-25s|", "Form/Odds");
-//					System.out.format("|%-25s|", Double.toString(homeFormOdds).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(awayFormOdds).substring(0, 4));
-//					System.out.format("|%-25s|", "");
-//					System.out.println();
-                    System.out.format("|%-25s|", "FT Goals");
-                    System.out.format("|%-25s|", FThomeScore);
-                    System.out.format("|%-25s|", FTawayScore);
-                    System.out.format("|%-25s|", FTScore);
-                    System.out.println();
-                    System.out.format("|%-25s|", "HT Goals");
-                    System.out.format("|%-25s|", HThomeScore);
-                    System.out.format("|%-25s|", HTawayScore);
-                    System.out.format("|%-25s|", HTScore);
-                    System.out.println();
-//					System.out.format("|%-25s|", "Game Data");
-//					System.out.format("|%-25s|", homeGoals.size());
-//					System.out.format("|%-25s|", awayGoals.size());
-//					System.out.format("|%-25s|", "");
-//					System.out.println();
-                    System.out.format("|%-25s|", "FT Expected Score");
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinHomeExpectedRecProb).substring(0, 4));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinAwayExpectedRecProb).substring(0, 4));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinExpectedRecProb).substring(0, 4));
-                    System.out.println();
-//					System.out.format("|%-25s|", "FT Expected Scoring");
-//					System.out.format("|%-25s|", Double.toString(FTtotalHomeScoredRecProb).substring(0, 3));
-//					System.out.format("|%-25s|", Double.toString(FTtotalAwayScoredRecProb).substring(0, 3));
-//					System.out.format("|%-25s|", Double.toString(FTtotalScoredRecProb).substring(0, 3));
-//					System.out.println();
-//					System.out.format("|%-25s|", "FT Expected Defending");
-//					System.out.format("|%-25s|", Double.toString(FTtotalHomeConcededRecProb).substring(0, 3));
-//					System.out.format("|%-25s|", Double.toString(FTtotalAwayConcededRecProb).substring(0, 3));
-//					System.out.format("|%-25s|", Double.toString(FTtotalConcededRecProb).substring(0, 3));
-//					System.out.println();
-//					System.out.format("|%-25s|", "HT Expected Score");
-//					System.out.format("|%-25s|", Double.toString(HTtotalHomeExpectedRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalAwayExpectedRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalTotalExpectedProb).substring(0, 4));
-//					System.out.println();
-//					System.out.format("|%-25s|", "HT Expected Scoring");
-//					System.out.format("|%-25s|", Double.toString(HTtotalHomeScoredRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalAwayScoredRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalScoredRecProb).substring(0, 4));
-//					System.out.println();
-//					System.out.format("|%-25s|", "HT Expected Defending");
-//					System.out.format("|%-25s|", Double.toString(HTtotalHomeConcededRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalAwayConcededRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(HTtotalConcededRecProb).substring(0, 4));
-//					System.out.println();
-//					System.out.format("|%-25s|", "Score Prob");
-//					System.out.format("|%-25s|", Double.toString(totalHomeScoredAGoalExpectedRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(totalAwayScoredAGoalExpectedRecProb).substring(0, 4));
-//					System.out.format("|%-25s|", Double.toString(totalTotalExpectedRecProb).substring(0, 4));
-//					System.out.println();
-                    System.out.format("|%-25s|", "FT One Prob");
-                    System.out.format("|%-25s|", Double.toString(FTtotalHomeOneRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalAwayOneRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinOne).substring(0, 3));
-                    System.out.println();
-                    System.out.format("|%-25s|", "FT Two Prob");
-                    System.out.format("|%-25s|", Double.toString(FTtotalHomeTwoRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalAwayTwoRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinTwo).substring(0, 3));
-                    System.out.println();
-                    System.out.format("|%-25s|", "FT Three Prob");
-                    System.out.format("|%-25s|", Double.toString(FTtotalHomeThreeRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalAwayThreeRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinThree).substring(0, 3));
-                    System.out.println();
-                    System.out.format("|%-25s|", "FT Four Prob");
-                    System.out.format("|%-25s|", Double.toString(FTtotalHomeFourRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalAwayFourRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(FTtotalMinFour).substring(0, 3));
-                    System.out.println();
-                    System.out.format("|%-25s|", "HT One Prob");
-                    System.out.format("|%-25s|", Double.toString(HTtotalHomeOneRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(HTtotalAwayOneRecProb).substring(0, 3));
-                    System.out.format("|%-25s|", Double.toString(HTtotalOneAvg).substring(0, 3));
-                    System.out.println();
-
-                    System.out.format("|%-25s|", "BetThis -> " + betThis);
-                    System.out.format("|%-25s|", "HT BetThis -> " + htBetThis);
-//                    if (tier == 1)
-//                        System.out.format("|%-25s|", "Tier -> 1 (100% Max Bet)");
-//                    if (tier == 2)
-//                        System.out.format("|%-25s|", "Tier -> 2 (20% Max Bet)");
-//                    if (tier == 3)
-//                        System.out.format("|%-25s|", "Tier -> 3 (10% Max Bet)");
-//                    if (tier == 4)
-//                        System.out.format("|%-25s|", "Tier -> 4 (5% Max Bet)");
-
-                    System.out.println();
-
-                } else
-                    continue;
-
-            } catch (Exception e) {
-                // System.out.println(e);
-
-//				myWriter.close();
-//
-//				driver.close();
-//				driver.quit();
-
-            }
-
-            continue;
-            // end link while
-        }
-
-        // closing the browser
-        myWriter.close();
-
-        driver.close();
-        driver.quit();
-
-        // end main
-    }
-
-    public ArrayList<String> fixtureGrab(WebDriver driver, int i, int h, ArrayList<String> links, WebDriverWait wait,
-                                         int startIndex, int endIndex, String day) {
-        driver.get("https://www.goaloo.mobi/football/schedule-" + day + "");
-        	//driver.get("https://www.goaloo.mobi/football/");
-//
-        driver.findElement(By.xpath("//*[@id='fHead']/div[1]/span[2]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='displayZone']")));
-        driver.findElement(By.xpath("//*[@id='displayZone']")).click();
-        driver.findElement(By.xpath("//*[@id='setting_popSel']/ul/li[8]")).click();
-        driver.navigate().refresh();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hideCountBar']/span[2]")));
-        driver.findElement(By.xpath("//*[@id='hideCountBar']/span[2]")).click();
-
-        i = startIndex;
-
-        while (true && i < endIndex) {
-            try {
-
-                h = i + 1;
-                String postponedCanceledFT;
-                String league;
-
-                // postponedCanceledFT =
-                // driver.findElement(By.xpath("//*[@id='gameList']/div["+h+"]/div[3]/i")).getText();
-//				 league =
-//				 driver.findElement(By.xpath("//*[@id='gameList']/div["+h+"]/div[2]/div[1]/span[2]")).getText();
-//
-////				// System.out.println(postponedCanceledFT);
-//////	 				if (postponedCanceledFT.equals("Postp.") || postponedCanceledFT.equals("Canceled")) {
-//////	 					i++;
-//////	 					continue;
-////
-//	 			if (
-//	 						league.contains("Youth") ||
-//	 						league.contains("RUS YthC") ||
-//	 						league.contains("U17") ||
-//	 						league.contains("U18") ||
-//	 						league.contains("U19") ||
-//	 						league.contains("U20") ||
-//							league.contains("Finland K")
-//
-//
-//
-//	 						)
-//	 				{
-//	 					i++;
-//	 					continue;
-//	 				}
-//	 				else {
-
-                String fixture = driver.findElement(By.xpath("//*[@id='gameList']/div[" + h + "]")).getAttribute("id");
-
-                if (fixture.contains("ad")) {
-                    i++;
-                    continue;
-                }
-
-                if (fixture.equals("")) {
-                    i++;
-                    continue;
-                }
-
-                // System.out.println("fixture = " + fixture);
-
-                String[] fixtureSplit = fixture.split("_");
-
-                links.add("https://www.goaloo.mobi/football/match/h2h-" + fixtureSplit[1]);
-
-                i++;
-                // }
-            } catch (Exception e) {
-                // System.out.println(e);
-                System.out.println("# links = " + links.size());
-                break;
-            }
-        }
-
-        return links;
-
-    }
-
-    public ArrayList<String> scheduleGrab(WebDriver driver, int i, int h, ArrayList<String> links, String schedule,
-                                          int week) {
-
-        driver.get("http://www.goaloo.mobi/football/database/schedule-" + schedule + "?round=" + week);
-
-        while (true) {
-
-            try {
-
-                h = i + 1;
-
-                String scheduleTb = driver.findElement(By.xpath("//*[@id='scheduleTb']/tbody/tr[" + h + "]"))
-                        .getAttribute("href");
-                String[] scheduleSplit = scheduleTb.split("-");
-
-//
-//			    System.out.println("scheduleSplit[0] = " + scheduleSplit[0]);
-//			    System.out.println("scheduleSplit[1] = " + scheduleSplit[1]);
-
-                if (scheduleTb.equals(null))
-                    i++;
-                else
-                    links.add("https://www.goaloo.mobi/football/match/h2h-" + scheduleSplit[1]);
-                {
-                    i++;
-                }
-
-            } catch (Exception e) {
-                // System.out.println(e);
-                System.out.println("# links = " + links.size());
-                break;
-
-            }
-        }
-
-        return links;
-
-    }
-    // end class
+//                            }
+
+							matchResult = driver.findElement(By.xpath(
+									"(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4])[" + i + "]"))
+									.getAttribute("data-cls");
+
+							// System.out.println("away match result = " + matchResult);
+
+							FTawayGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4]/span[1])["
+											+ i + "]"))
+									.getText());
+
+							// System.out.println("away goal = " + awayGoalTemp);
+
+							FTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4]/span[2])["
+											+ i + "]"))
+									.getText());
+
+							HTawayGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[3]/span[1])["
+											+ i + "]"))
+									.getText());
+
+							// System.out.println("away goal = " + awayGoalTemp);
+
+							HTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[3]/span[2])["
+											+ i + "]"))
+									.getText());
+
+							if (matchResult.equals("o-winBGp")) {
+								awayForm.add(3);
+								if (FTawayGoalTemp > FTawayOppGoalTemp) {
+									FTawayGoals.add(FTawayGoalTemp);
+									FTawayOppGoals.add(FTawayOppGoalTemp);
+									HTawayGoals.add(HTawayGoalTemp);
+									HTawayOppGoals.add(HTawayOppGoalTemp);
+								} else {
+
+									FTawayGoals.add(FTawayOppGoalTemp);
+									FTawayOppGoals.add(FTawayGoalTemp);
+									HTawayGoals.add(HTawayOppGoalTemp);
+									HTawayOppGoals.add(HTawayGoalTemp);
+
+								}
+
+							} else if (matchResult.equals("o-voidBGp")) {
+								awayForm.add(1);
+								FTawayGoals.add(FTawayGoalTemp);
+								FTawayOppGoals.add(FTawayOppGoalTemp);
+								HTawayGoals.add(HTawayGoalTemp);
+								HTawayOppGoals.add(HTawayOppGoalTemp);
+
+							} else if (matchResult.equals("o-lossBGp")) {
+								awayForm.add(0);
+								if (FTawayGoalTemp > FTawayOppGoalTemp) {
+									FTawayGoals.add(FTawayOppGoalTemp);
+									FTawayOppGoals.add(FTawayGoalTemp);
+								} else {
+									FTawayGoals.add(FTawayGoalTemp);
+									FTawayOppGoals.add(FTawayOppGoalTemp);
+								}
+								HTawayGoals.add(HTawayGoalTemp);
+								HTawayOppGoals.add(HTawayOppGoalTemp);
+							}
+
+							i++;
+
+						} catch (Exception e) {
+							// System.out.println("no more away goals");
+							// System.out.println(e);
+							break;
+						}
+					}
+
+					ArrayList<Integer> FToneCount = new ArrayList<Integer>();
+					ArrayList<Integer> FTtwoCount = new ArrayList<Integer>();
+					ArrayList<Integer> FTthreeCount = new ArrayList<Integer>();
+					ArrayList<Integer> FTfourCount = new ArrayList<Integer>();
+					ArrayList<Integer> homeScoredAGoal = new ArrayList<Integer>();
+					ArrayList<Integer> awayScoredAGoal = new ArrayList<Integer>();
+					ArrayList<Integer> FThomeScored = new ArrayList<Integer>();
+					ArrayList<Integer> FTawayScored = new ArrayList<Integer>();
+					ArrayList<Integer> FThomeConceded = new ArrayList<Integer>();
+					ArrayList<Integer> FTawayConceded = new ArrayList<Integer>();
+					ArrayList<Integer> homeConcededAGoal = new ArrayList<Integer>();
+					ArrayList<Integer> awayConcededAGoal = new ArrayList<Integer>();
+
+					ArrayList<Integer> HToneCount = new ArrayList<Integer>();
+					ArrayList<Integer> HThomeScored = new ArrayList<Integer>();
+					ArrayList<Integer> HTawayScored = new ArrayList<Integer>();
+					ArrayList<Integer> HThomeConceded = new ArrayList<Integer>();
+					ArrayList<Integer> HTawayConceded = new ArrayList<Integer>();
+
+					float FToneCountRecAvg = 0, FToneCountRegAvg = 0, FTtwoCountRecAvg = 0, FTtwoCountRegAvg = 0,
+							FTthreeCountRecAvg = 0, FTthreeCountRegAvg = 0, FTfourCountRecAvg = 0,
+							FTfourCountRegAvg = 0, FThomeScoredRecAvg = 0, FThomeScoredRegAvg = 0,
+							FTawayScoredRecAvg = 0, FTawayScoredRegAvg = 0, FThomeConcededRecAvg = 0,
+							FThomeConcededRegAvg = 0, FTawayConcededRecAvg = 0, FTawayConcededRegAvg = 0,
+							homeFormRecAvg = 0, awayFormRecAvg = 0,
+
+							HToneCountRecAvg = 0, HToneCountRegAvg = 0, HThomeScoredRecAvg = 0, HThomeScoredRegAvg = 0,
+							HTawayScoredRecAvg = 0, HTawayScoredRegAvg = 0, HThomeConcededRecAvg = 0,
+							HThomeConcededRegAvg = 0, HTawayConcededRecAvg = 0, HTawayConcededRegAvg = 0,
+
+							homeFormRegAvg = 0, awayFormRegAvg = 0, homeScoredAGoalRecAvg = 0,
+							awayScoredAGoalRecAvg = 0, homeConcededAGoalRecAvg = 0, awayConcededAGoalRecAvg = 0,
+							homeScoredAGoalRegAvg = 0, awayScoredAGoalRegAvg = 0, homeConcededAGoalRegAvg = 0,
+							awayConcededAGoalRegAvg = 0;
+
+					for (i = 0; i < homeForm.size(); i++) {
+
+						FThomeGoalTemp = FThomeGoals.get(i);
+						FThomeOppGoalTemp = FThomeOppGoals.get(i);
+
+						FThomeTotal = FThomeGoalTemp + FThomeOppGoalTemp;
+
+						HThomeGoalTemp = HThomeGoals.get(i);
+						HThomeOppGoalTemp = HThomeOppGoals.get(i);
+
+						HThomeTotal = HThomeGoalTemp + HThomeOppGoalTemp;
+
+						if (FThomeGoalTemp > 0)
+							homeScoredAGoal.add(1);
+						else
+							homeScoredAGoal.add(0);
+
+						if (FThomeOppGoalTemp > 0)
+							homeConcededAGoal.add(1);
+						else
+							homeConcededAGoal.add(0);
+
+						if (HThomeTotal == 0) {
+							HToneCount.add(0);
+
+						}
+						if (HThomeTotal > 0) {
+							HToneCount.add(1);
+
+						}
+
+						if (FThomeTotal == 0) {
+							FToneCount.add(0);
+							FTtwoCount.add(0);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FThomeTotal == 1) {
+							FToneCount.add(1);
+							FTtwoCount.add(0);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FThomeTotal == 2) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FThomeTotal == 3) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(1);
+							FTfourCount.add(0);
+						}
+
+						if (FThomeTotal >= 4) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(1);
+							FTfourCount.add(1);
+						}
+
+					}
+
+					float sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, sum6 = 0, sum7 = 0, sum8 = 0, sum9 = 0,
+							sum10 = 0, sum11 = 0, sum12 = 0, sum13 = 0;
+
+					ArrayList<Float> homeFormRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> awayFormRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FToneCountRecAvgArr = new ArrayList<Float>();
+
+					ArrayList<Float> FTtwoCountRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FTthreeCountRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FTfourCountRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FThomeScoredRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FTawayScoredRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FThomeConcededRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> FTawayConcededRecAvgArr = new ArrayList<Float>();
+
+					ArrayList<Float> homeScoredAGoalRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> awayScoredAGoalRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> homeConcededAGoalRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> awayConcededAGoalRecAvgArr = new ArrayList<Float>();
+
+					ArrayList<Float> HToneCountRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> HThomeScoredRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> HTawayScoredRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> HThomeConcededRecAvgArr = new ArrayList<Float>();
+					ArrayList<Float> HTawayConcededRecAvgArr = new ArrayList<Float>();
+
+					for (i = 0; i < homeForm.size(); i++) {
+
+						sum1 += FToneCount.get(i);
+						FToneCountRecAvgArr.add(sum1 / (i + 1));
+
+						sum2 += FTtwoCount.get(i);
+						FTtwoCountRecAvgArr.add(sum2 / (i + 1));
+
+						sum3 += FTthreeCount.get(i);
+						FTthreeCountRecAvgArr.add(sum3 / (i + 1));
+
+						sum4 += FTfourCount.get(i);
+						FTfourCountRecAvgArr.add(sum4 / (i + 1));
+
+						sum6 += FThomeGoals.get(i);
+						FThomeScoredRecAvgArr.add(sum6 / (i + 1));
+
+						sum7 += FThomeOppGoals.get(i);
+						FThomeConcededRecAvgArr.add(sum7 / (i + 1));
+
+						sum8 += homeScoredAGoal.get(i);
+						homeScoredAGoalRecAvgArr.add(sum8 / (i + 1));
+
+						sum9 += homeConcededAGoal.get(i);
+						homeConcededAGoalRecAvgArr.add(sum9 / (i + 1));
+
+						sum10 += homeForm.get(i);
+						homeFormRecAvgArr.add(sum10 / (i + 1));
+
+						sum11 += HThomeGoals.get(i);
+						HThomeScoredRecAvgArr.add(sum11 / (i + 1));
+
+						sum12 += HThomeOppGoals.get(i);
+						HThomeConcededRecAvgArr.add(sum12 / (i + 1));
+
+						sum13 += HToneCount.get(i);
+						HToneCountRecAvgArr.add(sum13 / (i + 1));
+
+					}
+
+					FToneCountRegAvg = sum1 / homeForm.size();
+
+					FTtwoCountRegAvg = sum2 / homeForm.size();
+					FTthreeCountRegAvg = sum3 / homeForm.size();
+					FTfourCountRegAvg = sum4 / homeForm.size();
+					FThomeScoredRegAvg = sum6 / homeForm.size();
+					FThomeConcededRegAvg = sum7 / homeForm.size();
+
+					FThomeScoredRegAvg = sum6 / homeForm.size();
+					FThomeConcededRegAvg = sum7 / homeForm.size();
+
+					homeScoredAGoalRegAvg = sum8 / homeForm.size();
+					homeConcededAGoalRegAvg = sum9 / homeForm.size();
+					homeFormRegAvg = sum10 / homeForm.size();
+
+					HThomeScoredRegAvg = sum11 / homeForm.size();
+					HThomeConcededRegAvg = sum12 / homeForm.size();
+					HToneCountRegAvg = sum13 / homeForm.size();
+
+					sum1 = 0;
+					sum2 = 0;
+					sum3 = 0;
+					sum4 = 0;
+					sum5 = 0;
+					sum6 = 0;
+					sum7 = 0;
+					sum8 = 0;
+					sum9 = 0;
+					sum10 = 0;
+					sum11 = 0;
+					sum12 = 0;
+					sum13 = 0;
+
+					for (i = 0; i < homeForm.size(); i++) {
+
+						sum1 += FToneCountRecAvgArr.get(i);
+
+						sum2 += FTtwoCountRecAvgArr.get(i);
+						sum3 += FTthreeCountRecAvgArr.get(i);
+						sum4 += FTfourCountRecAvgArr.get(i);
+						sum6 += FThomeScoredRecAvgArr.get(i);
+						sum7 += FThomeConcededRecAvgArr.get(i);
+
+						sum8 += homeScoredAGoalRecAvgArr.get(i);
+						sum9 += homeConcededAGoalRecAvgArr.get(i);
+						sum10 += homeFormRecAvgArr.get(i);
+
+						sum11 += HThomeScoredRecAvgArr.get(i);
+						sum12 += HThomeConcededRecAvgArr.get(i);
+						sum13 += HToneCountRecAvgArr.get(i);
+
+					}
+
+					FToneCountRecAvg = sum1 / homeForm.size();
+
+					FTtwoCountRecAvg = sum2 / homeForm.size();
+					FTthreeCountRecAvg = sum3 / homeForm.size();
+					FTfourCountRecAvg = sum4 / homeForm.size();
+					FThomeScoredRecAvg = sum6 / homeForm.size();
+					FThomeConcededRecAvg = sum7 / homeForm.size();
+
+					homeScoredAGoalRecAvg = sum8 / homeForm.size();
+					homeConcededAGoalRecAvg = sum9 / homeForm.size();
+					homeFormRecAvg = sum10 / homeForm.size();
+
+					HThomeScoredRecAvg = sum11 / homeForm.size();
+					HThomeConcededRecAvg = sum12 / homeForm.size();
+					HToneCountRecAvg = sum13 / homeForm.size();
+
+					FThomeOneRecProb = FToneCountRecAvg;
+
+					HThomeOneRecProb = HToneCountRecAvg;
+					HThomeScoredRecProb = HThomeScoredRecAvg;
+					HThomeConcededRecProb = HThomeConcededRecAvg;
+					HThomeOneRegProb = HToneCountRegAvg;
+					HThomeScoredRegProb = HThomeScoredRegAvg;
+					HThomeConcededRegProb = HThomeConcededRegAvg;
+
+					FThomeTwoRecProb = FTtwoCountRecAvg;
+					FThomeThreeRecProb = FTthreeCountRecAvg;
+					FThomeFourRecProb = FTfourCountRecAvg;
+					FThomeOneRegProb = FToneCountRegAvg;
+					FThomeTwoRegProb = FTtwoCountRegAvg;
+					FThomeThreeRegProb = FTthreeCountRegAvg;
+					FThomeFourRegProb = FTfourCountRegAvg;
+					homeFormRegProb = homeFormRegAvg;
+					homeFormRecProb = homeFormRecAvg;
+					FThomeScoredRegProb = FThomeScoredRegAvg;
+					FThomeScoredRecProb = FThomeScoredRecAvg;
+					FThomeConcededRegProb = FThomeConcededRegAvg;
+					FThomeConcededRecProb = FThomeConcededRecAvg;
+					homeScoredAGoalRegProb = homeScoredAGoalRegAvg;
+					float homeScoredAGoalRecProb = homeScoredAGoalRecAvg;
+					homeConcededAGoalRegProb = homeConcededAGoalRegAvg;
+					float homeConcededAGoalRecProb = homeConcededAGoalRecAvg;
+
+					FToneCount.clear();
+					FTtwoCount.clear();
+					FTthreeCount.clear();
+					FTfourCount.clear();
+
+					HToneCount.clear();
+
+					for (i = 0; i < awayForm.size(); i++) {
+
+						FTawayGoalTemp = FTawayGoals.get(i);
+						FTawayOppGoalTemp = FTawayOppGoals.get(i);
+
+						FTawayTotal = FTawayGoalTemp + FTawayOppGoalTemp;
+
+						HTawayGoalTemp = HTawayGoals.get(i);
+						HTawayOppGoalTemp = HTawayOppGoals.get(i);
+
+						HTawayTotal = HTawayGoalTemp + HTawayOppGoalTemp;
+
+						if (FTawayGoalTemp > 0)
+							awayScoredAGoal.add(1);
+						else
+							awayScoredAGoal.add(0);
+
+						if (FTawayOppGoalTemp > 0)
+							awayConcededAGoal.add(1);
+						else
+							awayConcededAGoal.add(0);
+
+						if (HTawayTotal == 0) {
+							HToneCount.add(0);
+
+						}
+
+						if (HTawayTotal > 0) {
+							HToneCount.add(1);
+
+						}
+
+						if (FTawayTotal == 0) {
+							FToneCount.add(0);
+							FTtwoCount.add(0);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FTawayTotal == 1) {
+							FToneCount.add(1);
+							FTtwoCount.add(0);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FTawayTotal == 2) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(0);
+							FTfourCount.add(0);
+						}
+
+						if (FTawayTotal == 3) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(1);
+							FTfourCount.add(0);
+						}
+
+						if (FTawayTotal >= 4) {
+							FToneCount.add(1);
+							FTtwoCount.add(1);
+							FTthreeCount.add(1);
+							FTfourCount.add(1);
+						}
+
+					}
+
+					sum1 = 0;
+					sum2 = 0;
+					sum3 = 0;
+					sum4 = 0;
+					sum5 = 0;
+					sum6 = 0;
+					sum7 = 0;
+					sum8 = 0;
+					sum9 = 0;
+					sum10 = 0;
+					sum11 = 0;
+					sum12 = 0;
+					sum13 = 0;
+
+					FToneCountRecAvgArr.clear();
+					FTtwoCountRecAvgArr.clear();
+					FTthreeCountRecAvgArr.clear();
+					FTfourCountRecAvgArr.clear();
+
+					HToneCountRecAvgArr.clear();
+
+					for (i = 0; i < awayForm.size(); i++) {
+
+						sum1 += FToneCount.get(i);
+						FToneCountRecAvgArr.add(sum1 / (i + 1));
+
+						sum2 += FTtwoCount.get(i);
+						FTtwoCountRecAvgArr.add(sum2 / (i + 1));
+
+						sum3 += FTthreeCount.get(i);
+						FTthreeCountRecAvgArr.add(sum3 / (i + 1));
+
+						sum4 += FTfourCount.get(i);
+						FTfourCountRecAvgArr.add(sum4 / (i + 1));
+
+						sum6 += FTawayGoals.get(i);
+						FTawayScoredRecAvgArr.add(sum6 / (i + 1));
+
+						sum7 += FTawayOppGoals.get(i);
+						FTawayConcededRecAvgArr.add(sum7 / (i + 1));
+
+						sum8 += awayScoredAGoal.get(i);
+						awayScoredAGoalRecAvgArr.add(sum8 / (i + 1));
+
+						sum9 += awayConcededAGoal.get(i);
+						awayConcededAGoalRecAvgArr.add(sum9 / (i + 1));
+
+						sum10 += awayForm.get(i);
+						awayFormRecAvgArr.add(sum10 / (i + 1));
+
+						sum11 += HTawayGoals.get(i);
+						HTawayScoredRecAvgArr.add(sum11 / (i + 1));
+
+						sum12 += HTawayOppGoals.get(i);
+						HTawayConcededRecAvgArr.add(sum12 / (i + 1));
+
+						sum13 += HToneCount.get(i);
+						HToneCountRecAvgArr.add(sum13 / (i + 1));
+
+					}
+
+					HToneCountRecAvg = 0;
+					HToneCountRegAvg = 0;
+					HTawayScoredRegAvg = sum11 / awayForm.size();
+					HTawayConcededRegAvg = sum12 / awayForm.size();
+
+					FToneCountRecAvg = 0;
+					FTtwoCountRecAvg = 0;
+					FTthreeCountRecAvg = 0;
+					FTfourCountRecAvg = 0;
+					FToneCountRegAvg = sum1 / awayForm.size();
+					FTtwoCountRegAvg = sum2 / awayForm.size();
+					FTthreeCountRegAvg = sum3 / awayForm.size();
+					FTfourCountRegAvg = sum4 / awayForm.size();
+					FTawayScoredRegAvg = sum6 / awayForm.size();
+					FTawayConcededRegAvg = sum7 / awayForm.size();
+					awayScoredAGoalRegAvg = sum8 / awayForm.size();
+					awayConcededAGoalRegAvg = sum9 / awayForm.size();
+					awayFormRegAvg = sum10 / awayForm.size();
+					HTawayScoredRegAvg = sum11 / awayForm.size();
+					HTawayConcededRegAvg = sum12 / awayForm.size();
+					HToneCountRegAvg = sum13 / HToneCount.size();
+
+					sum1 = 0;
+					sum2 = 0;
+					sum3 = 0;
+					sum4 = 0;
+					sum5 = 0;
+					sum6 = 0;
+					sum7 = 0;
+					sum8 = 0;
+					sum9 = 0;
+					sum10 = 0;
+					sum11 = 0;
+					sum12 = 0;
+					sum13 = 0;
+
+					for (i = 0; i < awayForm.size(); i++) {
+
+						sum1 += FToneCountRecAvgArr.get(i);
+
+						sum2 += FTtwoCountRecAvgArr.get(i);
+						sum3 += FTthreeCountRecAvgArr.get(i);
+						sum4 += FTfourCountRecAvgArr.get(i);
+						sum6 += FTawayScoredRecAvgArr.get(i);
+						sum7 += FTawayConcededRecAvgArr.get(i);
+						sum8 += awayScoredAGoalRecAvgArr.get(i);
+						sum9 += awayConcededAGoalRecAvgArr.get(i);
+						sum10 += awayFormRecAvgArr.get(i);
+
+						sum11 += HTawayScoredRecAvgArr.get(i);
+						sum12 += HTawayConcededRecAvgArr.get(i);
+						sum13 += HToneCountRecAvgArr.get(i);
+
+					}
+
+					FToneCountRecAvg = sum1 / awayForm.size();
+
+					FTtwoCountRecAvg = sum2 / awayForm.size();
+					FTthreeCountRecAvg = sum3 / awayForm.size();
+					FTfourCountRecAvg = sum4 / awayForm.size();
+					FTawayScoredRecAvg = sum6 / awayForm.size();
+					FTawayConcededRecAvg = sum7 / awayForm.size();
+					awayScoredAGoalRecAvg = sum8 / awayForm.size();
+					awayConcededAGoalRecAvg = sum9 / awayForm.size();
+					awayFormRecAvg = sum10 / awayForm.size();
+
+					HTawayScoredRecAvg = sum11 / awayForm.size();
+					HTawayConcededRecAvg = sum12 / awayForm.size();
+					HToneCountRecAvg = sum13 / awayForm.size();
+
+					FTawayOneRecProb = FToneCountRecAvg;
+
+					HTawayOneRecProb = HToneCountRecAvg;
+					HTawayScoredRecProb = HTawayScoredRecAvg;
+					HTawayConcededRecProb = HTawayConcededRecAvg;
+					HTawayOneRegProb = HToneCountRegAvg;
+					HTawayScoredRegProb = HTawayScoredRegAvg;
+					HTawayConcededRegProb = HTawayConcededRegAvg;
+
+					FTawayTwoRecProb = FTtwoCountRecAvg;
+					FTawayThreeRecProb = FTthreeCountRecAvg;
+					FTawayFourRecProb = FTfourCountRecAvg;
+					FTawayOneRegProb = FToneCountRegAvg;
+					FTawayTwoRegProb = FTtwoCountRegAvg;
+					FTawayThreeRegProb = FTthreeCountRegAvg;
+					FTawayFourRegProb = FTfourCountRegAvg;
+					awayFormRegProb = awayFormRegAvg;
+					awayFormRecProb = awayFormRecAvg;
+					FTawayScoredRegProb = FTawayScoredRegAvg;
+					FTawayScoredRecProb = FTawayScoredRecAvg;
+					FTawayConcededRegProb = FTawayConcededRegAvg;
+					FTawayConcededRecProb = FTawayConcededRecAvg;
+
+					awayScoredAGoalRegProb = awayScoredAGoalRegAvg;
+					float awayScoredAGoalRecProb = awayScoredAGoalRecAvg;
+					awayConcededAGoalRegProb = awayConcededAGoalRegAvg;
+					float awayConcededAGoalRecProb = awayConcededAGoalRecAvg;
+
+					FThomeExpectedRecProb = (FThomeScoredRecProb + FTawayConcededRecProb) / 2;
+					FTawayExpectedRecProb = (FTawayScoredRecProb + FThomeConcededRecProb) / 2;
+					homeScoredAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
+					awayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
+					homeConcededAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
+					awayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
+					HThomeExpectedRecProb = (HThomeScoredRecProb + HTawayConcededRecProb) / 2;
+					HTawayExpectedRecProb = (HTawayScoredRecProb + HThomeConcededRecProb) / 2;
+					HTtotalExpectedRecProb = HThomeExpectedRecProb + HTawayExpectedRecProb;
+
+					if (neutral) {
+
+						neutralHomeFormRecProb = homeFormRecProb;
+						neutralAwayFormRecProb = awayFormRecProb;
+						FTneutralHomeScoredRecProb = FThomeScoredRecProb;
+						FTneutralAwayScoredRecProb = FTawayScoredRecProb;
+						FTneutralHomeConcededRecProb = FThomeConcededRecProb;
+						FTneutralAwayConcededRecProb = FTawayScoredRecProb;
+						FTneutralHomeExpectedRecProb = FThomeExpectedRecProb;
+						FTneutralAwayExpectedRecProb = FTawayExpectedRecProb;
+						FTneutralHomeOneRecProb = FThomeOneRecProb;
+						FTneutralHomeTwoRecProb = FThomeTwoRecProb;
+						FTneutralHomeThreeRecProb = FThomeThreeRecProb;
+						FTneutralHomeFourRecProb = FThomeFourRecProb;
+						FTneutralAwayOneRecProb = FTawayOneRecProb;
+						FTneutralAwayTwoRecProb = FTawayTwoRecProb;
+						FTneutralAwayThreeRecProb = FTawayThreeRecProb;
+						FTneutralAwayFourRecProb = FTawayFourRecProb;
+
+						neutralHomeFormRegProb = homeFormRegProb;
+						neutralAwayFormRegProb = awayFormRegProb;
+						FTneutralHomeScoredRegProb = FThomeScoredRegProb;
+						FTneutralAwayScoredRegProb = FTawayScoredRegProb;
+						FTneutralHomeConcededRegProb = FThomeConcededRegProb;
+						FTneutralAwayConcededRegProb = FTawayScoredRegProb;
+						FTneutralHomeExpectedRegProb = FThomeExpectedRegProb;
+						FTneutralAwayExpectedRegProb = FTawayExpectedRegProb;
+						FTneutralHomeOneRegProb = FThomeOneRegProb;
+						FTneutralHomeTwoRegProb = FThomeTwoRegProb;
+						FTneutralHomeThreeRegProb = FThomeThreeRegProb;
+						FTneutralHomeFourRegProb = FThomeFourRegProb;
+						FTneutralAwayOneRegProb = FTawayOneRegProb;
+						FTneutralAwayTwoRegProb = FTawayTwoRegProb;
+						FTneutralAwayThreeRegProb = FTawayThreeRegProb;
+						FTneutralAwayFourRegProb = FTawayFourRegProb;
+
+						neutralHomeScoredAGoalExpectedRegProb = homeScoredAGoalRecProb;
+						neutralAwayScoredAGoalExpectedRegProb = awayScoredAGoalRecProb;
+						neutralHomeConcededAGoalExpectedRegProb = homeConcededAGoalRecProb;
+						neutralAwayConcededAGoalExpectedRegProb = awayConcededAGoalRecProb;
+
+						neutralHomeScoredAGoalExpectedRecProb = homeScoredAGoalRecProb;
+						neutralAwayScoredAGoalExpectedRecProb = awayScoredAGoalRecProb;
+						neutralHomeConcededAGoalExpectedRecProb = homeConcededAGoalRecProb;
+						neutralAwayConcededAGoalExpectedRecProb = awayConcededAGoalRecProb;
+
+						FTneutralHomeGoals.addAll(FThomeGoals);
+						FTneutralAwayGoals.addAll(FTawayGoals);
+						FTneutralHomeOppGoals.addAll(FThomeOppGoals);
+						FTneutralAwayOppGoals.addAll(FTawayOppGoals);
+						neutralHomeForm.addAll(homeForm);
+						neutralAwayForm.addAll(awayForm);
+
+						HTneutralHomeScoredRecProb = HThomeScoredRecProb;
+						HTneutralAwayScoredRecProb = HTawayScoredRecProb;
+						HTneutralHomeConcededRecProb = HThomeConcededRecProb;
+						HTneutralAwayConcededRecProb = HTawayConcededRecProb;
+
+						HTneutralHomeExpectedRecProb = HThomeExpectedRecProb;
+						HTneutralAwayExpectedRecProb = HTawayExpectedRecProb;
+
+						HTneutralHomeOneRecProb = HThomeOneRecProb;
+						HTneutralAwayOneRecProb = HTawayOneRecProb;
+
+						HTneutralHomeScoredRegProb = HThomeScoredRegProb;
+						HTneutralAwayScoredRegProb = HTawayScoredRegProb;
+						HTneutralHomeConcededRegProb = HThomeConcededRegProb;
+						HTneutralAwayConcededRegProb = HTawayConcededRegProb;
+
+						HTneutralHomeExpectedRegProb = HThomeExpectedRegProb;
+						HTneutralAwayExpectedRegProb = HTawayExpectedRegProb;
+
+						HTneutralHomeOneRegProb = HThomeOneRegProb;
+						HTneutralAwayOneRegProb = HTawayOneRegProb;
+
+						HTneutralHomeGoals.addAll(HThomeGoals);
+						HTneutralAwayGoals.addAll(HTawayGoals);
+
+					}
+
+					neutral = false;
+
+				} // h/a for loop
+
+				if (neutralHomeForm.size() < 10 || neutralAwayForm.size() < 10)
+					continue;
+				double oddsBetThis = 0;
+				double systemBetThis = 0;
+
+				// get odds
+				// click odds tab
+				driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
+				// click 1x2 tab
+				driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[2]/a[1]")).click();
+				String homeMaxOddsS = "";
+				String awayMaxOddsS = "";
+
+				if(oddsOption.equals("Pre")) {
+				// grab home odds (min)
+				homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
+						.getText();
+
+				// grab away odds (min)
+				awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
+						.getText();
+				}
+				else if (oddsOption.equals("Live")) {
+				
+				homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[5]"))
+				.getText();
+
+		// grab away odds (min)
+				awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[7]"))
+				.getText();
+				}
+
+
+
+				float homeOdds = Float.parseFloat(homeMaxOddsS);
+				float awayOdds = Float.parseFloat(awayMaxOddsS);
+//				float homeOdds = Float.parseFloat(homePreOddsS);
+//				float awayOdds = Float.parseFloat(awayPreOddsS);
+
+
+//				float homeAvgMaxOdds = ls.avg(homeAvgOdds, homeMaxOdds);
+//				float awayAvgMaxOdds = ls.avg(awayAvgOdds, awayMaxOdds);
+
+				// float oddsDiff = Math.abs(homeOdds - awayOdds);
+			//	float minMinOdds = Math.min(homeMinOdds, awayMinOdds);
+			//	float avgOdds = Math.min(homeAvgOdds, awayAvgOdds);
+
+
+				
+				float FTtotalHomeRecForm = ls.avg(neutralHomeFormRecProb, homeFormRecProb);
+				float FTtotalAwayRecForm = ls.avg(neutralAwayFormRecProb, awayFormRecProb);
+				float FTMinRecForm = Math.min(FTtotalHomeRecForm, FTtotalAwayRecForm);
+				float FTMaxRecForm = Math.max(FTtotalHomeRecForm, FTtotalAwayRecForm);
+				float formDiffRec = (FTtotalHomeRecForm - FTtotalAwayRecForm);
+
+				float FTtotalHomeScoredRecProb = ls.avg(FTneutralHomeScoredRecProb, FThomeScoredRecProb);
+				float FTtotalAwayScoredRecProb = ls.avg(FTneutralAwayScoredRecProb, FTawayScoredRecProb);
+				float FTtotalScoredRecProb = FTtotalHomeScoredRecProb + FTtotalAwayScoredRecProb;
+
+				float FTtotalHomeConcededRecProb = ls.avg(FTneutralHomeConcededRecProb, FThomeConcededRecProb);
+				float FTtotalAwayConcededRecProb = ls.avg(FTneutralAwayConcededRecProb, FTawayConcededRecProb);
+				float FTtotalConcededRecProb = FTtotalHomeConcededRecProb + FTtotalAwayConcededRecProb;
+
+				float FTtotalHomeExpectedRecProb = ls.avg(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+				float FTtotalAwayExpectedRecProb = ls.avg(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
+				float FTtotalMinHomeExpectedRecProb = Math.min(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+				float FTtotalMinAwayExpectedRecProb = Math.min(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
+				float FTtotalMinExpectedRecProb = FTtotalMinHomeExpectedRecProb + FTtotalMinAwayExpectedRecProb;
+				FTtotalExpectedRecProb = FTtotalHomeExpectedRecProb + FTtotalAwayExpectedRecProb;
+				float FTMaxExpectedRecProb = Math.max(FTtotalHomeExpectedRecProb, FTtotalAwayExpectedRecProb);
+				float totalHomeScoredAGoalExpectedRecProb = ls.avg(neutralHomeScoredAGoalExpectedRecProb,
+						homeScoredAGoalExpectedRecProb);
+				float totalAwayScoredAGoalExpectedRecProb = ls.avg(neutralAwayScoredAGoalExpectedRecProb,
+						awayScoredAGoalExpectedRecProb);
+
+				float totalHomeConcededAGoalExpectedRecProb = ls.avg(neutralHomeConcededAGoalExpectedRecProb,
+						homeConcededAGoalExpectedRecProb);
+				float totalAwayConcededAGoalExpectedRecProb = ls.avg(neutralAwayConcededAGoalExpectedRecProb,
+						awayConcededAGoalExpectedRecProb);
+
+				float maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRecProb,
+						totalAwayScoredAGoalExpectedRecProb);
+				float maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRecProb,
+						totalAwayConcededAGoalExpectedRecProb);
+
+				float FTtotalHomeOneRecProb = ls.avg(FTneutralHomeOneRecProb, FThomeOneRecProb);
+				float FTtotalHomeTwoRecProb = ls.avg(FTneutralHomeTwoRecProb, FThomeTwoRecProb);
+				float FTtotalHomeThreeRecProb = ls.avg(FTneutralHomeThreeRecProb, FThomeThreeRecProb);
+				float FTtotalHomeFourRecProb = ls.avg(FTneutralHomeFourRecProb, FThomeFourRecProb);
+				float FTtotalAwayOneRecProb = ls.avg(FTneutralAwayOneRecProb, FTawayOneRecProb);
+				float FTtotalAwayTwoRecProb = ls.avg(FTneutralAwayTwoRecProb, FTawayTwoRecProb);
+				float FTtotalAwayThreeRecProb = ls.avg(FTneutralAwayThreeRecProb, FTawayThreeRecProb);
+				float FTtotalAwayFourRecProb = ls.avg(FTneutralAwayFourRecProb, FTawayFourRecProb);
+				float FTMinRecOne = Math.min(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTMinRecTwo = Math.min(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTMinRecThree = Math.min(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTMinRecFour = Math.min(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+				float FTMaxRecOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTMaxRecTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTMaxRecThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTMaxRecFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+				float FTAvgRecOne = ls.avg(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTAvgRecTwo = ls.avg(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTAvgRecThree = ls.avg(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTAvgRecFour = ls.avg(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+
+				
+				float minMaxOdds = Math.min(homeOdds, awayOdds);
+
+				
+				float homeFormOdds = FTtotalHomeRecForm / homeOdds;
+				float awayFormOdds = FTtotalAwayRecForm / awayOdds;
+				float formOddsDiff = homeFormOdds - awayFormOdds;
+				float minFormOdds = Math.min(homeFormOdds, awayFormOdds);
+				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
+				float oddsDiff = homeOdds - awayOdds;
+				
+				if(homeForm.size() < 5 || awayForm.size() < 5) {
+					
+					FTtotalHomeRecForm = neutralHomeFormRecProb;
+					FTtotalAwayRecForm = awayFormRecProb;
+					FTMinRecForm = Math.min(FTtotalHomeRecForm, FTtotalAwayRecForm);
+					FTMaxRecForm = Math.max(FTtotalHomeRecForm, FTtotalAwayRecForm);
+					formDiffRec = (FTtotalHomeRecForm - FTtotalAwayRecForm);
+
+					FTtotalHomeScoredRecProb = FTneutralHomeScoredRecProb;
+					FTtotalAwayScoredRecProb = FTneutralAwayScoredRecProb;
+					FTtotalScoredRecProb = FTtotalHomeScoredRecProb + FTtotalAwayScoredRecProb;
+
+					FTtotalHomeConcededRecProb = FTneutralHomeConcededRecProb;
+					FTtotalAwayConcededRecProb = FTneutralAwayConcededRecProb;
+					FTtotalConcededRecProb = FTtotalHomeConcededRecProb + FTtotalAwayConcededRecProb;
+
+					FTtotalHomeExpectedRecProb = ls.avg(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+					FTtotalAwayExpectedRecProb = ls.avg(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
+					FTtotalMinHomeExpectedRecProb = Math.min(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+					FTtotalMinAwayExpectedRecProb = Math.min(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
+					FTtotalMinExpectedRecProb = FTtotalMinHomeExpectedRecProb + FTtotalMinAwayExpectedRecProb;
+					FTtotalExpectedRecProb = FTtotalHomeExpectedRecProb + FTtotalAwayExpectedRecProb;
+					FTMaxExpectedRecProb = Math.max(FTtotalHomeExpectedRecProb, FTtotalAwayExpectedRecProb);
+					totalHomeScoredAGoalExpectedRecProb = neutralHomeScoredAGoalExpectedRecProb;
+					totalAwayScoredAGoalExpectedRecProb = neutralAwayScoredAGoalExpectedRecProb;
+
+					totalHomeConcededAGoalExpectedRecProb = neutralHomeConcededAGoalExpectedRecProb;
+					totalAwayConcededAGoalExpectedRecProb = neutralAwayConcededAGoalExpectedRecProb;
+
+					maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRecProb,
+							totalAwayScoredAGoalExpectedRecProb);
+					maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRecProb,
+							totalAwayConcededAGoalExpectedRecProb);
+
+					FTtotalHomeOneRecProb = FTneutralHomeOneRecProb;
+					FTtotalHomeTwoRecProb = FTneutralHomeTwoRecProb;
+					FTtotalHomeThreeRecProb = FTneutralHomeThreeRecProb;
+					FTtotalHomeFourRecProb = FTneutralHomeFourRecProb;
+					FTtotalAwayOneRecProb = FTneutralAwayOneRecProb;
+					FTtotalAwayTwoRecProb = FTneutralAwayTwoRecProb;
+					FTtotalAwayThreeRecProb = FTneutralAwayThreeRecProb;
+					FTtotalAwayFourRecProb = FTneutralAwayFourRecProb;
+					FTMinRecOne = Math.min(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+					FTMinRecTwo = Math.min(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+					FTMinRecThree = Math.min(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+					FTMinRecFour = Math.min(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+					FTMaxRecOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+					FTMaxRecTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+					FTMaxRecThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+					FTMaxRecFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+					FTAvgRecOne = ls.avg(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+					FTAvgRecTwo = ls.avg(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+					FTAvgRecThree = ls.avg(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+					FTAvgRecFour = ls.avg(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+
+					minMaxOdds = Math.min(homeOdds, awayOdds);
+
+					
+					 homeFormOdds = FTtotalHomeRecForm / homeOdds;
+					 awayFormOdds = FTtotalAwayRecForm / awayOdds;
+					formOddsDiff = homeFormOdds - awayFormOdds;
+					minFormOdds = Math.min(homeFormOdds, awayFormOdds);
+					maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
+					oddsDiff = homeOdds - awayOdds;
+				}
+				
+				int exception = 0;
+				String betType = "";
+				
+
+
+				
+				if ( (Float.compare(FTMinRecOne, (float) 0.95) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 2.5) >= 0) )
+					oddsBetThis++;
+				
+				if ( (Float.compare(FTMinRecTwo, (float) 0.8) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 3.3) >= 0) )
+					oddsBetThis++;
+				
+				if ( (Float.compare(FTMinRecThree, (float) 0.75) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 4.1) >= 0)  )
+					oddsBetThis++;
+				
+				if (  (Float.compare(FTMinRecFour, (float) 0.7) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float)  5.0) >= 0)  )
+					oddsBetThis++;
+
+
+				oddsBetThis = oddsBetThis-0.5;	
+				
+
+				if(
+						((Float.compare(homeOdds, (float) 1.7) < 0) && (Float.compare(FTtotalHomeRecForm, (float) 1.5) >= 0) ) || ((Float.compare(awayOdds, (float) 1.7) < 0) && (Float.compare(FTtotalAwayRecForm, (float) 1.5) > 0))
+					)
+				{
+				exception = 1;
+				}
+				
+
+				
+				
+				if( (Float.compare(formOddsDiff, (float) 1.2) >= 0)  || (Float.compare(formOddsDiff, (float) -2) <= 0))
+					{
+					exception = 1;
+					}
+					
+					if((Float.compare(formOddsDiff, (float) 0) >= 0) && (Float.compare(formOddsDiff, (float) 1.25) < 0) )
+						betType = "10% MAX";
+						
+						if((Float.compare(formOddsDiff, (float) 1.25) >= 0))
+						betType = "50% MAX";
+						
+						if((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1) > 0) )
+						continue;
+						
+						if((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1.5) > 0) )
+						continue;
+						
+						if((Float.compare(formOddsDiff, (float) -2) > 0) && (Float.compare(formOddsDiff, (float) -1.5) < 0))
+						betType = "10% MAX";
+						
+						if((Float.compare(formOddsDiff, (float) -2) < 0))
+						betType = "50% MAX";
+					
+						if((FTneutralHomeGoals.get(0).equals(0) && FTneutralHomeOppGoals.get(0).equals(0)) || (FTneutralAwayGoals.get(0).equals(0) && FTneutralAwayOppGoals.get(0).equals(0)) )
+						{
+						oddsBetThis--;
+						betType += " NO SIDES";
+						}
+
+				
+				if(  !league2.contains("Schleswig Holstein Liga") && 						
+						((Float.compare(FTtotalHomeOneRecProb, (float) 0.9) >= 0)  && (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0) && (Float.compare(formOddsDiff, (float) 1.75) >= 0)) || ((Float.compare(FTtotalAwayOneRecProb, (float) 0.9) >= 0)  && (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0) && (Float.compare(formOddsDiff, (float) -2.25) <= 0))
+					)
+				{
+				exception = 1;
+				betType = "1HG ";
+				}
+				
+
+				
+				if((Float.compare(FTMinRecForm, (float) 1.5) > 0) && oddsBetThis > 1	)
+						oddsBetThis--;
+
+		
+				if(exception != 1 && oddsBetThis < 0)
+				continue;		
+
+				if(exception != 1)
+					continue;
+
+				if(league2.contains("Aruba") && (Float.compare(formOddsDiff, (float) 0) < 0))
+					continue;
+
+
+
+			
+			System.out.println("neutralHomeForm.size() = " + neutralHomeForm.size());
+				System.out.println("neutralAwayForm.size() = " + neutralAwayForm.size());
+
+				System.out.println("maxScoredAGoal = " + maxScoredAGoal);
+				System.out.println("maxConcededAGoal = " + maxConcededAGoal);
+
+				if (
+
+				true
+
+				) {
+					myWriter.write(date + " " + time);
+					myWriter.write(",");
+					myWriter.write(homeName + " - " + homeOdds + " / " + FTtotalHomeRecForm + " / "
+							+ FTtotalHomeExpectedRecProb);
+					myWriter.write(",");
+					myWriter.write(awayName + " - " + awayOdds + " / " + FTtotalAwayRecForm + " / "
+							+ FTtotalAwayExpectedRecProb);
+//					myWriter.write(",");
+//					myWriter.write(Float.toString((float) formDiffReg));
+//					myWriter.write(",");
+//					myWriter.write(Float.toString((float) minMaxOdds));
+//					myWriter.write(",");
+//					myWriter.write(Float.toString((float) maxConcededAGoalRegProb));
+//					myWriter.write(",");
+//					myWriter.write(Float.toString((float) FTtotalExpectedRegProb));
+//					myWriter.write(",");
+//					myWriter.write(Float.toString((float) FTMinRegOne));
+					myWriter.write(",");
+					myWriter.write(Double.toString(formOddsDiff));
+					myWriter.write(",");
+					myWriter.write(Double.toString(oddsBetThis));
+					myWriter.write(",");
+					myWriter.write(betType);
+					myWriter.write(",");
+					myWriter.write(league2);
+					myWriter.write(",");
+					myWriter.write(tier);
+					myWriter.write(",");
+					myWriter.write(link);
+					myWriter.write(",");
+					myWriter.write("links.add(\"" + link + "\");");
+
+					myWriter.write(System.lineSeparator()); // new line
+
+					System.out.println();
+
+					// System.out.println(link);
+					System.out.println(date + " " + time);
+					try {
+						System.out.format("|%-25s|", league2.substring(0, 24));
+					} catch (Exception e) {
+						System.out.format("|%-25s|", league2);
+					}
+					System.out.format("|%-25s|", homeName);
+					System.out.format("|%-25s|", awayName);
+					System.out.format("|%-25s|", "");
+					System.out.println();
+					System.out.format("|%-25s|", "Form Rec");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeRecForm).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayRecForm).substring(0, 3));
+					System.out.format("|%-25s|", formDiffRec);
+					System.out.println();
+					System.out.format("|%-25s|", "Odds");
+					System.out.format("|%-25s|", homeOdds);
+					System.out.format("|%-25s|", awayOdds);
+					System.out.format("|%-25s|", formOddsDiff);
+					System.out.println();
+					System.out.format("|%-25s|", "FT Rec Expected Score");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeExpectedRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayExpectedRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalExpectedRecProb).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "FT Goals");
+					System.out.format("|%-25s|", FThomeScore);
+					System.out.format("|%-25s|", FTawayScore);
+					System.out.format("|%-25s|", FTScore);
+					System.out.println();
+					System.out.format("|%-25s|", "HT Goals");
+					System.out.format("|%-25s|", HThomeScore);
+					System.out.format("|%-25s|", HTawayScore);
+					System.out.format("|%-25s|", HTScore);
+					System.out.println();
+
+					System.out.format("|%-25s|", "One Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecOne).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "Two Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayTwoRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecTwo).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "Three Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeThreeRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayThreeRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecThree).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "Four Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeFourRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayFourRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecFour).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "oddsBetThis -> " + oddsBetThis);
+					System.out.format("|%-25s|", "betType -> " + betType);
+					System.out.format("|%-25s|", "tier -> " + tier);
+
+					System.out.println();
+
+				} else
+					continue;
+
+			} catch (Exception e) {
+				// System.out.println(e);
+
+				// myWriter.close();
+				//
+				// driver.close();
+				// driver.quit();
+
+			}
+
+			continue;
+			// end link while
+		}
+
+		// closing the browser
+		myWriter.close();
+
+		driver.close();
+		driver.quit();
+
+		// end main
+	}
+
+	public ArrayList<String> fixtureGrab(WebDriver driver, int i, int h, ArrayList<String> links, WebDriverWait wait,
+			int startIndex, int endIndex, String day, String betType) {
+
+		if (betType.equals("Live")) {
+			driver.get("https://www.goaloo.mobi/football/");
+		} else if (betType.equals("Schedule")) {
+			driver.get("https://www.goaloo.mobi/football/schedule-" + day + "");
+			driver.findElement(By.xpath("//*[@id='fHead']/div[1]/span[2]")).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='displayZone']")));
+			driver.findElement(By.xpath("//*[@id='displayZone']")).click();
+			driver.findElement(By.xpath("//*[@id='setting_popSel']/ul/li[8]")).click();
+			driver.navigate().refresh();
+		}
+
+		// driver.findElement(By.xpath("//*[@id=\"details-button\"]")).click();
+		// driver.findElement(By.xpath("//*[@id=\"proceed-link\"]")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hideCountBar']/span[2]")));
+		driver.findElement(By.xpath("//*[@id='hideCountBar']/span[2]")).click();
+
+		i = startIndex;
+
+		while (true && i < endIndex) {
+			try {
+
+				h = i + 1;
+				String postponedCanceledFT;
+				String league;
+
+				// postponedCanceledFT =
+				// driver.findElement(By.xpath("//*[@id='gameList']/div["+h+"]/div[3]/i")).getText();
+				// league =
+				// driver.findElement(By.xpath("//*[@id='gameList']/div["+h+"]/div[2]/div[1]/span[2]")).getText();
+				//
+				//// // System.out.println(postponedCanceledFT);
+				////// if (postponedCanceledFT.equals("Postp.") ||
+				// postponedCanceledFT.equals("Canceled")) {
+				////// i++;
+				////// continue;
+				////
+				// if (
+				// league.contains("Youth") ||
+				// league.contains("RUS YthC") ||
+				// league.contains("U17") ||
+				// league.contains("U18") ||
+				// league.contains("U19") ||
+				// league.contains("U20") ||
+				// league.contains("Finland K")
+				//
+				//
+				//
+				// )
+				// {
+				// i++;
+				// continue;
+				// }
+				// else {
+
+				String fixture = driver.findElement(By.xpath("//*[@id='gameList']/div[" + h + "]")).getAttribute("id");
+
+				if (fixture.contains("ad")) {
+					i++;
+					continue;
+				}
+
+				if (fixture.equals("")) {
+					i++;
+					continue;
+				}
+
+				// System.out.println("fixture = " + fixture);
+
+				String[] fixtureSplit = fixture.split("_");
+
+				links.add("https://www.goaloo.mobi/football/match/h2h-" + fixtureSplit[1]);
+
+				i++;
+				// }
+			} catch (Exception e) {
+				// System.out.println(e);
+				System.out.println("# links = " + links.size());
+				break;
+			}
+		}
+
+		return links;
+
+	}
+
+	public ArrayList<String> scheduleGrab(WebDriver driver, int i, int h, ArrayList<String> links, String schedule,
+			int week) {
+
+		// driver.get("http://www.goaloo.mobi/football/database/schedule-" + schedule +
+		// "?round=" + week);
+		
+
+		driver.get("https://www.goaloo.site/football/database/schedule-25?round=16");
+		
+
+		
+		
+		while (true) {
+
+			try {
+
+				h = i + 1;
+
+				String scheduleTb = driver.findElement(By.xpath("//*[@id='scheduleTb']/tbody/tr[" + h + "]"))
+						.getAttribute("href");
+				String scheduleSplit = scheduleTb.replace("detail", "analysis");
+
+				//
+				// System.out.println("scheduleSplit[0] = " + scheduleSplit[0]);
+				// System.out.println("scheduleSplit[1] = " + scheduleSplit[1]);
+
+				if (scheduleTb.equals(null))
+					i++;
+				else
+					links.add("https://www.goaloo.mobi" + scheduleSplit);
+				{
+					i++;
+				}
+
+			} catch (Exception e) {
+				// System.out.println(e);
+				System.out.println("# links = " + links.size());
+				break;
+
+			}
+		}
+
+		return links;
+
+	}
+	// end class
+
+	public float avg(float one, float two) {
+
+		return (one + two) / 2;
+	}
 }
