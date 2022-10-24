@@ -86,10 +86,8 @@ class Livescore18Football {
 
 //		 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
 //				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
-				
+
 		links.add("https://www.goaloo.mobi/football/match/h2h-2224251");
-
-
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -191,19 +189,11 @@ class Livescore18Football {
 			try {
 
 				FThomeScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveHS\"]")).getText());
-				// System.out.println("homeScore = " + scores[0]);
 
 				FTawayScore = Integer.parseInt(driver.findElement(By.xpath("//*[@id=\"liveGS\"]")).getText());
-				// System.out.println("awayScore = " + scores[1]);
 
-				// *[@id="liveHt"]
 				String StringHTScore = driver.findElement(By.xpath("//*[@id=\"liveHt\"]")).getText();
-				// System.out.println("homeScore = " + scores[0]);
 
-				// System.out.println("HTScore[0] = " + StringHTScore.split(" -
-				// ")[0].replace("(", ""));
-				// System.out.println("HTScore[1] = " + StringHTScore.split(" -
-				// ")[1].replace(")", ""));
 
 				HThomeScore = Integer.parseInt(StringHTScore.split(" - ")[0].replace("(", ""));
 
@@ -309,8 +299,7 @@ class Livescore18Football {
 						|| league2.contains("Turkey Super Lig") || league2.contains("Ukraine Premier League")
 						|| league2.contains("USA Major League Soccer") || league2.contains("Uruguay Primera Division")
 						|| league2.contains("Primera Division de Venezuela") || league2.contains("Liga Portugal 1")
-						|| league2.contains("Switzerland Super League") 
-						 
+						|| league2.contains("Switzerland Super League")
 
 						|| league2.contains("Poland Liga 1") || league2.contains("Saudi Professional League")
 						|| league2.contains("UAE Pro-League") || league2.contains("Denmark Superligaen")
@@ -318,60 +307,43 @@ class Livescore18Football {
 						|| league2.contains("Bosnia and Herzegovina Premier League")
 						|| league2.contains("CONCACAF Champions League")
 						|| league2.contains("CONMEBOL Champions League") || league2.contains("Copa Libertadores")
-						
 
 						|| league2.contains("UEFA Champions League") || league2.contains("AFC Champions League")
-						|| league2.contains("CAF Champions League") 
-						|| league2.contains("K League 1")
-						|| league2.contains("J1 League")
-						|| league2.contains("Primera Division Liga MX")
-						|| league2.contains("Kuwaiti Premier League")
-						|| league2.contains("V.League 1")
+						|| league2.contains("CAF Champions League") || league2.contains("K League 1")
+						|| league2.contains("J1 League") || league2.contains("Primera Division Liga MX")
+						|| league2.contains("Kuwaiti Premier League") || league2.contains("V.League 1")
 
-						|| league2.contains("Colombia Copa Premier")
-						|| league2.contains("Palestine Football League")
-						|| league2.contains("UEFA Europa League")
-						|| league2.contains("UEFA Europa Conference League")
-						|| league2.contains("Conmebol - Copa Sudamericana")
-						|| league2.contains("Copa Sudamericana")
-						
-						|| league2.contains("German Bundesliga 2")
-						||league2.contains("Portugal Segunda Liga")
-						|| league2.contains("Mexico Primera Divison A")
-						|| league2.contains("Mexico Primera Division A")
+						|| league2.contains("Colombia Copa Premier") || league2.contains("Palestine Football League")
+						|| league2.contains("UEFA Europa League") || league2.contains("UEFA Europa Conference League")
+						|| league2.contains("Conmebol - Copa Sudamericana") || league2.contains("Copa Sudamericana")
+
+						|| league2.contains("German Bundesliga 2") || league2.contains("Portugal Segunda Liga")
+						|| league2.contains("Mexico Primera Divison A") || league2.contains("Mexico Primera Division A")
 						|| league2.contains("Scottish Championship") || league2.contains("Ukraine Divison 2")
-						|| league2.contains("USL Championship") 
-						 || league2.contains("Italian Serie B")
-						 || league2.contains("England Championship")
-							|| league2.contains("Brazil Serie B")
-						|| league2.contains("Serbia Prva Liga")
-						|| league2.contains("CONCACAF League")
+						|| league2.contains("USL Championship") || league2.contains("Italian Serie B")
+						|| league2.contains("England Championship") || league2.contains("Brazil Serie B")
+						|| league2.contains("Serbia Prva Liga") || league2.contains("CONCACAF League")
 						|| league2.contains("Belgian Second") || league2.contains("Algeria Ligue Professionnelle 1")
 						|| league2.contains("K League Challenge League") || league2.contains("J-League Division 2")
 						|| league2.contains("Algerian Ligue Professionnelle 2") || league2.contains("Serbian Prva Liga")
 						|| league2.contains("Spanish Segunda Division") || league2.contains("Argentine Division 2")
-						|| league2.contains("Poland Division 2")
-						|| league2.contains("J2 League")
-											|| league2.contains("Chinese Football Association Jia League")
-						 || league2.contains("Austria Erste Division")
-						 || league2.contains("Holland Eerste Divisie")
-						 || league2.contains("Liga Portugal 2")
-						 || league2.contains("Ukraine Division 2")
-							 || league2.contains("France Ligue 3")
-							|| league2.contains("Scottish Division One") || league2.contains("German 3.Liga")
-							|| league2.contains("England League 1") || league2.contains("Brazil Serie C")
-							|| league2.contains("J-League Division 3") || league2.contains("Italy C1")
-							|| league2.contains("Scottish Division Two") || league2.contains("England League 2")
-							 || league2.contains("Peru B League")
-							 || league2.contains("USA MLS Next Pro League")
+						|| league2.contains("Poland Division 2") || league2.contains("J2 League")
+						|| league2.contains("Chinese Football Association Jia League")
+						|| league2.contains("Austria Erste Division") || league2.contains("Holland Eerste Divisie")
+						|| league2.contains("Liga Portugal 2") || league2.contains("Ukraine Division 2")
+						|| league2.contains("France Ligue 3") || league2.contains("Scottish Division One")
+						|| league2.contains("German 3.Liga") || league2.contains("England League 1")
+						|| league2.contains("Brazil Serie C") || league2.contains("J-League Division 3")
+						|| league2.contains("Italy C1") || league2.contains("Scottish Division Two")
+						|| league2.contains("England League 2") || league2.contains("Peru B League")
+						|| league2.contains("USA MLS Next Pro League")
 
 				) {
 					tier = "A";
 				}
 				if (
 
-				  league2.contains("Paraguayan Division 2")
-						|| league2.contains("Czech Republic 2.Liga")
+				league2.contains("Paraguayan Division 2") || league2.contains("Czech Republic 2.Liga")
 						|| league2.contains("Indonesia Division 1")
 
 						|| league2.contains("Macedonian First Football League")
@@ -381,25 +353,22 @@ class Livescore18Football {
 						|| league2.contains("Norway Adeccoligaen") || league2.contains("Maldives Premier League")
 						|| league2.contains("Sweden Superettan") || league2.contains("Malaysia Premier League")
 						|| league2.contains("Iraqi Premier League") || league2.contains("Belarus Pershaya Liga")
-						
+
 						|| league2.contains("France Ligue 2")
-					
+
 						|| league2.contains("Vietnamese First Division")
 
 						|| league2.contains("Cyprus 2 Division")
 
 						|| league2.contains("Turkmenistan Premier League")
 						|| league2.contains("Switzerland Challenge League")
-						|| league2.contains("South Africa First League")
-						|| league2.contains("Malawi Premier League") 
-						|| league2.contains("Kosovo Division 1") 
-						|| league2.contains("Cambodian Premier League") 
-						|| league2.contains("New Zealand Football Championship") 
-						|| league2.contains("Solomon Islands S League") 
-						|| league2.contains("Hong Kong First Division League") 
+						|| league2.contains("South Africa First League") || league2.contains("Malawi Premier League")
+						|| league2.contains("Kosovo Division 1") || league2.contains("Cambodian Premier League")
+						|| league2.contains("New Zealand Football Championship")
+						|| league2.contains("Solomon Islands S League")
+						|| league2.contains("Hong Kong First Division League")
 
-						|| league2.contains("Kazakhstan Division 1")
-						|| league2.contains("Jordan League Division 1") 
+						|| league2.contains("Kazakhstan Division 1") || league2.contains("Jordan League Division 1")
 						|| league2.contains("Hungary NB II") || league2.contains("Brazil Campeonato Maranhense")
 						|| league2.contains("Faroe Islands Formuladeildin")
 						|| league2.contains("Estonia Champions League")
@@ -413,26 +382,22 @@ class Livescore18Football {
 						|| league2.contains("Tanzania Ligue 1") || league2.contains("Kyrgyzstan Top Liga")
 						|| league2.contains("Bhutan Premier League") || league2.contains("Uzbek League")
 						|| league2.contains("Egypt Division 2") || league2.contains("Mauritania Division 1")
-						|| league2.contains("Croatia 2.HNL")
-						|| league2.contains("Campeonato Piauiense")
+						|| league2.contains("Croatia 2.HNL") || league2.contains("Campeonato Piauiense")
 						|| league2.contains("Southeast Asian Games")
 
 						|| league2.contains("Thai Division 1 League") || league2.contains("Kampuchea Super League")
 						|| league2.contains("Kenya Super League") || league2.contains("Slovenia 2.Liga")
 						|| league2.contains("Ethiopia Premier League")
 
-						|| league2.contains("Oman Professional League")
-						|| league2.contains("Uruguay Segunda")
+						|| league2.contains("Oman Professional League") || league2.contains("Uruguay Segunda")
 						|| league2.contains("BRA SPC")
-
 
 						|| league2.contains("India League Division 1") || league2.contains("Burkina Faso League")
 						|| league2.contains("Syrian League") || league2.contains("BRA SPB")
-						 || league2.contains("Azerbaijan Division 2")
-						|| league2.contains("Liga de Elite") || league2.contains("TAS Premier League")
-						|| league2.contains("NSW-N Premier League") || league2.contains("VIC Premier League")
-						|| league2.contains("QLD Premier League") || league2.contains("Swiss Challenge League")
-						|| league2.contains("Lithuania - 1.Division")
+						|| league2.contains("Azerbaijan Division 2") || league2.contains("Liga de Elite")
+						|| league2.contains("TAS Premier League") || league2.contains("NSW-N Premier League")
+						|| league2.contains("VIC Premier League") || league2.contains("QLD Premier League")
+						|| league2.contains("Swiss Challenge League") || league2.contains("Lithuania - 1.Division")
 
 						|| league2.contains("Russian National Football League") || league2.contains("Slovakia 2.Liga")
 
@@ -440,8 +405,8 @@ class Livescore18Football {
 
 						|| league2.contains("BRA CP") || league2.contains("San Marino League")
 						|| league2.contains("Nicaragua Apertura league") || league2.contains("Greece Division C")
-						 || league2.contains("Danish 1st Division")
-						|| league2.contains("Lebanese Premier League") || league2.contains("Liga Nacional de Guatemala")
+						|| league2.contains("Danish 1st Division") || league2.contains("Lebanese Premier League")
+						|| league2.contains("Liga Nacional de Guatemala")
 
 						|| league2.contains("UAE Division 1")
 
@@ -468,55 +433,46 @@ class Livescore18Football {
 						|| league2.contains("Malta Premier League") || league2.contains("Rwanda National League")
 						|| league2.contains("Brazil Campeonato Roraimense")
 
- || league2.contains("Dominican Republic Liga")
+						|| league2.contains("Dominican Republic Liga")
 
-					    || league2.contains("Andorra Primera")
+						|| league2.contains("Andorra Primera")
 						|| league2.contains("Australia New South Wales Super League")
 						|| league2.contains("Gambia GFA League") || league2.contains("Northern New Zealand League")
 						|| league2.contains("UAE Division 2")
-						
+
 						|| league2.contains("Andorra Super league")
-						
+
 						|| league2.contains("Qatar B")
 
-						 || league2.contains("Botola 2")
-						 || league2.contains("Albania Division 2")
-							|| league2.contains("Honduras Liga de Ascenso")
+						|| league2.contains("Botola 2") || league2.contains("Albania Division 2")
+						|| league2.contains("Honduras Liga de Ascenso")
 
-							|| league2.contains("Hong Kong 2nd Division")
-							|| league2.contains("Chinese Taipei Intercity League")
-
-							
-							
-
+						|| league2.contains("Hong Kong 2nd Division")
+						|| league2.contains("Chinese Taipei Intercity League")
 
 				) {
 					tier = "B";
 				}
 				if (
 
-				league2.contains("Slovakia 3.Liga") 
-				|| league2.contains("Reserve")
-				|| league2.contains("El Salvador Segunda Division")
-				|| league2.contains("Gibraltar Premier Division")
+				league2.contains("Slovakia 3.Liga") || league2.contains("Reserve")
+						|| league2.contains("El Salvador Segunda Division")
+						|| league2.contains("Gibraltar Premier Division")
 
 						|| league2.contains("Estonia Esi Liiga") || league2.contains("Finland - Kakkonen Lohko")
 						|| league2.contains("Croatia 3.Division") || league2.contains("FFSA PL")
 						|| league2.contains("Thai Division 2 League")
 
-
 						|| league2.contains("Iceland Division 1") || league2.contains("Ireland First Division")
 
 						|| league2.contains("Malta First Division League")
-						 || league2.contains("Northern Ireland League")
-						 || league2.contains("FYR Macedonia Vtora Fudbalska Liga")
+						|| league2.contains("Northern Ireland League")
+						|| league2.contains("FYR Macedonia Vtora Fudbalska Liga")
 
-						|| league2.contains("Andorra Segona")
-						|| league2.contains("Switzerland Promotion League")
+						|| league2.contains("Andorra Segona") || league2.contains("Switzerland Promotion League")
 
 						|| league2.contains("Bosnia erzegovina 1st League")
 
-						
 						|| league2.contains("Armenia Division 2") || league2.contains("Spain Primera Division RFEF")
 						|| league2.contains("U23") || league2.contains("U-23")
 
@@ -531,12 +487,9 @@ class Livescore18Football {
 						|| league2.contains("Brazil Campeonato Gaucho 2") || league2.contains("Wales FAW Championship")
 						|| league2.contains("Bhutan Thimphu League") || league2.contains("Austrian 3.Liga")
 
-
-
 						|| league2.contains("Hungary NB III") || league2.contains("Nepal B Division")
 						|| league2.contains("Nicaragua Segunda Division") || league2.contains("Mexico Segunda Division")
-						 || league2.contains("Georgia Division")
-						|| league2.contains("Lithuania - 2.Division")
+						|| league2.contains("Georgia Division") || league2.contains("Lithuania - 2.Division")
 
 						|| league2.contains("Kazakhstan Division 2")
 
@@ -561,8 +514,6 @@ class Livescore18Football {
 
 						|| league2.contains("Romania - Liga 3 Seria")
 
-	
-
 						|| league2.contains("UAE RL") || league2.contains("Northern Ireland IFA Championship")
 						|| league2.contains("Argentine Torneo A") || league2.contains("Slovenia 3.Liga")
 						|| league2.contains("Canadian Championship")
@@ -576,68 +527,53 @@ class Livescore18Football {
 						|| league2.contains("Australia Northern NSW Division 1")
 						|| league2.contains("Sri Lanka Champions League")
 
-						 || league2.contains("Russia Division 2")
-						|| league2.contains("Holland Ligue 3") 
+						|| league2.contains("Russia Division 2") || league2.contains("Holland Ligue 3")
 
+						|| league2.contains("New Zealand South Premier League")
 
-	
-	|| league2.contains("New Zealand South Premier League")
+						|| league2.contains("Korea Challengers League")
 
-	|| league2.contains("Korea Challengers League")
-
-
-	|| league2.contains("USA Independent League") || league2.contains("USA USL League Two")
-	 || league2.contains("Austrian 3.Liga")
-	 || league2.contains("Nicaragua Liga de Ascenso")
-	 || league2.contains("Ukraine Division 3")
-	 || league2.contains("Portugal Liga 3")
-	 || league2.contains("Bahrain Division")
-	 || league2.contains("Northern Ireland Reserve League") 
+						|| league2.contains("USA Independent League") || league2.contains("USA USL League Two")
+						|| league2.contains("Austrian 3.Liga") || league2.contains("Nicaragua Liga de Ascenso")
+						|| league2.contains("Ukraine Division 3") || league2.contains("Portugal Liga 3")
+						|| league2.contains("Bahrain Division") || league2.contains("Northern Ireland Reserve League")
 
 				)
 					tier = "C";
 
 				if (
 
-				 league2.contains("FFSA SLR")
+				league2.contains("FFSA SLR")
 
-						|| league2.contains("Turkiye Lig3")
-						|| league2.contains("Brazil Campeonato Carioca C")
+						|| league2.contains("Turkiye Lig3") || league2.contains("Brazil Campeonato Carioca C")
 						|| league2.contains("Brazil Campeonato Potiguar 2")
 						|| league2.contains("Brazil Campeonato Pernambucano A2")
 
 						|| league2.contains("Latvia Division 2") || league2.contains("Turkey Bayanlar 1. Ligi")
-							|| league2.contains("Japan Football League")
+						|| league2.contains("Japan Football League")
 
-						|| league2.contains("Australia Victoria State League")
-						|| league2.contains("Regionalliga")
+						|| league2.contains("Australia Victoria State League") || league2.contains("Regionalliga")
 						|| league2.contains("Israel B League")
-
 
 						|| league2.contains("Spain Segunda Division RFEF")
 						|| league2.contains("Australia Queensland State Leagues")
 						|| league2.contains("Australia Victoria State League 1") || league2.contains("Denmark - 4.Liga")
 						|| league2.contains("Victorian State League Division 1")
 
- || league2.contains("Mongolia Second League")
-						|| league2.contains("Panama Liga Prom") || league2.contains("TAS Premier Championship")
-						|| league2.contains("Korea League 4")
+						|| league2.contains("Mongolia Second League") || league2.contains("Panama Liga Prom")
+						|| league2.contains("TAS Premier Championship") || league2.contains("Korea League 4")
 						|| league2.contains("Australia Queensland Premier League 2") || league2.contains("BRA D4")
-						 || league2.contains("Serie D")
-
+						|| league2.contains("Serie D")
 
 						|| league2.contains("Holland Derde Divisie") || league2.contains("SAFF")
 
-						|| league2.contains("Uzbekistan Second League")
-		|| league2.contains("Serie D")
+						|| league2.contains("Uzbekistan Second League") || league2.contains("Serie D")
 
-						
 						|| league2.contains("USA National Premier Soccer League")
-						
+
 						|| league2.contains("U22") || league2.contains("U-22")
 
-						|| league2.contains("Denmark Division 3") 
-						|| league2.contains("Estonia Teine Liiga")
+						|| league2.contains("Denmark Division 3") || league2.contains("Estonia Teine Liiga")
 						|| league2.contains("English Women's Conference South")
 						|| league2.contains("Australia Brisbane Capital League 2")
 						|| league2.contains("Portugal Champions NACIONAL")
@@ -650,188 +586,142 @@ class Livescore18Football {
 
 						|| league2.contains("India Mumbai Elite League")
 
-						|| league2.contains("Denmark 2 Division Women")
-						|| league2.contains("Finland Kolmonen")
+						|| league2.contains("Denmark 2 Division Women") || league2.contains("Finland Kolmonen")
 						|| league2.contains("Australia New South Wales League 2")
-						|| league2.contains("Nepal C Division")
-						 || league2.contains("India Delhi Senior Division")
+						|| league2.contains("Nepal C Division") || league2.contains("India Delhi Senior Division")
 						|| league2.contains("Mexico Liga TDP") || league2.contains("Turkey 3")
-						|| league2.contains("Argentina Prim C")
-						 || league2.contains("Landesliga")
+						|| league2.contains("Argentina Prim C") || league2.contains("Landesliga")
 
-
-						|| league2.contains("India Mizoram Premier League")
-						|| league2.contains("Chile Primera D")
+						|| league2.contains("India Mizoram Premier League") || league2.contains("Chile Primera D")
 
 				)
 					tier = "D";
-				
-				if(	 league2.contains("Norway Division 4")
 
-						|| league2.contains("Oberliga")
-						|| league2.contains("Brazil Copa Gaucho")
+				if (league2.contains("Norway Division 4")
+
+						|| league2.contains("Oberliga") || league2.contains("Brazil Copa Gaucho")
 
 						|| league2.contains("England Northern League")
 						|| league2.contains("England Ryman(Isthmian) League Premier Division")
+						|| league2.contains("Czech Republic 5. Ligy") || league2.contains("Argentina Regional League")
+						|| league2.contains("Israel C League") || league2.contains("Colombia Regional League")
+
+						|| league2.contains("Australia Queensland Premier League 3")
+						|| league2.contains("Australia Victorian Premier League U21")
+						|| league2.contains("Brazil Debbie Shapiro") || league2.contains("GER D5")
+						|| league2.contains("Sweden Div 3")
+
+						|| league2.contains("The lowlands of Scotland League") || league2.contains("Iceland 4 Deild")
+						|| league2.contains("Northern German state premier league - bayern")
+						|| league2.contains("Czech Group D League")
+						|| league2.contains("Czech Republic Ceska Fotbalova Liga")
 						|| league2.contains("Czech Republic 5. Ligy")
-						|| league2.contains("Argentina Regional League")
-						 || league2.contains("Israel C League")
-							|| league2.contains("Colombia Regional League")
+						|| league2.contains("Italian Campionato Nazionale Primavera")
+						|| league2.contains("Poland Division 4") || league2.contains("Tercera")
+						|| league2.contains("Schleswig Holstein Liga")
 
-							|| league2.contains("Australia Queensland Premier League 3")
-							|| league2.contains("Australia Victorian Premier League U21")
-							  || league2.contains("Brazil Debbie Shapiro")
-							  || league2.contains("GER D5")
-							  || league2.contains("Sweden Div 3")
+						|| league2.contains("Australian cloth") || league2.contains("England Conference")
 
-								|| league2.contains("The lowlands of Scotland League")
-								|| league2.contains("Iceland 4 Deild")
-								|| league2.contains("Northern German state premier league - bayern")
-								 || league2.contains("Czech Group D League")
-									|| league2.contains("Czech Republic Ceska Fotbalova Liga")
-									|| league2.contains("Czech Republic 5. Ligy")
-									|| league2.contains("Italian Campionato Nazionale Primavera") 
-									|| league2.contains("Poland Division 4")
-									 || league2.contains("Tercera")
-										|| league2.contains("Schleswig Holstein Liga") 
+						|| league2.contains("Argentina group C")
+						|| league2.contains("Argentina Ding Group Tebolidun League Manchester")
 
-									|| league2.contains("Australian cloth")
-									 || league2.contains("England Conference")
+						|| league2.contains("Friendly") || league2.contains("Germany Landespokal")
+						|| league2.contains("International") || league2.contains("Cup") || league2.contains("CUP")
+						|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
+						|| league2.contains("Coppa") || league2.contains("Pokal") || league2.contains("Vase")
+						|| league2.contains("Johnstone") || league2.contains("Cupen") || league2.contains("cup")
+						|| league2.contains("Cuban Championship") || league2.contains("Germany Verbandsliga")
 
-									 || league2.contains("Argentina group C")
-										|| league2.contains("Argentina Ding Group Tebolidun League Manchester")
+						|| league2.contains("U21") || league2.contains("U-21")
 
-					|| league2.contains("Friendly")
-					|| league2.contains("Germany Landespokal")
-					|| league2.contains("International")
-					|| league2.contains("Cup")
-					|| league2.contains("CUP")
-					|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
-					|| league2.contains("Coppa") || league2.contains("Pokal") || league2.contains("Vase")
-					|| league2.contains("Johnstone") || league2.contains("Cupen") || league2.contains("cup")
-					|| league2.contains("Cuban Championship")
-					|| league2.contains("Germany Verbandsliga")
-
-					|| league2.contains("U21") || league2.contains("U-21")
-
-)
+				)
 					tier = "E";
-				
-				
-				if(league2.contains("U20") || league2.contains("U-20")
-|| league2.contains("Youth")
-|| league2.contains("youth")
-|| league2.contains("U18") || league2.contains("U-17") || league2.contains("U17")
-|| league2.contains("U-18") || league2.contains("U19") || league2.contains("U-19")
-|| league2.contains("BSWCP") || league2.contains("Bolivia")
-|| league2.contains("Brazil Campeonato Carioca Women")
-|| league2.contains("Republic of Ireland National League Women")
-|| league2.contains("Bulgaria Premier League Women")
-|| league2.contains("CONCACAF Women") || league2.contains("UEFA Women")
-|| league2.contains("Sweden Woman") 
-|| league2.contains("Mexico Liga MX Femenil")
-|| league2.contains("German Frauen Bundesliga")
-|| league2.contains("Sweden Damallsvenskan") || league2.contains("Australia W-League")
-|| league2.contains("European Women")
-|| league2.contains("Germany Bundesliga II Women")
-|| league2.contains("Brazil Paulista Women's League")
-|| league2.contains("The women's league of Argentina")
-|| league2.contains("ICE WC")
-|| league2.contains("Holland Eredivisie Women's")
-|| league2.contains("French Feminines D1")
-|| league2.contains("Russia Womens Premier League")
-|| league2.contains("Slovakia I Liga Women")
-|| league2.contains("Spain Segunda Women")
-|| league2.contains("Romania Liga 2 Women")
-|| league2.contains("Spain Segunda Women")
-|| league2.contains("Jordan League Women")
-|| league2.contains("Serbia League Women")
-|| league2.contains("Lithuania A Lyga Women")
-	|| league2.contains("Swden Women Division 2")
-	|| league2.contains("Poland Mloda Ekstraklasa")
-	|| league2.contains("Columbia women's League")
-	|| league2.contains("Vietnam Women Championship")
-	|| league2.contains("Portugal Campeonato Nacional Women")
-	|| league2.contains("Ecuador Primera Women")
-	|| league2.contains("Guatemala Liga Nacional Women")
-	|| league2.contains("Iceland Women's Premier League")
-	|| league2.contains("Northern Ireland Women's Super")
-	|| league2.contains("Southeast Asian Games Women") || league2.contains("NSW Premier W-League")
-	|| league2.contains("Spanish Ladies Premier League B")
-	|| league2.contains("Uzbekistan League Women")
-	|| league2.contains("Israel Women First National")
-	|| league2.contains("Brazil Paulista Women's")
-|| league2.contains("Hungary Womens Division 1 League")
-|| league2.contains("Estonia Womens Meistri Liiga")
-|| league2.contains("Poland League Women") 
-|| league2.contains("Iceland Women's Division 1")
-|| league2.contains("Scotland WPL")
-|| league2.contains("Switzerland Division 1 Women")
-|| league2.contains("Women Norwegian Toppserien")
-|| league2.contains("Australia New South Wales NPL Women")
-|| league2.contains("Czech Republic Cambrinus Liga Women's")
-|| league2.contains("El Salvador Liga Feminina")
-|| league2.contains("Belgium Women's Premier League")
-|| league2.contains("Denmark Womans League") || league2.contains("Slovenia women's League")
-|| league2.contains("Japan Women's Football League 1")
-|| league2.contains("Austrian Frauen Bundesliga")
-|| league2.contains("Chinese Women's Super League")
-|| league2.contains("Norway Division 1 Women")
-|| league2.contains("Belgium Women 1st National")
-|| league2.contains("Costa Rica Primera Division Women")
-|| league2.contains("Japan Women's Football League 2")
-|| league2.contains("Australia Northern NSW Women�s Premier League")
-|| league2.contains("Nigeria League Women") || league2.contains("WAUS WD1")
-|| league2.contains("VIC Women's Premier League")
-|| league2.contains("Algeria Womens League") || league2.contains("WK League")
-|| league2.contains("Finland Women Premier League")
-|| league2.contains("Uganda Super League Women")
-|| league2.contains("Australia Queensland Premier League 2")
-|| league2.contains("France Division 2 Women")
-|| league2.contains("Australia Victoria Premier League Women")
-|| league2.contains("South Africa League Women")
-|| league2.contains("Wales Premier League Women")
-|| league2.contains("Australia Capital Territory Premier League Women")
-|| league2.contains("Australia Tasmania Super League Women")
-|| league2.contains("Romania Liga 1 Women")
-|| league2.contains("Australia Queensland State Women's Premier League")
-|| league2.contains("Malta Women Division 1")
-|| league2.contains("USA Women")
-|| league2.contains("England FA Women Super League") || league2.contains("Japanese WE League")
-|| league2.contains("Spanish Ladies Premier League")
-|| league2.contains("Italian Women Division 1") || league2.contains("Brazil women's League")
-|| league2.contains("Swden Women Divi.1")
-|| league2.contains("Argentina Championship Women")
-|| league2.contains("English Women's Conference North")
-|| league2.contains("Italy Campionato Primavera 4")
-|| league2.contains("Australia Northern NSW Women’s Premier League")
-|| league2.contains("Olympic (Preliminaries)")
-|| league2.contains("World Beach Games")
-|| league2.contains("Portugal Champions NACIONAL")
-|| league2.contains("England Ryman(Isthmian)")
-|| league2.contains("Switzerland - 2.Liga")
-|| league2.contains("Amateur")
-|| league2.contains("England Southern Premier League")
-|| league2.contains("England Northern Premier League")
-|| league2.contains("England Southern League")
-|| league2.contains("ENG SD1")
-|| league2.contains("Uruguay League Women")
-|| league2.contains("POL WD1")
-|| league2.contains("England Conference South Division")
-|| league2.contains("England Conference North Division")
-|| league2.contains("English FA Women's Premier League")
-|| league2.contains("Croatia First League Women")
-|| league2.contains("Spanish Segunda Division B")
-|| league2.contains("Spain Primera Division RFEF")
-|| league2.contains("Tercera")
-|| league2.contains("Russia")
-|| league2.contains("Belarus")
-|| league2.contains("Croatia 3.Division")
 
+				if (league2.contains("U20") || league2.contains("U-20") || league2.contains("Youth")
+						|| league2.contains("youth") || league2.contains("U18") || league2.contains("U-17")
+						|| league2.contains("U17") || league2.contains("U-18") || league2.contains("U19")
+						|| league2.contains("U-19") || league2.contains("BSWCP") || league2.contains("Bolivia")
+						|| league2.contains("Brazil Campeonato Carioca Women")
+						|| league2.contains("Republic of Ireland National League Women")
+						|| league2.contains("Bulgaria Premier League Women") || league2.contains("CONCACAF Women")
+						|| league2.contains("UEFA Women") || league2.contains("Sweden Woman")
+						|| league2.contains("Mexico Liga MX Femenil") || league2.contains("German Frauen Bundesliga")
+						|| league2.contains("Sweden Damallsvenskan") || league2.contains("Australia W-League")
+						|| league2.contains("European Women") || league2.contains("Germany Bundesliga II Women")
+						|| league2.contains("Brazil Paulista Women's League")
+						|| league2.contains("The women's league of Argentina") || league2.contains("ICE WC")
+						|| league2.contains("Holland Eredivisie Women's") || league2.contains("French Feminines D1")
+						|| league2.contains("Russia Womens Premier League") || league2.contains("Slovakia I Liga Women")
+						|| league2.contains("Spain Segunda Women") || league2.contains("Romania Liga 2 Women")
+						|| league2.contains("Spain Segunda Women") || league2.contains("Jordan League Women")
+						|| league2.contains("Serbia League Women") || league2.contains("Lithuania A Lyga Women")
+						|| league2.contains("Swden Women Division 2") || league2.contains("Poland Mloda Ekstraklasa")
+						|| league2.contains("Columbia women's League") || league2.contains("Vietnam Women Championship")
+						|| league2.contains("Portugal Campeonato Nacional Women")
+						|| league2.contains("Ecuador Primera Women")
+						|| league2.contains("Guatemala Liga Nacional Women")
+						|| league2.contains("Iceland Women's Premier League")
+						|| league2.contains("Northern Ireland Women's Super")
+						|| league2.contains("Southeast Asian Games Women") || league2.contains("NSW Premier W-League")
+						|| league2.contains("Spanish Ladies Premier League B")
+						|| league2.contains("Uzbekistan League Women")
+						|| league2.contains("Israel Women First National")
+						|| league2.contains("Brazil Paulista Women's")
+						|| league2.contains("Hungary Womens Division 1 League")
+						|| league2.contains("Estonia Womens Meistri Liiga") || league2.contains("Poland League Women")
+						|| league2.contains("Iceland Women's Division 1") || league2.contains("Scotland WPL")
+						|| league2.contains("Switzerland Division 1 Women")
+						|| league2.contains("Women Norwegian Toppserien")
+						|| league2.contains("Australia New South Wales NPL Women")
+						|| league2.contains("Czech Republic Cambrinus Liga Women's")
+						|| league2.contains("El Salvador Liga Feminina")
+						|| league2.contains("Belgium Women's Premier League")
+						|| league2.contains("Denmark Womans League") || league2.contains("Slovenia women's League")
+						|| league2.contains("Japan Women's Football League 1")
+						|| league2.contains("Austrian Frauen Bundesliga")
+						|| league2.contains("Chinese Women's Super League")
+						|| league2.contains("Norway Division 1 Women") || league2.contains("Belgium Women 1st National")
+						|| league2.contains("Costa Rica Primera Division Women")
+						|| league2.contains("Japan Women's Football League 2")
+						|| league2.contains("Australia Northern NSW Women�s Premier League")
+						|| league2.contains("Nigeria League Women") || league2.contains("WAUS WD1")
+						|| league2.contains("VIC Women's Premier League") || league2.contains("Algeria Womens League")
+						|| league2.contains("WK League") || league2.contains("Finland Women Premier League")
+						|| league2.contains("Uganda Super League Women")
+						|| league2.contains("Australia Queensland Premier League 2")
+						|| league2.contains("France Division 2 Women")
+						|| league2.contains("Australia Victoria Premier League Women")
+						|| league2.contains("South Africa League Women")
+						|| league2.contains("Wales Premier League Women")
+						|| league2.contains("Australia Capital Territory Premier League Women")
+						|| league2.contains("Australia Tasmania Super League Women")
+						|| league2.contains("Romania Liga 1 Women")
+						|| league2.contains("Australia Queensland State Women's Premier League")
+						|| league2.contains("Malta Women Division 1") || league2.contains("USA Women")
+						|| league2.contains("England FA Women Super League") || league2.contains("Japanese WE League")
+						|| league2.contains("Spanish Ladies Premier League")
+						|| league2.contains("Italian Women Division 1") || league2.contains("Brazil women's League")
+						|| league2.contains("Swden Women Divi.1") || league2.contains("Argentina Championship Women")
+						|| league2.contains("English Women's Conference North")
+						|| league2.contains("Italy Campionato Primavera 4")
+						|| league2.contains("Australia Northern NSW Women’s Premier League")
+						|| league2.contains("Olympic (Preliminaries)") || league2.contains("World Beach Games")
+						|| league2.contains("Portugal Champions NACIONAL")
+						|| league2.contains("England Ryman(Isthmian)") || league2.contains("Switzerland - 2.Liga")
+						|| league2.contains("Amateur") || league2.contains("England Southern Premier League")
+						|| league2.contains("England Northern Premier League")
+						|| league2.contains("England Southern League") || league2.contains("ENG SD1")
+						|| league2.contains("Uruguay League Women") || league2.contains("POL WD1")
+						|| league2.contains("England Conference South Division")
+						|| league2.contains("England Conference North Division")
+						|| league2.contains("English FA Women's Premier League")
+						|| league2.contains("Croatia First League Women")
+						|| league2.contains("Spanish Segunda Division B")
+						|| league2.contains("Spain Primera Division RFEF") || league2.contains("Tercera")
+						|| league2.contains("Russia") || league2.contains("Belarus")
+						|| league2.contains("Croatia 3.Division")
 
-
-
-)
+				)
 					continue;
 
 				if (games.equals("20")) {
@@ -1703,42 +1593,36 @@ class Livescore18Football {
 				String homeMaxOddsS = "";
 				String awayMaxOddsS = "";
 
-				if(oddsOption.equals("Pre")) {
-				// grab home odds (min)
-				homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
-						.getText();
+				if (oddsOption.equals("Pre")) {
+					// grab home odds (min)
+					homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
+							.getText();
 
-				// grab away odds (min)
-				awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
-						.getText();
+					// grab away odds (min)
+					awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
+							.getText();
+				} else if (oddsOption.equals("Live")) {
+
+					homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[5]"))
+							.getText();
+
+					// grab away odds (min)
+					awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[7]"))
+							.getText();
 				}
-				else if (oddsOption.equals("Live")) {
-				
-				homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[5]"))
-				.getText();
-
-		// grab away odds (min)
-				awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[7]"))
-				.getText();
-				}
-
-
 
 				float homeOdds = Float.parseFloat(homeMaxOddsS);
 				float awayOdds = Float.parseFloat(awayMaxOddsS);
 //				float homeOdds = Float.parseFloat(homePreOddsS);
 //				float awayOdds = Float.parseFloat(awayPreOddsS);
 
-
 //				float homeAvgMaxOdds = ls.avg(homeAvgOdds, homeMaxOdds);
 //				float awayAvgMaxOdds = ls.avg(awayAvgOdds, awayMaxOdds);
 
 				// float oddsDiff = Math.abs(homeOdds - awayOdds);
-			//	float minMinOdds = Math.min(homeMinOdds, awayMinOdds);
-			//	float avgOdds = Math.min(homeAvgOdds, awayAvgOdds);
+				// float minMinOdds = Math.min(homeMinOdds, awayMinOdds);
+				// float avgOdds = Math.min(homeAvgOdds, awayAvgOdds);
 
-
-				
 				float FTtotalHomeRecForm = ls.avg(neutralHomeFormRecProb, homeFormRecProb);
 				float FTtotalAwayRecForm = ls.avg(neutralAwayFormRecProb, awayFormRecProb);
 				float FTMinRecForm = Math.min(FTtotalHomeRecForm, FTtotalAwayRecForm);
@@ -1796,19 +1680,17 @@ class Livescore18Football {
 				float FTAvgRecThree = ls.avg(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
 				float FTAvgRecFour = ls.avg(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
 
-				
 				float minMaxOdds = Math.min(homeOdds, awayOdds);
 
-				
 				float homeFormOdds = FTtotalHomeRecForm / homeOdds;
 				float awayFormOdds = FTtotalAwayRecForm / awayOdds;
 				float formOddsDiff = homeFormOdds - awayFormOdds;
 				float minFormOdds = Math.min(homeFormOdds, awayFormOdds);
 				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
 				float oddsDiff = homeOdds - awayOdds;
-				
-				if(homeForm.size() < 5 || awayForm.size() < 5) {
-					
+
+				if (homeForm.size() < 5 || awayForm.size() < 5) {
+
 					FTtotalHomeRecForm = neutralHomeFormRecProb;
 					FTtotalAwayRecForm = awayFormRecProb;
 					FTMinRecForm = Math.min(FTtotalHomeRecForm, FTtotalAwayRecForm);
@@ -1836,8 +1718,7 @@ class Livescore18Football {
 					totalHomeConcededAGoalExpectedRecProb = neutralHomeConcededAGoalExpectedRecProb;
 					totalAwayConcededAGoalExpectedRecProb = neutralAwayConcededAGoalExpectedRecProb;
 
-					maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRecProb,
-							totalAwayScoredAGoalExpectedRecProb);
+					maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRecProb, totalAwayScoredAGoalExpectedRecProb);
 					maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRecProb,
 							totalAwayConcededAGoalExpectedRecProb);
 
@@ -1864,104 +1745,94 @@ class Livescore18Football {
 
 					minMaxOdds = Math.min(homeOdds, awayOdds);
 
-					
-					 homeFormOdds = FTtotalHomeRecForm / homeOdds;
-					 awayFormOdds = FTtotalAwayRecForm / awayOdds;
+					homeFormOdds = FTtotalHomeRecForm / homeOdds;
+					awayFormOdds = FTtotalAwayRecForm / awayOdds;
 					formOddsDiff = homeFormOdds - awayFormOdds;
 					minFormOdds = Math.min(homeFormOdds, awayFormOdds);
 					maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
 					oddsDiff = homeOdds - awayOdds;
 				}
-				
+
 				int exception = 0;
 				String betType = "";
-				
 
-
-				
-				if ( (Float.compare(FTMinRecOne, (float) 0.95) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 2.5) >= 0) )
-					oddsBetThis++;
-				
-				if ( (Float.compare(FTMinRecTwo, (float) 0.8) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 3.3) >= 0) )
-					oddsBetThis++;
-				
-				if ( (Float.compare(FTMinRecThree, (float) 0.75) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float) 4.1) >= 0)  )
-					oddsBetThis++;
-				
-				if (  (Float.compare(FTMinRecFour, (float) 0.7) >= 0) || (Float.compare(FTtotalExpectedRecProb, (float)  5.0) >= 0)  )
+				if ((Float.compare(FTMinRecOne, (float) 0.95) >= 0)
+						|| (Float.compare(FTtotalExpectedRecProb, (float) 2.5) >= 0))
 					oddsBetThis++;
 
+				if ((Float.compare(FTMinRecTwo, (float) 0.8) >= 0)
+						|| (Float.compare(FTtotalExpectedRecProb, (float) 3.3) >= 0))
+					oddsBetThis++;
 
-				oddsBetThis = oddsBetThis-0.5;	
-				
+				if ((Float.compare(FTMinRecThree, (float) 0.75) >= 0)
+						|| (Float.compare(FTtotalExpectedRecProb, (float) 4.1) >= 0))
+					oddsBetThis++;
 
-				if(
-						((Float.compare(homeOdds, (float) 1.7) < 0) && (Float.compare(FTtotalHomeRecForm, (float) 1.5) >= 0) ) || ((Float.compare(awayOdds, (float) 1.7) < 0) && (Float.compare(FTtotalAwayRecForm, (float) 1.5) > 0))
-					)
-				{
-				exception = 1;
-				}
-				
+				if ((Float.compare(FTMinRecFour, (float) 0.7) >= 0)
+						|| (Float.compare(FTtotalExpectedRecProb, (float) 5.0) >= 0))
+					oddsBetThis++;
 
-				
-				
-				if( (Float.compare(formOddsDiff, (float) 1.2) >= 0)  || (Float.compare(formOddsDiff, (float) -2) <= 0))
-					{
+				oddsBetThis = oddsBetThis - 0.5;
+
+				if (((Float.compare(homeOdds, (float) 1.7) < 0)
+						&& (Float.compare(FTtotalHomeRecForm, (float) 1.5) >= 0))
+						|| ((Float.compare(awayOdds, (float) 1.7) < 0)
+								&& (Float.compare(FTtotalAwayRecForm, (float) 1.5) > 0))) {
 					exception = 1;
-					}
-					
-					if((Float.compare(formOddsDiff, (float) 0) >= 0) && (Float.compare(formOddsDiff, (float) 1.25) < 0) )
-						betType = "10% MAX";
-						
-						if((Float.compare(formOddsDiff, (float) 1.25) >= 0))
-						betType = "50% MAX";
-						
-						if((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1) > 0) )
-						continue;
-						
-						if((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1.5) > 0) )
-						continue;
-						
-						if((Float.compare(formOddsDiff, (float) -2) > 0) && (Float.compare(formOddsDiff, (float) -1.5) < 0))
-						betType = "10% MAX";
-						
-						if((Float.compare(formOddsDiff, (float) -2) < 0))
-						betType = "50% MAX";
-					
-						if((FTneutralHomeGoals.get(0).equals(0) && FTneutralHomeOppGoals.get(0).equals(0)) || (FTneutralAwayGoals.get(0).equals(0) && FTneutralAwayOppGoals.get(0).equals(0)) )
-						{
-						oddsBetThis--;
-						betType += " NO SIDES";
-						}
-
-				
-				if(  !league2.contains("Schleswig Holstein Liga") && 						
-						((Float.compare(FTtotalHomeOneRecProb, (float) 0.9) >= 0)  && (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0) && (Float.compare(formOddsDiff, (float) 1.75) >= 0)) || ((Float.compare(FTtotalAwayOneRecProb, (float) 0.9) >= 0)  && (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0) && (Float.compare(formOddsDiff, (float) -2.25) <= 0))
-					)
-				{
-				exception = 1;
-				betType = "1HG ";
 				}
-				
 
-				
-				if((Float.compare(FTMinRecForm, (float) 1.5) > 0) && oddsBetThis > 1	)
-						oddsBetThis--;
+				if ((Float.compare(formOddsDiff, (float) 1.2) >= 0) || (Float.compare(formOddsDiff, (float) -2) <= 0)) {
+					exception = 1;
+				}
 
-		
-				if(exception != 1 && oddsBetThis < 0)
-				continue;		
+				if ((Float.compare(formOddsDiff, (float) 0) >= 0) && (Float.compare(formOddsDiff, (float) 1.25) < 0))
+					betType = "10% MAX";
 
-				if(exception != 1)
+				if ((Float.compare(formOddsDiff, (float) 1.25) >= 0))
+					betType = "50% MAX";
+
+				if ((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1) > 0))
 					continue;
 
-				if(league2.contains("Aruba") && (Float.compare(formOddsDiff, (float) 0) < 0))
+				if ((Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(formOddsDiff, (float) -1.5) > 0))
 					continue;
 
+				if ((Float.compare(formOddsDiff, (float) -2) > 0) && (Float.compare(formOddsDiff, (float) -1.5) < 0))
+					betType = "10% MAX";
 
+				if ((Float.compare(formOddsDiff, (float) -2) < 0))
+					betType = "50% MAX";
 
-			
-			System.out.println("neutralHomeForm.size() = " + neutralHomeForm.size());
+				if ((FTneutralHomeGoals.get(0).equals(0) && FTneutralHomeOppGoals.get(0).equals(0))
+						|| (FTneutralAwayGoals.get(0).equals(0) && FTneutralAwayOppGoals.get(0).equals(0))) {
+					oddsBetThis--;
+					betType += " NO SIDES";
+				}
+
+				if (!league2.contains("Schleswig Holstein Liga")
+						&& ((Float.compare(FTtotalHomeOneRecProb, (float) 0.9) >= 0)
+								&& (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0)
+								&& (Float.compare(formOddsDiff, (float) 1.75) >= 0))
+						|| ((Float.compare(FTtotalAwayOneRecProb, (float) 0.9) >= 0)
+								&& (Float.compare(FTMaxExpectedRecProb, (float) 1.8) >= 0)
+								&& (Float.compare(formOddsDiff, (float) -2.25) <= 0))) {
+					exception = 1;
+					betType = "1HG ";
+				}
+
+				if ((Float.compare(FTMinRecForm, (float) 1.5) > 0) && oddsBetThis > 1)
+					oddsBetThis--;
+
+				if (exception != 1 && oddsBetThis < 0)
+					continue;
+
+				if (exception != 1)
+					continue;
+
+				if (league2.contains("Aruba") && (Float.compare(formOddsDiff, (float) 0) < 0))
+					continue;
+
+				System.out.println("neutralHomeForm.size() = " + neutralHomeForm.size());
 				System.out.println("neutralAwayForm.size() = " + neutralAwayForm.size());
 
 				System.out.println("maxScoredAGoal = " + maxScoredAGoal);
@@ -1979,16 +1850,6 @@ class Livescore18Football {
 					myWriter.write(",");
 					myWriter.write(awayName + " - " + awayOdds + " / " + FTtotalAwayRecForm + " / "
 							+ FTtotalAwayExpectedRecProb);
-//					myWriter.write(",");
-//					myWriter.write(Float.toString((float) formDiffReg));
-//					myWriter.write(",");
-//					myWriter.write(Float.toString((float) minMaxOdds));
-//					myWriter.write(",");
-//					myWriter.write(Float.toString((float) maxConcededAGoalRegProb));
-//					myWriter.write(",");
-//					myWriter.write(Float.toString((float) FTtotalExpectedRegProb));
-//					myWriter.write(",");
-//					myWriter.write(Float.toString((float) FTMinRegOne));
 					myWriter.write(",");
 					myWriter.write(Double.toString(formOddsDiff));
 					myWriter.write(",");
@@ -2191,13 +2052,9 @@ class Livescore18Football {
 
 		// driver.get("http://www.goaloo.mobi/football/database/schedule-" + schedule +
 		// "?round=" + week);
-		
 
 		driver.get("https://www.goaloo.site/football/database/schedule-25?round=16");
-		
 
-		
-		
 		while (true) {
 
 			try {
