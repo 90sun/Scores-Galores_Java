@@ -3,7 +3,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer; 
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -90,74 +90,69 @@ class Livescore18Basketball {
 	public ArrayList<String> scheduleGrab(WebDriver driver, int i, int h, ArrayList<String> links, int schedule,
 			int week) {
 
-	//	driver.get("http://www.goaloo.mobi/basketball/database/schedule-" + schedule + "?round=" + week);
+		// driver.get("http://www.goaloo.mobi/basketball/database/schedule-" + schedule
+		// + "?round=" + week);
 
-			driver.get("http://www.goaloo.mobi/basketball/database/league-7?r=4534");
-			
-			
-			driver.findElement(By.xpath("//*[@id=\"tabContainer\"]/div[2]")).click();
+		driver.get("http://www.goaloo.mobi/basketball/database/league-7?r=4534");
 
-			
-			
+		driver.findElement(By.xpath("//*[@id=\"tabContainer\"]/div[2]")).click();
+
 		while (true) {
 
 			try {
 
 				h = i + 1;
-				String scheduleTb="";
+				String scheduleTb = "";
 				String[] scheduleSplit;
-				
-				String timeH="";
+
+				String timeH = "";
 				try {
-					
+
 					try {
 //						timeH = driver.findElement(By.xpath("//*[@id='fHead']/table/tbody/tr[" + h + "]/th"))
 //								.getText();
-						
+
 						timeH = driver.findElement(By.xpath("//*[@id=\"scheduleTb\"]/tbody/tr[" + h + "]/th[2]"))
 								.getText();
-					}catch(Exception e) {timeH = "";}
-					
-				    
-				    //System.out.println("timeH = " + timeH);
-				    
+					} catch (Exception e) {
+						timeH = "";
+					}
+
+					// System.out.println("timeH = " + timeH);
+
 					try {
 
 //				scheduleTb = driver.findElement(By.xpath("//*[@id='fHead']/table/tbody/tr[" + h + "]/td[2]/a"))
 //						.getAttribute("onclick");
-						
-						scheduleTb = driver.findElement(By.xpath("//*[@id=\"scheduleTb\"]/tbody/tr[" + h + "]/td[2]/div"))
+
+						scheduleTb = driver
+								.findElement(By.xpath("//*[@id=\"scheduleTb\"]/tbody/tr[" + h + "]/td[2]/div"))
 								.getAttribute("onclick");
-				}
-				catch(Exception e) {scheduleTb = "";}
-				
+					} catch (Exception e) {
+						scheduleTb = "";
+					}
+
 //			    System.out.println("scheduleTb = " + scheduleTb);
 
-			
-				
-				scheduleSplit = scheduleTb.split("detail");
+					scheduleSplit = scheduleTb.split("detail");
 //				System.out.println("scheduleSplit[0] = " + scheduleSplit[0]);
 //			    System.out.println("scheduleSplit[1] = " + scheduleSplit[1]);
-				
-			    if (scheduleTb.equals("") && timeH.equals(""))
-					break;
-				if (scheduleTb.equals(null))
-					i++;
-			
-				else {
-					links.add("https://www.goaloo.mobi/basketball/match/h2h-" + scheduleSplit[1].substring(1, 7));
-					
+
+					if (scheduleTb.equals("") && timeH.equals(""))
+						break;
+					if (scheduleTb.equals(null))
+						i++;
+
+					else {
+						links.add("https://www.goaloo.mobi/basketball/match/h2h-" + scheduleSplit[1].substring(1, 7));
+
 						i++;
 					}
 
-
-				
-				}
-				catch(Exception e) 	{
+				} catch (Exception e) {
 					i++;
 				}
-			
-				
+
 				if (scheduleTb.equals("") && timeH.equals(""))
 					break;
 
@@ -212,10 +207,9 @@ class Livescore18Basketball {
 
 		Livescore18Basketball ls = new Livescore18Basketball();
 		String mode = "";
-	//	 links = ls.scheduleGrab(driver,i,h,links, 1147,2);
+		// links = ls.scheduleGrab(driver,i,h,links, 1147,2);
 		links = ls.fixtureGrab(driver, i, h, links, wait, 1, 300, "n0");
 		// wait.until(ExpectedConditions.visibilityOfElementLocated0By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
-
 
 //		links.add("https://www.goaloo.mobi/basketball/match/h2h-493029");
 //		links.add("https://www.goaloo.mobi/basketball/match/h2h-493015");
@@ -235,7 +229,7 @@ class Livescore18Basketball {
 
 			ArrayList<Integer> homeForm = new ArrayList<Integer>();
 			ArrayList<Integer> awayForm = new ArrayList<Integer>();
-			ArrayList<Integer> homeGoals = new ArrayList<Integer>(); 
+			ArrayList<Integer> homeGoals = new ArrayList<Integer>();
 			ArrayList<Integer> homeOppGoals = new ArrayList<Integer>();
 			ArrayList<Integer> awayGoals = new ArrayList<Integer>();
 			ArrayList<Integer> awayOppGoals = new ArrayList<Integer>();
@@ -243,15 +237,18 @@ class Livescore18Basketball {
 			ArrayList<Integer> neutralAwayGoals = new ArrayList<Integer>();
 
 			float minHomeExpectedRegProb = 0, minAwayExpectedRegProb = 0, minHomeScoredAGoalExpectedRegProb = 0,
-					minAwayScoredAGoalExpectedRegProb = 0, homeExpectedRegProb = 0, awayExpectedRegProb = 0,homeExpectedRecProb = 0, awayExpectedRecProb = 0, awayMinConsistencyRegProb = 0,homeMinConsistencyRegProb = 0, homeMaxConsistencyRegProb = 0,
-					awayMaxConsistencyRegProb = 0, homeFormRegProb = 0, awayFormRegProb = 0,homeFormRecProb = 0, awayFormRecProb = 0, homeOneRegProb = 0,
-					homeTwoRegProb = 0, homeThreeRegProb = 0, homeFourRegProb = 0, awayOneRegProb = 0,
-					awayTwoRegProb = 0, awayThreeRegProb = 0, awayFourRegProb = 0, neutralMaxForm = 0,
-					neutralHomeOneRegProb = 0, neutralHomeTwoRegProb = 0, neutralHomeThreeRegProb = 0,
-					neutralHomeFourRegProb = 0, neutralAwayOneRegProb = 0, neutralAwayTwoRegProb = 0,
-					neutralAwayThreeRegProb = 0, neutralAwayFourRegProb = 0, neutralHomeFormRegProb = 0,
-					neutralAwayFormRegProb = 0, neutralHomeExpectedRegProb = 0, neutralAwayExpectedRegProb = 0,neutralHomeFormRecProb = 0,
-							neutralAwayFormRecProb = 0, neutralHomeExpectedRecProb = 0, neutralAwayExpectedRecProb = 0,
+					minAwayScoredAGoalExpectedRegProb = 0, homeExpectedRegProb = 0, awayExpectedRegProb = 0,
+					homeExpectedRecProb = 0, awayExpectedRecProb = 0, awayMinConsistencyRegProb = 0,
+					homeMinConsistencyRegProb = 0, homeMaxConsistencyRegProb = 0, awayMaxConsistencyRegProb = 0,
+					homeFormRegProb = 0, awayFormRegProb = 0, homeFormRecProb = 0, awayFormRecProb = 0,
+					homeOneRegProb = 0, homeTwoRegProb = 0, homeThreeRegProb = 0, homeFourRegProb = 0,
+					awayOneRegProb = 0, awayTwoRegProb = 0, awayThreeRegProb = 0, awayFourRegProb = 0,
+					neutralMaxForm = 0, neutralHomeOneRegProb = 0, neutralHomeTwoRegProb = 0,
+					neutralHomeThreeRegProb = 0, neutralHomeFourRegProb = 0, neutralAwayOneRegProb = 0,
+					neutralAwayTwoRegProb = 0, neutralAwayThreeRegProb = 0, neutralAwayFourRegProb = 0,
+					neutralHomeFormRegProb = 0, neutralAwayFormRegProb = 0, neutralHomeExpectedRegProb = 0,
+					neutralAwayExpectedRegProb = 0, neutralHomeFormRecProb = 0, neutralAwayFormRecProb = 0,
+					neutralHomeExpectedRecProb = 0, neutralAwayExpectedRecProb = 0,
 					neutralHomeScoredAGoalExpectedRegProb = 0, neutralAwayScoredAGoalExpectedRegProb = 0,
 					neutralAwayScoredRegProb = 0, neutralAwayConcededRegProb = 0, neutralAwayMinConsistencyRegProb = 0,
 					neutralAwayMaxConsistencyRegProb = 0, neutralHomeScoredRegProb = 0, neutralHomeConcededRegProb = 0,
@@ -270,14 +267,14 @@ class Livescore18Basketball {
 
 			try {
 
-				//driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[2]/a")).click();
+				// driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[2]/a")).click();
 
-
-
-				homeScore = Integer.parseInt(driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div[2]/div[2]/div[1]")).getText());
+				homeScore = Integer.parseInt(driver
+						.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div[2]/div[2]/div[1]")).getText());
 				// System.out.println("homeScore = " + homeScore);
 
-				awayScore = Integer.parseInt(driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div[2]/div[2]/div[2]")).getText());
+				awayScore = Integer.parseInt(driver
+						.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div[2]/div[2]/div[2]")).getText());
 
 				// System.out.println("awayScore = " + awayScore);
 
@@ -290,30 +287,28 @@ class Livescore18Basketball {
 			matchTotalScore = homeScore + awayScore;
 
 			try {
-			// get time of game
-			date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
+				// get time of game
+				date = driver.findElement(By.xpath("//*[@id='liveMt']")).getText();
 
-			String[] dateSplit = date.split(" ");
-			date = dateSplit[0];
-			time = dateSplit[1];
-			// System.out.println(date.substring(0, 10));
-			todayDate = LocalDate.parse(date.substring(0, 10), formatter2);
+				String[] dateSplit = date.split(" ");
+				date = dateSplit[0];
+				time = dateSplit[1];
+				// System.out.println(date.substring(0, 10));
+				todayDate = LocalDate.parse(date.substring(0, 10), formatter2);
 
-			// get home name
-			homeName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[1]/span")).getText();
-			// System.out.println("homeName = " + homeName );
+				// get home name
+				homeName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[1]/span")).getText();
+				// System.out.println("homeName = " + homeName );
 
-			// get away name
-			awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span")).getText();
-			// System.out.println("awayName = " + awayName );
+				// get away name
+				awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span")).getText();
+				// System.out.println("awayName = " + awayName );
 
-			if (mode.equals("H/A Same")) {
+				if (mode.equals("H/A Same")) {
 
-				driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
+					driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
 
-			}
-
-
+				}
 
 				// get matchTitle
 				league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a")).getText();
@@ -322,9 +317,8 @@ class Livescore18Basketball {
 
 //					driver.findElement(By.xpath("//*[@id=\"f6\"]/span/select")).click();
 //					driver.findElement(By.xpath("//*[@id=\"f6\"]/span/select/option[1]")).click();
-				
 
-				if(league2.contains("Philippines MPBL"))
+				if (league2.contains("Philippines MPBL"))
 					continue;
 
 				driver.findElement(By.xpath("//*[@id='match']/nav/div[3]/a")).click();
@@ -357,10 +351,10 @@ class Livescore18Basketball {
 
 						try {
 							driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
+						} catch (Exception e) {
 						}
-						catch(Exception e){}
 
-						}
+					}
 
 					try {
 						driver.findElement(By.xpath("//*[@id=\"f3\"]/span/label")).click();
@@ -440,11 +434,11 @@ class Livescore18Basketball {
 //							 "list-item;']/div[2]/div[2]/span[2])["+i+"]")).getText());
 							//
 //							
-							if(homeGoalTemp+homeOppGoalTemp < 50) {
+							if (homeGoalTemp + homeOppGoalTemp < 50) {
 								i++;
 								continue;
 							}
-							
+
 							if (matchResult.equals("o-winBGp")) {
 								homeForm.add(3);
 								if (homeGoalTemp > homeOppGoalTemp) {
@@ -487,7 +481,7 @@ class Livescore18Basketball {
 					leagueGame = false;
 					i = 1;
 					while (true) {
-						try{
+						try {
 
 							// homeTeamName =
 							// driver.findElement(By.xpath("(//*[@id='e3_1']/table[2]//tr[@style='display:
@@ -542,11 +536,10 @@ class Livescore18Basketball {
 									.getText());
 
 //							 System.out.println("away opp goal = " + awayOppGoalTemp);
-if(awayGoalTemp+awayOppGoalTemp < 50) {
-	i++;
-	continue;
-}
-	
+							if (awayGoalTemp + awayOppGoalTemp < 50) {
+								i++;
+								continue;
+							}
 
 							if (matchResult.equals("o-winBGp")) {
 								awayForm.add(3);
@@ -684,7 +677,7 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 					float homeConcededRegProb = homeConcededRegAvg;
 					float homeScoredRecProb = homeScoredRecAvg;
 					float homeConcededRecProb = homeConcededRecAvg;
-					homeMinConsistencyRegProb= minConsistencyRegAvg;
+					homeMinConsistencyRegProb = minConsistencyRegAvg;
 					homeMaxConsistencyRegProb = maxConsistencyRegAvg;
 
 					sum1 = 0;
@@ -763,8 +756,6 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 					minConsistencyRecAvg = sum4 / awayForm.size();
 					maxConsistencyRecAvg = sum5 / awayForm.size();
 
-
-					
 					awayFormRegProb = awayFormRegAvg;
 					float awayScoredRegProb = awayScoredRegAvg;
 					float awayConcededRegProb = awayConcededRegAvg;
@@ -785,14 +776,12 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 
 						neutralHomeFormRegProb = homeFormRegProb;
 						neutralAwayFormRegProb = awayFormRegProb;
-						
+
 						neutralHomeExpectedRecProb = homeExpectedRecProb;
 						neutralAwayExpectedRecProb = awayExpectedRecProb;
 
 						neutralHomeFormRecProb = homeFormRecAvg;
 						neutralAwayFormRecProb = awayFormRecAvg;
-
-						
 
 						neutralAwayScoredRegProb = awayScoredRegAvg;
 						neutralAwayConcededRegProb = awayConcededRegAvg;
@@ -817,7 +806,7 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 				if (neutralHomeGoals.size() < 10 || neutralAwayGoals.size() < 10)
 					continue;
 				// get odds
-				
+
 				// click odds tab
 				driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
 				// click 1x2 tab
@@ -830,15 +819,13 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 				// grab away odds (min)
 				String awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[3]"))
 						.getText();
-				
-	
-				
+
 				float homeAvgOdds = Float.parseFloat(homeMaxOddsS);
 				float awayAvgOdds = Float.parseFloat(awayMaxOddsS);
 
 				System.out.println("homeAvgOdds = " + homeAvgOdds);
 				System.out.println("awayAvgOdds = " + awayAvgOdds);
-				
+
 				float totalHomeExpectedRecProb = (homeExpectedRecProb + neutralHomeExpectedRecProb) / 2;
 				float totalAwayExpectedRecProb = (awayExpectedRecProb + neutralAwayExpectedRecProb) / 2;
 				float totalExpectedRecProb = totalHomeExpectedRecProb + totalAwayExpectedRecProb;
@@ -847,11 +834,10 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 				float totalMinForm = Math.min(neutralHomeFormRecProb, neutralAwayFormRecProb);
 				float totalMaxForm = Math.max(neutralHomeFormRecProb, neutralAwayFormRecProb);
 
-				
 				float totalAwayMinConsistency = (awayMinConsistencyRegProb + neutralAwayMinConsistencyRegProb) / 2;
 				float totalHomeMinConsistency = (homeMinConsistencyRegProb + neutralHomeMinConsistencyRegProb) / 2;
 
-				float totalMinConsistency = Math.min(totalHomeMinConsistency,totalAwayMinConsistency);
+				float totalMinConsistency = Math.min(totalHomeMinConsistency, totalAwayMinConsistency);
 
 				float totalAwayMaxConsistency = (awayMaxConsistencyRegProb + neutralAwayMaxConsistencyRegProb) / 2;
 				float totalHomeMaxConsistency = (homeMaxConsistencyRegProb + neutralHomeMaxConsistencyRegProb) / 2;
@@ -868,28 +854,29 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
 				float minAvgOdds = Math.min(homeAvgOdds, awayAvgOdds);
 				float maxAvgOdds = Math.max(homeAvgOdds, awayAvgOdds);
-				if(homeName.contains("(w)") || homeName.contains("(W)")  || awayName.contains("(w)") || awayName.contains("(W)")|| league2.contains("Ladies") || league2.contains("Women")|| league2.contains("Woman") || league2.contains("women") || league2.contains("woman"))
+				if (homeName.contains("(w)") || homeName.contains("(W)") || awayName.contains("(w)")
+						|| awayName.contains("(W)") || league2.contains("Ladies") || league2.contains("Women")
+						|| league2.contains("Woman") || league2.contains("women") || league2.contains("woman"))
 					continue;
-				
 
-				
-				if( (Float.compare(homeAvgOdds, (float) 1.35) > 0) || (Float.compare(neutralHomeFormRecProb, (float) 2) < 0) ||  (Float.compare(neutralAwayFormRecProb, (float) 1) >= 0))
+				if ((Float.compare(homeAvgOdds, (float) 1.35) > 0)
+						|| (Float.compare(neutralHomeFormRecProb, (float) 2) < 0)
+						|| (Float.compare(neutralAwayFormRecProb, (float) 1) >= 0))
 					continue;
-				
 
-				if(homeName.contains("Women") || homeName.contains("Woman") || homeName.contains("woman") || homeName.contains("women")
-						|| homeName.contains(" w ") || homeName.contains(" W ") || homeName.contains("(w)") || homeName.contains("(W)")
-						|| homeName.contains("Ladies") || homeName.contains("ladies")) 
-					
-				if(true
-				) {
-					myWriter.write(date + " " + time);
-					myWriter.write(",");
-					myWriter.write(homeName + " - " + homeAvgOdds + " / " + neutralHomeFormRecProb + " / "
-							+ totalHomeExpectedRecProb);
-					myWriter.write(",");
-					myWriter.write(awayName + " - " + awayAvgOdds + " / " + neutralAwayFormRecProb + " / "
-							+ totalAwayExpectedRecProb);
+				if (homeName.contains("Women") || homeName.contains("Woman") || homeName.contains("woman")
+						|| homeName.contains("women") || homeName.contains(" w ") || homeName.contains(" W ")
+						|| homeName.contains("(w)") || homeName.contains("(W)") || homeName.contains("Ladies")
+						|| homeName.contains("ladies"))
+
+					if (true) {
+						myWriter.write(date + " " + time);
+						myWriter.write(",");
+						myWriter.write(homeName + " - " + homeAvgOdds + " / " + neutralHomeFormRecProb + " / "
+								+ totalHomeExpectedRecProb);
+						myWriter.write(",");
+						myWriter.write(awayName + " - " + awayAvgOdds + " / " + neutralAwayFormRecProb + " / "
+								+ totalAwayExpectedRecProb);
 //					myWriter.write(",");
 //					myWriter.write(Float.toString((float) formDiffReg));
 //					myWriter.write(",");
@@ -900,62 +887,61 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 //					myWriter.write(Float.toString((float) FTtotalExpectedRegProb));
 //					myWriter.write(",");
 //					myWriter.write(Float.toString((float) FTMinRegOne));
-					myWriter.write(",");
-					myWriter.write(Double.toString(formOddsDiff));
-					myWriter.write(",");
-					myWriter.write(betType);
-					myWriter.write(",");
-					myWriter.write(league2);
-					myWriter.write(",");
-					myWriter.write(link);
-					myWriter.write(",");
-					myWriter.write("links.add(\"" + link + "\");");
+						myWriter.write(",");
+						myWriter.write(Double.toString(formOddsDiff));
+						myWriter.write(",");
+						myWriter.write(betType);
+						myWriter.write(",");
+						myWriter.write(league2);
+						myWriter.write(",");
+						myWriter.write(link);
+						myWriter.write(",");
+						myWriter.write("links.add(\"" + link + "\");");
 
-					myWriter.write(System.lineSeparator()); // new line
+						myWriter.write(System.lineSeparator()); // new line
 
+						System.out.println(link);
+						System.out.println(date + " " + time);
+						System.out.format("|%-25s|", league2);
+						System.out.format("|%-25s|", homeName);
+						System.out.format("|%-25s|", awayName);
+						System.out.format("|%-25s|", "");
+						System.out.println();
+						System.out.format("|%-25s|", "Form");
+						System.out.format("|%-25s|", neutralHomeFormRecProb);
+						System.out.format("|%-25s|", neutralAwayFormRecProb);
+						System.out.format("|%-25s|", "");
+						System.out.println();
+						System.out.format("|%-25s|", "Odds");
+						System.out.format("|%-25s|", homeAvgOdds);
+						System.out.format("|%-25s|", awayAvgOdds);
+						System.out.format("|%-25s|", "");
+						System.out.println();
+						System.out.format("|%-25s|", "Actual Points");
+						System.out.format("|%-25s|", homeScore);
+						System.out.format("|%-25s|", awayScore);
+						System.out.format("|%-25s|", matchTotalScore);
+						System.out.println();
+						System.out.format("|%-25s|", "Expect Points");
+						System.out.format("|%-25s|", totalHomeExpectedRecProb);
+						System.out.format("|%-25s|", totalAwayExpectedRecProb);
+						System.out.format("|%-25s|", totalExpectedRecProb);
+						System.out.println();
+						System.out.format("|%-25s|", minBetThis + " Consistency");
+						System.out.format("|%-25s|", totalHomeMinConsistency);
+						System.out.format("|%-25s|", totalAwayMinConsistency);
+						System.out.format("|%-25s|", totalMinConsistency);
+						System.out.println();
+						System.out.format("|%-25s|", maxBetThis + " Consistency");
+						System.out.format("|%-25s|", totalHomeMaxConsistency);
+						System.out.format("|%-25s|", totalAwayMaxConsistency);
+						System.out.format("|%-25s|", totalMaxConsistency);
+						System.out.println();
+						System.out.format("|%-25s|", "betType -> " + betType);
+						System.out.println();
 
-					System.out.println(link);
-					System.out.println(date + " " + time);
-					System.out.format("|%-25s|", league2);
-					System.out.format("|%-25s|", homeName);
-					System.out.format("|%-25s|", awayName);
-					System.out.format("|%-25s|", "");
-					System.out.println();
-					System.out.format("|%-25s|", "Form");
-					System.out.format("|%-25s|", neutralHomeFormRecProb);
-					System.out.format("|%-25s|", neutralAwayFormRecProb);
-					System.out.format("|%-25s|", "");
-					System.out.println();
-					System.out.format("|%-25s|", "Odds");
-					System.out.format("|%-25s|", homeAvgOdds);
-					System.out.format("|%-25s|", awayAvgOdds);
-					System.out.format("|%-25s|", "");
-					System.out.println();
-					System.out.format("|%-25s|", "Actual Points");
-					System.out.format("|%-25s|", homeScore);
-					System.out.format("|%-25s|", awayScore);
-					System.out.format("|%-25s|", matchTotalScore);
-					System.out.println();
-					System.out.format("|%-25s|", "Expect Points");
-					System.out.format("|%-25s|", totalHomeExpectedRecProb);
-					System.out.format("|%-25s|", totalAwayExpectedRecProb);
-					System.out.format("|%-25s|", totalExpectedRecProb);
-					System.out.println();
-					System.out.format("|%-25s|", minBetThis + " Consistency");
-					System.out.format("|%-25s|", totalHomeMinConsistency);
-					System.out.format("|%-25s|", totalAwayMinConsistency);
-					System.out.format("|%-25s|", totalMinConsistency);
-					System.out.println();
-					System.out.format("|%-25s|", maxBetThis + " Consistency");
-					System.out.format("|%-25s|", totalHomeMaxConsistency);
-					System.out.format("|%-25s|", totalAwayMaxConsistency);
-					System.out.format("|%-25s|", totalMaxConsistency);
-					System.out.println();
-					System.out.format("|%-25s|", "betType -> " + betType);
-					System.out.println();
-
-				} else
-					continue;
+					} else
+						continue;
 
 			} catch (Exception e) {
 				// System.out.println(e);
@@ -974,7 +960,7 @@ if(awayGoalTemp+awayOppGoalTemp < 50) {
 
 		// end main
 	}
-	
+
 	public float avg(float one, float two) {
 
 		return (one + two) / 2;
