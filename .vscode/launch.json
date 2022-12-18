@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Livescore18Football",
+            "request": "launch",
+            "mainClass": "legacy.Livescore18Football",
+            "projectName": "scores-galores"
+        },
+        {
+            "type": "java",
             "name": "Launch Livescore18Basketball",
             "request": "launch",
             "mainClass": "Livescore18Basketball",
