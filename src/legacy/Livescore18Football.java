@@ -75,8 +75,8 @@ class Livescore18Football {
 		String bt = "Schedule";
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
-		int startIndex = 1000;
-		int endIndex = 1100;
+		int startIndex = 0;
+		int endIndex = 1000;
 		String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
@@ -84,15 +84,12 @@ class Livescore18Football {
 		System.out.println("endIndex = " + endIndex);
 
 		Livescore18Football ls = new Livescore18Football();
-
-//		 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
-
+//	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
+	//			links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2262914");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2277655");
-
+		links.add("https://www.goaloo.mobi/football/match/h2h-2082074");
+		links.add("https://www.goaloo.mobi/football/match/h2h-2134968");
 
 
 
@@ -149,6 +146,8 @@ class Livescore18Football {
 					FTneutralHomeConcededRecProb = 0, FTneutralAwayConcededRecProb = 0,
 					neutralHomeScoredAGoalExpectedRecProb = 0, neutralAwayScoredAGoalExpectedRecProb = 0,
 					neutralHomeConcededAGoalExpectedRecProb = 0, neutralAwayConcededAGoalExpectedRecProb = 0,
+							homeScoredAGoalRecProb = 0, homeConcededAGoalRecProb = 0, awayScoredAGoalRecProb = 0,
+							awayConcededAGoalRecProb = 0,
 
 					FThomeExpectedRegProb = 0, FTawayExpectedRegProb = 0, FThomeScoredRegProb = 0,
 					FTawayScoredRegProb = 0, FThomeConcededRegProb = 0, FTawayConcededRegProb = 0,
@@ -247,11 +246,11 @@ class Livescore18Football {
 
 				// get home name
 				homeName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[1]/span/span")).getText();
-				// System.out.println("homeName = " + homeName );
+				 System.out.println("homeName = " + homeName );
 
 				// get away name
 				awayName = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[2]/div[3]/span/span")).getText();
-				// System.out.println("awayName = " + awayName );
+				 System.out.println("awayName = " + awayName );
 
 				// ================== LEAGUE & TEAM BLACKLIST
 				// ======================================================
@@ -353,7 +352,7 @@ class Livescore18Football {
 
 				league2.contains("Paraguayan Division 2") || league2.contains("Czech Republic 2.Liga")
 						|| league2.contains("Indonesia Division 1")
-
+						|| league2.contains("Kuwait first Division")
 						|| league2.contains("Macedonian First Football League")
 						|| league2.contains("Mongolia Premier League") || league2.contains("Welsh Premier League")
 						|| league2.contains("Israel Leumit League") || league2.contains("Cameroon Elite One")
@@ -363,6 +362,7 @@ class Livescore18Football {
 						|| league2.contains("Iraqi Premier League") || league2.contains("Belarus Pershaya Liga")
 
 						|| league2.contains("France Ligue 2")
+						|| league2.contains("Hungary NB")
 
 						|| league2.contains("Vietnamese First Division")
 
@@ -453,19 +453,18 @@ class Livescore18Football {
 
 						|| league2.contains("Botola 2") || league2.contains("Albania Division 2")
 						|| league2.contains("Honduras Liga de Ascenso")
-
+						|| league2.contains("Greece National B")
 						|| league2.contains("Hong Kong 2nd Division")
 						|| league2.contains("Chinese Taipei Intercity League")
+						|| league2.contains("Gibraltar Premier Division")
 
 				) {
 					tier = "B";
 				}
 				if (
 
-				league2.contains("Slovakia 3.Liga") || league2.contains("Reserve")
+				league2.contains("Slovakia 3.Liga")
 						|| league2.contains("El Salvador Segunda Division")
-						|| league2.contains("Gibraltar Premier Division")
-						|| league2.contains("Gibraltar Premier Division")
 
 						|| league2.contains("Estonia Esi Liiga") || league2.contains("Finland - Kakkonen Lohko")
 						|| league2.contains("Croatia 3.Division") || league2.contains("FFSA PL")
@@ -543,11 +542,11 @@ class Livescore18Football {
 
 						|| league2.contains("Korea Challengers League")
 						|| league2.contains("Syria Division 2")
-
-						|| league2.contains("USA Independent League") || league2.contains("USA USL League Two")
+						 || league2.contains("Reserve") || league2.contains("USA USL League Two")
+						|| league2.contains("USA Independent League") 
 						|| league2.contains("Austrian 3.Liga") || league2.contains("Nicaragua Liga de Ascenso")
 						|| league2.contains("Ukraine Division 3") || league2.contains("Portugal Liga 3")
-						|| league2.contains("Bahrain Division") || league2.contains("Northern Ireland Reserve League")
+						|| league2.contains("Bahrain Division")
 
 				)
 					tier = "C";
@@ -644,123 +643,47 @@ class Livescore18Football {
 						|| league2.contains("Cuban Championship") || league2.contains("Germany Verbandsliga")
 
 						|| league2.contains("U21") || league2.contains("U-21")
+						|| league2.contains("U20") || league2.contains("U-20")
+
+						|| league2.contains("Mexico GNP")		
+						|| league2.contains(" Belgian First Amateur Division")		
+
+						
 						|| league2.contains("Campeonato Piauiense")		
+
+						|| league2.contains("Turkey 3. Ligi B")
+
+						|| league2.contains("Women")
+						|| league2.contains("Ladies")
+						|| league2.contains("Frauen")
+						|| league2.contains("Feminines")
+						|| league2.contains("Damallsvenskan")
+						|| league2.contains("WE League")
+						|| league2.contains("women")
+						|| league2.contains("WK League")
+						|| league2.contains("Bayanlar")
+						|| league2.contains("Amateur")
 
 				)
 					tier = "E";
 
-				if (league2.contains("U20") || league2.contains("U-20") || league2.contains("Youth")
-						|| league2.contains("youth") || league2.contains("U18") || league2.contains("U-17")
-						|| league2.contains("U17") || league2.contains("U-18") || league2.contains("U19")
-						|| league2.contains("U-19") || league2.contains("BSWCP") 
-						|| league2.contains("Brazil Campeonato Carioca Women")
-						|| league2.contains("Republic of Ireland National League Women")
-						|| league2.contains("Bulgaria Premier League Women") || league2.contains("CONCACAF Women")
-						|| league2.contains("UEFA Women") || league2.contains("Sweden Woman")
-						|| league2.contains("Mexico Liga MX Femenil") || league2.contains("German Frauen Bundesliga")
-						|| league2.contains("Sweden Damallsvenskan") || league2.contains("Australia W-League")
-						|| league2.contains("European Women") || league2.contains("Germany Bundesliga II Women")
-						|| league2.contains("Brazil Paulista Women's League")
-						|| league2.contains("The women's league of Argentina") || league2.contains("ICE WC")
-						|| league2.contains("Holland Eredivisie Women's") || league2.contains("French Feminines D1")
-						|| league2.contains("Russia Womens Premier League") || league2.contains("Slovakia I Liga Women")
-						|| league2.contains("Spain Segunda Women") || league2.contains("Romania Liga 2 Women")
-						|| league2.contains("Spain Segunda Women") || league2.contains("Jordan League Women")
-						|| league2.contains("Serbia League Women") || league2.contains("Lithuania A Lyga Women")
-						|| league2.contains("Swden Women Division 2") || league2.contains("Poland Mloda Ekstraklasa")
-						|| league2.contains("Columbia women's League") || league2.contains("Vietnam Women Championship")
-						|| league2.contains("Portugal Campeonato Nacional Women")
-						|| league2.contains("Ecuador Primera Women")
-						|| league2.contains("Guatemala Liga Nacional Women")
-						|| league2.contains("Iceland Women's Premier League")
-						|| league2.contains("Northern Ireland Women's Super")
-						|| league2.contains("Southeast Asian Games Women") || league2.contains("NSW Premier W-League")
-						|| league2.contains("Spanish Ladies Premier League B")
-						|| league2.contains("Uzbekistan League Women")
-						|| league2.contains("Israel Women First National")
-						|| league2.contains("Brazil Paulista Women's")
-						|| league2.contains("Hungary Womens Division 1 League")
-						|| league2.contains("Estonia Womens Meistri Liiga") || league2.contains("Poland League Women")
-						|| league2.contains("Iceland Women's Division 1") || league2.contains("Scotland WPL")
-						|| league2.contains("Switzerland Division 1 Women")
-						|| league2.contains("Women Norwegian Toppserien")
-						|| league2.contains("Australia New South Wales NPL Women")
-						|| league2.contains("Czech Republic Cambrinus Liga Women's")
-						|| league2.contains("El Salvador Liga Feminina")
-						|| league2.contains("Belgium Women's Premier League")
-						|| league2.contains("Denmark Womans League") || league2.contains("Slovenia women's League")
-						|| league2.contains("Japan Women's Football League 1")
-						|| league2.contains("Austrian Frauen Bundesliga")
-						|| league2.contains("Chinese Women's Super League")
-						|| league2.contains("Norway Division 1 Women") || league2.contains("Belgium Women 1st National")
-						|| league2.contains("Costa Rica Primera Division Women")
-						|| league2.contains("Japan Women's Football League 2")
-						|| league2.contains("Australia Northern NSW Women�s Premier League")
-						|| league2.contains("Nigeria League Women") || league2.contains("WAUS WD1")
-						|| league2.contains("VIC Women's Premier League") || league2.contains("Algeria Womens League")
-						|| league2.contains("WK League") || league2.contains("Finland Women Premier League")
-						|| league2.contains("Uganda Super League Women")
-						|| league2.contains("Australia Queensland Premier League 2")
-						|| league2.contains("France Division 2 Women")
-						|| league2.contains("Australia Victoria Premier League Women")
-						|| league2.contains("South Africa League Women")
-						|| league2.contains("Wales Premier League Women")
-						|| league2.contains("Australia Capital Territory Premier League Women")
-						|| league2.contains("Australia Tasmania Super League Women")
-						|| league2.contains("Romania Liga 1 Women")
-						|| league2.contains("Australia Queensland State Women's Premier League")
-						|| league2.contains("Malta Women Division 1") || league2.contains("USA Women")
-						|| league2.contains("England FA Women Super League") || league2.contains("Japanese WE League")
-						|| league2.contains("Spanish Ladies Premier League")
-						|| league2.contains("Italian Women Division 1") || league2.contains("Brazil women's League")
-						|| league2.contains("Swden Women Divi.1") || league2.contains("Argentina Championship Women")
-						|| league2.contains("English Women's Conference North")
-						|| league2.contains("Italy Campionato Primavera 4")
-						|| league2.contains("Australia Northern NSW Women’s Premier League")
-						|| league2.contains("Olympic (Preliminaries)") || league2.contains("World Beach Games")
-						|| league2.contains("Portugal Champions NACIONAL")
-						|| league2.contains("England Ryman(Isthmian)") || league2.contains("Switzerland - 2.Liga")
-						|| league2.contains("Amateur") || league2.contains("England Southern Premier League")
-						|| league2.contains("England Northern Premier League")
-						|| league2.contains("England Southern League") || league2.contains("ENG SD1")
-						|| league2.contains("Uruguay League Women") || league2.contains("POL WD1")
-						|| league2.contains("England Conference South Division")
-						|| league2.contains("England Conference North Division")
-						|| league2.contains("English FA Women's Premier League")
-						|| league2.contains("Croatia First League Women")
+				if (
+						league2.contains("Russia")
 
-						|| league2.contains("Russia")
-//											|| league2.contains("Bolivia")
-											|| league2.contains("The lowlands of Scotland League")
-											|| league2.contains("Cuban Championship")
-											|| league2.contains("Mongolia")
-											|| league2.contains("Chinese")
-											|| homeName.contains("Melgar")
-											|| homeName.contains("Jose Teran")
-
-											|| homeName.contains("Denmark - 4.Liga")
-											|| homeName.contains("Denmark Division 3")
-											|| homeName.contains("Czech Republic 4. Ligy cup")
-
-//											|| league2.contains("Spain Primera Division RFEF")
-//											|| league2.contains("Tercera")
-//											|| homeName.contains("Barcelona")
-//											|| homeName.contains("Partizan")
-//											|| homeName.contains("Louisville City")
-											|| league2.contains("Latvia")
-//											|| homeName.contains("Melgar")
-
-											|| league2.contains("Campeonato Piauiense")
-											|| league2.contains("Campeonato Piauiense")
-											|| league2.contains("Turkiye Lig3")
-											|| league2.contains("Turkey 3. Ligi B")
-											|| league2.contains("Czech Group D League")
-											|| league2.contains("United Arab Emirates U21")
+						|| league2.contains("Youth")
+						|| league2.contains("U19")
+						|| league2.contains("U-19")
+						|| league2.contains("Armenia Division 2")
+						|| league2.contains("Junior")
+						|| league2.contains("Bhutan")
 
 
+						|| homeName.contains("Mohammedan")
+						|| homeName.contains("AE Kifisias")
+						|| homeName.contains("CF Trival Valderas")
+						|| homeName.contains("Bolivar")
 
-
-
+				
 				)
 					continue;
 
@@ -783,7 +706,7 @@ class Livescore18Football {
 //				
 //				 }
 
-				for (int j = 0; j < 1; j++) {
+				for (int j = 0; j < 2; j++) {
 
 					homeForm.clear();
 					awayForm.clear();
@@ -962,7 +885,6 @@ class Livescore18Football {
 											+ i + "]"))
 									.getText());
 
-							// System.out.println("away goal = " + awayGoalTemp);
 
 							FTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
 									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[4]/span[2])["
@@ -974,7 +896,6 @@ class Livescore18Football {
 											+ i + "]"))
 									.getText());
 
-							// System.out.println("away goal = " + awayGoalTemp);
 
 							HTawayOppGoalTemp = Integer.valueOf(driver.findElement(By
 									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[3]/span[2])["
@@ -1287,9 +1208,9 @@ class Livescore18Football {
 					FThomeConcededRegProb = FThomeConcededRegAvg;
 					FThomeConcededRecProb = FThomeConcededRecAvg;
 					homeScoredAGoalRegProb = homeScoredAGoalRegAvg;
-					float homeScoredAGoalRecProb = homeScoredAGoalRecAvg;
+					homeScoredAGoalRecProb = homeScoredAGoalRecAvg;
 					homeConcededAGoalRegProb = homeConcededAGoalRegAvg;
-					float homeConcededAGoalRecProb = homeConcededAGoalRecAvg;
+					homeConcededAGoalRecProb = homeConcededAGoalRecAvg;
 
 					FToneCount.clear();
 					FTtwoCount.clear();
@@ -1522,19 +1443,17 @@ class Livescore18Football {
 					FTawayConcededRecProb = FTawayConcededRecAvg;
 
 					awayScoredAGoalRegProb = awayScoredAGoalRegAvg;
-					float awayScoredAGoalRecProb = awayScoredAGoalRecAvg;
+					awayScoredAGoalRecProb = awayScoredAGoalRecAvg;
 					awayConcededAGoalRegProb = awayConcededAGoalRegAvg;
-					float awayConcededAGoalRecProb = awayConcededAGoalRecAvg;
+					awayConcededAGoalRecProb = awayConcededAGoalRecAvg;
 
-					FThomeExpectedRecProb = (FThomeScoredRecProb + FTawayConcededRecProb) / 2;
-					FTawayExpectedRecProb = (FTawayScoredRecProb + FThomeConcededRecProb) / 2;
-					homeScoredAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
-					awayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
-					homeConcededAGoalExpectedRecProb = (homeScoredAGoalRecProb + awayConcededAGoalRecProb) / 2;
-					awayScoredAGoalExpectedRecProb = (awayScoredAGoalRecProb + homeConcededAGoalRecProb) / 2;
-					HThomeExpectedRecProb = (HThomeScoredRecProb + HTawayConcededRecProb) / 2;
-					HTawayExpectedRecProb = (HTawayScoredRecProb + HThomeConcededRecProb) / 2;
-					HTtotalExpectedRecProb = HThomeExpectedRecProb + HTawayExpectedRecProb;
+//					FThomeExpectedRecProb = (FThomeScoredRecProb + FTawayConcededRecProb) / 2;
+//					FTawayExpectedRecProb = (FTawayScoredRecProb + FThomeConcededRecProb) / 2;
+//
+//
+//					HThomeExpectedRecProb = (HThomeScoredRecProb + HTawayConcededRecProb) / 2;
+//					HTawayExpectedRecProb = (HTawayScoredRecProb + HThomeConcededRecProb) / 2;
+//					HTtotalExpectedRecProb = HThomeExpectedRecProb + HTawayExpectedRecProb;
 
 					if (neutral) {
 
@@ -1572,15 +1491,16 @@ class Livescore18Football {
 						FTneutralAwayThreeRegProb = FTawayThreeRegProb;
 						FTneutralAwayFourRegProb = FTawayFourRegProb;
 
-						neutralHomeScoredAGoalExpectedRegProb = homeScoredAGoalRecProb;
-						neutralAwayScoredAGoalExpectedRegProb = awayScoredAGoalRecProb;
-						neutralHomeConcededAGoalExpectedRegProb = homeConcededAGoalRecProb;
-						neutralAwayConcededAGoalExpectedRegProb = awayConcededAGoalRecProb;
 
 						neutralHomeScoredAGoalExpectedRecProb = homeScoredAGoalRecProb;
 						neutralAwayScoredAGoalExpectedRecProb = awayScoredAGoalRecProb;
 						neutralHomeConcededAGoalExpectedRecProb = homeConcededAGoalRecProb;
 						neutralAwayConcededAGoalExpectedRecProb = awayConcededAGoalRecProb;
+
+						neutralHomeScoredAGoalExpectedRegProb = homeScoredAGoalRegProb;
+						neutralAwayScoredAGoalExpectedRegProb = awayScoredAGoalRegProb;
+						neutralHomeConcededAGoalExpectedRegProb = homeConcededAGoalRegProb;
+						neutralAwayConcededAGoalExpectedRegProb = awayConcededAGoalRegProb;
 
 						FTneutralHomeGoals.addAll(FThomeGoals);
 						FTneutralAwayGoals.addAll(FTawayGoals);
@@ -1620,16 +1540,20 @@ class Livescore18Football {
 
 				} // h/a for loop
 
-				if (neutralHomeForm.size() < 5 || neutralAwayForm.size() < 5)
+				if (neutralHomeForm.size() < 20 || neutralAwayForm.size() < 20)
 					continue;
 				double oddsBetThis = 0;
 				double systemBetThis = 0;
 
+				
+				
+				
 				// get odds
 				// click odds tab
+				
 				driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
 				// click 1x2 tab
-				driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[2]/a[1]")).click();
+				driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[2]/a[1]")).click();
 				String homeMaxOddsS = "";
 				String awayMaxOddsS = "";
 
@@ -1662,6 +1586,16 @@ class Livescore18Football {
 				// float oddsDiff = Math.abs(homeOdds - awayOdds);
 				// float minMinOdds = Math.min(homeMinOdds, awayMinOdds);
 				// float avgOdds = Math.min(homeAvgOdds, awayAvgOdds);
+				
+//				System.out.println("homeScoredAGoalRecProb = " + homeScoredAGoalRecProb);
+//				System.out.println("homeConcededAGoalRecProb = " + homeConcededAGoalRecProb);
+//				System.out.println("awayScoredAGoalRecProb = " + awayScoredAGoalRecProb);
+//				System.out.println("awayConcededAGoalRecProb = " + awayConcededAGoalRecProb);
+//				System.out.println("neutralHomeScoredAGoalExpectedRecProb = " + neutralHomeScoredAGoalExpectedRecProb);
+//				System.out.println("neutralHomeConcededAGoalExpectedRecProb = " + neutralHomeConcededAGoalExpectedRecProb);
+//				System.out.println("neutralAwayScoredAGoalExpectedRecProb = " + neutralAwayScoredAGoalExpectedRecProb);
+//				System.out.println("neutralAwayConcededAGoalExpectedRecProb = " + neutralAwayConcededAGoalExpectedRecProb);
+//				
 
 				float FTtotalHomeRegForm = ls.avg(neutralHomeFormRegProb, homeFormRegProb);
 				float FTtotalAwayRegForm = ls.avg(neutralAwayFormRegProb, awayFormRegProb);
@@ -1681,18 +1615,23 @@ class Livescore18Football {
 				float FTtotalMinExpectedRegProb = FTtotalMinHomeExpectedRegProb + FTtotalMinAwayExpectedRegProb;
 				FTtotalExpectedRegProb = FTtotalHomeExpectedRegProb + FTtotalAwayExpectedRegProb;
 				float FTMaxExpectedRegProb = Math.max(FTtotalHomeExpectedRegProb, FTtotalAwayExpectedRegProb);
-//				float totalHomeScoredAGoalExpectedRegProb = ls.avg(neutralHomeScoredAGoalExpectedRegProb,
-//						homeScoredAGoalExpectedRegProb);
-//				float totalAwayScoredAGoalExpectedRegProb = ls.avg(neutralAwayScoredAGoalExpectedRegProb,
-//						awayScoredAGoalExpectedRegProb);
-//				float totalHomeConcededAGoalExpectedRegProb = ls.avg(neutralHomeConcededAGoalExpectedRegProb,
-//						homeConcededAGoalExpectedRegProb);
-//				float totalAwayConcededAGoalExpectedRegProb = ls.avg(neutralAwayConcededAGoalExpectedRegProb,
-//						awayConcededAGoalExpectedRegProb);
-//				float maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRegProb,
-//						totalAwayScoredAGoalExpectedRegProb);
-//				float maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRegProb,
-//						totalAwayConcededAGoalExpectedRegProb);
+				float totalHomeScoredAGoalExpectedRegProb = ls.avg(neutralHomeScoredAGoalExpectedRegProb,
+						homeScoredAGoalRegProb);
+				float totalAwayScoredAGoalExpectedRegProb = ls.avg(neutralAwayScoredAGoalExpectedRegProb,
+						awayScoredAGoalRegProb);
+				float totalHomeConcededAGoalExpectedRegProb = ls.avg(neutralHomeConcededAGoalExpectedRegProb,
+						homeConcededAGoalRegProb);
+				float totalAwayConcededAGoalExpectedRegProb = ls.avg(neutralAwayConcededAGoalExpectedRegProb,
+						awayConcededAGoalRegProb);
+				float homeGolX = Math.min(totalHomeScoredAGoalExpectedRegProb, totalAwayConcededAGoalExpectedRegProb);
+				float awayGolX = Math.min(totalAwayScoredAGoalExpectedRegProb, totalHomeConcededAGoalExpectedRegProb);
+				float minGolX = Math.min(homeGolX, awayGolX);
+				float maxGolX = Math.max(homeGolX, awayGolX);
+
+				float maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRegProb,
+						totalAwayScoredAGoalExpectedRegProb);
+				float maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRegProb,
+						totalAwayConcededAGoalExpectedRegProb);
 				float FTtotalHomeOneRegProb = ls.avg(FTneutralHomeOneRegProb, FThomeOneRegProb);
 				float FTtotalHomeTwoRegProb = ls.avg(FTneutralHomeTwoRegProb, FThomeTwoRegProb);
 				float FTtotalHomeThreeRegProb = ls.avg(FTneutralHomeThreeRegProb, FThomeThreeRegProb);
@@ -1701,6 +1640,10 @@ class Livescore18Football {
 				float FTtotalAwayTwoRegProb = ls.avg(FTneutralAwayTwoRegProb, FTawayTwoRegProb);
 				float FTtotalAwayThreeRegProb = ls.avg(FTneutralAwayThreeRegProb, FTawayThreeRegProb);
 				float FTtotalAwayFourRegProb = ls.avg(FTneutralAwayFourRegProb, FTawayFourRegProb);
+				float HTtotalHomeOneRegProb = ls.avg(HTneutralHomeOneRegProb, HThomeOneRegProb);
+				float HTtotalAwayOneRegProb = ls.avg(HTneutralAwayOneRegProb, HTawayOneRegProb);
+				float HTMinRegOne = Math.min(HTtotalHomeOneRegProb, HTtotalAwayOneRegProb);
+
 				float FTMinRegOne = Math.min(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
 				float FTMinRegTwo = Math.min(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
 				float FTMinRegThree = Math.min(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
@@ -1722,154 +1665,63 @@ class Livescore18Football {
 				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
 				float oddsDiff = homeOdds - awayOdds;
 
-				if (homeForm.size() < 5 || awayForm.size() < 5) {
-
-					FTtotalHomeRegForm = neutralHomeFormRegProb;
-					FTtotalAwayRegForm = neutralAwayFormRegProb;
-					FTMinRegForm = Math.min(FTtotalHomeRegForm, FTtotalAwayRegForm);
-					FTMaxRegForm = Math.max(FTtotalHomeRegForm, FTtotalAwayRegForm);
-					formDiffReg = (FTtotalHomeRegForm - FTtotalAwayRegForm);
-					FTtotalHomeScoredRegProb = FTneutralHomeScoredRegProb;
-					FTtotalAwayScoredRegProb = FTneutralAwayScoredRegProb;
-					FTtotalScoredRegProb = FTtotalHomeScoredRegProb + FTtotalAwayScoredRegProb;
-					FTtotalHomeConcededRegProb = FTneutralHomeConcededRegProb;
-					FTtotalAwayConcededRegProb = FTneutralAwayConcededRegProb;
-					FTtotalConcededRegProb = FTtotalHomeConcededRegProb + FTtotalAwayConcededRegProb;
-					FTtotalHomeExpectedRegProb = ls.avg(FTtotalHomeScoredRegProb, FTtotalAwayConcededRegProb);
-					FTtotalAwayExpectedRegProb = ls.avg(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
-					FTtotalMinHomeExpectedRegProb = Math.min(FTtotalHomeScoredRegProb, FTtotalAwayConcededRegProb);
-					FTtotalMinAwayExpectedRegProb = Math.min(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
-					FTtotalMinExpectedRegProb = FTtotalMinHomeExpectedRegProb + FTtotalMinAwayExpectedRegProb;
-					FTtotalExpectedRegProb = FTtotalHomeExpectedRegProb + FTtotalAwayExpectedRegProb;
-					FTMaxExpectedRegProb = Math.max(FTtotalHomeExpectedRegProb, FTtotalAwayExpectedRegProb);
-//					totalHomeScoredAGoalExpectedRegProb = neutralHomeScoredAGoalExpectedRegProb;
-//					totalAwayScoredAGoalExpectedRegProb = neutralAwayScoredAGoalExpectedRegProb;
-//					totalHomeConcededAGoalExpectedRegProb = neutralHomeConcededAGoalExpectedRegProb;
-//					totalAwayConcededAGoalExpectedRegProb = neutralAwayConcededAGoalExpectedRegProb;
-//					maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRegProb, totalAwayScoredAGoalExpectedRegProb);
-//					maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRegProb,
-//							totalAwayConcededAGoalExpectedRegProb);
-					FTtotalHomeOneRegProb = FTneutralHomeOneRegProb;
-					FTtotalHomeTwoRegProb = FTneutralHomeTwoRegProb;
-					FTtotalHomeThreeRegProb = FTneutralHomeThreeRegProb;
-					FTtotalHomeFourRegProb = FTneutralHomeFourRegProb;
-					FTtotalAwayOneRegProb = FTneutralAwayOneRegProb;
-					FTtotalAwayTwoRegProb = FTneutralAwayTwoRegProb;
-					FTtotalAwayThreeRegProb = FTneutralAwayThreeRegProb;
-					FTtotalAwayFourRegProb = FTneutralAwayFourRegProb;
-					FTMinRegOne = Math.min(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-					FTMinRegTwo = Math.min(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-					FTMinRegThree = Math.min(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-					FTMinRegFour = Math.min(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
-					FTMaxRegOne = Math.max(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-					FTMaxRegTwo = Math.max(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-					FTMaxRegThree = Math.max(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-					FTMaxRegFour = Math.max(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
-					FTAvgRegOne = ls.avg(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-					FTAvgRegTwo = ls.avg(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-					FTAvgRegThree = ls.avg(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-					FTAvgRegFour = ls.avg(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
-					minMaxOdds = Math.min(homeOdds, awayOdds);
-					homeFormOdds = FTtotalHomeRegForm / homeOdds;
-					awayFormOdds = FTtotalAwayRegForm / awayOdds;
-					formOddsDiff = homeFormOdds - awayFormOdds;
-					minFormOdds = Math.min(homeFormOdds, awayFormOdds);
-					maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
-					oddsDiff = homeOdds - awayOdds;
-				}
+				
 
 				int exception = 0;
 				String betType = "";
 				
+				if(Float.compare(HTMinRegOne, (float) 0.6) <  0)
+					continue;
+				if((Float.compare(maxGolX, (float) 0.6) <  0))
+					continue;
 				
-				if ( (Float.compare(FTtotalHomeScoredRegProb, (float) 1.5) >= 0) )
+
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.5) >= 0)  || (Float.compare(FTtotalMinHomeExpectedRegProb, (float) 2) >= 0) || (Float.compare(FTtotalMinAwayExpectedRegProb, (float) 2) >= 0))
+					oddsBetThis = 2;
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.0) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalHomeScoredRegProb, (float) 2.5) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 4) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalHomeScoredRegProb, (float) 3.5) >= 0) )
-					oddsBetThis++;
-				if ( (Float.compare(FTtotalHomeScoredRegProb, (float) 4.5) >= 0) )
-					oddsBetThis++;
-				if ( (Float.compare(FTtotalAwayScoredRegProb, (float) 1.5) >= 0) )
-					oddsBetThis++;
-				if ( (Float.compare(FTtotalAwayScoredRegProb, (float) 2.5) >= 0) )
-					oddsBetThis++;
-				if ( (Float.compare(FTtotalAwayScoredRegProb, (float) 3.5) >= 0) )
-					oddsBetThis++;
-				if ( (Float.compare(FTtotalAwayScoredRegProb, (float) 4.5) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 5) >= 0) )
 					oddsBetThis++;
 				
 				oddsBetThis = oddsBetThis - 0.5;
-
-
-				
 				
 
-				
-				
-				if( (Float.compare(FTMinRegForm, (float) 0.6) < 0) || (Float.compare(FTtotalHomeScoredRegProb, (float) 2.6) >= 0))
-					betType = "PREBET";
-				else
-					betType = "LIVEBET";
-				
-				if((Float.compare(formOddsDiff, (float) -1.8) >= 0) && (Float.compare(formOddsDiff, (float) 1) < 0))
-					continue;
 
-				if( (Float.compare(formOddsDiff, (float) 0) > 0) && (Float.compare(FTtotalHomeScoredRegProb, (float) 1.4) < 0))
+				if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
+					oddsBetThis++;
+				
+				if(tier.equals("E") && oddsBetThis > 1.5 )
+					oddsBetThis--;
+				
+				if( (oddsBetThis == 0 ||  oddsBetThis < 0))
 					continue;
 				
-				if( (Float.compare(formOddsDiff, (float) 0) < 0) && (Float.compare(FTtotalAwayScoredRegProb, (float) 1.4) < 0))
-					continue;
-				
-				if( (Float.compare(FTMinRegForm, (float) 1.5) >= 0) )
-					continue;
-				
-				if( (Float.compare(FTMinRegForm, (float) 1.3) >= 0) )
-					betType += " 1 GOL MAX";
-				
-				if (
-						(
-								
-								(Float.compare(FTMaxRegForm, (float) 1.5) >= 0)
-								&& (Float.compare(FTtotalHomeScoredRegProb, (float) 2) >= 0)
-								&& (Float.compare(FTMinRegForm, (float) 1) < 0)
-								&& (Float.compare(homeOdds, (float) 1.4) < 0)
-								
-								
-							)
-						|| (
-								(Float.compare(FTMaxRegForm, (float) 1.5) >= 0)
-								 && (Float.compare(FTtotalAwayScoredRegProb, (float) 2) >= 0)
-								 && (Float.compare(FTMinRegForm, (float) 1) < 0)
-									&& (Float.compare(awayOdds, (float) 1.4) < 0)
+				if ( exception !=1 && (Float.compare(FTMinRegOne, (float) 0.9) < 0) )
+				continue;		
 
-								 
-								)
-						) {
-					exception = 1;
+
+				if ((Float.compare(formOddsDiff, (float) 1) <  0) && (Float.compare(formOddsDiff, (float) -1.5) >  0))
+					continue;
+
+				if ( (Float.compare(formOddsDiff, (float) 1.35) <  0) && tier.equals("E"))
+					continue;
+		
+				
+				if( (Float.compare(formOddsDiff, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
 					betType = "1HG";
-				}
 
-
-				
-				if (homeName.contains("Women") || homeName.contains("Woman") || homeName.contains("woman")
-						|| homeName.contains("women") || homeName.contains(" w ") || homeName.contains(" W ")
-						|| homeName.contains("(w)") || homeName.contains("(W)") || homeName.contains("Ladies")
-						|| homeName.contains("ladies"))
+				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)"))
+					betType += "NO SIDES";
+//				
+				Float fDR = new Float(formDiffReg);
+				if (fDR.isNaN())
 					continue;
-				
 
 				
-				System.out.println("neutralHomeForm.size() = " + neutralHomeForm.size());
-				System.out.println("neutralAwayForm.size() = " + neutralAwayForm.size());
-
-//				System.out.println("maxScoredAGoal = " + maxScoredAGoal);
-//				System.out.println("maxConcededAGoal = " + maxConcededAGoal);
 				
-
-
-				if (
-
+if(
 				true
 
 				) {
@@ -1921,12 +1773,19 @@ class Livescore18Football {
 					System.out.format("|%-25s|", formOddsDiff);
 					System.out.println();
 					System.out.format("|%-25s|", "FT Reg Expected Score");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeScoredRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayScoredRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalScoredRegProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalMinHomeExpectedRegProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalMinAwayExpectedRegProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalMinExpectedRegProb).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "FT Reg Score Probablility");
+					System.out.format("|%-25s|", Float.toString(homeGolX).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(awayGolX).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(minGolX).substring(0, 3));
 					System.out.println();
 					System.out.format("|%-25s|", "oddsBetThis -> " + oddsBetThis);
 					System.out.format("|%-25s|", "betType -> " + betType);
+					System.out.format("|%-25s|", "tier -> " + tier);
+					System.out.println();
 					System.out.format("|%-25s|", "FT Goals");
 					System.out.format("|%-25s|", FThomeScore);
 					System.out.format("|%-25s|", FTawayScore);
@@ -1937,30 +1796,30 @@ class Livescore18Football {
 					System.out.format("|%-25s|", HTawayScore);
 					System.out.format("|%-25s|", HTScore);
 					System.out.println();
-
-					System.out.format("|%-25s|", "One Prob");
+					System.out.format("|%-25s|", "HT One Prob");
+					System.out.format("|%-25s|", Float.toString(HTtotalHomeOneRegProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(HTtotalAwayOneRegProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(HTMinRegOne).substring(0, 4));
+					System.out.println();
+					System.out.format("|%-25s|", "FT One Prob");
 					System.out.format("|%-25s|", Float.toString(FTtotalHomeOneRegProb).substring(0, 3));
 					System.out.format("|%-25s|", Float.toString(FTtotalAwayOneRegProb).substring(0, 3));
 					System.out.format("|%-25s|", Float.toString(FTMinRegOne).substring(0, 3));
 					System.out.println();
-					System.out.format("|%-25s|", "Two Prob");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayTwoRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTMinRegTwo).substring(0, 3));
-					System.out.println();
-					System.out.format("|%-25s|", "Three Prob");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeThreeRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayThreeRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTMinRegThree).substring(0, 3));
-					System.out.println();
-					System.out.format("|%-25s|", "Four Prob");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeFourRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayFourRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTMinRegFour).substring(0, 3));
-					System.out.println();
-					System.out.format("|%-25s|", "oddsBetThis -> " + oddsBetThis);
-					System.out.format("|%-25s|", "betType -> " + betType);
-					System.out.format("|%-25s|", "tier -> " + tier);
+//					System.out.format("|%-25s|", "FT Two Prob");
+//					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTtotalAwayTwoRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTMinRegTwo).substring(0, 3));
+//					System.out.println();
+//					System.out.format("|%-25s|", "Three Prob");
+//					System.out.format("|%-25s|", Float.toString(FTtotalHomeThreeRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTtotalAwayThreeRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTMinRegThree).substring(0, 3));
+//					System.out.println();
+//					System.out.format("|%-25s|", "FT Four Prob");
+//					System.out.format("|%-25s|", Float.toString(FTtotalHomeFourRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTtotalAwayFourRegProb).substring(0, 3));
+//					System.out.format("|%-25s|", Float.toString(FTMinRegFour).substring(0, 3));
 
 					System.out.println();
 
@@ -2085,7 +1944,7 @@ class Livescore18Football {
 		// driver.get("http://www.goaloo.mobi/football/database/schedule-" + schedule +
 		// "?round=" + week);
 
-		driver.get("https://www.goaloo.site/football/database/schedule-25?round=16");
+		driver.get("https://www.goaloo.site/football/database/schedule-1073?round=1");
 
 		while (true) {
 

@@ -122,7 +122,7 @@ class Basketball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "28", month = "11", year = "2022";
+		String day = "18", month = "12", year = "2022";
 		
 		Basketball ls = new Basketball();
 		String mode = "";
@@ -133,17 +133,7 @@ class Basketball {
 		System.out.println(day + "," + month + "," + year);
 
 //		links.add("https://m.aiscore.com/basketball/match-bakkei-bornova-beledtyesi/wv784sxdooxsoqr/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-kuremaa-illiabum-clube/l6kersmex8ecvq5/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-basketbal-svitavy-snakes-ostrava/ndkzysn98lgfx73/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-ristopro-fabriano-bakery-piacenza/l6kersmexj8ivq5/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-norway-slovak-republic/oj7x6szrlgmb47g/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-lebanon-india/j374ws91mnrcgko/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-north-dakota-state-pacific/9gkl6s6ygm4bmkx/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-san-diego-new-jersey-tech/xvkjvszm6vna8k9/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-san-francisco-california-merced/ndqmrs3z1j4irkv/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-virginia-tech-william-mary/l6kersmxl33svq5/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-canada-panama/jek3psd6nnpt9qo/h2h");
-//		links.add("https://m.aiscore.com/basketball/match-mississippi-valley-state-yale/zrknxs5lj02iwql/h2h");
+
 		
 		
 		// Using list iterator
@@ -299,7 +289,7 @@ class Basketball {
 
 
 				
-				if( ( (Float.compare(minRegForm, (float) 0.5) >= 0) || (Float.compare(maxRegForm, (float) 1.6) < 0) ))
+				if( ( (Float.compare(minRegForm, (float) 0.5) >= 0) || (Float.compare(maxRegForm, (float) 2.1) < 0) ))
 					continue;
 
 				

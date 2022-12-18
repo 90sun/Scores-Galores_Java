@@ -124,7 +124,7 @@ class AmericanFootball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "28", month = "11", year = "2022";
+		String day = "18", month = "12", year = "2022";
 		
 		AmericanFootball ls = new AmericanFootball();
 		String mode = "";
