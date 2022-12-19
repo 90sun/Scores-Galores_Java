@@ -37,15 +37,15 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver_win.exe");
 //		System.setProperty("webdriver.chrome.whitelistedIps", "");
-		FirefoxOptions options = new FirefoxOptions();
+		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox"); // Bypass OS security model
 		options.addArguments("headless"); // Bypass OS security model
 		options.addArguments("--disable-extensions"); // Bypass OS security model
 //        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 //
-		WebDriver driver = new FirefoxDriver(options);
+		WebDriver driver = new ChromeDriver(options);
 
 		WebDriverWait wait = new WebDriverWait(driver, 1);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "n1";
+		String day = "n0";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -87,12 +87,16 @@ class Livescore18Football {
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-	//			links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-		links.add("https://www.goaloo.mobi/football/match/h2h-2082074");
-		links.add("https://www.goaloo.mobi/football/match/h2h-2134968");
-
+//		links.add("https://www.goaloo.site/football/zhejiang-greentown-vs-guangzhou-city/h2h-2318824");
+//		links.add("https://www.goaloo.site/football/chengdu-better-city-fc-vs-meizhou-hakka/h2h-2318826");
+//		links.add("https://www.goaloo.site/football/shandong-taishan-vs-shenzhen-fc/h2h-2262950");
+//		links.add("https://www.goaloo.site/football/pyramids-fc-vs-aswan/h2h-2305364");
+//		links.add("https://www.goaloo.site/football/sabah-fk-baku-vs-sabail/h2h-2318425");
+//		links.add("https://www.goaloo.site/football/maccabi-bnei-raina-vs-maccabi-tel-aviv/h2h-2212055");
+//		links.add("https://www.goaloo.site/football/lask-linz-vs-spvgg-bayreuth/h2h-2319760");
 
 
 
@@ -1667,8 +1671,11 @@ class Livescore18Football {
 				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
 				float oddsDiff = homeOdds - awayOdds;
 
+				float homeFormOddsIndex = (((3/homeOdds) + FTtotalHomeRegForm)/2) ;
+				float awayFormOddsIndex = (((3/awayOdds) + FTtotalAwayRegForm)/2) ;
+				float formOddsIndex = homeFormOddsIndex - awayFormOddsIndex;
 				
-
+				
 				int exception = 0;
 				String betType = "";
 				
@@ -1697,21 +1704,21 @@ class Livescore18Football {
 				if(tier.equals("E") && oddsBetThis > 1.5 )
 					oddsBetThis--;
 				
+				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
+					oddsBetThis += 3;
+				
 				if( (oddsBetThis == 0 ||  oddsBetThis < 0))
 					continue;
 				
-				if ( exception !=1 && (Float.compare(FTMinRegOne, (float) 0.9) < 0) )
-				continue;		
 
-
-				if ((Float.compare(formOddsDiff, (float) 1) <  0) && (Float.compare(formOddsDiff, (float) -1.5) >  0))
+				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0))
 					continue;
 
-				if ( (Float.compare(formOddsDiff, (float) 1.35) <  0) && tier.equals("E"))
+				if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && tier.equals("E"))
 					continue;
 		
 				
-				if( (Float.compare(formOddsDiff, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
+				if( (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
 					betType = "1HG";
 
 				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)"))
@@ -1769,10 +1776,10 @@ if(
 					System.out.format("|%-25s|", Float.toString(FTtotalAwayRegForm).substring(0, 3));
 					System.out.format("|%-25s|", formDiffReg);
 					System.out.println();
-					System.out.format("|%-25s|", "Odds");
-					System.out.format("|%-25s|", homeOdds);
-					System.out.format("|%-25s|", awayOdds);
-					System.out.format("|%-25s|", formOddsDiff);
+					System.out.format("|%-25s|", "formOddsIndex");
+					System.out.format("|%-25s|", homeFormOddsIndex);
+					System.out.format("|%-25s|", awayFormOddsIndex);
+					System.out.format("|%-25s|", formOddsIndex);
 					System.out.println();
 					System.out.format("|%-25s|", "FT Reg Expected Score");
 					System.out.format("|%-25s|", Float.toString(FTtotalMinHomeExpectedRegProb).substring(0, 3));
