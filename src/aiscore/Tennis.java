@@ -92,7 +92,7 @@ class Tennis {
 		// TODO Auto-generated method stub
 
 		// setting the driver executable
-		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./chromedriver_win.exe");
 		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
 		options.addArguments("headless"); // Bypass OS security model
@@ -109,7 +109,7 @@ class Tennis {
 		SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		Date date1 = new Date(System.currentTimeMillis());
 		System.out.println(formatter1.format(date1));
-		File file = new File("./tennisBets/tennisBets_" + formatter1.format(date1) + ".csv");
+		File file = new File("./tennyBets/tennyBets_" + formatter1.format(date1) + ".csv");
 
 		// Create the file
 		if (file.createNewFile()) {
@@ -125,7 +125,7 @@ class Tennis {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "18", month = "12", year = "2022";
+		String day = "19", month = "12", year = "2022";
 		
 		Tennis ls = new Tennis();
 		String mode = "";

@@ -91,7 +91,7 @@ class AmericanFootball {
 		// TODO Auto-generated method stub
 
 		// setting the driver executable
-		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./chromedriver_win.exe");
 		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
 		options.addArguments("headless"); // Bypass OS security model
@@ -124,7 +124,7 @@ class AmericanFootball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "18", month = "12", year = "2022";
+		String day = "19", month = "12", year = "2022";
 		
 		AmericanFootball ls = new AmericanFootball();
 		String mode = "";

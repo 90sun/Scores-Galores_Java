@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "n0";
+		String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -90,7 +90,7 @@ class Livescore18Football {
 				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-//		links.add("https://www.goaloo.site/football/zhejiang-greentown-vs-guangzhou-city/h2h-2318824");
+//		links.add("https://www.goaloo.site/football/mcb-oued-sly-vs-rc-relizane/h2h-2312696");
 //		links.add("https://www.goaloo.site/football/chengdu-better-city-fc-vs-meizhou-hakka/h2h-2318826");
 //		links.add("https://www.goaloo.site/football/shandong-taishan-vs-shenzhen-fc/h2h-2262950");
 //		links.add("https://www.goaloo.site/football/pyramids-fc-vs-aswan/h2h-2305364");
@@ -682,12 +682,19 @@ class Livescore18Football {
 						|| league2.contains("Armenia Division 2")
 						|| league2.contains("Junior")
 						|| league2.contains("Bhutan")
+						|| league2.contains("Wales Premier League Women")
+						|| league2.contains("Turkey Bayanlar 1. Ligi")
+						|| league2.contains("Belgium Women's Premier League")
+						|| league2.contains("Algerian Ligue Professionnelle 2")
+						|| league2.contains("Portugal Women Cup")
 
 
 						|| homeName.contains("Mohammedan")
 						|| homeName.contains("AE Kifisias")
 						|| homeName.contains("CF Trival Valderas")
 						|| homeName.contains("Bolivar")
+						|| homeName.contains("Yuen Long")
+						|| homeName.contains("Maccabi Nujeidat Ahmed")
 
 				
 				)
@@ -1618,6 +1625,9 @@ class Livescore18Football {
 				float FTtotalAwayExpectedRegProb = ls.avg(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
 				float FTtotalMinHomeExpectedRegProb = Math.min(FTtotalHomeScoredRegProb, FTtotalAwayConcededRegProb);
 				float FTtotalMinAwayExpectedRegProb = Math.min(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
+				
+				float FTmaxMinExpectedRegProb = Math.max(FTtotalMinHomeExpectedRegProb, FTtotalMinAwayExpectedRegProb);
+
 				float FTtotalMinExpectedRegProb = FTtotalMinHomeExpectedRegProb + FTtotalMinAwayExpectedRegProb;
 				FTtotalExpectedRegProb = FTtotalHomeExpectedRegProb + FTtotalAwayExpectedRegProb;
 				float FTMaxExpectedRegProb = Math.max(FTtotalHomeExpectedRegProb, FTtotalAwayExpectedRegProb);
@@ -1706,6 +1716,12 @@ class Livescore18Football {
 				
 				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 3;
+				else if((Float.compare(formOddsIndex, (float) 1.8) >=  0) || (Float.compare(formOddsIndex, (float) -1.8) <=  0))
+					oddsBetThis += 2;
+				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -1.7) <=  0))
+					oddsBetThis += 1;
+
+
 				
 				if( (oddsBetThis == 0 ||  oddsBetThis < 0))
 					continue;
@@ -1721,7 +1737,7 @@ class Livescore18Football {
 				if( (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
 					betType = "1HG";
 
-				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)"))
+				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)") || (Float.compare(FTmaxMinExpectedRegProb, (float) 1.5) < 0) )
 					betType += "NO SIDES";
 //				
 				Float fDR = new Float(formDiffReg);
