@@ -37,15 +37,15 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.chrome.driver", "chromedriver_win.exe");
+		System.setProperty("webdriver.gecko.driver", "geckodriver_win.exe");
 //		System.setProperty("webdriver.chrome.whitelistedIps", "");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--no-sandbox"); // Bypass OS security model
-		options.addArguments("headless"); // Bypass OS security model
-		options.addArguments("--disable-extensions"); // Bypass OS security model
+		FirefoxOptions options = new FirefoxOptions();
+//		options.addArguments("--no-sandbox"); // Bypass OS security model
+		options.setHeadless(true); // Bypass OS security model
+//		options.addArguments("--disable-extensions"); // Bypass OS security model
 //        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 //
-		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = new FirefoxDriver(options);
 
 		WebDriverWait wait = new WebDriverWait(driver, 1);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "n1";
+		String day = "n0";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -97,8 +97,15 @@ class Livescore18Football {
 //		links.add("https://www.goaloo.site/football/sabah-fk-baku-vs-sabail/h2h-2318425");
 //		links.add("https://www.goaloo.site/football/maccabi-bnei-raina-vs-maccabi-tel-aviv/h2h-2212055");
 //		links.add("https://www.goaloo.site/football/lask-linz-vs-spvgg-bayreuth/h2h-2319760");
-
-
+//
+//		links.add("https://www.goaloo.site/football/match/h2h-2295039");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2319443");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2318246");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2245942");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2319344");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2315277");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2232144");
+//		links.add("https://www.goaloo.mobi/football/match/h2h-2316077");
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -658,6 +665,7 @@ class Livescore18Football {
 						|| league2.contains("Campeonato Piauiense")		
 
 						|| league2.contains("Turkey 3. Ligi B")
+						|| league2.contains("AFF Championship")
 
 						|| league2.contains("Women")
 						|| league2.contains("Ladies")
@@ -687,7 +695,7 @@ class Livescore18Football {
 						|| league2.contains("Belgium Women's Premier League")
 						|| league2.contains("Algerian Ligue Professionnelle 2")
 						|| league2.contains("Portugal Women Cup")
-
+						|| league2.contains("Kuwait")
 
 						|| homeName.contains("Mohammedan")
 						|| homeName.contains("AE Kifisias")
@@ -1708,11 +1716,11 @@ class Livescore18Football {
 				
 
 
-				if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
-					oddsBetThis++;
+//				if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
+//					oddsBetThis++;
 				
-				if(tier.equals("E") && oddsBetThis > 1.5 )
-					oddsBetThis--;
+//				if(tier.equals("E") && oddsBetThis > 1.5 )
+//					oddsBetThis--;
 				
 				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 3;
@@ -1738,7 +1746,7 @@ class Livescore18Football {
 					betType = "1HG";
 
 				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)") || (Float.compare(FTmaxMinExpectedRegProb, (float) 1.5) < 0) )
-					betType += "NO SIDES";
+					betType += " NO SIDES";
 //				
 				Float fDR = new Float(formDiffReg);
 				if (fDR.isNaN())
