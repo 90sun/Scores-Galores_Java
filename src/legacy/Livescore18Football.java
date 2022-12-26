@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "f7";
+		String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -483,6 +483,7 @@ class Livescore18Football {
 
 				league2.contains("Slovakia 3.Liga")
 						|| league2.contains("El Salvador Segunda Division")
+						|| league2.contains("Hong Kong 3rd Division")
 
 						|| league2.contains("Estonia Esi Liiga") || league2.contains("Finland - Kakkonen Lohko")
 						|| league2.contains("Croatia 3.Division") || league2.contains("FFSA PL")
@@ -619,7 +620,7 @@ class Livescore18Football {
 						|| league2.contains("Nepal C Division") || league2.contains("India Delhi Senior Division")
 						|| league2.contains("Mexico Liga TDP") || league2.contains("Turkey 3")
 						|| league2.contains("Argentina Prim C") || league2.contains("Landesliga")
-
+						|| league2.contains("Argentina Torneo B")
 						|| league2.contains("India Mizoram Premier League") || league2.contains("Chile Primera D")
 
 				)
@@ -680,8 +681,12 @@ class Livescore18Football {
 						|| league2.contains("WE League")
 						|| league2.contains("women")
 						|| league2.contains("WK League")
+						|| league2.contains("Australia W-League")
 						|| league2.contains("Bayanlar")
 						|| league2.contains("Amateur")
+						|| league2.contains("England Southern League Central Division")
+						|| league2.contains("England Northern Premier League")
+						|| league2.contains("England Ryman(Isthmian)")
 
 				)
 					tier = "E";
@@ -716,11 +721,14 @@ class Livescore18Football {
 						|| awayName.contains("Kiyovu")
 						|| homeName.contains("Sydney FC (w)")
 
-						//|| homeName.contains("Larne")
+						|| homeName.contains("Larne")
+						|| homeName.contains("Indonesia")
 
 				
 				)
 					continue;
+				
+
 
 				if (games.equals("20")) {
 					// driver.findElement(By.xpath("//*[@i='f6']/div/span/select")).click();
@@ -1752,7 +1760,7 @@ class Livescore18Football {
 				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0))
 					continue;
 
-				if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && tier.equals("E"))
+				if ( (Float.compare(formOddsIndex, (float) 1.2) <  0) && (Float.compare(formOddsIndex, (float) -1.75) >  0) && tier.equals("E"))
 					continue;
 		
 				
