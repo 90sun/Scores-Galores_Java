@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "n0";
+		String day = "f7";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -97,7 +97,12 @@ class Livescore18Football {
 //		links.add("https://www.goaloo.site/football/sabah-fk-baku-vs-sabail/h2h-2318425");
 //		links.add("https://www.goaloo.site/football/maccabi-bnei-raina-vs-maccabi-tel-aviv/h2h-2212055");
 //		links.add("https://www.goaloo.site/football/lask-linz-vs-spvgg-bayreuth/h2h-2319760");
-//
+//links.add("https://www.goaloo.mobi/football/match/h2h-2296882");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2215100");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2319111");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2245952");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2212068");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2321331");
 //		links.add("https://www.goaloo.site/football/match/h2h-2295039");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2319443");
 //		links.add("https://www.goaloo.mobi/football/match/h2h-2318246");
@@ -702,7 +707,16 @@ class Livescore18Football {
 						|| homeName.contains("CF Trival Valderas")
 						|| homeName.contains("Bolivar")
 						|| homeName.contains("Yuen Long")
-						|| homeName.contains("Maccabi Nujeidat Ahmed")
+						|| homeName.contains("Madura")
+						|| homeName.contains("Madura")
+						|| awayName.contains("Karnataka")
+						|| homeName.contains("Crotone")
+						|| homeName.contains("Zejtun")
+						|| awayName.contains("Zejtun")
+						|| awayName.contains("Kiyovu")
+						|| homeName.contains("Sydney FC (w)")
+
+						//|| homeName.contains("Larne")
 
 				
 				)
@@ -1574,7 +1588,7 @@ class Livescore18Football {
 				
 				driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
 				// click 1x2 tab
-				driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[2]/a[1]")).click();
+				driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[2]/a[1]")).click();
 				String homeMaxOddsS = "";
 				String awayMaxOddsS = "";
 
@@ -1705,7 +1719,7 @@ class Livescore18Football {
 
 				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.5) >= 0)  || (Float.compare(FTtotalMinHomeExpectedRegProb, (float) 2) >= 0) || (Float.compare(FTtotalMinAwayExpectedRegProb, (float) 2) >= 0))
 					oddsBetThis = 2;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.0) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.1) >= 0) )
 					oddsBetThis++;
 				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 4) >= 0) )
 					oddsBetThis++;
@@ -1722,11 +1736,11 @@ class Livescore18Football {
 //				if(tier.equals("E") && oddsBetThis > 1.5 )
 //					oddsBetThis--;
 				
-				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
+				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2.3) <=  0))
 					oddsBetThis += 3;
-				else if((Float.compare(formOddsIndex, (float) 1.8) >=  0) || (Float.compare(formOddsIndex, (float) -1.8) <=  0))
+				else if((Float.compare(formOddsIndex, (float) 1.85) >=  0) || (Float.compare(formOddsIndex, (float) -2.15) <=  0))
 					oddsBetThis += 2;
-				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -1.7) <=  0))
+				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 1;
 
 
@@ -1735,7 +1749,7 @@ class Livescore18Football {
 					continue;
 				
 
-				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0))
+				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0))
 					continue;
 
 				if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && tier.equals("E"))
