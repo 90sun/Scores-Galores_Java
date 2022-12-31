@@ -37,7 +37,7 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "geckodriver_win.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
 //		System.setProperty("webdriver.chrome.whitelistedIps", "");
 		FirefoxOptions options = new FirefoxOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
@@ -79,7 +79,7 @@ class Livescore18Football {
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "n1";
+		String day = "f1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -1760,9 +1760,11 @@ class Livescore18Football {
 				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0))
 					continue;
 
-				if ( (Float.compare(formOddsIndex, (float) 1.2) <  0) && (Float.compare(formOddsIndex, (float) -1.75) >  0) && tier.equals("E"))
-					continue;
+				if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (Float.compare(formOddsIndex, (float) -1.8) >  0) && (tier.equals("E") || tier.equals("D")))
+					oddsBetThis--;
 		
+					if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.35) >  0) && (tier.equals("E") || tier.equals("D")))
+					continue;
 				
 				if( (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
 					betType = "1HG";
