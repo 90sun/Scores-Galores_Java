@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Basketball",
+            "request": "launch",
+            "mainClass": "aiscore.Basketball",
+            "projectName": "scores-galores"
+        },
+        {
+            "type": "java",
+            "name": "Launch AmericanFootball",
+            "request": "launch",
+            "mainClass": "aiscore.AmericanFootball",
+            "projectName": "scores-galores"
+        },
+        {
+            "type": "java",
             "name": "Launch Livescore18Football",
             "request": "launch",
             "mainClass": "legacy.Livescore18Football",

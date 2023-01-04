@@ -74,12 +74,14 @@ class Livescore18Football {
 
 		// String mode = "H/A Same";
 		String games = "20";
-		String bt = "Schedule";
+
+
+        String bt = "Schedule";
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
 		int endIndex = 1000;
-		String day = "f1";
+		String day = "n0";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -706,6 +708,9 @@ class Livescore18Football {
 						|| league2.contains("Algerian Ligue Professionnelle 2")
 						|| league2.contains("Portugal Women Cup")
 						|| league2.contains("Kuwait")
+						|| league2.contains("Bangladesh")
+                        || league2.contains("Welsh")
+                       
 
 						|| homeName.contains("Mohammedan")
 						|| homeName.contains("AE Kifisias")
@@ -723,6 +728,7 @@ class Livescore18Football {
 
 						|| homeName.contains("Larne")
 						|| homeName.contains("Indonesia")
+						|| homeName.contains("Moreirense")
 
 				
 				)
@@ -1760,7 +1766,7 @@ class Livescore18Football {
 				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0))
 					continue;
 
-				if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (Float.compare(formOddsIndex, (float) -1.8) >  0) && (tier.equals("E") || tier.equals("D")))
+				if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (tier.equals("E") || tier.equals("D")))
 					oddsBetThis--;
 		
 					if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.35) >  0) && (tier.equals("E") || tier.equals("D")))

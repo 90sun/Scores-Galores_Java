@@ -20,6 +20,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -89,16 +91,21 @@ class Basketball {
 		// TODO Auto-generated method stub
 
 		// setting the driver executable
-		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--no-sandbox"); // Bypass OS security model
-		options.addArguments("headless"); // Bypass OS security model
+		System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
+		//		System.setProperty("webdriver.chrome.whitelistedIps", "");
+				FirefoxOptions options = new FirefoxOptions();
+		//		options.addArguments("--no-sandbox"); // Bypass OS security model
+				options.setHeadless(true); // Bypass OS security model
+		//		options.addArguments("--disable-extensions"); // Bypass OS security model
+		//        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 		options.addArguments("--disable-extensions"); // Bypass OS security model
-		options.addArguments("--window-size=2560,144000");
+		options.addArguments("--width=2560");
+		options.addArguments("--height=144000");
+		
 
 //        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 //
-		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = new FirefoxDriver(options);
 
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
