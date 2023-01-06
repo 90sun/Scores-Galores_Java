@@ -93,19 +93,16 @@ class AmericanFootball {
 		// TODO Auto-generated method stub
 
 		// setting the driver executable
-		System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
-		//		System.setProperty("webdriver.chrome.whitelistedIps", "");
-				FirefoxOptions options = new FirefoxOptions();
-		//		options.addArguments("--no-sandbox"); // Bypass OS security model
-				options.setHeadless(true); // Bypass OS security model
-		//		options.addArguments("--disable-extensions"); // Bypass OS security model
-		//        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
+		System.setProperty("webdriver.chrome.driver", "./chromedriver_win.exe");
+		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--no-sandbox"); // Bypass OS security model
+		options.addArguments("headless"); // Bypass OS security model
 		options.addArguments("--disable-extensions"); // Bypass OS security model
-		options.addArguments("--width=2560");
-		options.addArguments("--height=144000");
+		options.addArguments("--window-size=2560,144000");
+
 //        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
 //
-		WebDriver driver = new FirefoxDriver(options);
+		WebDriver driver = new ChromeDriver(options);
 
 		WebDriverWait wait = new WebDriverWait(driver, 10000);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
@@ -129,7 +126,7 @@ class AmericanFootball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "02", month = "01", year = "2023";
+		String day = "06", month = "01", year = "2023";
 		
 		AmericanFootball ls = new AmericanFootball();
 		String mode = "";
