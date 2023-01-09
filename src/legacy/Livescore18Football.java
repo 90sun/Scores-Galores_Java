@@ -37,7 +37,7 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "geckodriver_win.exe");
+		System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
 //		System.setProperty("webdriver.chrome.whitelistedIps", "");
 		FirefoxOptions options = new FirefoxOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
@@ -80,8 +80,8 @@ class Livescore18Football {
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
-		int endIndex = 1000;
-		String day = "n1";
+	    int endIndex = 1000;
+    	String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -89,30 +89,20 @@ class Livescore18Football {
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+//				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-//		links.add("https://www.goaloo.site/football/mcb-oued-sly-vs-rc-relizane/h2h-2312696");
-//		links.add("https://www.goaloo.site/football/chengdu-better-city-fc-vs-meizhou-hakka/h2h-2318826");
-//		links.add("https://www.goaloo.site/football/shandong-taishan-vs-shenzhen-fc/h2h-2262950");
-//		links.add("https://www.goaloo.site/football/pyramids-fc-vs-aswan/h2h-2305364");
-//		links.add("https://www.goaloo.site/football/sabah-fk-baku-vs-sabail/h2h-2318425");
-//		links.add("https://www.goaloo.site/football/maccabi-bnei-raina-vs-maccabi-tel-aviv/h2h-2212055");
-//		links.add("https://www.goaloo.site/football/lask-linz-vs-spvgg-bayreuth/h2h-2319760");
-//links.add("https://www.goaloo.mobi/football/match/h2h-2296882");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2215100");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2319111");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2245952");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2212068");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2321331");
-//		links.add("https://www.goaloo.site/football/match/h2h-2295039");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2319443");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2318246");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2245942");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2319344");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2315277");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2232144");
-//		links.add("https://www.goaloo.mobi/football/match/h2h-2316077");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2324028");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2320655");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2323653");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329558");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2323599");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2234854");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2234921");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2235361");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2251732");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2219503");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2322180");
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -206,7 +196,8 @@ class Livescore18Football {
 					HThomeGoalTemp, HThomeOppGoalTemp, HTawayGoalTemp, HTawayOppGoalTemp, HThomeTotal, HTawayTotal,
 					FThomeScore = 0, FTawayScore = 0, FTScore, HTScore, HThomeScore = 0, HTawayScore = 0;
 			LocalDate todayDate = null;
-			double days = 0;
+			double homeDays = 0;
+			double awayDays = 0;
 
 			String league2;
 			int leagueGameHome = 0, leagueGameAway = 0;
@@ -689,6 +680,9 @@ class Livescore18Football {
 						|| league2.contains("England Southern League Central Division")
 						|| league2.contains("England Northern Premier League")
 						|| league2.contains("England Ryman(Isthmian)")
+						|| league2.contains("Mexico Liga MX Femenil")
+						|| league2.contains("Brasil Copa SP Juniores")
+						|| league2.contains("England Southern Premier League")
 
 				)
 					tier = "E";
@@ -696,39 +690,36 @@ class Livescore18Football {
 				if (
 						league2.contains("Russia")
 
-						|| league2.contains("Youth")
-						|| league2.contains("U19")
-						|| league2.contains("U-19")
-						|| league2.contains("Armenia Division 2")
-						|| league2.contains("Junior")
-						|| league2.contains("Bhutan")
-						|| league2.contains("Wales Premier League Women")
-						|| league2.contains("Turkey Bayanlar 1. Ligi")
-						|| league2.contains("Belgium Women's Premier League")
-						|| league2.contains("Algerian Ligue Professionnelle 2")
-						|| league2.contains("Portugal Women Cup")
-						|| league2.contains("Kuwait")
-						|| league2.contains("Bangladesh")
-                        || league2.contains("Welsh")
-                       
+						// || league2.contains("Youth")
+						// || league2.contains("U19")
+						// || league2.contains("U-19")
+					//	 || league2.contains("Armenia Division 2")
+						// || league2.contains("Junior")
+					//	 || league2.contains("Bhutan")
+					//	 || league2.contains("Turkey Bayanlar 1. Ligi")
+					//	 || league2.contains("Belgium Women's Premier League")
+						 || league2.contains("Algerian Ligue Professionnelle 2")
+					//	 || league2.contains("Portugal Women Cup")
+					//	 || league2.contains("Kuwait")
+					//	 || league2.contains("Bangladesh")
+                         || league2.contains("Welsh")
+						// || homeName.contains("Mohammedan")
+						// || homeName.contains("AE Kifisias")
+						// || homeName.contains("CF Trival Valderas")
+					//	 || homeName.contains("Bolivar")
+						 || homeName.contains("Hong Kong")
+						// || homeName.contains("Madura")
+						// || homeName.contains("Madura")
+						// || awayName.contains("Karnataka")
+						// || homeName.contains("Crotone")
+						// || homeName.contains("Zejtun")
+						// || awayName.contains("Zejtun")
+						// || awayName.contains("Kiyovu")
+						// || homeName.contains("Sydney FC (w)")
+						// || homeName.contains("Larne")
+						// || homeName.contains("Indonesia")
+						// || homeName.contains("Moreirense")
 
-						|| homeName.contains("Mohammedan")
-						|| homeName.contains("AE Kifisias")
-						|| homeName.contains("CF Trival Valderas")
-						|| homeName.contains("Bolivar")
-						|| homeName.contains("Yuen Long")
-						|| homeName.contains("Madura")
-						|| homeName.contains("Madura")
-						|| awayName.contains("Karnataka")
-						|| homeName.contains("Crotone")
-						|| homeName.contains("Zejtun")
-						|| awayName.contains("Zejtun")
-						|| awayName.contains("Kiyovu")
-						|| homeName.contains("Sydney FC (w)")
-
-						|| homeName.contains("Larne")
-						|| homeName.contains("Indonesia")
-						|| homeName.contains("Moreirense")
 
 				
 				)
@@ -743,11 +734,52 @@ class Livescore18Football {
 					driver.findElement(By.xpath("//*[@id='f6']/div/span/select/option[2]")).click();
 				}
 
-				if (sameLeague) {
+			
 
-					driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
+				driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
-				}
+					matchType = driver.findElement(By
+					.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
+							+ 1 + "]"))
+					.getText();
+
+			matchDay = driver.findElement(By.xpath(
+					"(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
+							+ "]"))
+					.getText();
+
+			LocalDate matchDate = LocalDate.parse(matchDay, formatter);
+			Period period = Period.between(matchDate, todayDate);
+			homeDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+			 System.out.println("Days since last league match = " + homeDays );
+
+	
+
+
+				matchType = driver.findElement(By
+									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/div)["
+											+ 1 + "]"))
+									.getText();
+
+							matchDay = driver.findElement(By.xpath(
+									"(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
+											+ "]"))
+									.getText();
+
+							matchDate = LocalDate.parse(matchDay, formatter);
+
+							period = Period.between(matchDate, todayDate);
+
+							awayDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+						 System.out.println("Days since last league match = " + awayDays );
+
+
+				
+							driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
+
+							String betType = "";
+							if(homeDays > 12 && awayDays > 12)
+							betType = "NO PREBET";
 //				 if(mode.equals("H/A Same"))
 //				 {
 //				
@@ -800,13 +832,10 @@ class Livescore18Football {
 											+ "]"))
 									.getText();
 
-							LocalDate matchDate = LocalDate.parse(matchDay, formatter);
-							Period period = Period.between(matchDate, todayDate);
-							days = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+							
 							// System.out.println("Days since last match = " + days );
 
-							if (days < 30)
-								leagueGameHome++;
+
 
 							// if( leagueGameHome < 1)
 							// break;
@@ -904,15 +933,9 @@ class Livescore18Football {
 											+ "]"))
 									.getText();
 
-							LocalDate matchDate = LocalDate.parse(matchDay, formatter);
+						
 
-							Period period = Period.between(matchDate, todayDate);
 
-							days = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
-							// System.out.println("Days since last match = " + days );
-
-							if (days < 30)
-								leagueGameAway++;
 
 							// if( leagueGameAway < 1)
 							// break;
@@ -1723,7 +1746,6 @@ class Livescore18Football {
 				
 				
 				int exception = 0;
-				String betType = "";
 				
 				if(Float.compare(HTMinRegOne, (float) 0.6) <  0)
 					continue;
@@ -1742,13 +1764,14 @@ class Livescore18Football {
 				
 				oddsBetThis = oddsBetThis - 0.5;
 				
+				if( ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
+				betType += " NO PREBET";
 
-
-//				if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
-//					oddsBetThis++;
+				// if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
+				// 	oddsBetThis++;
 				
-//				if(tier.equals("E") && oddsBetThis > 1.5 )
-//					oddsBetThis--;
+				// if(tier.equals("E") && oddsBetThis > 1.5 )
+				// 	oddsBetThis--;
 				
 				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2.3) <=  0))
 					oddsBetThis += 3;
@@ -1757,33 +1780,43 @@ class Livescore18Football {
 				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 1;
 
-
+					if ( (Float.compare(homeOdds, (float) 1.35) <  0) )
+					exception = 1;
 				
-				if( (oddsBetThis == 0 ||  oddsBetThis < 0))
-					continue;
-				
-
-				if ((Float.compare(formOddsIndex, (float) 1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0))
-					continue;
-
-				if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (tier.equals("E") || tier.equals("D")))
+					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
+
+					// if(((Float.compare(FTMinRegForm, (float) 1.5) >=  0)))
+					// continue;
+				
+
+				if(exception !=1 && ((Float.compare(formOddsIndex, (float) 1.1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0)))
+				continue;
+
+				// if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (tier.equals("E") || tier.equals("D")))
+				// 	oddsBetThis--;
 		
-					if ( (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0) && (tier.equals("E") || tier.equals("D")))
-					continue;
+ 					if (exception !=1 && (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0) && (tier.equals("E") || tier.equals("D")))
+ 					continue;
 				
 				if( (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
-					betType = "1HG";
+					betType += " 1HG";
 
 				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)") || (Float.compare(FTmaxMinExpectedRegProb, (float) 1.5) < 0) )
 					betType += " NO SIDES";
-//				
-				Float fDR = new Float(formDiffReg);
-				if (fDR.isNaN())
-					continue;
+				
+ 				Float fDR = new Float(formDiffReg);
+ 				if (fDR.isNaN())
+ 					continue;
 
-				
-				
+					// if( (oddsBetThis > 3.5))
+					// oddsBetThis=3.5;
+
+ 					if(exception !=1 && (oddsBetThis == 0 ||  oddsBetThis < 0))
+ 					continue;
+
+
+
 if(
 				true
 
@@ -1791,12 +1824,12 @@ if(
 					myWriter.write(date + " " + time);
 					myWriter.write(",");
 					myWriter.write(homeName + " - " + homeOdds + " / " + FTtotalHomeRegForm + " / "
-							+ FTtotalHomeScoredRegProb);
+							+ FTtotalMinHomeExpectedRegProb);
 					myWriter.write(",");
 					myWriter.write(awayName + " - " + awayOdds + " / " + FTtotalAwayRegForm + " / "
-							+ FTtotalAwayScoredRegProb);
+							+ FTtotalMinAwayExpectedRegProb);
 					myWriter.write(",");
-					myWriter.write(Double.toString(formOddsDiff));
+					myWriter.write(Double.toString(formOddsIndex));
 					myWriter.write(",");
 					myWriter.write(Double.toString(oddsBetThis));
 					myWriter.write(",");
@@ -1914,7 +1947,6 @@ if(
 
 	public ArrayList<String> fixtureGrab(WebDriver driver, int i, int h, ArrayList<String> links, WebDriverWait wait,
 			int startIndex, int endIndex, String day, String betType) {
-
 		if (betType.equals("Live")) {
 			driver.get("https://www.goaloo.mobi/football/");
 		} else if (betType.equals("Schedule")) {
@@ -2007,7 +2039,7 @@ if(
 		// driver.get("http://www.goaloo.mobi/football/database/schedule-" + schedule +
 		// "?round=" + week);
 
-		driver.get("https://www.goaloo.site/football/database/schedule-1073?round=1");
+		driver.get("https://www.goaloo.site/football/database/schedule-135?round=17");
 
 		while (true) {
 
