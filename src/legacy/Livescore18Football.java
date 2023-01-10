@@ -37,7 +37,7 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "geckodriver_win.exe");
 //		System.setProperty("webdriver.chrome.whitelistedIps", "");
 		FirefoxOptions options = new FirefoxOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
@@ -89,20 +89,20 @@ class Livescore18Football {
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-//				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-				links.add("https://www.goaloo.mobi/football/match/h2h-2324028");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2320655");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2323653");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329558");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2323599");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2234854");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2234921");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2235361");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2251732");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2219503");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2322180");
+
+//				links.add("https://www.goaloo.site/football/fc-twente-enschede-vs-sc-telstar/analysis-2305774");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2323653");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329558");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2323599");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2234854");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2234921");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2235361");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2251732");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2219503");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2322180");
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -738,6 +738,9 @@ class Livescore18Football {
 
 				driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
+				String betType = "";
+
+				try {
 					matchType = driver.findElement(By
 					.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
 							+ 1 + "]"))
@@ -773,13 +776,17 @@ class Livescore18Football {
 							awayDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
 						 System.out.println("Days since last league match = " + awayDays );
 
+							if(homeDays > 12 && awayDays > 12)
+							betType = "NO PREBET";
+						 
+				}catch(Exception e) {
+					betType = "NO PREBET";
 
+				}
 				
 							driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
-							String betType = "";
-							if(homeDays > 12 && awayDays > 12)
-							betType = "NO PREBET";
+
 //				 if(mode.equals("H/A Same"))
 //				 {
 //				
@@ -1747,9 +1754,12 @@ class Livescore18Football {
 				
 				int exception = 0;
 				
-				if(Float.compare(HTMinRegOne, (float) 0.6) <  0)
+				if ( (Float.compare(homeOdds, (float) 1.35) <  0) )
+				exception = 1;
+				
+				if(exception != 1 && Float.compare(HTMinRegOne, (float) 0.6) <  0)
 					continue;
-				if((Float.compare(maxGolX, (float) 0.6) <  0))
+				if(exception != 1 && (Float.compare(maxGolX, (float) 0.6) <  0))
 					continue;
 				
 
@@ -1780,8 +1790,7 @@ class Livescore18Football {
 				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 1;
 
-					if ( (Float.compare(homeOdds, (float) 1.35) <  0) )
-					exception = 1;
+
 				
 					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
