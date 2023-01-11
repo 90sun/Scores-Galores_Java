@@ -79,8 +79,8 @@ class Livescore18Football {
         String bt = "Schedule";
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
-		int startIndex = 0;
-	    int endIndex = 1000;
+		int startIndex = 200;
+	    int endIndex = 300;
     	String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
@@ -89,20 +89,27 @@ class Livescore18Football {
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+//				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
 
-//				links.add("https://www.goaloo.site/football/fc-twente-enschede-vs-sc-telstar/analysis-2305774");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2323653");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329558");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2323599");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2234854");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2234921");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2235361");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2251732");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2219503");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2322180");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2216058");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2305776");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2316341");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2325823");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329647");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2288826");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329485");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329815");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329675");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2317962");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2327111");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329641");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2282459");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329704");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329661");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329614");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2327593");
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -703,6 +710,10 @@ class Livescore18Football {
 					//	 || league2.contains("Kuwait")
 					//	 || league2.contains("Bangladesh")
                          || league2.contains("Welsh")
+                         
+                         || league2.contains("Italy C1")
+                         || league2.contains("Italy Serie D")
+
 						// || homeName.contains("Mohammedan")
 						// || homeName.contains("AE Kifisias")
 						// || homeName.contains("CF Trival Valderas")
@@ -1774,8 +1785,7 @@ class Livescore18Football {
 				
 				oddsBetThis = oddsBetThis - 0.5;
 				
-				if( ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
-				betType += " NO PREBET";
+
 
 				// if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
 				// 	oddsBetThis++;
@@ -1790,7 +1800,8 @@ class Livescore18Football {
 				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 1;
 
-
+				if( ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
+				betType += " NO PREBET";
 				
 					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
