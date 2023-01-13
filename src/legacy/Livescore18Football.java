@@ -92,24 +92,26 @@ class Livescore18Football {
 //				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
+				links.add("https://www.goaloo.mobi/football/match/h2h-2246928");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2246929");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2330955");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2318986");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2318988");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329693");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2283455");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329870");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2330866");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2330868");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329773");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2233131");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329785");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329775");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329777");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2275504");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2329780");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2264672");
+				links.add("https://www.goaloo.mobi/football/match/h2h-2264527");
 
-				links.add("https://www.goaloo.mobi/football/match/h2h-2216058");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2305776");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2316341");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2325823");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329647");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2288826");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329485");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329815");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329675");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2317962");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2327111");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329641");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2282459");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329704");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329661");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329614");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2327593");
 
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
@@ -697,11 +699,13 @@ class Livescore18Football {
 				if (
 						league2.contains("Russia")
 
-						// || league2.contains("Youth")
-						// || league2.contains("U19")
-						// || league2.contains("U-19")
+						 || league2.contains("Youth")
+						 || league2.contains("U19")
+						 || league2.contains("U-19")
+						 || league2.contains("U20")
+						 || league2.contains("U-20")
 					//	 || league2.contains("Armenia Division 2")
-						// || league2.contains("Junior")
+						 || league2.contains("Junior")
 					//	 || league2.contains("Bhutan")
 					//	 || league2.contains("Turkey Bayanlar 1. Ligi")
 					//	 || league2.contains("Belgium Women's Premier League")
@@ -1806,8 +1810,8 @@ class Livescore18Football {
 					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
 
-					// if(((Float.compare(FTMinRegForm, (float) 1.5) >=  0)))
-					// continue;
+					 if(((Float.compare(FTMaxRegForm, (float) 1.4) <  0)))
+					 continue;
 				
 
 				if(exception !=1 && ((Float.compare(formOddsIndex, (float) 1.1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0)))
