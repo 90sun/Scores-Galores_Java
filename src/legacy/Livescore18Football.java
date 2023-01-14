@@ -79,8 +79,8 @@ class Livescore18Football {
         String bt = "Schedule";
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
-		int startIndex = 200;
-	    int endIndex = 300;
+		int startIndex = 0;
+	    int endIndex = 1000;
     	String day = "n1";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
@@ -92,25 +92,25 @@ class Livescore18Football {
 //				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-				links.add("https://www.goaloo.mobi/football/match/h2h-2246928");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2246929");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2330955");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2318986");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2318988");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329693");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2283455");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329870");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2330866");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2330868");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329773");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2233131");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329785");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329775");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329777");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2275504");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2329780");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2264672");
-				links.add("https://www.goaloo.mobi/football/match/h2h-2264527");
+				links.add("https://www.goaloo.site/football/sparta-rotterdam-vs-excelsior-sbv/analysis-2213368");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2246929");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2330955");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2318986");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2318988");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329693");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2283455");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329870");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2330866");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2330868");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329773");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2233131");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329785");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329775");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329777");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2275504");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2329780");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2264672");
+//				links.add("https://www.goaloo.mobi/football/match/h2h-2264527");
 
 
 		ListIterator<String> litr = null;
@@ -675,6 +675,18 @@ class Livescore18Football {
 						|| league2.contains("Turkey 3. Ligi B")
 						|| league2.contains("AFF Championship")
 
+						
+						|| league2.contains("England Southern League Central Division")
+						|| league2.contains("England Northern Premier League")
+						|| league2.contains("England Ryman(Isthmian)")
+
+						|| league2.contains("England Southern Premier League")
+
+				)
+					tier = "E";
+
+				if (
+						league2.contains("Russia")
 						|| league2.contains("Women")
 						|| league2.contains("Ladies")
 						|| league2.contains("Frauen")
@@ -686,19 +698,8 @@ class Livescore18Football {
 						|| league2.contains("Australia W-League")
 						|| league2.contains("Bayanlar")
 						|| league2.contains("Amateur")
-						|| league2.contains("England Southern League Central Division")
-						|| league2.contains("England Northern Premier League")
-						|| league2.contains("England Ryman(Isthmian)")
 						|| league2.contains("Mexico Liga MX Femenil")
 						|| league2.contains("Brasil Copa SP Juniores")
-						|| league2.contains("England Southern Premier League")
-
-				)
-					tier = "E";
-
-				if (
-						league2.contains("Russia")
-
 						 || league2.contains("Youth")
 						 || league2.contains("U19")
 						 || league2.contains("U-19")
@@ -707,33 +708,22 @@ class Livescore18Football {
 					//	 || league2.contains("Armenia Division 2")
 						 || league2.contains("Junior")
 					//	 || league2.contains("Bhutan")
-					//	 || league2.contains("Turkey Bayanlar 1. Ligi")
+						 || league2.contains("Turkey Bayanlar 1. Ligi")
 					//	 || league2.contains("Belgium Women's Premier League")
 						 || league2.contains("Algerian Ligue Professionnelle 2")
-					//	 || league2.contains("Portugal Women Cup")
-					//	 || league2.contains("Kuwait")
-					//	 || league2.contains("Bangladesh")
+
                          || league2.contains("Welsh")
                          
                          || league2.contains("Italy C1")
                          || league2.contains("Italy Serie D")
 
-						// || homeName.contains("Mohammedan")
-						// || homeName.contains("AE Kifisias")
-						// || homeName.contains("CF Trival Valderas")
-					//	 || homeName.contains("Bolivar")
-						 || homeName.contains("Hong Kong")
-						// || homeName.contains("Madura")
-						// || homeName.contains("Madura")
-						// || awayName.contains("Karnataka")
-						// || homeName.contains("Crotone")
-						// || homeName.contains("Zejtun")
-						// || awayName.contains("Zejtun")
-						// || awayName.contains("Kiyovu")
-						// || homeName.contains("Sydney FC (w)")
-						// || homeName.contains("Larne")
-						// || homeName.contains("Indonesia")
-						// || homeName.contains("Moreirense")
+
+						 || league2.contains("Hong Kong")
+						 || homeName.contains("Inter Milan")
+//						 || homeName.contains("Sparta Rotterdam")
+//						 || awayName.contains("Sparta Rotterdam")
+
+
 
 
 				
@@ -1772,9 +1762,15 @@ class Livescore18Football {
 				if ( (Float.compare(homeOdds, (float) 1.35) <  0) )
 				exception = 1;
 				
-				if(exception != 1 && Float.compare(HTMinRegOne, (float) 0.6) <  0)
+				if ( (Float.compare(homeOdds, (float) 1.2) <  0) )
+				exception = 2;
+				
+				if ( (Float.compare(homeOdds, (float) 1.1) <  0) )
+				exception = 3;
+				
+				if(exception !=3 && Float.compare(HTMinRegOne, (float) 0.6) <  0)
 					continue;
-				if(exception != 1 && (Float.compare(maxGolX, (float) 0.6) <  0))
+				if(exception !=3 && (Float.compare(maxGolX, (float) 0.6) <  0))
 					continue;
 				
 
@@ -1804,13 +1800,13 @@ class Livescore18Football {
 				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
 					oddsBetThis += 1;
 
-				if( ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
+				if( exception != 2 && ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
 				betType += " NO PREBET";
 				
 					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
 
-					 if(((Float.compare(FTMaxRegForm, (float) 1.4) <  0)))
+					 if(exception != 3 && ((Float.compare(FTMaxRegForm, (float) 1.4) <  0)))
 					 continue;
 				
 
@@ -1839,6 +1835,10 @@ class Livescore18Football {
  					if(exception !=1 && (oddsBetThis == 0 ||  oddsBetThis < 0))
  					continue;
 
+ 					if( (exception == 2 || exception == 1) && betType.contains("NO PREBET") )
+ 						betType = "";
+ 					
+ 						
 
 
 if(
