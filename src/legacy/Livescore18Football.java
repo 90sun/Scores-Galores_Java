@@ -89,10 +89,10 @@ class Livescore18Football {
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-//				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-				links.add("https://www.goaloo.site/football/sparta-rotterdam-vs-excelsior-sbv/analysis-2213368");
+//				links.add("https://www.goaloo.site/football/sparta-rotterdam-vs-excelsior-sbv/analysis-2213368");
 //				links.add("https://www.goaloo.mobi/football/match/h2h-2246929");
 //				links.add("https://www.goaloo.mobi/football/match/h2h-2330955");
 //				links.add("https://www.goaloo.mobi/football/match/h2h-2318986");
@@ -1806,7 +1806,7 @@ class Livescore18Football {
 					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
 					oddsBetThis--;
 
-					 if(exception != 3 && ((Float.compare(FTMaxRegForm, (float) 1.4) <  0)))
+					 if(exception != 3 && ((Float.compare(FTMaxRegForm, (float) 1.5) <  0)))
 					 continue;
 				
 
