@@ -37,15 +37,13 @@ class Livescore18Football {
 //
 //        WebDriver driver = new EdgeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "geckodriver_win.exe");
-//		System.setProperty("webdriver.chrome.whitelistedIps", "");
-		FirefoxOptions options = new FirefoxOptions();
+System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
-		options.setHeadless(true); // Bypass OS security model
-//		options.addArguments("--disable-extensions"); // Bypass OS security model
-//        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
-//
-		WebDriver driver = new FirefoxDriver(options);
+options.addArguments("headless"); // Bypass OS security model
+options.addArguments("--disable-extensions"); // Bypass OS security model
+
+		WebDriver driver = new ChromeDriver(options);
 
 		WebDriverWait wait = new WebDriverWait(driver, 1);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
@@ -76,12 +74,12 @@ class Livescore18Football {
 		String games = "20";
 
 
-        String bt = "Schedule";
+        String bt = "Schedule"; 
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
-	    int endIndex = 1000;
-    	String day = "n1";
+	    int endIndex = 1500;
+    	String day = "n0";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
@@ -713,7 +711,8 @@ class Livescore18Football {
 						 || league2.contains("Algerian Ligue Professionnelle 2")
 
                          || league2.contains("Welsh")
-                         
+						 || league2.contains("Friendly")
+
                          || league2.contains("Italy C1")
                          || league2.contains("Italy Serie D")
 
@@ -1813,8 +1812,8 @@ class Livescore18Football {
 				if(exception !=1 && ((Float.compare(formOddsIndex, (float) 1.1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0)))
 				continue;
 
-				// if ( (Float.compare(formOddsIndex, (float) 1.8) <  0) && (tier.equals("E") || tier.equals("D")))
-				// 	oddsBetThis--;
+				if ( (Float.compare(formOddsIndex, (float) 1) <  0) && oddsBetThis > 1.5 && !betType.contains("NO SIDES"))
+					oddsBetThis--;
 		
  					if (exception !=1 && (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0) && (tier.equals("E") || tier.equals("D")))
  					continue;

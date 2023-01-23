@@ -91,7 +91,7 @@ class Basketball {
 		// TODO Auto-generated method stub
 
 		// setting the driver executable
-		System.setProperty("webdriver.chrome.driver", "./chromedriver_win.exe");
+		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--no-sandbox"); // Bypass OS security model
 		options.addArguments("headless"); // Bypass OS security model
@@ -124,7 +124,7 @@ class Basketball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "06", month = "01", year = "2023";
+		String day = "20", month = "01", year = "2023";
 		
 		Basketball ls = new Basketball();
 		String mode = "";
