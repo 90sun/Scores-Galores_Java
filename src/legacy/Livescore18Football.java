@@ -74,11 +74,11 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 		String games = "20";
 
 
-        String bt = "Schedule"; 
+        String bt = "Live"; 
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
-	    int endIndex = 1500;
+	    int endIndex = 50;
     	String day = "n0";
 		System.out.println("In League = " + sameLeague);
 		System.out.println("Day = " + day);
@@ -87,28 +87,12 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-				links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-//				links.add("https://www.goaloo.site/football/sparta-rotterdam-vs-excelsior-sbv/analysis-2213368");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2246929");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2330955");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2318986");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2318988");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329693");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2283455");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329870");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2330866");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2330868");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329773");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2233131");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329785");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329775");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329777");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2275504");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2329780");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2264672");
-//				links.add("https://www.goaloo.mobi/football/match/h2h-2264527");
+//  links.add("https://www.goaloo.site/football/inter-milan-vs-verona/h2h-2222962");
+//  links.add("https://www.goaloo.site/football/inter-milan-vs-empoli/h2h-2222974");
+
 
 
 		ListIterator<String> litr = null;
@@ -235,8 +219,7 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 			try {
 
 				// get matchTitle
-				league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a")).getText();
-
+				league2 = driver.findElement(By.xpath("//*[@id=\"match\"]/div/div[1]/div[1]/a/div")).getText();
 				System.out.println("matchTitle = " + league2);
 
 				try {
@@ -685,42 +668,55 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 
 				if (
 						league2.contains("Russia")
-						|| league2.contains("Women")
-						|| league2.contains("Ladies")
-						|| league2.contains("Frauen")
-						|| league2.contains("Feminines")
-						|| league2.contains("Damallsvenskan")
-						|| league2.contains("WE League")
-						|| league2.contains("women")
-						|| league2.contains("WK League")
-						|| league2.contains("Australia W-League")
-						|| league2.contains("Bayanlar")
-						|| league2.contains("Amateur")
-						|| league2.contains("Mexico Liga MX Femenil")
-						|| league2.contains("Brasil Copa SP Juniores")
+					// 	|| league2.contains("Women")
+					// 	|| league2.contains("Ladies")
+					// 	|| league2.contains("Frauen")
+					// 	|| league2.contains("Feminines")
+					// 	|| league2.contains("Damallsvenskan")
+					// 	|| league2.contains("WE League")
+					// 	|| league2.contains("women")
+					// 	|| league2.contains("WK League")
+					// 	|| league2.contains("Australia W-League")
+					// 	|| league2.contains("Bayanlar")
+					// 	|| league2.contains("Amateur")
+					// 	|| league2.contains("Mexico Liga MX Femenil")
+					// 	|| league2.contains("Brasil Copa SP Juniores")
 						 || league2.contains("Youth")
 						 || league2.contains("U19")
 						 || league2.contains("U-19")
 						 || league2.contains("U20")
 						 || league2.contains("U-20")
-					//	 || league2.contains("Armenia Division 2")
+						//  || league2.contains("U21")
+						//  || league2.contains("U-21")
+					// //	 || league2.contains("Armenia Division 2")
 						 || league2.contains("Junior")
-					//	 || league2.contains("Bhutan")
-						 || league2.contains("Turkey Bayanlar 1. Ligi")
-					//	 || league2.contains("Belgium Women's Premier League")
-						 || league2.contains("Algerian Ligue Professionnelle 2")
+					// //	 || league2.contains("Bhutan")
+					// 	 || league2.contains("Turkey Bayanlar 1. Ligi")
+					// //	 || league2.contains("Belgium Women's Premier League")
+					// 	 || league2.contains("Algerian Ligue Professionnelle 2")
 
-                         || league2.contains("Welsh")
-						 || league2.contains("Friendly")
+                    //      || league2.contains("Welsh")
+					// 	 || league2.contains("Friendly")
 
-                         || league2.contains("Italy C1")
-                         || league2.contains("Italy Serie D")
+                    //      || league2.contains("Italy C1")
+                    //      || league2.contains("Italy Serie D")
+                    //      || league2.contains("Northern Ireland")
 
 
-						 || league2.contains("Hong Kong")
-						 || homeName.contains("Inter Milan")
-//						 || homeName.contains("Sparta Rotterdam")
-//						 || awayName.contains("Sparta Rotterdam")
+					// 	 || league2.contains("Hong Kong")
+					 	 || homeName.contains("Inter Milan")
+                        //   || league2.contains("Spain Primera Division RFEF")
+						//   || league2.contains("Spanish La Liga 2")
+						//   || league2.contains("Spanish Segunda Division B")
+						  || league2.contains("Tercera")
+						  || league2.contains("Friendly")
+						  || league2.contains("Israel C League")
+						  || league2.contains("Israel B League")
+						  || league2.contains("Israel Leumit League")
+
+					 //	 || homeName.contains("Bayern Munchen")
+
+						 || homeName.contains("Sparta Rotterdam")
 
 
 
@@ -740,9 +736,11 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 
 			
 
+
 				driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
 				String betType = "";
+				int exception = 0;
 
 				try {
 					matchType = driver.findElement(By
@@ -781,22 +779,14 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 						 System.out.println("Days since last league match = " + awayDays );
 
 							if(homeDays > 12 && awayDays > 12)
-							betType = "NO PREBET";
+							exception = 1;
 						 
 				}catch(Exception e) {
-					betType = "NO PREBET";
+					exception = 1;
 
 				}
-				
 							driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
-
-//				 if(mode.equals("H/A Same"))
-//				 {
-//				
-//				 driver.findElement(By.xpath("//*[@id='f6']/span/label[2]")).click();
-//				
-//				 }
 
 				for (int j = 0; j < 2; j++) {
 
@@ -1755,89 +1745,55 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 				float awayFormOddsIndex = (((3/awayOdds) + FTtotalAwayRegForm)/2) ;
 				float formOddsIndex = homeFormOddsIndex - awayFormOddsIndex;
 				
-				
-				int exception = 0;
-				
-				if ( (Float.compare(homeOdds, (float) 1.35) <  0) )
-				exception = 1;
-				
-				if ( (Float.compare(homeOdds, (float) 1.2) <  0) )
-				exception = 2;
-				
-				if ( (Float.compare(homeOdds, (float) 1.1) <  0) )
-				exception = 3;
-				
-				if(exception !=3 && Float.compare(HTMinRegOne, (float) 0.6) <  0)
-					continue;
-				if(exception !=3 && (Float.compare(maxGolX, (float) 0.6) <  0))
-					continue;
-				
+								
 
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.5) >= 0)  || (Float.compare(FTtotalMinHomeExpectedRegProb, (float) 2) >= 0) || (Float.compare(FTtotalMinAwayExpectedRegProb, (float) 2) >= 0))
-					oddsBetThis = 2;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.1) >= 0) )
+				
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.1) >= 0))
+					oddsBetThis++;	
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.6) >= 0))
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 4) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.2) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 5) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.9) >= 0) )
+					oddsBetThis++;
+				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 4.7) >= 0) )
 					oddsBetThis++;
 				
 				oddsBetThis = oddsBetThis - 0.5;
-				
 
+				if(exception == 1)
+				oddsBetThis = -0.5;
 
-				// if(((Float.compare(minMaxOdds, (float) 1.2) <  0) && tier.equals("B")) || ( tier.equals("A") && (Float.compare(minMaxOdds, (float) 1.35) <  0) ))
-				// 	oddsBetThis++;
-				
-				// if(tier.equals("E") && oddsBetThis > 1.5 )
-				// 	oddsBetThis--;
-				
-				if((Float.compare(formOddsIndex, (float) 2) >=  0) || (Float.compare(formOddsIndex, (float) -2.3) <=  0))
-					oddsBetThis += 3;
-				else if((Float.compare(formOddsIndex, (float) 1.85) >=  0) || (Float.compare(formOddsIndex, (float) -2.15) <=  0))
-					oddsBetThis += 2;
-				else if((Float.compare(formOddsIndex, (float) 1.7) >=  0) || (Float.compare(formOddsIndex, (float) -2) <=  0))
-					oddsBetThis += 1;
-
-				if( exception != 2 && ( (Float.compare(formOddsIndex, (float) 1.1) <  0) &&  (Float.compare(formOddsIndex, (float) 0) >  0) ) ||  oddsBetThis < 0)
-				betType += " NO PREBET";
-				
-					if(((Float.compare(FTMinRegForm, (float) 1) >=  0)) && ((Float.compare(formOddsIndex, (float) 0) <  0)))
-					oddsBetThis--;
-
-					 if(exception != 3 && ((Float.compare(FTMaxRegForm, (float) 1.5) <  0)))
-					 continue;
-				
-
-				if(exception !=1 && ((Float.compare(formOddsIndex, (float) 1.1) <  0) && (Float.compare(formOddsIndex, (float) -1.4) >  0)))
+				if( (Float.compare(formOddsIndex, (float) 0.5) < 0))
 				continue;
 
-				if ( (Float.compare(formOddsIndex, (float) 1) <  0) && oddsBetThis > 1.5 && !betType.contains("NO SIDES"))
-					oddsBetThis--;
-		
- 					if (exception !=1 && (Float.compare(formOddsIndex, (float) 1.35) <  0) && (Float.compare(formOddsIndex, (float) -1.5) >  0) && (tier.equals("E") || tier.equals("D")))
- 					continue;
+				if( (Float.compare(homeFormRegProb, (float) 1) < 0))
+				continue;
+
+				if( (Float.compare(formOddsIndex, (float) 0.5) >= 0) && !league2.contains("U21") && !league2.contains("U-21"))
+				betType = "AWAY UNDER 2.5";
+
+				if( (Float.compare(formOddsIndex, (float) 1.4) >= 0)  && !league2.contains("U21") && !league2.contains("U-21"))
+				betType = "1X || AWAY UNDER 2.5";
+
+				if( (Float.compare(formOddsIndex, (float) 1.1) < 0) && oddsBetThis > 1)
+				oddsBetThis--;
+
+				if ((Float.compare(FTMaxRegForm, (float) 1.5) < 0))
+				oddsBetThis--;
+
 				
-				if( (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
+				if(exception != 1 && (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
 					betType += " 1HG";
 
-				if((Float.compare(minMaxOdds, (float) 1.35) >= 0) || homeName.contains("(w)") || homeName.contains("(W)") || (Float.compare(FTmaxMinExpectedRegProb, (float) 1.5) < 0) )
+					if(oddsBetThis > 0 && (Float.compare(formOddsIndex, (float) 1.5) < 0) && (Float.compare(formOddsIndex, (float) -1.5) > 0))
+					betType += " LIVEBET";
+
+					if(oddsBetThis > 0 && (Float.compare(formOddsIndex, (float) 1.25) < 0) && (Float.compare(formOddsIndex, (float) -1.25) > 0))
 					betType += " NO SIDES";
-				
- 				Float fDR = new Float(formDiffReg);
- 				if (fDR.isNaN())
- 					continue;
 
-					// if( (oddsBetThis > 3.5))
-					// oddsBetThis=3.5;
-
- 					if(exception !=1 && (oddsBetThis == 0 ||  oddsBetThis < 0))
- 					continue;
-
- 					if( (exception == 2 || exception == 1) && betType.contains("NO PREBET") )
- 						betType = "";
- 					
- 						
+				if(betType.equals(""))
+				continue;
 
 
 if(

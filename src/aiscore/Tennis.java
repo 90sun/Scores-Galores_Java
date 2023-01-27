@@ -32,10 +32,13 @@ class Tennis {
 
 		driver.get("https://m.aiscore.com/tennis/"+year+""+month+""+day+"");
 
-		wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id=\"app\"]/div[2]/div/div[4]/span"))));
-		
-		
-		driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div[4]/span")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[1]/span[1]"))));
+		wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[2]/i"))));
+
+	   
+		driver.findElement(By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[1]/span[1]")).click();
+		driver.findElement(By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[2]/i")).click();
 
 		i = startIndex;
 		
@@ -125,7 +128,7 @@ class Tennis {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "06", month = "01", year = "2023";
+		String day = "27", month = "01", year = "2023";
 		
 		Tennis ls = new Tennis();
 		String mode = "";
