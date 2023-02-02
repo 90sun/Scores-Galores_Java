@@ -74,25 +74,23 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 		String games = "20";
 
 
-        String bt = "Live"; 
+        String bt = "Schedule"; 
 		String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
-	    int endIndex = 50;
-    	String day = "n0";
+	    int endIndex = 1500;
+    	String day = "f3";
+		System.out.println("day = " + day);
 		System.out.println("In League = " + sameLeague);
-		System.out.println("Day = " + day);
 		System.out.println("startIndex = " + startIndex);
 		System.out.println("endIndex = " + endIndex);
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
- links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-//  links.add("https://www.goaloo.site/football/inter-milan-vs-verona/h2h-2222962");
-//  links.add("https://www.goaloo.site/football/inter-milan-vs-empoli/h2h-2222974");
-
+// links.add("https://www.goaloo.site/football/maynooth-university-town-fc-vs-bangor-celtic/h2h-2340536");
 
 
 		ListIterator<String> litr = null;
@@ -467,6 +465,7 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 				league2.contains("Slovakia 3.Liga")
 						|| league2.contains("El Salvador Segunda Division")
 						|| league2.contains("Hong Kong 3rd Division")
+						|| league2.contains("Lebanese Premier 2")
 
 						|| league2.contains("Estonia Esi Liiga") || league2.contains("Finland - Kakkonen Lohko")
 						|| league2.contains("Croatia 3.Division") || league2.contains("FFSA PL")
@@ -605,6 +604,12 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 						|| league2.contains("Argentina Prim C") || league2.contains("Landesliga")
 						|| league2.contains("Argentina Torneo B")
 						|| league2.contains("India Mizoram Premier League") || league2.contains("Chile Primera D")
+						|| league2.contains("Germany Landespokal")
+						|| league2.contains("International") || league2.contains("Cup") || league2.contains("CUP")
+						|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
+						|| league2.contains("Coppa") || league2.contains("Pokal") || league2.contains("Vase")
+						|| league2.contains("Johnstone") || league2.contains("Cupen") || league2.contains("cup")
+
 
 				)
 					tier = "D";
@@ -637,11 +642,7 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 						|| league2.contains("Argentina group C")
 						|| league2.contains("Argentina Ding Group Tebolidun League Manchester")
 
-						|| league2.contains("Friendly") || league2.contains("Germany Landespokal")
-						|| league2.contains("International") || league2.contains("Cup") || league2.contains("CUP")
-						|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
-						|| league2.contains("Coppa") || league2.contains("Pokal") || league2.contains("Vase")
-						|| league2.contains("Johnstone") || league2.contains("Cupen") || league2.contains("cup")
+						
 						|| league2.contains("Cuban Championship") || league2.contains("Germany Verbandsliga")
 
 						|| league2.contains("U21") || league2.contains("U-21")
@@ -661,66 +662,35 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 						|| league2.contains("England Northern Premier League")
 						|| league2.contains("England Ryman(Isthmian)")
 
+						|| league2.contains("Women")
+						|| league2.contains("Ladies")
+						|| league2.contains("Feminines")
+
+						|| league2.contains("WPL")
 						|| league2.contains("England Southern Premier League")
+						|| league2.contains("Femenil")
+						|| league2.contains("Feminin")
+
+						|| league2.contains("Friendly") 
+
+						 || league2.contains("Youth")
+						 || league2.contains("U19")
+						 || league2.contains("U-19")
+						 || league2.contains("Junior")
 
 				)
 					tier = "E";
 
 				if (
 						league2.contains("Russia")
-					// 	|| league2.contains("Women")
-					// 	|| league2.contains("Ladies")
-					// 	|| league2.contains("Frauen")
-					// 	|| league2.contains("Feminines")
-					// 	|| league2.contains("Damallsvenskan")
-					// 	|| league2.contains("WE League")
-					// 	|| league2.contains("women")
-					// 	|| league2.contains("WK League")
-					// 	|| league2.contains("Australia W-League")
-					// 	|| league2.contains("Bayanlar")
-					// 	|| league2.contains("Amateur")
-					// 	|| league2.contains("Mexico Liga MX Femenil")
-					// 	|| league2.contains("Brasil Copa SP Juniores")
-						 || league2.contains("Youth")
-						 || league2.contains("U19")
-						 || league2.contains("U-19")
-						 || league2.contains("U20")
-						 || league2.contains("U-20")
-						//  || league2.contains("U21")
-						//  || league2.contains("U-21")
-					// //	 || league2.contains("Armenia Division 2")
-						 || league2.contains("Junior")
-					// //	 || league2.contains("Bhutan")
-					// 	 || league2.contains("Turkey Bayanlar 1. Ligi")
-					// //	 || league2.contains("Belgium Women's Premier League")
-					// 	 || league2.contains("Algerian Ligue Professionnelle 2")
 
-                    //      || league2.contains("Welsh")
-					// 	 || league2.contains("Friendly")
-
-                    //      || league2.contains("Italy C1")
-                    //      || league2.contains("Italy Serie D")
-                    //      || league2.contains("Northern Ireland")
-
-
-					// 	 || league2.contains("Hong Kong")
-					 	 || homeName.contains("Inter Milan")
-                        //   || league2.contains("Spain Primera Division RFEF")
-						//   || league2.contains("Spanish La Liga 2")
-						//   || league2.contains("Spanish Segunda Division B")
-						  || league2.contains("Tercera")
-						  || league2.contains("Friendly")
-						  || league2.contains("Israel C League")
-						  || league2.contains("Israel B League")
-						  || league2.contains("Israel Leumit League")
-
-					 //	 || homeName.contains("Bayern Munchen")
-
-						 || homeName.contains("Sparta Rotterdam")
-
-
-
-
+						
+	
+						  || league2.contains("ENG SD1")
+						  || league2.contains("Spanish Ladies Premier League B")
+						  || league2.contains("Wales Premier League Women")
+						  || league2.contains("El Salvador Reserves League")
+						  || league2.contains("Brazil Campeonato Paulista C")
 				
 				)
 					continue;
@@ -737,55 +707,55 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 			
 
 
-				driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
+			// 	driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
-				String betType = "";
-				int exception = 0;
+			 	String betType = "";
+			// 	int exception = 0;
 
-				try {
-					matchType = driver.findElement(By
-					.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
-							+ 1 + "]"))
-					.getText();
+			// 	try {
+			// 		matchType = driver.findElement(By
+			// 		.xpath("(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/div)["
+			// 				+ 1 + "]"))
+			// 		.getText();
 
-			matchDay = driver.findElement(By.xpath(
-					"(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
-							+ "]"))
-					.getText();
+			// matchDay = driver.findElement(By.xpath(
+			// 		"(//*[@id='e6_1']/table[1]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
+			// 				+ "]"))
+			// 		.getText();
 
-			LocalDate matchDate = LocalDate.parse(matchDay, formatter);
-			Period period = Period.between(matchDate, todayDate);
-			homeDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
-			 System.out.println("Days since last league match = " + homeDays );
+			// LocalDate matchDate = LocalDate.parse(matchDay, formatter);
+			// Period period = Period.between(matchDate, todayDate);
+			// homeDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+			//  System.out.println("Days since last league match = " + homeDays );
 
 	
 
 
-				matchType = driver.findElement(By
-									.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/div)["
-											+ 1 + "]"))
-									.getText();
+			// 	matchType = driver.findElement(By
+			// 						.xpath("(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/div)["
+			// 								+ 1 + "]"))
+			// 						.getText();
 
-							matchDay = driver.findElement(By.xpath(
-									"(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
-											+ "]"))
-									.getText();
+			// 				matchDay = driver.findElement(By.xpath(
+			// 						"(//*[@id='e6_1']/table[2]//tr[@style='display: table-row;']/td[1]/div/span)[" + 1
+			// 								+ "]"))
+			// 						.getText();
 
-							matchDate = LocalDate.parse(matchDay, formatter);
+			// 				matchDate = LocalDate.parse(matchDay, formatter);
 
-							period = Period.between(matchDate, todayDate);
+			// 				period = Period.between(matchDate, todayDate);
 
-							awayDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
-						 System.out.println("Days since last league match = " + awayDays );
+			// 				awayDays = period.getDays() + (period.getMonths() * 30.437) + (period.getYears() * 365.25);
+			// 			 System.out.println("Days since last league match = " + awayDays );
 
-							if(homeDays > 12 && awayDays > 12)
-							exception = 1;
+			// 				if(homeDays > 12 && awayDays > 12)
+			// 				exception = 1;
 						 
-				}catch(Exception e) {
-					exception = 1;
+			// 	}catch(Exception e) {
+			// 		exception = 1;
 
-				}
-							driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
+			// 	}
+			// 				driver.findElement(By.xpath("//*[@id='f6']/div/span/label[1]")).click();
 
 
 				for (int j = 0; j < 2; j++) {
@@ -1624,32 +1594,32 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 				// get odds
 				// click odds tab
 				
-				driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
-				// click 1x2 tab
-				driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[2]/a[1]")).click();
-				String homeMaxOddsS = "";
-				String awayMaxOddsS = "";
+				// driver.findElement(By.xpath("//*[@id=\"match\"]/nav/div[3]/a")).click();
+				// // click 1x2 tab
+				// driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[2]/a[1]")).click();
+				// String homeMaxOddsS = "";
+				// String awayMaxOddsS = "";
 
-				if (oddsOption.equals("Pre")) {
-					// grab home odds (min)
-					homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
-							.getText();
+				// if (oddsOption.equals("Pre")) {
+				// 	// grab home odds (min)
+				// 	homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[2]"))
+				// 			.getText();
 
-					// grab away odds (min)
-					awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
-							.getText();
-				} else if (oddsOption.equals("Live")) {
+				// 	// grab away odds (min)
+				// 	awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[5]/td[4]"))
+				// 			.getText();
+				// } else if (oddsOption.equals("Live")) {
 
-					homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[5]"))
-							.getText();
+				// 	homeMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[5]"))
+				// 			.getText();
 
-					// grab away odds (min)
-					awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[7]"))
-							.getText();
-				}
+				// 	// grab away odds (min)
+				// 	awayMaxOddsS = driver.findElement(By.xpath("//*[@id=\"oContent\"]/table/tbody/tr[3]/td[7]"))
+				// 			.getText();
+				// }
 
-				float homeOdds = Float.parseFloat(homeMaxOddsS);
-				float awayOdds = Float.parseFloat(awayMaxOddsS);
+				// float homeOdds = Float.parseFloat(homeMaxOddsS);
+				// float awayOdds = Float.parseFloat(awayMaxOddsS);
 //				float homeOdds = Float.parseFloat(homePreOddsS);
 //				float awayOdds = Float.parseFloat(awayPreOddsS);
 
@@ -1670,126 +1640,120 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 //				System.out.println("neutralAwayConcededAGoalExpectedRecProb = " + neutralAwayConcededAGoalExpectedRecProb);
 //				
 
-				float FTtotalHomeRegForm = ls.avg(neutralHomeFormRegProb, homeFormRegProb);
-				float FTtotalAwayRegForm = ls.avg(neutralAwayFormRegProb, awayFormRegProb);
-				float FTMinRegForm = Math.min(FTtotalHomeRegForm, FTtotalAwayRegForm);
-				float FTMaxRegForm = Math.max(FTtotalHomeRegForm, FTtotalAwayRegForm);
-				formDiffReg = (FTtotalHomeRegForm - FTtotalAwayRegForm);
-				float FTtotalHomeScoredRegProb = ls.avg(FTneutralHomeScoredRegProb, FThomeScoredRegProb);
-				float FTtotalAwayScoredRegProb = ls.avg(FTneutralAwayScoredRegProb, FTawayScoredRegProb);
-				float FTtotalScoredRegProb = FTtotalHomeScoredRegProb + FTtotalAwayScoredRegProb;
-				float FTtotalHomeConcededRegProb = ls.avg(FTneutralHomeConcededRegProb, FThomeConcededRegProb);
-				float FTtotalAwayConcededRegProb = ls.avg(FTneutralAwayConcededRegProb, FTawayConcededRegProb);
-				float FTtotalConcededRegProb = FTtotalHomeConcededRegProb + FTtotalAwayConcededRegProb;
-				float FTtotalHomeExpectedRegProb = ls.avg(FTtotalHomeScoredRegProb, FTtotalAwayConcededRegProb);
-				float FTtotalAwayExpectedRegProb = ls.avg(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
-				float FTtotalMinHomeExpectedRegProb = Math.min(FTtotalHomeScoredRegProb, FTtotalAwayConcededRegProb);
-				float FTtotalMinAwayExpectedRegProb = Math.min(FTtotalAwayScoredRegProb, FTtotalHomeConcededRegProb);
+				float FTtotalHomeRecForm = ls.avg(neutralHomeFormRecProb, homeFormRecProb);
+				float FTtotalAwayRecForm = ls.avg(neutralAwayFormRecProb, awayFormRecProb);
+				float FTMinRecForm = Math.min(FTtotalHomeRecForm, FTtotalAwayRecForm);
+				float FTMaxRecForm = Math.max(FTtotalHomeRecForm, FTtotalAwayRecForm);
+				float formDiffRec = (FTtotalHomeRecForm - FTtotalAwayRecForm);
+				float FTtotalHomeScoredRecProb = ls.avg(FTneutralHomeScoredRecProb, FThomeScoredRecProb);
+				float FTtotalAwayScoredRecProb = ls.avg(FTneutralAwayScoredRecProb, FTawayScoredRecProb);
+				float FTtotalScoredRecProb = FTtotalHomeScoredRecProb + FTtotalAwayScoredRecProb;
+				float FTtotalHomeConcededRecProb = ls.avg(FTneutralHomeConcededRecProb, FThomeConcededRecProb);
+				float FTtotalAwayConcededRecProb = ls.avg(FTneutralAwayConcededRecProb, FTawayConcededRecProb);
+				float FTtotalConcededRecProb = FTtotalHomeConcededRecProb + FTtotalAwayConcededRecProb;
+				float FTtotalHomeExpectedRecProb = ls.avg(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+				float FTtotalAwayExpectedRecProb = ls.avg(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
+				float FTtotalMinHomeExpectedRecProb = Math.min(FTtotalHomeScoredRecProb, FTtotalAwayConcededRecProb);
+				float FTtotalMinAwayExpectedRecProb = Math.min(FTtotalAwayScoredRecProb, FTtotalHomeConcededRecProb);
 				
-				float FTmaxMinExpectedRegProb = Math.max(FTtotalMinHomeExpectedRegProb, FTtotalMinAwayExpectedRegProb);
+				float FTmaxMinExpectedRecProb = Math.max(FTtotalMinHomeExpectedRecProb, FTtotalMinAwayExpectedRecProb);
 
-				float FTtotalMinExpectedRegProb = FTtotalMinHomeExpectedRegProb + FTtotalMinAwayExpectedRegProb;
-				FTtotalExpectedRegProb = FTtotalHomeExpectedRegProb + FTtotalAwayExpectedRegProb;
-				float FTMaxExpectedRegProb = Math.max(FTtotalHomeExpectedRegProb, FTtotalAwayExpectedRegProb);
-				float totalHomeScoredAGoalExpectedRegProb = ls.avg(neutralHomeScoredAGoalExpectedRegProb,
-						homeScoredAGoalRegProb);
-				float totalAwayScoredAGoalExpectedRegProb = ls.avg(neutralAwayScoredAGoalExpectedRegProb,
-						awayScoredAGoalRegProb);
-				float totalHomeConcededAGoalExpectedRegProb = ls.avg(neutralHomeConcededAGoalExpectedRegProb,
-						homeConcededAGoalRegProb);
-				float totalAwayConcededAGoalExpectedRegProb = ls.avg(neutralAwayConcededAGoalExpectedRegProb,
-						awayConcededAGoalRegProb);
-				float homeGolX = Math.min(totalHomeScoredAGoalExpectedRegProb, totalAwayConcededAGoalExpectedRegProb);
-				float awayGolX = Math.min(totalAwayScoredAGoalExpectedRegProb, totalHomeConcededAGoalExpectedRegProb);
+				float FTtotalMinExpectedRecProb = FTtotalMinHomeExpectedRecProb + FTtotalMinAwayExpectedRecProb;
+				FTtotalExpectedRecProb = FTtotalHomeExpectedRecProb + FTtotalAwayExpectedRecProb;
+				float FTMaxExpectedRecProb = Math.max(FTtotalHomeExpectedRecProb, FTtotalAwayExpectedRecProb);
+				float totalHomeScoredAGoalExpectedRecProb = ls.avg(neutralHomeScoredAGoalExpectedRecProb,
+						homeScoredAGoalRecProb);
+				float totalAwayScoredAGoalExpectedRecProb = ls.avg(neutralAwayScoredAGoalExpectedRecProb,
+						awayScoredAGoalRecProb);
+				float totalHomeConcededAGoalExpectedRecProb = ls.avg(neutralHomeConcededAGoalExpectedRecProb,
+						homeConcededAGoalRecProb);
+				float totalAwayConcededAGoalExpectedRecProb = ls.avg(neutralAwayConcededAGoalExpectedRecProb,
+						awayConcededAGoalRecProb);
+				float homeGolX = Math.min(totalHomeScoredAGoalExpectedRecProb, totalAwayConcededAGoalExpectedRecProb);
+				float awayGolX = Math.min(totalAwayScoredAGoalExpectedRecProb, totalHomeConcededAGoalExpectedRecProb);
 				float minGolX = Math.min(homeGolX, awayGolX);
 				float maxGolX = Math.max(homeGolX, awayGolX);
 
-				float maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRegProb,
-						totalAwayScoredAGoalExpectedRegProb);
-				float maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRegProb,
-						totalAwayConcededAGoalExpectedRegProb);
-				float FTtotalHomeOneRegProb = ls.avg(FTneutralHomeOneRegProb, FThomeOneRegProb);
-				float FTtotalHomeTwoRegProb = ls.avg(FTneutralHomeTwoRegProb, FThomeTwoRegProb);
-				float FTtotalHomeThreeRegProb = ls.avg(FTneutralHomeThreeRegProb, FThomeThreeRegProb);
-				float FTtotalHomeFourRegProb = ls.avg(FTneutralHomeFourRegProb, FThomeFourRegProb);
-				float FTtotalAwayOneRegProb = ls.avg(FTneutralAwayOneRegProb, FTawayOneRegProb);
-				float FTtotalAwayTwoRegProb = ls.avg(FTneutralAwayTwoRegProb, FTawayTwoRegProb);
-				float FTtotalAwayThreeRegProb = ls.avg(FTneutralAwayThreeRegProb, FTawayThreeRegProb);
-				float FTtotalAwayFourRegProb = ls.avg(FTneutralAwayFourRegProb, FTawayFourRegProb);
-				float HTtotalHomeOneRegProb = ls.avg(HTneutralHomeOneRegProb, HThomeOneRegProb);
-				float HTtotalAwayOneRegProb = ls.avg(HTneutralAwayOneRegProb, HTawayOneRegProb);
-				float HTMinRegOne = Math.min(HTtotalHomeOneRegProb, HTtotalAwayOneRegProb);
+				float maxScoredAGoal = Math.max(totalHomeScoredAGoalExpectedRecProb,
+						totalAwayScoredAGoalExpectedRecProb);
+				float maxConcededAGoal = Math.max(totalHomeConcededAGoalExpectedRecProb,
+						totalAwayConcededAGoalExpectedRecProb);
+				float FTtotalHomeOneRecProb = ls.avg(FTneutralHomeOneRecProb, FThomeOneRecProb);
+				float FTtotalHomeTwoRecProb = ls.avg(FTneutralHomeTwoRecProb, FThomeTwoRecProb);
+				float FTtotalHomeThreeRecProb = ls.avg(FTneutralHomeThreeRecProb, FThomeThreeRecProb);
+				float FTtotalHomeFourRecProb = ls.avg(FTneutralHomeFourRecProb, FThomeFourRecProb);
+				float FTtotalAwayOneRecProb = ls.avg(FTneutralAwayOneRecProb, FTawayOneRecProb);
+				float FTtotalAwayTwoRecProb = ls.avg(FTneutralAwayTwoRecProb, FTawayTwoRecProb);
+				float FTtotalAwayThreeRecProb = ls.avg(FTneutralAwayThreeRecProb, FTawayThreeRecProb);
+				float FTtotalAwayFourRecProb = ls.avg(FTneutralAwayFourRecProb, FTawayFourRecProb);
+				float HTtotalHomeOneRecProb = ls.avg(HTneutralHomeOneRecProb, HThomeOneRecProb);
+				float HTtotalAwayOneRecProb = ls.avg(HTneutralAwayOneRecProb, HTawayOneRecProb);
+				float HTMinRecOne = Math.min(HTtotalHomeOneRecProb, HTtotalAwayOneRecProb);
 
-				float FTMinRegOne = Math.min(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-				float FTMinRegTwo = Math.min(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-				float FTMinRegThree = Math.min(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-				float FTMinRegFour = Math.min(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
-				float FTMaxRegOne = Math.max(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-				float FTMaxRegTwo = Math.max(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-				float FTMaxRegThree = Math.max(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-				float FTMaxRegFour = Math.max(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
-				float FTAvgRegOne = ls.avg(FTtotalHomeOneRegProb, FTtotalAwayOneRegProb);
-				float FTAvgRegTwo = ls.avg(FTtotalHomeTwoRegProb, FTtotalAwayTwoRegProb);
-				float FTAvgRegThree = ls.avg(FTtotalHomeThreeRegProb, FTtotalAwayThreeRegProb);
-				float FTAvgRegFour = ls.avg(FTtotalHomeFourRegProb, FTtotalAwayFourRegProb);
+				float FTMinRecOne = Math.min(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTMinRecTwo = Math.min(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTMinRecThree = Math.min(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTMinRecFour = Math.min(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+				float FTMaxRecOne = Math.max(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTMaxRecTwo = Math.max(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTMaxRecThree = Math.max(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTMaxRecFour = Math.max(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
+				float FTAvgRecOne = ls.avg(FTtotalHomeOneRecProb, FTtotalAwayOneRecProb);
+				float FTAvgRecTwo = ls.avg(FTtotalHomeTwoRecProb, FTtotalAwayTwoRecProb);
+				float FTAvgRecThree = ls.avg(FTtotalHomeThreeRecProb, FTtotalAwayThreeRecProb);
+				float FTAvgRecFour = ls.avg(FTtotalHomeFourRecProb, FTtotalAwayFourRecProb);
 
-				float minMaxOdds = Math.min(homeOdds, awayOdds);
-				float homeFormOdds = FTtotalHomeRegForm / homeOdds;
-				float awayFormOdds = FTtotalAwayRegForm / awayOdds;
-				float formOddsDiff = homeFormOdds - awayFormOdds;
-				float minFormOdds = Math.min(homeFormOdds, awayFormOdds);
-				float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
-				float oddsDiff = homeOdds - awayOdds;
+				// float minMaxOdds = Math.min(homeOdds, awayOdds);
+				// float homeFormOdds = FTtotalHomeRecForm / homeOdds;
+				// float awayFormOdds = FTtotalAwayRecForm / awayOdds;
+				// float formOddsDiff = homeFormOdds - awayFormOdds;
+				// float minFormOdds = Math.min(homeFormOdds, awayFormOdds);
+				// float maxFormOdds = Math.max(homeFormOdds, awayFormOdds);
+				// float oddsDiff = homeOdds - awayOdds;
 
-				float homeFormOddsIndex = (((3/homeOdds) + FTtotalHomeRegForm)/2) ;
-				float awayFormOddsIndex = (((3/awayOdds) + FTtotalAwayRegForm)/2) ;
-				float formOddsIndex = homeFormOddsIndex - awayFormOddsIndex;
+				// float homeFormOddsIndex = (((3/homeOdds) + FTtotalHomeRecForm)/2) ;
+				// float awayFormOddsIndex = (((3/awayOdds) + FTtotalAwayRecForm)/2) ;
+				// float formOddsIndex = homeFormOddsIndex - awayFormOddsIndex;
 				
 								
 
 				
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.1) >= 0))
+				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 2.4) >= 0))
 					oddsBetThis++;	
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 2.6) >= 0))
+				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 2.9) >= 0))
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.2) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 3.5) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 3.9) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 4.2) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRegProb, (float) 4.7) >= 0) )
+				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 5.0) >= 0) )
 					oddsBetThis++;
-				
+		
 				oddsBetThis = oddsBetThis - 0.5;
 
-				if(exception == 1)
-				oddsBetThis = -0.5;
 
-				if( (Float.compare(formOddsIndex, (float) 0.5) < 0))
-				continue;
+				if( (Float.compare(formDiffRec, (float) 0.9) < 0) &&  (Float.compare(formDiffRec, (float) -1.4) > 0))
+				oddsBetThis-=2;
 
-				if( (Float.compare(homeFormRegProb, (float) 1) < 0))
-				continue;
 
-				if( (Float.compare(formOddsIndex, (float) 0.5) >= 0) && !league2.contains("U21") && !league2.contains("U-21"))
-				betType = "AWAY UNDER 2.5";
-
-				if( (Float.compare(formOddsIndex, (float) 1.4) >= 0)  && !league2.contains("U21") && !league2.contains("U-21"))
+				if(
+					
+				!tier.equals("E") &&
+				(Float.compare(formDiffRec, (float) 1) >= 0) 
+				&& 
+				(Float.compare(FTtotalAwayRecForm, (float) 1.1) < 0)
+				&& 
+				(Float.compare(FTtotalHomeRecForm, (float) 1.5) >= 0))
 				betType = "1X || AWAY UNDER 2.5";
 
-				if( (Float.compare(formOddsIndex, (float) 1.1) < 0) && oddsBetThis > 1)
-				oddsBetThis--;
 
-				if ((Float.compare(FTMaxRegForm, (float) 1.5) < 0))
-				oddsBetThis--;
 
 				
-				if(exception != 1 && (Float.compare(formOddsIndex, (float) 0) >  0) &&  (Float.compare(HTMinRegOne, (float) 0.8) >=  0) && (Float.compare(minMaxOdds, (float) 1.6) <  0)  && (Float.compare(FTMinRegForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRegForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRegProb, (float) 2) >=  0) )
+				if(!tier.equals("E") &&
+				  !neutralHomeForm.get(0).equals(0) &&  (Float.compare(formDiffRec, (float) 1) >  0) &&  (Float.compare(HTMinRecOne, (float) 0.8) >=  0)  && (Float.compare(FTMinRecForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRecForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRecProb, (float) 2) >=  0) )
 					betType += " 1HG";
 
-					if(oddsBetThis > 0 && (Float.compare(formOddsIndex, (float) 1.5) < 0) && (Float.compare(formOddsIndex, (float) -1.5) > 0))
-					betType += " LIVEBET";
-
-					if(oddsBetThis > 0 && (Float.compare(formOddsIndex, (float) 1.25) < 0) && (Float.compare(formOddsIndex, (float) -1.25) > 0))
+					if(  oddsBetThis > 0 && (Float.compare(formDiffRec, (float) 1) < 0))
 					betType += " NO SIDES";
 
 				if(betType.equals(""))
@@ -1802,14 +1766,14 @@ if(
 				) {
 					myWriter.write(date + " " + time);
 					myWriter.write(",");
-					myWriter.write(homeName + " - " + homeOdds + " / " + FTtotalHomeRegForm + " / "
-							+ FTtotalMinHomeExpectedRegProb);
+					myWriter.write(homeName + " - " + FTtotalHomeRecForm + " / "
+							+ FTtotalMinHomeExpectedRecProb);
 					myWriter.write(",");
-					myWriter.write(awayName + " - " + awayOdds + " / " + FTtotalAwayRegForm + " / "
-							+ FTtotalMinAwayExpectedRegProb);
+					myWriter.write(awayName + " - " + FTtotalAwayRecForm + " / "
+							+ FTtotalMinAwayExpectedRecProb);
 					myWriter.write(",");
-					myWriter.write(Double.toString(formOddsIndex));
-					myWriter.write(",");
+					// myWriter.write(Double.toString(formOddsIndex));
+					// myWriter.write(",");
 					myWriter.write(Double.toString(oddsBetThis));
 					myWriter.write(",");
 					myWriter.write(betType);
@@ -1837,22 +1801,22 @@ if(
 					System.out.format("|%-25s|", awayName);
 					System.out.format("|%-25s|", "");
 					System.out.println();
-					System.out.format("|%-25s|", "Form Reg");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeRegForm).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayRegForm).substring(0, 3));
-					System.out.format("|%-25s|", formDiffReg);
+					System.out.format("|%-25s|", "Form Rec");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeRecForm).substring(0, 3) );
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayRecForm).substring(0, 3) );
+					System.out.format("|%-25s|", formDiffRec);
 					System.out.println();
-					System.out.format("|%-25s|", "formOddsIndex");
-					System.out.format("|%-25s|", homeFormOddsIndex);
-					System.out.format("|%-25s|", awayFormOddsIndex);
-					System.out.format("|%-25s|", formOddsIndex);
+					// System.out.format("|%-25s|", "formOddsIndex");
+					// System.out.format("|%-25s|", homeFormOddsIndex);
+					// System.out.format("|%-25s|", awayFormOddsIndex);
+					// System.out.format("|%-25s|", formOddsIndex);
+					// System.out.println();
+					System.out.format("|%-25s|", "FT Rec Expected Score");
+					System.out.format("|%-25s|", Float.toString(FTtotalMinHomeExpectedRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalMinAwayExpectedRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalMinExpectedRecProb).substring(0, 3));
 					System.out.println();
-					System.out.format("|%-25s|", "FT Reg Expected Score");
-					System.out.format("|%-25s|", Float.toString(FTtotalMinHomeExpectedRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalMinAwayExpectedRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalMinExpectedRegProb).substring(0, 3));
-					System.out.println();
-					System.out.format("|%-25s|", "FT Reg Score Probablility");
+					System.out.format("|%-25s|", "FT Rec Score Probablility");
 					System.out.format("|%-25s|", Float.toString(homeGolX).substring(0, 3));
 					System.out.format("|%-25s|", Float.toString(awayGolX).substring(0, 3));
 					System.out.format("|%-25s|", Float.toString(minGolX).substring(0, 3));
@@ -1872,14 +1836,14 @@ if(
 					System.out.format("|%-25s|", HTScore);
 					System.out.println();
 					System.out.format("|%-25s|", "HT One Prob");
-					System.out.format("|%-25s|", Float.toString(HTtotalHomeOneRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(HTtotalAwayOneRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(HTMinRegOne).substring(0, 4));
+					System.out.format("|%-25s|", Float.toString(HTtotalHomeOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(HTtotalAwayOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(HTMinRecOne).substring(0, 4));
 					System.out.println();
 					System.out.format("|%-25s|", "FT One Prob");
-					System.out.format("|%-25s|", Float.toString(FTtotalHomeOneRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTtotalAwayOneRegProb).substring(0, 3));
-					System.out.format("|%-25s|", Float.toString(FTMinRegOne).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayOneRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecOne).substring(0, 3));
 					System.out.println();
 //					System.out.format("|%-25s|", "FT Two Prob");
 //					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRegProb).substring(0, 3));

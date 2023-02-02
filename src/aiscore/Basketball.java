@@ -35,12 +35,9 @@ class Basketball {
 		driver.get("https://m.aiscore.com/basketball/"+year+""+month+""+day+"");
 
 
-
 		 wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[1]/span[1]"))));
-		 wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[2]/i"))));
-
-		
 		 driver.findElement(By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[1]/span[1]")).click();
+		 wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[2]/i"))));
 		 driver.findElement(By.xpath("//*[@id='app']/div[2]/div/div[1]/div[3]/div[2]/i")).click();
 
 		i = startIndex;
@@ -54,6 +51,7 @@ class Basketball {
 				h =  i;
 
 
+				wait.until(ExpectedConditions.elementToBeClickable((By.xpath("(//*[@itemscope])["+(h)+"]/a"))));
 
 				WebElement element = driver.findElement(By.xpath("(//*[@itemscope])["+(h)+"]/a"));
 				
@@ -128,7 +126,7 @@ class Basketball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "27", month = "01", year = "2023";
+		String day = "02", month = "02", year = "2023";
 		
 		Basketball ls = new Basketball();
 		String mode = "";
