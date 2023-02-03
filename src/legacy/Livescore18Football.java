@@ -75,7 +75,7 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 
 
         String bt = "Schedule"; 
-		String oddsOption = "Pre";
+		//String oddsOption = "Pre";
 		boolean sameLeague = false;
 		int startIndex = 0;
 	    int endIndex = 1500;
@@ -87,10 +87,10 @@ options.addArguments("--disable-extensions"); // Bypass OS security model
 
 		Livescore18Football ls = new Livescore18Football();
 //	 links = ls.scheduleGrab(driver,i,h,links, "11-2021-2022",2);
-links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
+//links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt);
 
 
-// links.add("https://www.goaloo.site/football/maynooth-university-town-fc-vs-bangor-celtic/h2h-2340536");
+ //links.add("https://www.goaloo.site/football/al-wakra-vs-al-duhail/h2h-2327614");
 
 
 		ListIterator<String> litr = null;
@@ -362,6 +362,7 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 
 						|| league2.contains("France Ligue 2")
 						|| league2.contains("Hungary NB")
+						|| league2.contains("Burundi")
 
 						|| league2.contains("Vietnamese First Division")
 
@@ -382,6 +383,7 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 						|| league2.contains("Northern Ireland Premier League")
 										|| league2.contains("Faroe Islands Formuladeildin") || league2.contains("Kenya Premier League")
 						|| league2.contains("Uganda Premier League") || league2.contains("Saudi Arabia Division 1")
+						|| league2.contains("Saudi Arabia Division 2")
 						|| league2.contains("Australia Capital Gatorade Premier League")
 						|| league2.contains("Puerto Rico League") || league2.contains("Chile Primera B")
 						|| league2.contains("Panama Liga Nacional de Ascenso") || league2.contains("Costa Rica 2.Liga")
@@ -409,7 +411,8 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 
 						|| league2.contains("Latvian Higher League") || league2.contains("Aruba Division Di Honor")
 
-						|| league2.contains("BRA CP") || league2.contains("San Marino League")
+						|| league2.contains("BRA CP") 	|| league2.contains("BRA CGD")
+						|| league2.contains("San Marino League")
 						|| league2.contains("Nicaragua Apertura league") || league2.contains("Greece Division C")
 						|| league2.contains("Danish 1st Division") || league2.contains("Lebanese Premier League")
 						|| league2.contains("Liga Nacional de Guatemala")
@@ -456,6 +459,7 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 						|| league2.contains("Hong Kong 2nd Division")
 						|| league2.contains("Chinese Taipei Intercity League")
 						|| league2.contains("Gibraltar Premier Division")
+
 
 				) {
 					tier = "B";
@@ -603,7 +607,7 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 						|| league2.contains("Mexico Liga TDP") || league2.contains("Turkey 3")
 						|| league2.contains("Argentina Prim C") || league2.contains("Landesliga")
 						|| league2.contains("Argentina Torneo B")
-						|| league2.contains("India Mizoram Premier League") || league2.contains("Chile Primera D")
+						|| league2.contains("India Mizoram Premier League") || league2.equals("Chile Primera D")
 						|| league2.contains("Germany Landespokal")
 						|| league2.contains("International") || league2.contains("Cup") || league2.contains("CUP")
 						|| league2.contains("CONCACAF Nations League") || league2.contains("UEFA Nations League")
@@ -689,9 +693,17 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 						  || league2.contains("ENG SD1")
 						  || league2.contains("Spanish Ladies Premier League B")
 						  || league2.contains("Wales Premier League Women")
+						  || league2.contains("Malta Women Division 1")
+						  || league2.contains("Belgium Women's Premier League")
+						  || league2.contains("German Frauen Bundesliga")
+						  || league2.contains("Nacional Women")
+						  || league2.contains("Nacional Women")
+
 						  || league2.contains("El Salvador Reserves League")
 						  || league2.contains("Brazil Campeonato Paulista C")
-				
+						  || league2.contains("Ireland Leinster Senior")
+						  || league2.contains("Belgian Second Division")
+
 				)
 					continue;
 				
@@ -1718,46 +1730,59 @@ links = ls.fixtureGrab(driver, i, h, links, wait, startIndex, endIndex, day, bt)
 								
 
 				
-				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 2.4) >= 0))
+				if ( (Float.compare(FTMinRecOne, (float) 0.9) >= 0))
 					oddsBetThis++;	
-				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 2.9) >= 0))
+				if ( (Float.compare(FTMinRecTwo, (float) 0.85) >= 0))
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 3.5) >= 0) )
+				if ( (Float.compare(FTMinRecThree, (float) 0.8) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 4.2) >= 0) )
+				if ( (Float.compare(FTMinRecFour, (float) 0.75) >= 0) )
 					oddsBetThis++;
-				if ( (Float.compare(FTtotalMinExpectedRecProb, (float) 5.0) >= 0) )
-					oddsBetThis++;
+
 		
 				oddsBetThis = oddsBetThis - 0.5;
 
+				if ( (Float.compare(maxGolX, (float) 0.8) < 0) )
+				oddsBetThis = -0.5;
 
-				if( (Float.compare(formDiffRec, (float) 0.9) < 0) &&  (Float.compare(formDiffRec, (float) -1.4) > 0))
-				oddsBetThis-=2;
-
+				if ((Float.compare(formDiffRec, (float) 0) < 0) && (Float.compare(formDiffRec, (float) -1.5) > 0) )
+				oddsBetThis--;
 
 				if(
 					
-				!tier.equals("E") &&
-				(Float.compare(formDiffRec, (float) 1) >= 0) 
+				!tier.equals("E") && !tier.equals("D")  && oddsBetThis > 0 &&
+				(Float.compare(formDiffRec, (float) 1.1) >= 0) 
 				&& 
 				(Float.compare(FTtotalAwayRecForm, (float) 1.1) < 0)
 				&& 
-				(Float.compare(FTtotalHomeRecForm, (float) 1.5) >= 0))
-				betType = "1X || AWAY UNDER 2.5";
+				(Float.compare(FTtotalHomeRecForm, (float) 1.7) >= 0))
+				betType = "1X";
+
+				if(!tier.equals("E") && !tier.equals("D") &&
+				(Float.compare(formDiffRec, (float) 1.1) >= 0) 
+				&& 
+				(Float.compare(FTtotalAwayRecForm, (float) 1.1) < 0)
+				&& 
+				(Float.compare(FTtotalHomeRecForm, (float) 1.7) >= 0))
+				betType += " AWAY UNDER 2.5";
 
 
 
 				
 				if(!tier.equals("E") &&
-				  !neutralHomeForm.get(0).equals(0) &&  (Float.compare(formDiffRec, (float) 1) >  0) &&  (Float.compare(HTMinRecOne, (float) 0.8) >=  0)  && (Float.compare(FTMinRecForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRecForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRecProb, (float) 2) >=  0) )
+				  !neutralHomeForm.get(0).equals(0) &&  (Float.compare(formDiffRec, (float) 1) >  0) &&  (Float.compare(HTMinRecOne, (float) 0.8) >=  0)  && (Float.compare(FTMinRecForm, (float) 1.5) <  0)  && (Float.compare(FTMaxRecForm, (float) 1.5) >=  0) && (Float.compare(FTtotalMinExpectedRecProb, (float) 2.3) >=  0) )
 					betType += " 1HG";
 
-					if(  oddsBetThis > 0 && (Float.compare(formDiffRec, (float) 1) < 0))
+					if(  oddsBetThis > 0 && (Float.compare(formDiffRec, (float) 1.2) < 0))
 					betType += " NO SIDES";
+					else if ( oddsBetThis > 0 && (Float.compare(formDiffRec, (float) 1.2) >= 0))
+					betType += " SIDES";
 
-				if(betType.equals(""))
-				continue;
+					if((Float.compare(FTMaxRecForm, (float) 1.4) < 0))
+					continue;
+
+					if(  oddsBetThis < 0 && betType.equals(("")))
+					continue;
 
 
 if(
@@ -1772,8 +1797,8 @@ if(
 					myWriter.write(awayName + " - " + FTtotalAwayRecForm + " / "
 							+ FTtotalMinAwayExpectedRecProb);
 					myWriter.write(",");
-					// myWriter.write(Double.toString(formOddsIndex));
-					// myWriter.write(",");
+					 myWriter.write(Double.toString(formDiffRec));
+					 myWriter.write(",");
 					myWriter.write(Double.toString(oddsBetThis));
 					myWriter.write(",");
 					myWriter.write(betType);
@@ -1845,20 +1870,20 @@ if(
 					System.out.format("|%-25s|", Float.toString(FTtotalAwayOneRecProb).substring(0, 3));
 					System.out.format("|%-25s|", Float.toString(FTMinRecOne).substring(0, 3));
 					System.out.println();
-//					System.out.format("|%-25s|", "FT Two Prob");
-//					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTtotalAwayTwoRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTMinRegTwo).substring(0, 3));
-//					System.out.println();
-//					System.out.format("|%-25s|", "Three Prob");
-//					System.out.format("|%-25s|", Float.toString(FTtotalHomeThreeRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTtotalAwayThreeRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTMinRegThree).substring(0, 3));
-//					System.out.println();
-//					System.out.format("|%-25s|", "FT Four Prob");
-//					System.out.format("|%-25s|", Float.toString(FTtotalHomeFourRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTtotalAwayFourRegProb).substring(0, 3));
-//					System.out.format("|%-25s|", Float.toString(FTMinRegFour).substring(0, 3));
+					System.out.format("|%-25s|", "FT Two Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeTwoRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayTwoRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecTwo).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "FT Three Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeThreeRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayThreeRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecThree).substring(0, 3));
+					System.out.println();
+					System.out.format("|%-25s|", "FT Four Prob");
+					System.out.format("|%-25s|", Float.toString(FTtotalHomeFourRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTtotalAwayFourRecProb).substring(0, 3));
+					System.out.format("|%-25s|", Float.toString(FTMinRecFour).substring(0, 3));
 
 					System.out.println();
 
