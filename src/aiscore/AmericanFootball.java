@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -33,15 +34,24 @@ class AmericanFootball {
 			int startIndex, int endIndex, String day, String month, String year) {
 
 		driver.get("https://m.aiscore.com/american-football/"+year+""+month+""+day+"");
-
-		wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id=\"app\"]/div[2]/div/div[4]"))));
 		
-		
-		driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div[4]")).click();
 
+		
+		try {
+
+			 wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id=\"app\"]/div[2]/div/div[1]/div[3]/div[1]/span[4]"))));
+			 driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div[1]/div[3]/div[1]/span[4]")).click();
+			 wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id=\"app\"]/div[2]/div/div[1]/div[3]/div[2]/i"))));
+			 driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div[1]/div[3]/div[2]/i")).click();
+			}catch(Exception e) 
+			{
+				 System.out.println(e);
+
+			}
 		i = startIndex;
 		
 		JavascriptExecutor je = (JavascriptExecutor) driver;
+		
 		
 		wait.until(ExpectedConditions.elementToBeClickable((By.xpath("(//*[@class='list']/div/a)[1]"))));
 
@@ -50,8 +60,7 @@ class AmericanFootball {
 			try {
 
 				h =  i;
-
-
+				wait.until(ExpectedConditions.elementToBeClickable((By.xpath("(//*[@class='list']/div/a)["+(h)+"]"))));
 
 				WebElement element = driver.findElement(By.xpath("(//*[@class='list']/div/a)["+(h)+"]"));
 				
@@ -60,18 +69,18 @@ class AmericanFootball {
 				//je.executeScript("window.scrollBy(0,500)", "");
 
 
-				String fixture = driver.findElement(By.xpath("(//*[@class='list']/div/a)["+(h)+"]")).getAttribute("href");
+				String fixture = driver.findElement(By.xpath("(//*[@class='list']/div/a)["+h+"]")).getAttribute("href");
 				
-//				System.out.println("fixture = " + fixture);
-//				System.out.println("fixture l= " + fixture.substring(fixture.length()-4, fixture.length()));
+			//	System.out.println("fixture = " + fixture);
+			//	System.out.println("fixture l= " + fixture.substring(fixture.length()-14, fixture.length()));
 
 				if(!fixture.substring(fixture.length()-4, fixture.length()).equals("/h2h"))
 					fixture = fixture + "/h2h";
-				
+				//	System.out.println("fixture = " + fixture);
+
 				links.add(fixture);
-				
-				//String[] fixtureSplit = fixture.split("_");
-				//links.add("https://www.goaloo.mobi/basketball/match/h2h-" + fixtureSplit[1]);
+//				String[] fixtureSplit = fixture.split("_");
+//				links.add("https://www.goaloo.mobi/basketball/match/h2h-" + fixtureSplit[1]);
 
 				i++;
 
@@ -79,6 +88,8 @@ class AmericanFootball {
 				// System.out.println(e);
 				
 				System.out.println("# links = " + links.size());
+				i++;
+
 				break;
 			}
 
@@ -95,22 +106,28 @@ class AmericanFootball {
 		// setting the driver executable
 		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--no-sandbox"); // Bypass OS security model
-		options.addArguments("headless"); // Bypass OS security model
-		options.addArguments("--disable-extensions"); // Bypass OS security model
+		options.addArguments("--disable-gpu");
+		options.addArguments("--disable-extensions");
+		options.setExperimentalOption("useAutomationExtension", false);
+		options.addArguments("--proxy-server='direct://'");
+		options.addArguments("--proxy-bypass-list=*");
+//		options.addArguments("--start-maximized");
+//		options.addArguments("--headless=new");
+		options.addArguments("--disable-infobars");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--incognito");
+		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("--window-size=2560,144000");
-
-//        options.addArguments("--user-data-dir=C:/Users/PAC/Desktop/p1"); // Bypass OS security model
-//
 		WebDriver driver = new ChromeDriver(options);
 
-		WebDriverWait wait = new WebDriverWait(driver, 10000);
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MICROSECONDS);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
 
 		SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		Date date1 = new Date(System.currentTimeMillis());
 		System.out.println(formatter1.format(date1));
-		File file = new File("./afBets/afBets_" + formatter1.format(date1) + ".csv");
+		File file = new File("./afBets/afBets" + formatter1.format(date1) + ".csv");
 
 		// Create the file
 		if (file.createNewFile()) {
@@ -126,7 +143,7 @@ class AmericanFootball {
 		int h = 0;
 		int linknum = 1;
 
-		String day = "06", month = "01", year = "2023";
+		String day = "23", month = "09", year = "2023";
 		
 		AmericanFootball ls = new AmericanFootball();
 		String mode = "";
@@ -134,9 +151,10 @@ class AmericanFootball {
 		links = ls.fixtureGrab(driver, i, h, links, wait, 1, 1000, day,month,year);
 		// wait.until(ExpectedConditions.visibilityOfElementLocated0By.xpath("/html/body/div/div[2]/div[2]/div[2]/div[500]")));
 
-		System.out.println(day + "," + month + "," + year);
-//		links.add("https://www.goaloo.mobi/basketball/match/h2h-489722");
-		// Using list iterator
+		System.out.println(day + "," + month + "," + year  );
+
+		 //		links.add("https://m.aiscore.com/american-football/match-vanderbilt-hawaii/l6kembm3vgoiv75/h2h");
+	// Using list iterator
 		ListIterator<String> litr = null;
 		litr = links.listIterator();
 
@@ -163,14 +181,15 @@ class AmericanFootball {
 
 				matchScore = driver
 				.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[1]/div[2]/div[1]/div/div[1]")).getText();
-
 				
+				 System.out.println("matchScore = " + matchScore );
+
 
 			} catch (Exception e) {
 				matchScore = "";
+				 System.out.println(e);
 
 			}
-
 
 			try {
 				// get time of game
@@ -185,66 +204,37 @@ class AmericanFootball {
 
 				// get matchTitle
 				date = driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[1]/div[1]/div/header/div/div[2]/span")).getText();
+				// System.out.println("date = " + date );
 
-				driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[2]")).click();
+				driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[1]/span[2]")).click();
 
-				
-				
-				List<WebElement> els = new ArrayList<WebElement>();
-				
-				els = driver.findElements(By.xpath("(//*[@class='w'])"));
-				
-				//System.out.println(els.size());
-				
-				
-				int elsize = 0;
-				
-				if(els.size() == 3)
-					elsize = 1;
-				
-				List<WebElement> mores = new ArrayList<WebElement>();
-				
-				mores = driver.findElements(By.xpath("(//*[@class='more'])"));
-				
-				//System.out.println(mores.size());
-				
-				
-				int moresize = 0;
-				
-				if(mores.size() == 3)
-					moresize = 1;
-				
-				
-				try {
-					// wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("(//*[@class='more'])["+(1+elsize)+"]")));
-					driver.findElement(By.xpath("(//*[@class='more'])["+(1+moresize)+"]")).click();
 
-				}catch(Exception e)
-				{}
-				
-				try {
-					
-					driver.findElement(By.xpath("(//*[@class='more'])["+(2+moresize)+"]")).click();
-					
+				driver.findElement(By.xpath("(//*[@class='select flexCenter'])")).click();
+				driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[1]/p[2]/span/span/span[4]")).click();
 
-				}catch(Exception e)
-				{}
+		
 				
-			
-				
-				
-				homeWins = Float.parseFloat(driver.findElement(By.xpath("(//*[@class='w'])["+(1+elsize)+"]")).getText());
+				homeWins = Float.parseFloat(driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[1]/span[2]")).getText().substring(1));
 
-				homeLosses = Float.parseFloat(driver.findElement(By.xpath("(//*[@class='l'])["+(1+elsize)+"]")).getText());
+				homeLosses = Float.parseFloat(driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[2]/span[2]")).getText().substring(1));
 
+//				System.out.println("homeWins = " + driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[1]/span[2]")).getText());
+//				System.out.println("homeLosses = " + driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[2]/span[2]")).getText());
 //				System.out.println("homeWins = " + homeWins);
 //				System.out.println("homeLosses = " + homeLosses);
 
+				driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[1]/span[3]")).click();
 				
-				awayWins = Float.parseFloat(driver.findElement(By.xpath("(//*[@class='w'])["+(2+elsize)+"]")).getText());
+				driver.findElement(By.xpath("(//*[@class='select flexCenter'])")).click();
+				driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[1]/p[2]/span/span/span[4]")).click();
 
-				awayLosses = Float.parseFloat(driver.findElement(By.xpath("(//*[@class='l'])["+(2+elsize)+"]")).getText());
+				
+				awayWins = Float.parseFloat(driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[1]/span[2]")).getText().substring(1));
 
+				awayLosses = Float.parseFloat(driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[2]/span[2]")).getText().substring(1));
+
+//				System.out.println("awayWins = " + driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[1]/span[2]")).getText());
+//				System.out.println("awayLosses = " + driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[3]/div[1]/div[2]/div/div/div[3]/span[2]/span[2]")).getText());
 //				System.out.println("awayWins = " + awayWins);
 //				System.out.println("awayLosses = " + awayLosses);
 				
@@ -255,18 +245,9 @@ class AmericanFootball {
 //				System.out.println("neutralHomeFormRegProb = " + neutralHomeFormRegProb);
 //				System.out.println("neutralAwayFormRegProb = " + neutralAwayFormRegProb);
 
-				
-
-
-				if (homeName.contains("Women") || homeName.contains("Woman") || homeName.contains("woman")
-						|| homeName.contains("women") || homeName.contains(" w") || homeName.contains(" W ")
-						|| homeName.contains("(w)") || homeName.contains("(W)") || homeName.contains("Ladies")
-						|| homeName.contains("ladies"))
-					continue;
-
-		
 				float minRegForm = Math.min(neutralHomeFormRegProb, neutralAwayFormRegProb);
 				float maxRegForm = Math.max(neutralHomeFormRegProb, neutralAwayFormRegProb);
+				float formDiff = neutralHomeFormRegProb - neutralAwayFormRegProb;
 
 				if( (Float.compare(maxRegForm, (float) 1.6) < 0) || (Float.compare(minRegForm, (float) 0.6) >= 0))
 					continue;
